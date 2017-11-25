@@ -6,7 +6,7 @@ from subprocess import Popen, call
 from AutorunConfig import Autorun
 from sys import exit
 
-program = gui("Solar Pi Welcome", "650x375")  # When switch to ttk, change to 650x375
+program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375
 #program.useTtk()
 
 #program.setIcon("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Python Start Screen\\Logo_NEW_2.gif")
