@@ -7,6 +7,8 @@ from AutorunConfig import Autorun
 from sys import exit
 
 program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375
+
+
 #program.useTtk()
 
 #program.setIcon("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Python Start Screen\\Logo_NEW_2.gif")
@@ -63,6 +65,19 @@ def MenuHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Pictures Launcher.sh")
     elif press == "Videos":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Videos Launcher.sh")
+
+def ToolbarHandler(press):
+    if press == "Off":
+        Popen("/usr/bin/lxde-pi-shutdown-helper")
+        pass  # Call RPi power menu
+    elif press == "Settings:":
+        pass  # Call Settings menu
+    elif press == "Files":
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/pcmanfm Launcher.sh")
+    elif press == "About":
+        program.showSubWindow("About Solar Pi")
+    elif press == "Help":
+        pass  # Call Starter guide
 
 def PerfBattery(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Perf Battery Launcher.sh")
@@ -121,6 +136,9 @@ with program.tabbedFrame("MainTabs", colspan=4):
     program.addMenuList("Guides", ["Python Guides"], MenuHandler)
     program.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
 
+
+    tools = ["Off", "Settings", "Files", "About", "Help"]
+    program.addToolbar(tools, ToolbarHandler, findIcon=True)
 
     # Welcome Tab
     with program.tab("Welcome!"):
