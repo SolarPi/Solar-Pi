@@ -125,9 +125,6 @@ with program.subWindow("About Solar Pi", modal=True):
 
 # Main Window
 program.setPadding(3, 3)
-# program.addImage("logo1", "E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Python Start Screen\\Solar Pi text.gif")
-# #program.addImage("logo1", "/usr/local/bin/Solar Pi/Resources/Images/Solar Pi text.gif")
-# program.zoomImage("logo1", -45)
 with program.tabbedFrame("MainTabs", colspan=4):
 
     # Menu bar
