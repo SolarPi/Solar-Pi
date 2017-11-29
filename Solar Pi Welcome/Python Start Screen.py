@@ -144,7 +144,7 @@ with program.tabbedFrame("MainTabs", colspan=4):
         program.zoomImage("logo", -2)
         program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
         program.getLabelWidget("welcome").config(font=("Dejavu Sans", "20"))
-        program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to get a starter guide -->", 2, 0)  # Update translation
+        program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to open the starter guide -->", 2, 0)  # Update translation
         program.addButton("Get Started", ButtonHandler, 2, 1)
         #program.addLabel("label1", "Your Solar Pi is a solar powered Raspberry Pi based computer.\nStart by clicking one of the tabs above.  ^^^", colspan=2)
         program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
@@ -262,9 +262,6 @@ def updateMeter():
 program.addLabel("battery", "Battery Remaining:", 1, 0)  # Update translation
 #program.setLabelAlign("battery", "right")
 program.setLabelAnchor("battery", "e")
-#program.addLabel("level", "", 1, 1)
-#program.setLabelAlign("level", "left")
-#program.setLabelAnchor("level", "w")
 program.addMeter("battery", 1, 2)
 program.setMeterFill("battery", "#13d323")
 program.addLabel("blank", "", 1, 3)
