@@ -24,6 +24,8 @@ def ApplySettings(press):
     battery_meter = program.getCheckBox("Show standalone battery meter")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     clock_speed = program.getScale("slider")
+    theme = program.getOptionBox("Themes")  # Write to external file
+
 
     if battery_meter == True:
         pass
@@ -35,7 +37,6 @@ def ApplySettings(press):
         if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
             line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
         sys.stdout.write(line)  # Writes back to file
-
 
 
     # After settings have been changed
@@ -99,11 +100,13 @@ with gui("Settings", useTtk=True) as program:
         program.addButton("Update System", Update)
 
 
-    with program.labelFrame("Startup", 1, 0):
+    with program.labelFrame("Other Settings", 1, 0):
         program.setPadding(5, 5)
-        program.addCheckBox("Launch the Solar Pi Welcome application at startup")
+        program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.setCheckBox("Launch the Solar Pi Welcome application at startup", ticked=True)
-
+        program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
+        themes = ["plastik", "arc", "clam", "clearlooks", "radiance"]
+        program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
 
 
     program.addButton("Apply", ApplySettings, 5, colspan=2)
