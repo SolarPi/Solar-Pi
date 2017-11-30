@@ -32,6 +32,7 @@ def ApplySettings(press):
     clock_speed = program.getScale("slider")
     theme = program.getOptionBox("Themes")  # Write to external file
 
+    program.ttkStyle.set_theme(theme)
 
     if battery_meter == True:
         pass
@@ -43,6 +44,9 @@ def ApplySettings(press):
         if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
             line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
         sys.stdout.write(line)  # Writes back to file
+
+
+    # Write data to file
 
 
     # After settings have been changed
@@ -63,6 +67,8 @@ def Defaults(press):
 
     SetItems(1200, True, True, "plastik")
 
+    program.ttkStyle.set_theme("plastik")
+
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
 
@@ -77,13 +83,27 @@ def Update(press):
 
 def ScaleChange(value):
     value = int(program.getScale("slider"))
-    program.setLabel("scale", "Clock Speed: " + str(value) + "MHz")
+    program.setLabel("scale", "Max CPU Clock Speed: " + str(value) + "MHz")
 
+with open("settings.ini", "r") as file:
+    data = file.readlines()[0]
+data = data.split(",")
+count = 1
+for item in data:
+    if count == 1:
+        clock_speed = int(item)
+    elif count == 2:
+        battery_meter = bool(item)
+    elif count == 3:
+        launch_welcome = bool(item)
+    elif count == 4:
+        theme = item
+    count += 1
 
 
 with gui("Settings", useTtk=True) as program:
     program.ttkStyle = ThemedStyle(program.topLevel)
-    program.ttkStyle.set_theme("plastik")
+    program.ttkStyle.set_theme(theme)
     #program.setBg("white")
     #program.setResizable(canResize=False)
 
@@ -143,19 +163,7 @@ with gui("Settings", useTtk=True) as program:
 
 
 
-    with open("settings.ini", "r") as file:
-        data = file.readlines()[0]
-    data = data.split(",")
-    count = 1
-    for item in data:
-        if count == 1:
-            clock_speed = int(item)
-        elif count == 2:
-            battery_meter = bool(item)
-        elif count == 3:
-            launch_welcome = bool(item)
-        elif count == 4:
-            theme = item
-        count += 1
+
+
 
     SetItems(clock_speed, battery_meter, launch_welcome, theme)
