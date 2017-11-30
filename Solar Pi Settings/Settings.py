@@ -7,6 +7,7 @@ from subprocess import Popen, call
 from ttkthemes import ThemedStyle
 from AutorunConfig import Autorun
 
+
 # Add translations for all
 
 
@@ -19,6 +20,11 @@ def ButtonHandler(press):
         # Infobox showing info
         program.infoBox("More Information", "This program modifies a text file to change the clock speed of the processor.\nThe number shown on the slider marks the maximum clock speed of the CPU in MHz.\nIf the clock speed is low, the Raspberry Pi will draw less power with lower performance, if the clock speed is high, it will draw more power with more performance.\n\nNote: The default value is 1200MHz.")
 
+    elif press == "Change Advanced Settings":
+        Popen("/usr/bin/rc_gui")
+
+    elif press == "Languages":
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
 
 def ApplySettings(press):
     battery_meter = program.getCheckBox("Show standalone battery meter")
@@ -41,7 +47,25 @@ def ApplySettings(press):
 
     # After settings have been changed
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Reboot.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
+
+
+def SetItems(clock_speed, battery_meter, launch_welcome, theme):
+    program.setScale("slider", clock_speed)
+    program.setCheckBox("Show standalone battery meter", battery_meter)
+    program.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
+    program.setOptionBox("Themes", theme)
+
+
+def Defaults(press):
+    with open("Settings.ini", "w") as file:
+        file.write("1200,True,True,plastik")
+
+    SetItems(1200, True, True, "plastik")
+
+    if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
+
 
 def Update(press):
     if program.getCheckBox("Update Operating System & Installed Programs") == True:
@@ -60,7 +84,7 @@ def ScaleChange(value):
 with gui("Settings", useTtk=True) as program:
     program.ttkStyle = ThemedStyle(program.topLevel)
     program.ttkStyle.set_theme("plastik")
-    #program.setPadding(5, 5)
+    #program.setBg("white")
     #program.setResizable(canResize=False)
 
     with program.labelFrame("Performance & Power", 0, 0):
@@ -107,6 +131,31 @@ with gui("Settings", useTtk=True) as program:
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
         themes = ["plastik", "arc", "clam", "clearlooks", "radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
+        program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
+        program.addButton("Languages", ButtonHandler, 2, 1)
+        program.setButtonSticky("Languages", "ew")
+        program.setButtonSticky("Change Advanced Settings", "ew")
 
 
-    program.addButton("Apply", ApplySettings, 5, colspan=2)
+    #program.addButton("Apply", ApplySettings, 5, 0)
+    #program.addButton("Exit", ButtonHandler, 5, 1)
+    program.addButtons(["Apply", "Restore Defaults", "Exit"], [ApplySettings, Defaults, ButtonHandler], colspan=2)
+
+
+
+    with open("settings.ini", "r") as file:
+        data = file.readlines()[0]
+    data = data.split(",")
+    count = 1
+    for item in data:
+        if count == 1:
+            clock_speed = int(item)
+        elif count == 2:
+            battery_meter = bool(item)
+        elif count == 3:
+            launch_welcome = bool(item)
+        elif count == 4:
+            theme = item
+        count += 1
+
+    SetItems(clock_speed, battery_meter, launch_welcome, theme)
