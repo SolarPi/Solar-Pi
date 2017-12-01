@@ -53,13 +53,13 @@ def ApplySettings(press):
     if battery_meter == True:
         pass
 
-    # Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
-    #
-    # # Opens and modifies config.txt file
-    # for line in fileinput.input(["/boot/config.txt"], inplace=True):
-    #     if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
-    #         line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
-    #     sys.stdout.write(line)  # Writes back to file
+    Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
+
+    # Opens and modifies config.txt file
+    for line in fileinput.input(["/boot/config.txt"], inplace=True):
+        if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
+            line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
+        sys.stdout.write(line)  # Writes back to file
 
     data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
     with open("Settings.ini", "w") as file:
