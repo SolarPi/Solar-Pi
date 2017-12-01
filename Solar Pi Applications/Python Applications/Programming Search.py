@@ -5,6 +5,12 @@
 from appJar import *
 from os import system
 from subprocess import Popen
+from ttkthemes import ThemedStyle
+
+with open("E:\\1Home\Main\School\Homework\Year 10\Solar Pi NEW\Solar Pi Applications & Resources\Applications\Solar-Pi-Core\Solar Pi Settings\Settings.ini", "r") as file:
+    data = file.readlines()[0]
+data = data.split(",")
+theme = data[3]
 
 # Handlers
 def ButtonHandler(press):
@@ -43,26 +49,28 @@ def MenuHandler(press):
         Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/blueJ Launcher.sh")
 
 # GUI Parameters
-program = gui("Programming", "400x225")
-program.setBg("white")
-program.setResizable(canResize=False)
+with gui("Programming", "400x290", useTtk=True) as program:
+    program.ttkStyle = ThemedStyle(program.topLevel)
+    program.ttkStyle.set_theme(theme)
 
-# Menu
-program.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
-program.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
+    program.setPadding(10, 10)
+    program.setBg("white")
+    #program.setResizable(canResize=False)
 
-# Widgets
-program.addImage("solar_pi", "/usr/local/bin/Solar Pi/Resources/Images/Solar Pi text.gif")
-program.zoomImage("solar_pi", -35)
+    # Menu
+    program.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
+    program.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
 
-program.addLabel("title", "Choose a Programming Language")
-program.setLabelBg("title", "light gray")
+    # Widgets
+    #program.addImage("solar_pi", "/usr/local/bin/Solar Pi/Resources/Images/Solar Pi text.gif")
+    program.addImage("solar_pi", "Solar Pi text.gif")
+    program.zoomImage("solar_pi", -35)
 
-program.addRadioButton("language", "Scratch (Easy)")
-program.addRadioButton("language", "Python (Intermedium/Hard)")
-program.addRadioButton("language", "Java (Hard)")
+    program.addLabel("title", "Choose a Programming Language")
+    program.setLabelBg("title", "light gray")
 
-program.addButtons(["Go", "More Info", "Exit"], ButtonHandler)
+    program.addRadioButton("language", "Scratch (Easy)")
+    program.addRadioButton("language", "Python (Intermedium/Hard)")
+    program.addRadioButton("language", "Java (Hard)")
 
-
-program.go()
+    program.addButtons(["Go", "More Info", "Exit"], ButtonHandler)

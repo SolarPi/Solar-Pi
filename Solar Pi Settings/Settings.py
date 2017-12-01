@@ -14,24 +14,17 @@ from AutorunConfig import Autorun
 with open("Settings.ini", "r") as file:
     data = file.readlines()[0]
 data = data.split(",")
-count = 1
-for item in data:
-    if count == 1:
-        clock_speed = int(item)
-    elif count == 2:
-        if item == "False":
-            battery_meter = False
-        elif item == "True":
-            battery_meter = True
-    elif count == 3:
-        if item == "False":
-            launch_welcome = False
-        elif item == "True":
-            launch_welcome = True
-    elif count == 4:
-        theme = item
-    count += 1
 
+clock_speed = data[0]
+if data[1] == "False":
+        battery_meter = False
+elif data[1] == "True":
+        battery_meter = True
+if data[2] == "False":
+        launch_welcome = False
+elif data[2] == "True":
+        launch_welcome = True
+theme = data[3]
 
 
 # Button Events
@@ -60,13 +53,13 @@ def ApplySettings(press):
     if battery_meter == True:
         pass
 
-    Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
-
-    # Opens and modifies config.txt file
-    for line in fileinput.input(["/boot/config.txt"], inplace=True):
-        if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
-            line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
-        sys.stdout.write(line)  # Writes back to file
+    # Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
+    #
+    # # Opens and modifies config.txt file
+    # for line in fileinput.input(["/boot/config.txt"], inplace=True):
+    #     if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
+    #         line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
+    #     sys.stdout.write(line)  # Writes back to file
 
     data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
     with open("Settings.ini", "w") as file:

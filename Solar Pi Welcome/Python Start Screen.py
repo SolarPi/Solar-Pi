@@ -5,9 +5,18 @@ from appJar import gui
 from subprocess import Popen, call
 from AutorunConfig import Autorun
 from sys import exit
+# from ttkthemes import ThemedStyle
+
+
+with open("Settings.ini", "r") as file:
+    data = file.readlines()[0]
+data.split(",")
+theme = data[3]
 
 program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375
 
+# program.ttkStyle = ThemedStyle(program.topLevel)
+# program.ttkStyle.set_theme(theme)
 
 #program.useTtk()
 
