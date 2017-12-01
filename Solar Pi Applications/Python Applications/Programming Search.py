@@ -67,7 +67,7 @@ with gui("Programming", "400x290", useTtk=True) as program:
     program.zoomImage("solar_pi", -35)
 
     program.addLabel("title", "Choose a Programming Language")
-    program.setLabelBg("title", "light gray")
+    #program.setLabelBg("title", "light gray")
 
     program.addRadioButton("language", "Scratch (Easy)")
     program.addRadioButton("language", "Python (Intermedium/Hard)")
