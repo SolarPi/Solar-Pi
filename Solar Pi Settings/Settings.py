@@ -10,6 +10,29 @@ from AutorunConfig import Autorun
 
 # Add translations for all
 
+# Reads Settings.ini file
+with open("Settings.ini", "r") as file:
+    data = file.readlines()[0]
+data = data.split(",")
+count = 1
+for item in data:
+    if count == 1:
+        clock_speed = int(item)
+    elif count == 2:
+        if item == "False":
+            battery_meter = False
+        elif item == "True":
+            battery_meter = True
+    elif count == 3:
+        if item == "False":
+            launch_welcome = False
+        elif item == "True":
+            launch_welcome = True
+    elif count == 4:
+        theme = item
+    count += 1
+
+
 
 # Button Events
 def ButtonHandler(press):
@@ -27,10 +50,10 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
 
 def ApplySettings(press):
+    clock_speed = int(program.getScale("slider"))
     battery_meter = program.getCheckBox("Show standalone battery meter")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
-    clock_speed = program.getScale("slider")
-    theme = program.getOptionBox("Themes")  # Write to external file
+    theme = program.getOptionBox("Themes").lower()
 
     program.ttkStyle.set_theme(theme)
 
@@ -45,23 +68,23 @@ def ApplySettings(press):
             line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
         sys.stdout.write(line)  # Writes back to file
 
-
-    # Write data to file
-
+    data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
+    with open("Settings.ini", "w") as file:
+        file.write(data)  # Writes settings to file
 
     # After settings have been changed
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
 
 
-def SetItems(clock_speed, battery_meter, launch_welcome, theme):
+def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to set controls
     program.setScale("slider", clock_speed)
     program.setCheckBox("Show standalone battery meter", battery_meter)
     program.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
-    program.setOptionBox("Themes", theme)
+    program.setOptionBox("Themes", theme[0].upper() + theme[1:])
 
 
-def Defaults(press):
+def Defaults(press):  # Procedure to reset to default
     with open("Settings.ini", "w") as file:
         file.write("1200,True,True,plastik")
 
@@ -85,20 +108,6 @@ def ScaleChange(value):
     value = int(program.getScale("slider"))
     program.setLabel("scale", "Max CPU Clock Speed: " + str(value) + "MHz")
 
-with open("settings.ini", "r") as file:
-    data = file.readlines()[0]
-data = data.split(",")
-count = 1
-for item in data:
-    if count == 1:
-        clock_speed = int(item)
-    elif count == 2:
-        battery_meter = bool(item)
-    elif count == 3:
-        launch_welcome = bool(item)
-    elif count == 4:
-        theme = item
-    count += 1
 
 
 with gui("Settings", useTtk=True) as program:
@@ -118,6 +127,7 @@ with gui("Settings", useTtk=True) as program:
         program.addScale("slider", 1, 0)
         program.setScaleFunction("slider", ScaleChange)
         program.setScaleSticky("slider", "ew")
+        #program.setScaleIncrement("slider", 100)
 
         program.addButton("More Info", ButtonHandler, 1, 1)
 
@@ -133,7 +143,6 @@ with gui("Settings", useTtk=True) as program:
         # Buttons
         program.addLabel("filler1", "")
         program.addCheckBox("Show standalone battery meter")
-        program.setCheckBox("Show standalone battery meter", ticked=True)
 
 
     with program.labelFrame("Updates", 0, 1):
@@ -147,9 +156,8 @@ with gui("Settings", useTtk=True) as program:
     with program.labelFrame("Other Settings", 1, 0):
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
-        program.setCheckBox("Launch the Solar Pi Welcome application at startup", ticked=True)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["plastik", "arc", "clam", "clearlooks", "radiance"]
+        themes = ["Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
@@ -166,4 +174,4 @@ with gui("Settings", useTtk=True) as program:
 
 
 
-    SetItems(clock_speed, battery_meter, launch_welcome, theme)
+    SetItems(clock_speed, battery_meter, launch_welcome, theme)  # Sets controls to currently selected settings
