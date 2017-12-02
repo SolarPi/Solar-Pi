@@ -8,9 +8,9 @@ from sys import exit
 # from ttkthemes import ThemedStyle
 
 
-with open("Settings.ini", "r") as file:
+with open("E:\\1Home\Main\School\Homework\Year 10\Solar Pi NEW\Solar Pi Applications & Resources\Applications\Solar-Pi-Core\Solar Pi Settings\Settings.ini", "r") as file:
     data = file.readlines()[0]
-data.split(",")
+data = data.split(",")
 theme = data[3]
 
 program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375

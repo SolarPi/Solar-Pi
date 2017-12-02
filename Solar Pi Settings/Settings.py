@@ -29,7 +29,7 @@ theme = data[3]
 
 # Button Events
 def ButtonHandler(press):
-    if press == "Exit":  # If user clicks Exit
+    if press == "Exit  " + CROSS:  # If user clicks Exit
         quit()
 
     elif press == "More Info":  # If user clicks More Info
@@ -102,6 +102,10 @@ def ScaleChange(value):
     program.setLabel("scale", "Max CPU Clock Speed: " + str(value) + "MHz")
 
 
+TICK = "\u2714"
+CROSS = "\u274C"
+RESTORE = "\u2B6F"
+
 
 with gui("Settings", useTtk=True) as program:
     program.ttkStyle = ThemedStyle(program.topLevel)
@@ -160,7 +164,7 @@ with gui("Settings", useTtk=True) as program:
 
     #program.addButton("Apply", ApplySettings, 5, 0)
     #program.addButton("Exit", ButtonHandler, 5, 1)
-    program.addButtons(["Apply", "Restore Defaults", "Exit"], [ApplySettings, Defaults, ButtonHandler], colspan=2)
+    program.addButtons(["Apply  " + TICK, "Restore Defaults  " + RESTORE, "Exit  " + CROSS], [ApplySettings, Defaults, ButtonHandler], colspan=2)
 
 
 
