@@ -8,7 +8,7 @@ from sys import exit
 # from ttkthemes import ThemedStyle
 
 
-with open("E:\\1Home\Main\School\Homework\Year 10\Solar Pi NEW\Solar Pi Applications & Resources\Applications\Solar-Pi-Core\Solar Pi Settings\Settings.ini", "r") as file:
+with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini", "r") as file:
     data = file.readlines()[0]
 data = data.split(",")
 theme = data[3]
@@ -78,9 +78,8 @@ def MenuHandler(press):
 def ToolbarHandler(press):
     if press == "Off":
         Popen("/usr/bin/lxde-pi-shutdown-helper")
-        pass  # Call RPi power menu
-    elif press == "Settings:":
-        pass  # Call Settings menu
+    elif press == "Settings":
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")  # Call Settings menu
     elif press == "Files":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/pcmanfm Launcher.sh")
     elif press == "About":

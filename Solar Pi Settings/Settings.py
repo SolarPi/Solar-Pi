@@ -104,7 +104,7 @@ def ScaleChange(value):
 
 TICK = "\u2714"
 CROSS = "\u274C"
-RESTORE = "\u2B6F"
+RESTORE = "\u21BA"
 
 
 with gui("Settings", useTtk=True) as program:
