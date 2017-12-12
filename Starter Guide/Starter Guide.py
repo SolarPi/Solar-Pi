@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from appJar import gui
-from ttkthemes import ThemedStyle
+#from ttkthemes import ThemedStyle
 from subprocess import Popen
 
 def PageHandler(press):

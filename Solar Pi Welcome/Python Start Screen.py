@@ -8,10 +8,10 @@ from sys import exit
 # from ttkthemes import ThemedStyle
 
 
-with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini", "r") as file:
-    data = file.readlines()[0]
-data = data.split(",")
-theme = data[3]
+# with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini", "r") as file:
+#     data = file.readlines()[0]
+# data = data.split(",")
+# theme = data[3]
 
 program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375
 
@@ -134,6 +134,8 @@ with program.subWindow("About Solar Pi", modal=True):
 # Main Window
 program.setPadding(3, 3)
 with program.tabbedFrame("MainTabs", colspan=4):
+
+    program.setTabbedFrameTabExpand("MainTabs", expand=True)
 
     # Menu bar
     program.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)

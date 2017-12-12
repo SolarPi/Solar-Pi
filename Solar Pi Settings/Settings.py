@@ -5,31 +5,37 @@ import sys
 import fileinput
 from subprocess import Popen, call
 from ttkthemes import ThemedStyle
+import os
 from AutorunConfig import Autorun
-
+from SettingsGet import *
 
 # Add translations for all
 
-# Reads Settings.ini file
-with open("Settings.ini", "r") as file:
-    data = file.readlines()[0]
-data = data.split(",")
+clock_speed = Clock()
+battery_meter = BatteryMeter()
+launch_welcome = LaunchWelcome()
+theme = Theme()
 
-clock_speed = data[0]
-if data[1] == "False":
-        battery_meter = False
-elif data[1] == "True":
-        battery_meter = True
-if data[2] == "False":
-        launch_welcome = False
-elif data[2] == "True":
-        launch_welcome = True
-theme = data[3]
+
+# Reads Settings.ini file
+# with open("Settings.ini", "r") as file:
+#     data = file.readlines()[0]
+# data = data.split(",")
+# clock_speed = data[0]
+# if data[1] == "False":
+#         battery_meter = False
+# elif data[1] == "True":
+#         battery_meter = True
+# if data[2] == "False":
+#         launch_welcome = False
+# elif data[2] == "True":
+#         launch_welcome = True
+# theme = data[3]
 
 
 # Button Events
 def ButtonHandler(press):
-    if press == "Exit  " + CROSS:  # If user clicks Exit
+    if press == "Exit ":  # If user clicks Exit
         quit()
 
     elif press == "More Info":  # If user clicks More Info
@@ -43,12 +49,14 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
 
 def ApplySettings(press):
-    clock_speed = int(program.getScale("slider"))
+    clock_speed = int(program.getEntry("Max Clock Speed: "))
     battery_meter = program.getCheckBox("Show standalone battery meter")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     theme = program.getOptionBox("Themes").lower()
 
-    program.ttkStyle.set_theme(theme)
+    program.setScale("slider", clock_speed)
+
+    # program.setTtkTheme(theme)  # Not necessary??
 
     if battery_meter == True:
         pass
@@ -94,13 +102,24 @@ def Update(press):
         call("/usr/local/bin/Solar Pi/Resources/Launchers/System Update.sh")
     if program.getCheckBox("Update appJar") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
-
-
+        
 
 def ScaleChange(value):
     value = int(program.getScale("slider"))
-    program.setLabel("scale", "Max CPU Clock Speed: " + str(value) + "MHz")
+    program.setEntry("Max Clock Speed: ", value)
 
+def EntryScaleChange(value):
+    value = int(program.getEntry("Max Clock Speed: "))
+    if value > 1200:
+        value = 1200
+    elif value < 600:
+        value = 600
+    program.setScale("slider", value)
+    print(value)
+
+def ThemeChange(value):
+    theme2 = program.getOptionBox("Themes")
+    program.setTtkTheme(theme2.lower())
 
 TICK = "\u2714"
 CROSS = "\u274C"
@@ -108,12 +127,12 @@ RESTORE = "\u21BA"
 
 
 with gui("Settings", useTtk=True) as program:
-    program.ttkStyle = ThemedStyle(program.topLevel)
-    program.ttkStyle.set_theme(theme)
+    program.setTtkTheme(theme)
     #program.setBg("white")
     #program.setResizable(canResize=False)
 
-    with program.labelFrame("Performance & Power", 0, 0):
+    with program.labelFrame("Performance & Power", 0, 0, colspan=2):
+        
         # Title
 
         program.setPadding(4, 4)
@@ -124,38 +143,42 @@ with gui("Settings", useTtk=True) as program:
         program.addScale("slider", 1, 0)
         program.setScaleFunction("slider", ScaleChange)
         program.setScaleSticky("slider", "ew")
+        program.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
         #program.setScaleIncrement("slider", 100)
-
         program.addButton("More Info", ButtonHandler, 1, 1)
 
-        program.addLabel("scale", "", 2, 0)
-        program.setLabelSticky("scale", "ew")
+        program.addLabelNumericEntry("Max Clock Speed: ", 2, 0)
+        program.setEntry("Max Clock Speed: ", str(clock_speed))
+        program.setEntryMaxLength("Max Clock Speed: ", 4)
+        program.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
+        program.addLabel("scale", "MHz", 2, 1)
+        program.setLabelSticky("scale", "nws")
 
         # Scale
-        program.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
 
         # Label
         program.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
 
         # Buttons
         program.addLabel("filler1", "")
-        program.addCheckBox("Show standalone battery meter")
+        program.addCheckBox("Show standalone battery meter", colspan=2)
 
 
-    with program.labelFrame("Updates", 0, 1):
+    with program.labelFrame("Updates", 0, 2):
         program.setPadding(5, 5)
         program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
-        program.addCheckBox("Update Operating System & Installed Programs")
+        program.addCheckBox("Update Operating System &\nInstalled Programs")
         program.addCheckBox("Update appJar")
         program.addButton("Update System", Update)
 
 
-    with program.labelFrame("Other Settings", 1, 0):
+    with program.labelFrame("Other Settings", 1, 0, colspan=2):
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
         themes = ["Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
+        program.setOptionBoxChangeFunction("Themes", ThemeChange)
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
         program.setButtonSticky("Languages", "ew")
@@ -164,9 +187,13 @@ with gui("Settings", useTtk=True) as program:
 
     #program.addButton("Apply", ApplySettings, 5, 0)
     #program.addButton("Exit", ButtonHandler, 5, 1)
-    program.addButtons(["Apply  " + TICK, "Restore Defaults  " + RESTORE, "Exit  " + CROSS], [ApplySettings, Defaults, ButtonHandler], colspan=2)
-
-
+    #program.addButtons(["Apply  " + TICK, "Restore Defaults  " + RESTORE, "Exit  " + CROSS], [ApplySettings, Defaults, ButtonHandler], colspan=3)
+    #program.addImageButton("Button  ", ButtonHandler, "tick.gif", align="right")
+    
+    program.addImageButton("Apply ", ApplySettings, "tick.gif", 4, 0, align="right")
+    program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 4, 1, align="right")
+    program.setButtonSticky(" Restore Defaults ", "e")
+    program.addImageButton("Exit ", ButtonHandler, "cross.gif", 4, 2, align="right")
 
 
 
