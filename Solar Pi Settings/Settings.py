@@ -192,11 +192,18 @@ with gui("Settings", useTtk=True) as program:
     #program.addButton("Exit", ButtonHandler, 5, 1)
     #program.addButtons(["Apply  " + TICK, "Restore Defaults  " + RESTORE, "Exit  " + CROSS], [ApplySettings, Defaults, ButtonHandler], colspan=3)
     #program.addImageButton("Button  ", ButtonHandler, "tick.gif", align="right")
-    
-    program.addImageButton("Apply ", ApplySettings, "tick.gif", 4, 0, align="right")
-    program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 4, 1, align="right")
+
+    # with program.frame("frame", colspan=2):
+    #     program.setPadding(10, 10)
+    #     program.addImageButton("Apply ", ApplySettings, "tick.gif", 0, 0, align="right")
+    #     program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 0, 1, align="right")
+    #     #program.setButtonSticky(" Restore Defaults ", "e")
+    #     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 0, 2, align="right")
+
+    program.addImageButton("Apply ", ApplySettings, "tick.gif", 2, 0, align="right")
+    program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 2, 1, align="right")
     program.setButtonSticky(" Restore Defaults ", "e")
-    program.addImageButton("Exit ", ButtonHandler, "cross.gif", 4, 2, align="right")
+    program.addImageButton("Exit ", ButtonHandler, "cross.gif", 2, 2, align="right")
 
 
 
