@@ -48,6 +48,13 @@ def ButtonHandler(press):
     elif press == "Languages":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
 
+def ClockChange(clock):
+    # Opens and modifies config.txt file
+    for line in fileinput.input(["/boot/config.txt"], inplace=True):
+        if line.strip().startswith("arm_freq="):  # Searches for "arm_freq="
+            line = "arm_freq=" + str(clock) + "\n"  # Replaces line with clock speed selected
+        sys.stdout.write(line)  # Writes back to file
+
 def ApplySettings(press):
     clock_speed = int(program.getEntry("Max Clock Speed: "))
     battery_meter = program.getCheckBox("Show standalone battery meter")
@@ -56,18 +63,14 @@ def ApplySettings(press):
 
     program.setScale("slider", clock_speed)
 
-    # program.setTtkTheme(theme)  # Not necessary??
+    program.setTtkTheme(theme)
 
     if battery_meter == True:
         pass
 
     Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
 
-    # Opens and modifies config.txt file
-    for line in fileinput.input(["/boot/config.txt"], inplace=True):
-        if line.strip().startswith("arm_freq="):  # Searches for "arm_freq = "
-            line = "arm_freq=" + str(clock_speed) + "\n"  # Replaces line with clock speed selected
-        sys.stdout.write(line)  # Writes back to file
+    ClockChange(clock_speed)
 
     data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
     with open("Settings.ini", "w") as file:
@@ -91,7 +94,11 @@ def Defaults(press):  # Procedure to reset to default
 
     SetItems(1200, True, True, "plastik")
 
-    program.ttkStyle.set_theme("plastik")
+    Autorun(True)
+
+    ClockChange(1200)
+
+    program.setTtkTheme("plastik")
 
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
@@ -117,9 +124,6 @@ def EntryScaleChange(value):
     program.setScale("slider", value)
     print(value)
 
-def ThemeChange(value):
-    theme2 = program.getOptionBox("Themes")
-    program.setTtkTheme(theme2.lower())
 
 TICK = "\u2714"
 CROSS = "\u274C"
@@ -178,7 +182,6 @@ with gui("Settings", useTtk=True) as program:
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
         themes = ["Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
-        program.setOptionBoxChangeFunction("Themes", ThemeChange)
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
         program.setButtonSticky("Languages", "ew")
