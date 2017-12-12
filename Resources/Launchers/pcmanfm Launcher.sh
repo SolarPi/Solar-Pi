@@ -1,2 +1,2 @@
 #!/bin/bash
-pcmanfm
+pcmanfm /home/pi/
