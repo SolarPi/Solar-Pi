@@ -1,4 +1,12 @@
 # Solar-Pi-Core
 All custom software for Solar Pi.
 
-Includes Welcome app, clock speed changer and programming guide.
+**Includes:**
+
+Welcome app
+
+Settings app
+
+Start programming app
+
+Python Guides app
