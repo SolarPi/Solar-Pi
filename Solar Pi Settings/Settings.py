@@ -132,10 +132,17 @@ RESTORE = "\u21BA"
 
 with gui("Settings", useTtk=True) as program:
     program.setTtkTheme(theme)
-    #program.setBg("white")
+    program.setBg("white")
     #program.setResizable(canResize=False)
+    program.ttkStyle.configure("TFrame", background="white")
+    program.ttkStyle.configure("TScale", background="white")
+    program.ttkStyle.configure("TLabel", background="white")
+    program.ttkStyle.configure("TCheckbox", background="white")
+    
 
     with program.labelFrame("Performance & Power", 0, 0, colspan=2):
+
+        program.setLabelFrameStyle("Performance & Power", "TFrame")
         
         # Title
 
@@ -166,10 +173,11 @@ with gui("Settings", useTtk=True) as program:
         # Buttons
         program.addLabel("filler1", "")
         program.addCheckBox("Show standalone battery meter", colspan=2)
-
+        program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
     with program.labelFrame("Updates", 0, 2):
         program.setPadding(5, 5)
+        program.setLabelFrameStyle("Updates", "TFrame")
         program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
         program.addCheckBox("Update Operating System &\nInstalled Programs")
         program.addCheckBox("Update appJar")
@@ -177,6 +185,7 @@ with gui("Settings", useTtk=True) as program:
 
 
     with program.labelFrame("Other Settings", 1, 0, colspan=2):
+        program.setLabelFrameStyle("Other Settings", "TFrame")
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
