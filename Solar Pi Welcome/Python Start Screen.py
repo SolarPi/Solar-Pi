@@ -104,10 +104,7 @@ def Update(press):
     if box2 == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
 def Settings(press):
-    if program.getCheckBox("Launch this application at startup") == True:
-        Autorun("add")
-    else:
-        Autorun("remove")
+    Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 
 program.setFont(11, font="Dejavu Sans")
@@ -180,12 +177,12 @@ with program.notebook("MainTabs", colspan=4):
                 program.addButton("Start Programming", Programming, 0, 1)
 
             # Performance to Battery Life
-            with program.labelFrame("Performance & Battery Life Settings", 1, 1):
+            with program.labelFrame("Solar Pi Settings", 1, 1):
                 program.setPadding(10, 10)
-                program.addImage("perf_icon", "speedometer1600.gif", 0, 0)
-                program.zoomImage("perf_icon", -37)
-                program.setImageTooltip("perf_icon", "This allows you to increase the performance or battery life of your Solar Pi.")
-                program.addButton("Performance & Battery Life", PerfBattery, 0, 1)
+                program.addImage("settings", "settings icon.gif", 0, 0)
+                program.zoomImage("settings", -5)
+                program.setImageTooltip("settings", "This allows you to change the settings for your Solar Pi.")
+                program.addButton("Solar Pi Settings", Settings, 0, 1)
 
             # IDEs
             with program.labelFrame("IDEs", 2, 0, colspan=2):
@@ -293,7 +290,7 @@ with open("language.txt", "r") as file:
 
 program.setLabelFrameStyle("Applications", "TFrame")
 program.setLabelFrameStyle("Start Programming", "TFrame")
-program.setLabelFrameStyle("Performance & Battery Life Settings", "TFrame")
+program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
 program.setLabelFrameStyle("IDEs", "TFrame")
 program.setLabelFrameStyle("Scratch", "TFrame")
 program.setLabelFrameStyle("Python", "TFrame")
