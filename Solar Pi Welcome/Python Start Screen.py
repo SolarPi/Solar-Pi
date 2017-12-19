@@ -16,7 +16,7 @@ theme = data[3]
 program = gui("Solar Pi Welcome", useTtk=True)  # When switch to ttk, change to 650x375
 program.setTtkTheme(theme)
 program.ttkStyle.configure(".", background="white", foreground="black")
-program.ttkStyle.configure("TLabelframe", backgroun="white")
+program.ttkStyle.configure("TLabelframe", background="white")
 
 # program.ttkStyle = ThemedStyle(program.topLevel)
 # program.ttkStyle.set_theme(theme)

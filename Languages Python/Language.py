@@ -2,7 +2,6 @@
 
 from appJar import *
 from subprocess import Popen
-from ttkthemes import ThemedStyle
 
 def LanguageHandler(press):
     if press == "English":
@@ -26,15 +25,16 @@ def LanguageHandler(press):
     if program.yesNoBox("Reboot", "You need to reboot your Solar Pi to apply these changes.\nWould you like to reboot now?") == True:
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")          
 
-with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini") as file:
+with open("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Solar-Pi-Core\\Solar Pi Settings\\Settings.ini") as file:
     data = file.readlines()[0]
     data = data.split(",")
     theme = data[3]
 
 with gui("Languages", useTtk=True) as program:
 
-    program.ttkStyle = ThemedStyle(program.topLevel)
-    program.ttkStyle.set_theme(theme)
+    program.setTtkTheme(theme)
+
+    program.ttkStyle.configure(".", background="white", foreground="black")
     
     program.setPadding(5, 5)
     program.setBg("white")
@@ -52,4 +52,6 @@ with gui("Languages", useTtk=True) as program:
             program.addImage("spain_flag", "spain_flag.gif")
             program.addButton("Español", LanguageHandler, 0, 1)
 
-program.go()
+    program.setLabelFrameStyle("Languages", "TFrame")
+    program.setLabelFrameStyle("English", "TFrame")
+    program.setLabelFrameStyle("Español", "TFrame")
