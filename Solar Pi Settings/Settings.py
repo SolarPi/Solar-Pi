@@ -4,7 +4,7 @@ from appJar import gui
 import sys
 import fileinput
 from subprocess import Popen, call
-from ttkthemes import ThemedStyle
+#from ttkthemes import ThemedStyle
 import os
 from AutorunConfig import Autorun
 from SettingsGet import *
@@ -64,6 +64,8 @@ def ApplySettings(press):
     program.setScale("slider", clock_speed)
 
     program.setTtkTheme(theme)
+    program.ttkStyle.configure(".", background="white", foreground="black")
+
 
     if battery_meter == True:
         pass
@@ -134,10 +136,11 @@ with gui("Settings", useTtk=True) as program:
     program.setTtkTheme(theme)
     program.setBg("white")
     #program.setResizable(canResize=False)
-    program.ttkStyle.configure("TFrame", background="white")
-    program.ttkStyle.configure("TScale", background="white")
-    program.ttkStyle.configure("TLabel", background="white")
-    program.ttkStyle.configure("TCheckbox", background="white")
+    #program.ttkStyle.configure("TLabelframe.Label", background="white")
+    #program.ttkStyle.configure("TScale", background="white")
+    #program.ttkStyle.configure("TFrame", background="white")
+    #program.ttkStyle.configure("TCheckbutton", background="white")
+    program.ttkStyle.configure(".", background="white", foreground="black")
     
 
     with program.labelFrame("Performance & Power", 0, 0, colspan=2):
@@ -173,7 +176,7 @@ with gui("Settings", useTtk=True) as program:
         # Buttons
         program.addLabel("filler1", "")
         program.addCheckBox("Show standalone battery meter", colspan=2)
-        program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
+        #program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
     with program.labelFrame("Updates", 0, 2):
         program.setPadding(5, 5)

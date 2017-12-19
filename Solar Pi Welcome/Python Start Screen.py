@@ -5,15 +5,18 @@ from appJar import gui
 from subprocess import Popen, call
 from AutorunConfig import Autorun
 from sys import exit
-# from ttkthemes import ThemedStyle
+#from SettingsGet import *
 
 
-# with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini", "r") as file:
-#     data = file.readlines()[0]
-# data = data.split(",")
-# theme = data[3]
+with open("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Solar-Pi-Core\\Solar Pi Settings\\Settings.ini", "r") as file:
+    data = file.readlines()[0]
+data = data.split(",")
+theme = data[3]
 
-program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 650x375
+program = gui("Solar Pi Welcome", useTtk=True)  # When switch to ttk, change to 650x375
+program.setTtkTheme(theme)
+program.ttkStyle.configure(".", background="white", foreground="black")
+program.ttkStyle.configure("TLabelframe", backgroun="white")
 
 # program.ttkStyle = ThemedStyle(program.topLevel)
 # program.ttkStyle.set_theme(theme)
@@ -24,7 +27,7 @@ program = gui("Solar Pi Welcome", "650x400")  # When switch to ttk, change to 65
 #program.setIcon("/usr/local/bin/Solar Pi/Resources/Images/Logo_NEW_2.gif")
 
 def ButtonHandler(press):
-    tab_selected = program.getTabbedFrameSelectedTab("MainTabs")  # Fetches the current tab
+    #tab_selected = program.getTabbedFrameSelectedTab("MainTabs")  # Fetches the current tab
 
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
         exit()
@@ -112,6 +115,7 @@ program.setFont(11, font="Dejavu Sans")
 
 # About Popup
 with program.subWindow("About Solar Pi", modal=True):
+    program.ttkStyle.configure(".", background="white", foreground="black")
     program.setPadding(5, 5)
     program.setBg("white")
     program.addImage("solar_pi_logo", "Solar Pi logo.gif")
@@ -119,12 +123,12 @@ with program.subWindow("About Solar Pi", modal=True):
     program.setLocation(250, 150)
     program.setResizable(canResize=False)
     with program.labelFrame("About"):
-        program.getLabelFrameWidget("About").config(font="bold")
-        program.setLabelFrameFg("About", "#2b4570")
+        program.setBg("white")
+        #program.getLabelFrameWidget("About").config(font="bold")
         program.setPadding(10, 10)
         program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
-        program.setMessageFg("about", "black")
     program.addButton("Close", ButtonHandler)
+    program.setBg("white")
 
 
 # Languages Window
@@ -133,9 +137,9 @@ with program.subWindow("About Solar Pi", modal=True):
 
 # Main Window
 program.setPadding(3, 3)
-with program.tabbedFrame("MainTabs", colspan=4):
+with program.notebook("MainTabs", colspan=4):
 
-    program.setTabbedFrameTabExpand("MainTabs", expand=True)
+    #program.setTabbedFrameTabExpand("MainTabs", expand=True)
 
     # Menu bar
     program.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
@@ -148,7 +152,7 @@ with program.tabbedFrame("MainTabs", colspan=4):
     program.addToolbar(tools, ToolbarHandler, findIcon=True)
 
     # Welcome Tab
-    with program.tab("Welcome!"):
+    with program.note("Welcome!"):
         program.setPadding(10, 10)
         program.addImage("logo", "Solar Pi logo.gif", colspan=2)
         program.zoomImage("logo", -2)
@@ -161,7 +165,7 @@ with program.tabbedFrame("MainTabs", colspan=4):
 
 
     # Applications Tab
-    with program.tab("Applications"):
+    with program.note("Applications"):
         with program.labelFrame("Applications"):
             program.setSticky("ew")
             program.setPadding(10, 10)
@@ -210,7 +214,7 @@ with program.tabbedFrame("MainTabs", colspan=4):
 
 
     # Guides & Tutorials Tab
-    with program.tab("Guides & Tutorials"):
+    with program.note("Guides & Tutorials"):
         with program.labelFrame("Guides & Tutorials"):
             program.setSticky("ew")
             program.setPadding(10, 10)
@@ -233,31 +237,31 @@ with program.tabbedFrame("MainTabs", colspan=4):
                 program.addButton("Scratch Tutorial", ButtonHandler, 0, 1)
 
     # Settings Tab
-    with program.tab("Settings"):
-        with program.labelFrame("Settings"):
-            program.setSticky("ew")
-            program.setPadding(10, 10)
-            with program.labelFrame("General Settings", 0, 0):
-                program.setSticky("ew")
-                program.setPadding(10, 10)
-                program.addCheckBox("Launch this application at startup")
-                program.setCheckBox("Launch this application at startup", ticked=True)
-                program.addButton("Change Advanced Settings", ButtonHandler)
-                program.addButton("Change Performance & Battery Life Settings", PerfBattery)
-                program.addButton("Apply Changes", Settings)
-                program.setButtonSticky("Apply Changes", "Both")
-                program.setButtonBg("Apply Changes", "gray")
-                program.setButtonFg("Apply Changes", "white")
-
-            with program.labelFrame("Update", 0, 1):
-                program.setSticky("ew")
-                program.setPadding(10, 10)
-                program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
-                program.addCheckBox("Update Operating System & Installed Programs")
-                program.addCheckBox("Update appJar")
-                program.addButton("Go", Update)
-                program.setButtonBg("Go", "gray")
-                program.setButtonFg("Go", "white")
+    # with program.note("Settings"):
+    #     with program.labelFrame("Settings"):
+    #         program.setSticky("ew")
+    #         program.setPadding(10, 10)
+    #         with program.labelFrame("General Settings", 0, 0):
+    #             program.setSticky("ew")
+    #             program.setPadding(10, 10)
+    #             program.addCheckBox("Launch this application at startup")
+    #             program.setCheckBox("Launch this application at startup", ticked=True)
+    #             program.addButton("Change Advanced Settings", ButtonHandler)
+    #             program.addButton("Change Performance & Battery Life Settings", PerfBattery)
+    #             program.addButton("Apply Changes", Settings)
+    #             program.setButtonSticky("Apply Changes", "Both")
+    #             program.setButtonBg("Apply Changes", "gray")
+    #             program.setButtonFg("Apply Changes", "white")
+    #
+    #         with program.labelFrame("Update", 0, 1):
+    #             program.setSticky("ew")
+    #             program.setPadding(10, 10)
+    #             program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
+    #             program.addCheckBox("Update Operating System & Installed Programs")
+    #             program.addCheckBox("Update appJar")
+    #             program.addButton("Go", Update)
+    #             program.setButtonBg("Go", "gray")
+    #             program.setButtonFg("Go", "white")
 
 
 #program.setBg("white")
@@ -286,5 +290,16 @@ with open("language.txt", "r") as file:
 
 
 #print(lang)
+
+program.setLabelFrameStyle("Applications", "TFrame")
+program.setLabelFrameStyle("Start Programming", "TFrame")
+program.setLabelFrameStyle("Performance & Battery Life Settings", "TFrame")
+program.setLabelFrameStyle("IDEs", "TFrame")
+program.setLabelFrameStyle("Scratch", "TFrame")
+program.setLabelFrameStyle("Python", "TFrame")
+program.setLabelFrameStyle("Java", "TFrame")
+program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
+program.setLabelFrameStyle("Python Guides & Tutorials", "TFrame")
+program.setLabelFrameStyle("Scratch Tutorial", "TFrame")
 
 program.go(language=lang)
