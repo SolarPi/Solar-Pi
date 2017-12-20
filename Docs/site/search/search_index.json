@@ -1,0 +1,319 @@
+{
+    "docs": [
+        {
+            "location": "/index.html",
+            "text": "Solar Pi Docs\n\n\nWelcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
+            "title": "Home"
+        },
+        {
+            "location": "/index.html#solar-pi-docs",
+            "text": "Welcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
+            "title": "Solar Pi Docs"
+        },
+        {
+            "location": "/Get Started/index.html",
+            "text": "Get Started\n\n\nYour Solar Pi is a Raspberry Pi based computer. It can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, so that you have an advantage over others when you get employed.\n\n\nGood luck, and we hope that you enjoy using your Solar Pi!\n\n\nInput\n\n\nTouchscreen\n\n\nYour Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer. You can press buttons, access menus and look through this documentation. Also, you can use the on screen keyboard by clicking on the icon in the toolbar at the top of the screen.\n\n\nKeyboard & Trackpad\n\n\nYour Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.",
+            "title": "Get Started"
+        },
+        {
+            "location": "/Get Started/index.html#get-started",
+            "text": "Your Solar Pi is a Raspberry Pi based computer. It can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, so that you have an advantage over others when you get employed.  Good luck, and we hope that you enjoy using your Solar Pi!",
+            "title": "Get Started"
+        },
+        {
+            "location": "/Get Started/index.html#input",
+            "text": "",
+            "title": "Input"
+        },
+        {
+            "location": "/Get Started/index.html#touchscreen",
+            "text": "Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer. You can press buttons, access menus and look through this documentation. Also, you can use the on screen keyboard by clicking on the icon in the toolbar at the top of the screen.",
+            "title": "Touchscreen"
+        },
+        {
+            "location": "/Get Started/index.html#keyboard-trackpad",
+            "text": "Your Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.",
+            "title": "Keyboard &amp; Trackpad"
+        },
+        {
+            "location": "/raspbian/index.html",
+            "text": "",
+            "title": "Raspbian"
+        },
+        {
+            "location": "/hardware/index.html",
+            "text": "",
+            "title": "Hardware"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html",
+            "text": "Linux commands\n\n\nThis came from official Raspberry Pi documentation.\n\n\nHere are some fundamental and common Linux commands with example usage:\n\n\nFilesystem\n\n\nls\n\n\nThe \nls\n command lists the content of the current directory (or one that is specified). It can be used with the \n-l\n flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The \n-a\n flag allows you to view files beginning with \n.\n (i.e. dotfiles).\n\n\ncd\n\n\nUsing \ncd\n changes the current directory to the one specified. You can use relative (i.e. \ncd directoryA\n) or absolute (i.e. \ncd /home/pi/directoryA\n) paths.\n\n\npwd\n\n\nThe \npwd\n command displays the name of the present working directory: on a Raspberry Pi, entering \npwd\n will output something like \n/home/pi\n.\n\n\nmkdir\n\n\nYou can use \nmkdir\n to create a new directory, e.g. \nmkdir newDir\n would create the directory \nnewDir\n in the present working directory.\n\n\nrmdir\n\n\nTo remove empty directories, use \nrmdir\n. So, for example, \nrmdir oldDir\n will remove the directory \noldDir\n only if it is empty.\n\n\nrm\n\n\nThe command \nrm\nremoves the specified file (or recursively from a directory when used with \n-r\n). Be careful with this command: files deleted in this way are mostly gone for good!\n\n\ncp\n\n\nUsing \ncp\n makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example, \ncp ~/fileA /home/otherUser/\n would copy the file \nfileA\n from your home directory to that of the user \notherUser\n (assuming you have permission to copy it there). This command can either take \nFILE FILE\n (\ncp fileA fileB\n), \nFILE DIR\n (\ncp fileA /directoryB/\n) or \n-r DIR DIR\n (which recursively copies the contents of directories) as arguments.\n\n\nmv\n\n\nThe \nmv\n command moves a file and places it at the specified location (so where \ncp\n performs a 'copy-paste', \nmv\n performs a 'cut-paste'). The usage is similar to \ncp\n. So \nmv ~/fileA /home/otherUser/\n would move the file \nfileA\n from your home directory to that of the user otherUser. This command can either take \nFILE FILE\n (\nmv fileA fileB\n), \nFILE DIR\n (\nmv fileA /directoryB/\n) or \nDIR DIR\n (\nmv /directoryB /directoryC\n) as arguments. This command is also useful as a method to rename files and directories after they've been created.\n\n\ntouch\n\n\nThe command \ntouch\n sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.\n\n\ncat\n\n\nYou can use \ncat\n to list the contents of file(s), e.g. \ncat thisFile\n will display the contents of \nthisFile\n. Can be used to list the contents of multiple files, i.e. \ncat *.txt\n will list the contents of all \n.txt\n files in the current directory.\n\n\nhead\n\n\nThe \nhead\n command displays the beginning of a file. Can be used with \n-n\n to specify the number of lines to show (by default ten), or with \n-c\n to specify the number of bytes.\n\n\ntail\n\n\nThe opposite of \nhead\n, \ntail\n displays the end of a file. The starting point in the file can be specified either through \n-b\n for 512 byte blocks, \n-c\n for bytes, or \n-n\n for number of lines.\n\n\nchmod\n\n\nYou would normally use \nchmod\n to change the permissions for a file. The \nchmod\n command can use symbols \nu\n (user that owns the file), \ng\n (the files group) ,  and \no\n (other users) and the permissions \nr\n (read), \nw\n (write), and \nx\n (execute). Using \nchmod u+x *filename*\n will add execute permission for the owner of the file.\n\n\nchown\n\n\nThe \nchown\n command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. \nsudo chown pi:root *filename*\n will change the owner to pi and the group to root. \n\n\nssh\n\n\nssh\n denotes the secure shell. Connect to another computer using an encrypted network connection.\n\n\nscp\n\n\nThe \nscp\n command copies a file from one computer to another using \nssh\n.\n\n\nsudo\n\n\nThe \nsudo\n command enables you to run a command as a superuser, or another user. Use \nsudo -s\n for a superuser shell.\n\n\ndd\n\n\nThe \ndd\n command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example, \ndd if=/dev/sdd of=backup.img\n will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.\n\n\ndf\n\n\nUse \ndf\n to display the disk space available and used on the mounted filesystems. Use \ndf -h\n to see the output in a human-readable format using M for MBs rather than showing number of bytes. \n\n\nunzip\n\n\nThe \nunzip\n command extracts the files from a compressed zip file. \n\n\ntar\n\n\nUse \ntar\n to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. \n\n\nTo create a compressed file, use \ntar -cvzf *filename.tar.gz* *directory/*\n\nTo extract the contents of a file, use \ntar -xvzf *filename.tar.gz*\n\n\npipes\n\n\nA pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line \n|\n. For example, to only show the first ten entries of the \nls\n command it can be piped through the head command \nls | head\n\n\ntree\n\n\nUse the \ntree\n command to show a directory and all subdirectories and files indented as a tree structure.\n\n\n&\n\n\nRun a command in the background with \n&\n, freeing up the shell for future commands. \n\n\nwget\n\n\nDownload a file from the web directly to the computer with \nwget\n. So \nwget https://www.raspberrypi.org/documentation/linux/usage/commands.md\n will download this file to your computer as \ncommands.md\n\n\ncurl\n\n\nUse \ncurl\n to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.\n\n\nman\n\n\nShow the manual page for a file with \nman\n. To find out more, run \nman man\n to view the manual page of the man command. \n\n\nSearch\n\n\ngrep\n\n\nUse \ngrep\n to search inside files for certain search patterns. For example, \ngrep \"search\" *.txt\n will look in all the files in the current directory ending with .txt for the string search.\n\n\nThe \ngrep\n command supports regular expressions which allows special letter combinations to be included in the search.\n\n\nawk\n\n\nawk\n is a programming language useful for searching and manipulating text files.\n\n\nfind\n\n\nThe \nfind\n command searches a directory and subdirectories for files matching certain patterns. \n\n\nwhereis\n\n\nUse \nwhereis\n to find the location of a command. It looks through standard program locations until it finds the requested command.\n\n\nNetworking\n\n\nping\n\n\nThe \nping\n utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. \nping raspberrypi.org\n) or an IP address (e.g. \nping 8.8.8.8\n). It can specify the number of packets to send with the \n-c\n flag.\n\n\nnmap\n\n\nnmap\n is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just \nnmap\n will display the options available as well as example usage.\n\n\nhostname\n\n\nThe \nhostname\n command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. \nhostname new-host\n).\n\n\nifconfig\n\n\nUse \nifconfig\n to display the network configuration details for the interfaces on the current system when run without any arguments (i.e. \nifconfig\n). By supplying the command with the name of an interface (e.g. \neth0\n or \nlo\n) you can then alter the configuration: check the manual page for more details.",
+            "title": "Linux Commands"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#linux-commands",
+            "text": "This came from official Raspberry Pi documentation.  Here are some fundamental and common Linux commands with example usage:",
+            "title": "Linux commands"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#filesystem",
+            "text": "",
+            "title": "Filesystem"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#ls",
+            "text": "The  ls  command lists the content of the current directory (or one that is specified). It can be used with the  -l  flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The  -a  flag allows you to view files beginning with  .  (i.e. dotfiles).",
+            "title": "ls"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#cd",
+            "text": "Using  cd  changes the current directory to the one specified. You can use relative (i.e.  cd directoryA ) or absolute (i.e.  cd /home/pi/directoryA ) paths.",
+            "title": "cd"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#pwd",
+            "text": "The  pwd  command displays the name of the present working directory: on a Raspberry Pi, entering  pwd  will output something like  /home/pi .",
+            "title": "pwd"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#mkdir",
+            "text": "You can use  mkdir  to create a new directory, e.g.  mkdir newDir  would create the directory  newDir  in the present working directory.",
+            "title": "mkdir"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#rmdir",
+            "text": "To remove empty directories, use  rmdir . So, for example,  rmdir oldDir  will remove the directory  oldDir  only if it is empty.",
+            "title": "rmdir"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#rm",
+            "text": "The command  rm removes the specified file (or recursively from a directory when used with  -r ). Be careful with this command: files deleted in this way are mostly gone for good!",
+            "title": "rm"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#cp",
+            "text": "Using  cp  makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example,  cp ~/fileA /home/otherUser/  would copy the file  fileA  from your home directory to that of the user  otherUser  (assuming you have permission to copy it there). This command can either take  FILE FILE  ( cp fileA fileB ),  FILE DIR  ( cp fileA /directoryB/ ) or  -r DIR DIR  (which recursively copies the contents of directories) as arguments.",
+            "title": "cp"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#mv",
+            "text": "The  mv  command moves a file and places it at the specified location (so where  cp  performs a 'copy-paste',  mv  performs a 'cut-paste'). The usage is similar to  cp . So  mv ~/fileA /home/otherUser/  would move the file  fileA  from your home directory to that of the user otherUser. This command can either take  FILE FILE  ( mv fileA fileB ),  FILE DIR  ( mv fileA /directoryB/ ) or  DIR DIR  ( mv /directoryB /directoryC ) as arguments. This command is also useful as a method to rename files and directories after they've been created.",
+            "title": "mv"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#touch",
+            "text": "The command  touch  sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.",
+            "title": "touch"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#cat",
+            "text": "You can use  cat  to list the contents of file(s), e.g.  cat thisFile  will display the contents of  thisFile . Can be used to list the contents of multiple files, i.e.  cat *.txt  will list the contents of all  .txt  files in the current directory.",
+            "title": "cat"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#head",
+            "text": "The  head  command displays the beginning of a file. Can be used with  -n  to specify the number of lines to show (by default ten), or with  -c  to specify the number of bytes.",
+            "title": "head"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#tail",
+            "text": "The opposite of  head ,  tail  displays the end of a file. The starting point in the file can be specified either through  -b  for 512 byte blocks,  -c  for bytes, or  -n  for number of lines.",
+            "title": "tail"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#chmod",
+            "text": "You would normally use  chmod  to change the permissions for a file. The  chmod  command can use symbols  u  (user that owns the file),  g  (the files group) ,  and  o  (other users) and the permissions  r  (read),  w  (write), and  x  (execute). Using  chmod u+x *filename*  will add execute permission for the owner of the file.",
+            "title": "chmod"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#chown",
+            "text": "The  chown  command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g.  sudo chown pi:root *filename*  will change the owner to pi and the group to root.",
+            "title": "chown"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#ssh",
+            "text": "ssh  denotes the secure shell. Connect to another computer using an encrypted network connection.",
+            "title": "ssh"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#scp",
+            "text": "The  scp  command copies a file from one computer to another using  ssh .",
+            "title": "scp"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#sudo",
+            "text": "The  sudo  command enables you to run a command as a superuser, or another user. Use  sudo -s  for a superuser shell.",
+            "title": "sudo"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#dd",
+            "text": "The  dd  command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example,  dd if=/dev/sdd of=backup.img  will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.",
+            "title": "dd"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#df",
+            "text": "Use  df  to display the disk space available and used on the mounted filesystems. Use  df -h  to see the output in a human-readable format using M for MBs rather than showing number of bytes.",
+            "title": "df"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#unzip",
+            "text": "The  unzip  command extracts the files from a compressed zip file.",
+            "title": "unzip"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#tar",
+            "text": "Use  tar  to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file.   To create a compressed file, use  tar -cvzf *filename.tar.gz* *directory/* \nTo extract the contents of a file, use  tar -xvzf *filename.tar.gz*",
+            "title": "tar"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#pipes",
+            "text": "A pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line  | . For example, to only show the first ten entries of the  ls  command it can be piped through the head command  ls | head",
+            "title": "pipes"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#tree",
+            "text": "Use the  tree  command to show a directory and all subdirectories and files indented as a tree structure.",
+            "title": "tree"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#_1",
+            "text": "Run a command in the background with  & , freeing up the shell for future commands.",
+            "title": "&amp;"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#wget",
+            "text": "Download a file from the web directly to the computer with  wget . So  wget https://www.raspberrypi.org/documentation/linux/usage/commands.md  will download this file to your computer as  commands.md",
+            "title": "wget"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#curl",
+            "text": "Use  curl  to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.",
+            "title": "curl"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#man",
+            "text": "Show the manual page for a file with  man . To find out more, run  man man  to view the manual page of the man command.",
+            "title": "man"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#search",
+            "text": "",
+            "title": "Search"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#grep",
+            "text": "Use  grep  to search inside files for certain search patterns. For example,  grep \"search\" *.txt  will look in all the files in the current directory ending with .txt for the string search.  The  grep  command supports regular expressions which allows special letter combinations to be included in the search.",
+            "title": "grep"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#awk",
+            "text": "awk  is a programming language useful for searching and manipulating text files.",
+            "title": "awk"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#find",
+            "text": "The  find  command searches a directory and subdirectories for files matching certain patterns.",
+            "title": "find"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#whereis",
+            "text": "Use  whereis  to find the location of a command. It looks through standard program locations until it finds the requested command.",
+            "title": "whereis"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#networking",
+            "text": "",
+            "title": "Networking"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#ping",
+            "text": "The  ping  utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g.  ping raspberrypi.org ) or an IP address (e.g.  ping 8.8.8.8 ). It can specify the number of packets to send with the  -c  flag.",
+            "title": "ping"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#nmap",
+            "text": "nmap  is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just  nmap  will display the options available as well as example usage.",
+            "title": "nmap"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#hostname",
+            "text": "The  hostname  command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g.  hostname new-host ).",
+            "title": "hostname"
+        },
+        {
+            "location": "/Advanced Things/commands/index.html#ifconfig",
+            "text": "Use  ifconfig  to display the network configuration details for the interfaces on the current system when run without any arguments (i.e.  ifconfig ). By supplying the command with the name of an interface (e.g.  eth0  or  lo ) you can then alter the configuration: check the manual page for more details.",
+            "title": "ifconfig"
+        },
+        {
+            "location": "/Advanced Things/python/index.html",
+            "text": "Python\n\n\nThis came from the official Raspberry Pi documentation.\n\n\nPython is a wonderful and powerful programming language that's easy to use (easy to read \nand\n write) and with Raspberry Pi lets you connect your project to the real world.\n\n\nPython syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.\n\n\nIDLE\n\n\nThe easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:\n\n\n\n\nIDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using \nprint\n.\n\n\nNote two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3.\n\n\nYou can use variables if you need to but you can even use it like a calculator. For example:\n\n\n>>> 1 + 2\n3\n>>> name = \"Sarah\"\n>>> \"Hello \" + name\n'Hello Sarah'\n\n\n\n\nIDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with \nAlt + P\n (previous) and \nAlt + N\n (next).\n\n\nBasic Python usage\n\n\nHello world in Python:\n\n\nprint(\"Hello world\")\n\n\n\n\nSimple as that!\n\n\nIndentation\n\n\nSome languages use curly braces \n{\n and \n}\n to wrap around lines of code which belong together, and leave it to the writer to indent these lines to appear visually nested. However, Python does not use curly braces but instead requires indentation for nesting. For example a \nfor\n loop in Python:\n\n\nfor i in range(10):\n    print(\"Hello\")\n\n\n\n\nThe indentation is necessary here. A second line indented would be a part of the loop, and a second line not indented would be outside of the loop. For example:\n\n\nfor i in range(2):\n    print(\"A\")\n    print(\"B\")\n\n\n\n\nwould print:\n\n\nA\nB\nA\nB\n\n\n\n\nwhereas the following:\n\n\nfor i in range(2):\n    print(\"A\")\nprint(\"B\")\n\n\n\n\nwould print:\n\n\nA\nA\nB\n\n\n\n\nVariables\n\n\nTo save a value to a variable, assign it like so:\n\n\nname = \"Bob\"\nage = 15\n\n\n\n\nNote here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).\n\n\nage = 15\nage += 1  # increment age by 1\nprint(age)\n\n\n\n\nThis time I used comments beside the increment command.\n\n\nComments\n\n\nComments are ignored in the program but there for you to leave notes, and are denoted by the hash \n#\n symbol. Multi-line comments use triple quotes like so:\n\n\n\"\"\"\nThis is a very simple Python program that prints \"Hello\".\nThat's all it does.\n\"\"\"\n\nprint(\"Hello\")\n\n\n\n\nLists\n\n\nPython also has lists (called arrays in some languages) which are collections of data of any type:\n\n\nnumbers = [1, 2, 3]\n\n\n\n\nLists are denoted by the use of square brackets \n[]\n and each item is separated by a comma.\n\n\nIteration\n\n\nSome data types are iterable, which means you can loop over the values they contain. For example a list:\n\n\nnumbers = [1, 2, 3]\n\nfor number in numbers:\n    print(number)\n\n\n\n\nThis takes each item in the list \nnumbers\n and prints out the item:\n\n\n1\n2\n3\n\n\n\n\nNote I used the word \nnumber\n to denote each item. This is merely the word I chose for this - it's recommended you choose descriptive words for variables - using plurals for lists, and singular for each item makes sense. It makes it easier to understand when reading.\n\n\nOther data types are iterable, for example the string:\n\n\ndog_name = \"BINGO\"\n\nfor char in dog_name:\n    print(char)\n\n\n\n\nThis loops over each character and prints them out:\n\n\nB\nI\nN\nG\nO\n\n\n\n\nRange\n\n\nThe integer data type is not iterable and trying to iterate over it will produce an error. For example:\n\n\nfor i in 3:\n    print(i)\n\n\n\n\nwill produce:\n\n\nTypeError: 'int' object is not iterable\n\n\n\n\n\n\nHowever you can make an iterable object using the \nrange\n function:\n\n\nfor i in range(3):\n    print(i)\n\n\n\n\nrange(5)\n contains the numbers \n0\n, \n1\n, \n2\n, \n3\n and \n4\n (five numbers in total). To get the numbers \n1\n to \n5\n use \nrange(1, 6)\n.\n\n\nLength\n\n\nYou can use functions like \nlen\n to find the length of a string or a list:\n\n\nname = \"Jamie\"\nprint(len(name))  # 5\n\nnames = [\"Bob\", \"Jane\", \"James\", \"Alice\"]\nprint(len(names))  # 4\n\n\n\n\nIf statements\n\n\nYou can use \nif\n statements for control flow:\n\n\nname = \"Joe\"\n\nif len(name) > 3:\n    print(\"Nice name,\")\n    print(name)\nelse:\n    print(\"That's a short name,\")\n    print(name)\n\n\n\n\nPython files in IDLE\n\n\nTo create a Python file in IDLE, click \nFile > New File\n and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.\n\n\nFor example, in the new window, type:\n\n\nn = 0\n\nfor i in range(1, 101):\n    n += i\n\nprint(\"The sum of the numbers 1 to 100 is:\")\nprint(n)\n\n\n\n\nThen save this file (\nFile > Save\n or \nCtrl + S\n) and run (\nRun > Run Module\n or hit \nF5\n) and you'll see the output in your original Python window.\n\n\nExecuting Python files from the command line\n\n\nYou can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use \ncd\n and \nls\n for guidance) and run with \npython\n, e.g. \npython hello.py\n.",
+            "title": "Python"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#python",
+            "text": "This came from the official Raspberry Pi documentation.  Python is a wonderful and powerful programming language that's easy to use (easy to read  and  write) and with Raspberry Pi lets you connect your project to the real world.  Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.",
+            "title": "Python"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#idle",
+            "text": "The easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:   IDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using  print .  Note two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3.  You can use variables if you need to but you can even use it like a calculator. For example:  >>> 1 + 2\n3\n>>> name = \"Sarah\"\n>>> \"Hello \" + name\n'Hello Sarah'  IDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with  Alt + P  (previous) and  Alt + N  (next).",
+            "title": "IDLE"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#basic-python-usage",
+            "text": "Hello world in Python:  print(\"Hello world\")  Simple as that!",
+            "title": "Basic Python usage"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#indentation",
+            "text": "Some languages use curly braces  {  and  }  to wrap around lines of code which belong together, and leave it to the writer to indent these lines to appear visually nested. However, Python does not use curly braces but instead requires indentation for nesting. For example a  for  loop in Python:  for i in range(10):\n    print(\"Hello\")  The indentation is necessary here. A second line indented would be a part of the loop, and a second line not indented would be outside of the loop. For example:  for i in range(2):\n    print(\"A\")\n    print(\"B\")  would print:  A\nB\nA\nB  whereas the following:  for i in range(2):\n    print(\"A\")\nprint(\"B\")  would print:  A\nA\nB",
+            "title": "Indentation"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#variables",
+            "text": "To save a value to a variable, assign it like so:  name = \"Bob\"\nage = 15  Note here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).  age = 15\nage += 1  # increment age by 1\nprint(age)  This time I used comments beside the increment command.",
+            "title": "Variables"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#comments",
+            "text": "Comments are ignored in the program but there for you to leave notes, and are denoted by the hash  #  symbol. Multi-line comments use triple quotes like so:  \"\"\"\nThis is a very simple Python program that prints \"Hello\".\nThat's all it does.\n\"\"\"\n\nprint(\"Hello\")",
+            "title": "Comments"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#lists",
+            "text": "Python also has lists (called arrays in some languages) which are collections of data of any type:  numbers = [1, 2, 3]  Lists are denoted by the use of square brackets  []  and each item is separated by a comma.",
+            "title": "Lists"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#iteration",
+            "text": "Some data types are iterable, which means you can loop over the values they contain. For example a list:  numbers = [1, 2, 3]\n\nfor number in numbers:\n    print(number)  This takes each item in the list  numbers  and prints out the item:  1\n2\n3  Note I used the word  number  to denote each item. This is merely the word I chose for this - it's recommended you choose descriptive words for variables - using plurals for lists, and singular for each item makes sense. It makes it easier to understand when reading.  Other data types are iterable, for example the string:  dog_name = \"BINGO\"\n\nfor char in dog_name:\n    print(char)  This loops over each character and prints them out:  B\nI\nN\nG\nO",
+            "title": "Iteration"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#range",
+            "text": "The integer data type is not iterable and trying to iterate over it will produce an error. For example:  for i in 3:\n    print(i)  will produce:  TypeError: 'int' object is not iterable   However you can make an iterable object using the  range  function:  for i in range(3):\n    print(i)  range(5)  contains the numbers  0 ,  1 ,  2 ,  3  and  4  (five numbers in total). To get the numbers  1  to  5  use  range(1, 6) .",
+            "title": "Range"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#length",
+            "text": "You can use functions like  len  to find the length of a string or a list:  name = \"Jamie\"\nprint(len(name))  # 5\n\nnames = [\"Bob\", \"Jane\", \"James\", \"Alice\"]\nprint(len(names))  # 4",
+            "title": "Length"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#if-statements",
+            "text": "You can use  if  statements for control flow:  name = \"Joe\"\n\nif len(name) > 3:\n    print(\"Nice name,\")\n    print(name)\nelse:\n    print(\"That's a short name,\")\n    print(name)",
+            "title": "If statements"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#python-files-in-idle",
+            "text": "To create a Python file in IDLE, click  File > New File  and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.  For example, in the new window, type:  n = 0\n\nfor i in range(1, 101):\n    n += i\n\nprint(\"The sum of the numbers 1 to 100 is:\")\nprint(n)  Then save this file ( File > Save  or  Ctrl + S ) and run ( Run > Run Module  or hit  F5 ) and you'll see the output in your original Python window.",
+            "title": "Python files in IDLE"
+        },
+        {
+            "location": "/Advanced Things/python/index.html#executing-python-files-from-the-command-line",
+            "text": "You can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use  cd  and  ls  for guidance) and run with  python , e.g.  python hello.py .",
+            "title": "Executing Python files from the command line"
+        }
+    ]
+}

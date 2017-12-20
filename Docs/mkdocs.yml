@@ -1,0 +1,11 @@
+site_name: Solar Pi Docs
+theme: material
+use_directory_urls: False
+pages:
+    - Home: index.md
+    - Get Started: Get Started.md
+    - Raspbian: raspbian.md
+    - Hardware: hardware.md
+    - Advanced Things:
+        - Linux Commands: Advanced Things/commands.md
+        - Python: Advanced Things/python.md
