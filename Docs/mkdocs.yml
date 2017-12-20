@@ -1,5 +1,12 @@
 site_name: Solar Pi Docs
-theme: material
+theme:
+    name: material
+    palette:
+        primary: "light green"
+        accent: "indigo"
+    favicon: img/favicon.ico
+    logo: img/favicon.ico
+    
 use_directory_urls: False
 pages:
     - Home: index.md

@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/index.html",
-            "text": "Solar Pi Docs\n\n\nWelcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
+            "text": "Solar Pi Docs\n\n\n![logo](img/Solar Pi text.png)\n\n\nWelcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
             "title": "Home"
         },
         {
             "location": "/index.html#solar-pi-docs",
-            "text": "Welcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
+            "text": "![logo](img/Solar Pi text.png)  Welcome to the home of the Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. In the top right, you can search for whatever you want!",
             "title": "Solar Pi Docs"
         },
         {
