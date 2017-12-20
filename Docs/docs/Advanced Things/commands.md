@@ -1,6 +1,7 @@
 # Linux commands
-*This came from official Raspberry Pi documentation.*
-
+!!! info
+	*Note: This came from official Raspberry Pi documentation.*
+	
 Here are some fundamental and common Linux commands with example usage:
 
 ## Filesystem

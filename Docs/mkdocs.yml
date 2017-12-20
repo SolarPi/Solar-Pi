@@ -1,4 +1,8 @@
 site_name: Solar Pi Docs
+
+markdown_extensions:
+    - admonition
+
 theme:
     name: material
     palette:
