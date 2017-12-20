@@ -106,6 +106,8 @@ def Update(press):
 def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
+def Guides(press):
+    pass  # Launch guides here
 
 program.setFont(11, font="Dejavu Sans")
 
@@ -154,11 +156,30 @@ with program.notebook("MainTabs", colspan=4):
         program.addImage("logo", "Solar Pi logo.gif", colspan=2)
         program.zoomImage("logo", -2)
         program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
+        program.setLabelAlign("welcome", "center")
         program.getLabelWidget("welcome").config(font=("Dejavu Sans", "20"))
         program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to open the starter guide -->", 2, 0)  # Update translation
         program.addButton("Get Started", ButtonHandler, 2, 1)
         #program.addLabel("label1", "Your Solar Pi is a solar powered Raspberry Pi based computer.\nStart by clicking one of the tabs above.  ^^^", colspan=2)
         program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
+
+
+    with program.note("Get Started"):
+        program.setPadding(10, 10)
+        program.addLabel("title", "Solar Pi Starter Guide", colspan=2)
+        program.getLabelWidget("title").config(font=("Dejavu Sans", "15"))
+        program.setLabelSticky("title", "ew")
+        program.setLabelAlign("title", "center")
+        program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
+        program.addImage("desktop", "Desktop.gif", 1, 1, rowspan=2)
+        program.zoomImage("desktop", -7)
+        #program.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
+        program.addLabel("info2", "•  The image on the right is of the Solar Pi desktop.\n•  There is a bar at the top, showing you what\nwindows are open.\n•  At the top left, there is a button to open a\nmenu. From here, you can open all the\napplications that are installed on your Solar Pi.")
+
+        with program.frame("frame"):
+            program.addLabel("info4", "Read more:  ", 0, 0)
+            program.setLabelAlign("info4", "right")
+            program.addButton("Starter Guide", Guides, 0, 1)
 
 
     # Applications Tab
