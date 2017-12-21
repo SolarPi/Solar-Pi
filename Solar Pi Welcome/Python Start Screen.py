@@ -8,7 +8,7 @@ from sys import exit
 #from SettingsGet import *
 
 
-with open("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Solar-Pi-Core\\Solar Pi Settings\\Settings.ini", "r") as file:
+with open("../Solar Pi Settings/Settings.ini", "r") as file:
     data = file.readlines()[0]
 data = data.split(",")
 theme = data[3]
@@ -117,7 +117,7 @@ with program.subWindow("About Solar Pi", modal=True):
     program.ttkStyle.configure(".", background="white", foreground="black")
     program.setPadding(5, 5)
     program.setBg("white")
-    program.addImage("solar_pi_logo", "Solar Pi logo.gif")
+    program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
     program.zoomImage("solar_pi_logo", -3)
     program.setLocation(250, 150)
     program.setResizable(canResize=False)
@@ -153,7 +153,7 @@ with program.notebook("MainTabs", colspan=4):
     # Welcome Tab
     with program.note("Welcome!"):
         program.setPadding(10, 10)
-        program.addImage("logo", "Solar Pi logo.gif", colspan=2)
+        program.addImage("logo", "../Resources/Images/Solar Pi logo.gif", colspan=2)
         program.zoomImage("logo", -2)
         program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
         program.setLabelAlign("welcome", "center")
@@ -171,7 +171,7 @@ with program.notebook("MainTabs", colspan=4):
         program.setLabelSticky("title", "ew")
         program.setLabelAlign("title", "center")
         program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
-        program.addImage("desktop", "Desktop.gif", 1, 1, rowspan=2)
+        program.addImage("desktop", "../Resources/Images/Desktop.gif", 1, 1, rowspan=2)
         program.zoomImage("desktop", -7)
         #program.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
         program.addLabel("info2", "•  The image on the right is of the Solar Pi desktop.\n•  There is a bar at the top, showing you what\nwindows are open.\n•  At the top left, there is a button to open a\nmenu. From here, you can open all the\napplications that are installed on your Solar Pi.")
@@ -192,7 +192,7 @@ with program.notebook("MainTabs", colspan=4):
             # Start Programming
             with program.labelFrame("Start Programming", 1, 0):
                 program.setPadding(10, 15)
-                program.addImage("programming_icon", "Programming icon cropped.gif", 0, 0)
+                program.addImage("programming_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
                 program.zoomImage("programming_icon", -13)
                 program.setImageTooltip("programming_icon", "This allows you to see and try the different options for programming.")
                 program.addButton("Start Programming", Programming, 0, 1)
@@ -200,7 +200,7 @@ with program.notebook("MainTabs", colspan=4):
             # Performance to Battery Life
             with program.labelFrame("Solar Pi Settings", 1, 1):
                 program.setPadding(10, 10)
-                program.addImage("settings", "settings icon.gif", 0, 0)
+                program.addImage("settings", "../Resources/Images/settings icon.gif", 0, 0)
                 program.zoomImage("settings", -5)
                 program.setImageTooltip("settings", "This allows you to change the settings for your Solar Pi.")
                 program.addButton("Solar Pi Settings", Settings, 0, 1)
@@ -211,21 +211,21 @@ with program.notebook("MainTabs", colspan=4):
 
                 with program.labelFrame("Scratch", 1, 0):
                     program.setPadding(10, 10)
-                    program.addImage("scratch_logo2", "scratch logo.gif", 0, 0)
+                    program.addImage("scratch_logo2", "../Resources/Images/scratch logo.gif", 0, 0)
                     program.zoomImage("scratch_logo2", -50)
                     program.setImageTooltip("scratch_logo2", "The Scratch 2 IDE. Create Scratch programs and games with this.")
                     program.addButton("Scratch", ButtonHandler, 0, 1)
 
                 with program.labelFrame("Python", 1, 1):
                     program.setPadding(10, 10)
-                    program.addImage("python_logo2", "Python icon.gif", 0, 0)
+                    program.addImage("python_logo2", "../Resources/Images/Python icon.gif", 0, 0)
                     program.zoomImage("python_logo2", -4)
                     program.setImageTooltip("python_logo2", "The Python IDE. Write and run Python applications.")
                     program.addButton("Python", ButtonHandler, 0, 1)
 
                 with program.labelFrame("Java", 1, 2):
                     program.setPadding(10, 10)
-                    program.addImage("java_logo", "java logo.gif", 0, 0)
+                    program.addImage("java_logo", "../Resources/Images/java logo.gif", 0, 0)
                     program.zoomImage("java_logo", -5)
                     program.setImageTooltip("java_logo", "The BlueJ Java IDE. Create Java applications.")
                     program.addButton("Java", ButtonHandler, 0, 1)
@@ -241,7 +241,7 @@ with program.notebook("MainTabs", colspan=4):
             # Python Guides
             with program.labelFrame("Python Guides & Tutorials"):
                 program.setPadding(10, 10)
-                program.addImage("python_logo", "Python icon.gif", 0, 0)
+                program.addImage("python_logo", "../Resources/Images/Python icon.gif", 0, 0)
                 program.zoomImage("python_logo", -4)
                 program.setImageTooltip("python_logo", "A collection of tutorials and Python documentation to help you learn Python.")
                 program.addButton("Python Guides", PythonGuides, 0, 1)
@@ -249,7 +249,7 @@ with program.notebook("MainTabs", colspan=4):
             # Scratch Tutorial
             with program.labelFrame("Scratch Tutorial", 1, 1):
                 program.setPadding(10, 10)
-                program.addImage("scratch_logo", "scratch logo.gif", 0, 0)
+                program.addImage("scratch_logo", "../Resources/Images/scratch logo.gif", 0, 0)
                 program.zoomImage("scratch_logo", -50)
                 program.setImageTooltip("scratch_logo", "A beginner's tutorial on how to use Scratch.")
                 program.addButton("Scratch Tutorial", ButtonHandler, 0, 1)

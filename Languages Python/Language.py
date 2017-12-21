@@ -44,12 +44,12 @@ with gui("Languages", useTtk=True) as program:
         
         with program.labelFrame("English", 0, 0):
             program.setPadding(5, 5)
-            program.addImage("uk_flag", "uk_flag.gif")
+            program.addImage("uk_flag", "../Resources/Images/uk_flag.gif")
             program.addButton("English", LanguageHandler, 0, 1)
             
         with program.labelFrame("Español", 0, 1):
             program.setPadding(5, 5)
-            program.addImage("spain_flag", "spain_flag.gif")
+            program.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
             program.addButton("Español", LanguageHandler, 0, 1)
 
     program.setLabelFrameStyle("Languages", "TFrame")

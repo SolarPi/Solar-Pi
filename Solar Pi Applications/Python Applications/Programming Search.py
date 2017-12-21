@@ -7,7 +7,7 @@ from os import system
 from subprocess import Popen
 from ttkthemes import ThemedStyle
 
-with open("/usr/local/bin/Solar Pi/Solar Pi Settings/Settings.ini", "r") as file:
+with open("../../Solar Pi Settings/Settings.ini", "r") as file:
     data = file.readlines()[0]
 data = data.split(",")
 theme = data[3]
@@ -63,7 +63,7 @@ with gui("Programming", "400x290", useTtk=True) as program:
 
     # Widgets
     #program.addImage("solar_pi", "/usr/local/bin/Solar Pi/Resources/Images/Solar Pi text.gif")
-    program.addImage("solar_pi", "Solar Pi text.gif")
+    program.addImage("solar_pi", "../../Resources/Images/Solar Pi text.gif")
     program.zoomImage("solar_pi", -35)
 
     program.addLabel("title", "Choose a Programming Language:")
