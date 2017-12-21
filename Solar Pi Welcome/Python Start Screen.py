@@ -3,7 +3,7 @@
 
 from appJar import gui
 from subprocess import Popen, call
-from AutorunConfig import Autorun
+#from AutorunConfig import Autorun
 from sys import exit
 #from SettingsGet import *
 
@@ -88,7 +88,7 @@ def ToolbarHandler(press):
     elif press == "About":
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
-        pass  # Call Starter guide
+        Popen("chromium-browser \"127.0.0.1:8000/solar%20pi%20apps/index.html#solar-pi-welcome\"")
 
 def PerfBattery(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Perf Battery Launcher.sh")
@@ -107,7 +107,7 @@ def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 def Guides(press):
-    pass  # Launch guides here
+    Popen("chromium-browser \"127.0.0.1:8000\"")  # Launch guides here
 
 program.setFont(11, font="Dejavu Sans")
 

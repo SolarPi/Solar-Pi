@@ -2,6 +2,9 @@ site_name: Solar Pi Docs
 
 markdown_extensions:
     - admonition
+    - codehilite
+    - pymdownx.emoji:
+        emoji_generator: !!python/name:pymdownx.emoji.to_svg
 
 theme:
     name: material
@@ -15,6 +18,7 @@ use_directory_urls: False
 pages:
     - Home: index.md
     - Get Started: Get Started.md
+    - Solar Pi Apps: solar pi apps.md
     - Raspbian: raspbian.md
     - Hardware: hardware.md
     - Advanced Things:
