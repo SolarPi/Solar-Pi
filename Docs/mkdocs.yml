@@ -15,12 +15,15 @@ theme:
     logo: img/favicon.ico
     
 use_directory_urls: False
+
 pages:
     - Home: index.md
-    - Get Started: Get Started.md
-    - Solar Pi Apps: solar pi apps.md
+    - Getting Started: getting-started.md
+    - Solar Pi Apps: solar-pi-apps.md
     - Raspbian: raspbian.md
     - Hardware: hardware.md
     - Advanced Things:
-        - Linux Commands: Advanced Things/commands.md
-        - Python: Advanced Things/python.md
+        - Linux Commands: Advanced-Things/commands.md
+        - Python: Advanced-Things/python.md
+    - Glossaries:
+        - Programming Glossary: Glossaries/programming-glossary.md

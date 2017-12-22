@@ -1,6 +1,6 @@
 # Linux commands
 !!! info
-	*Note: This came from official Raspberry Pi documentation.*
+	*Note: This came from official [Raspberry Pi documentation](https://www.raspberrypi.org/documentation/linux/usage/commands.md).*
 	
 Here are some fundamental and common Linux commands with example usage:
 

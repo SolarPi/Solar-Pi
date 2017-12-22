@@ -1,7 +1,7 @@
 # Python
 
 !!! info
-	*Note: This came from the official Raspberry Pi documentation.*
+	*Note: This came from the official [Raspberry Pi documentation](https://www.raspberrypi.org/documentation/usage/python/).*
 
 Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and with Raspberry Pi lets you connect your project to the real world.
 

@@ -8,10 +8,10 @@ Welcome to the home of Solar Pi documentation. Here you'll find (almost) everyth
 ## Useful Places
 
 Here are some places that you might find useful when starting out (click on the green text to visit the page):
-### [Get Started](Get Started.md)
+### [Getting Started](getting-started.md)
 This will tell you the basics on how to use your Solar Pi.
 
-### [Solar Pi Apps](solar pi apps.md)
+### [Solar Pi Apps](solar-pi-apps.md)
 This will show you how to use the apps, and what they do.
 
 ### [Raspbian](raspbian.md)

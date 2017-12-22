@@ -88,6 +88,7 @@ def ToolbarHandler(press):
     elif press == "About":
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
+        # TODO: Fix docs launch
         Popen("chromium-browser \"127.0.0.1:8000/solar%20pi%20apps/index.html#solar-pi-welcome\"")
 
 def PerfBattery(press):
@@ -107,6 +108,7 @@ def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 def Guides(press):
+    # TODO: Fix docs launch
     Popen("chromium-browser \"127.0.0.1:8000\"")  # Launch guides here
 
 program.setFont(11, font="Dejavu Sans")
