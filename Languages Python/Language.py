@@ -25,7 +25,7 @@ def LanguageHandler(press):
     if program.yesNoBox("Reboot", "You need to reboot your Solar Pi to apply these changes.\nWould you like to reboot now?") == True:
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")          
 
-with open("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Solar-Pi-Core\\Solar Pi Settings\\Settings.ini") as file:
+with open("../Solar Pi Settings/Settings.ini") as file:
     data = file.readlines()[0]
     data = data.split(",")
     theme = data[3]
