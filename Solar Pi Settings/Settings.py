@@ -11,6 +11,7 @@ from SettingsGet import *
 
 # Add translations for all
 
+# Fetch settinga in Settings.ini
 clock_speed = Clock()
 battery_meter = BatteryMeter()
 launch_welcome = LaunchWelcome()
@@ -43,10 +44,10 @@ def ButtonHandler(press):
         program.infoBox("More Information", "This program modifies a text file to change the clock speed of the processor.\nThe number shown on the slider marks the maximum clock speed of the CPU in MHz.\nIf the clock speed is low, the Raspberry Pi will draw less power with lower performance, if the clock speed is high, it will draw more power with more performance.\n\nNote: The default value is 1200MHz.")
 
     elif press == "Change Advanced Settings":
-        Popen("/usr/bin/rc_gui")
+        Popen("/usr/bin/rc_gui")  # Runs Raspberry Pi Configuration
 
     elif press == "Languages":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages app
 
 def ClockChange(clock):
     # Opens and modifies config.txt file
@@ -56,23 +57,23 @@ def ClockChange(clock):
         sys.stdout.write(line)  # Writes back to file
 
 def ApplySettings(press):
+    # Fetches data from widgets
     clock_speed = int(program.getEntry("Max Clock Speed: "))
     battery_meter = program.getCheckBox("Show standalone battery meter")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     theme = program.getOptionBox("Themes").lower()
 
-    program.setScale("slider", clock_speed)
+    program.setScale("slider", clock_speed)  # Sets slider to value in entry
 
-    program.setTtkTheme(theme)
-    program.ttkStyle.configure(".", background="white", foreground="black")
+    program.setTtkTheme(theme)  # Sets theme
+    program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
 
 
-    if battery_meter == True:
-        pass
+    Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes appropriate action for running Welcome at startup
 
-    Autorun(launch_welcome)  # Takes appropriate action for running Welcome at startup
+    Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes appropriate action for running Battery meter at startup
 
-    ClockChange(clock_speed)
+    ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
     data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
     with open("Settings.ini", "w") as file:
@@ -92,34 +93,38 @@ def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to
 
 def Defaults(press):  # Procedure to reset to default
     with open("Settings.ini", "w") as file:
-        file.write("1200,True,True,plastik")
+        file.write("1200,True,True,plastik")  # Writes default settings to file
 
-    SetItems(1200, True, True, "plastik")
+    SetItems(1200, True, True, "plastik")  # Sets controls to default
 
-    Autorun(True)
+    Autorun("welcome", True, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Creates .desktop file for welcome
 
-    ClockChange(1200)
+    Autorun("battery", True, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Creates .desktop file for battery meter
 
-    program.setTtkTheme("plastik")
+    ClockChange(1200)  # Changes max clock speed to 1200 MHz
 
+    program.setTtkTheme("plastik")  # Sets plastik theme for application
+
+    # Prompts user to restart to apply changes
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
 
-
+# Runs update scripts
 def Update(press):
     if program.getCheckBox("Update Operating System & Installed Programs") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/System Update.sh")
     if program.getCheckBox("Update appJar") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
         
-
+# Sets entry based on scale changes
 def ScaleChange(value):
     value = int(program.getScale("slider"))
     program.setEntry("Max Clock Speed: ", value)
 
+# Sets scale based on entry
 def EntryScaleChange(value):
     value = int(program.getEntry("Max Clock Speed: "))
-    if value > 1200:
+    if value > 1200:  # Ensure that values are between 1200 and 600
         value = 1200
     elif value < 600:
         value = 600
@@ -127,11 +132,13 @@ def EntryScaleChange(value):
     print(value)
 
 
+# Unicode symbols
 TICK = "\u2714"
 CROSS = "\u274C"
 RESTORE = "\u21BA"
 
 
+# GUI code
 with gui("Settings", useTtk=True) as program:
     program.setTtkTheme(theme)
     program.setBg("white")
