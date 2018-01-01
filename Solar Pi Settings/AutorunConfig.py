@@ -13,28 +13,29 @@ def FileOpenTest(file):
 def Autorun(item, mode, file):
     if mode == True:
         if FileOpenTest(file) == False:
-            with open(file, "w") as file:
+            with open(file, "w") as file2:
                 if item == "welcome":
                     data = """[Desktop Entry]
-        Name=Solar Pi Welcome
-        Type=Application
-        Comment=Launch the main Solar Pi application
-        Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
-                        """
+    Name=Solar Pi Welcome
+    Type=Application
+    Comment=Launch the main Solar Pi application
+    Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
+    """
                 elif item == "battery":
                     data = """[Desktop Entry]
-        Name=Battery Meter
-        Type=Application
-        Comment=Display the battery meter in the bottom left of the display
-        Exec="/usr/local/bin/Solar Pi/Solar Pi Power/Battery Meter exec"""
+    Name=Battery Meter
+    Type=Application
+    Comment=Display the battery meter in the bottom left of the display
+    Exec="/usr/local/bin/Solar Pi/Solar Pi Power/Battery Meter exec"
+    """
 
-                file.write(data)
+                file2.write(data)
             chmod(file, 0o775)
 
 
     elif mode == False:
         if FileOpenTest(file) == True:
-            remove("/home/pi/.config/autostart/Welcome Launcher.desktop")
+            remove(file)
 
 
 if __name__ == "__main__":
