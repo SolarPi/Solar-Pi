@@ -33,7 +33,7 @@ def Autorun(item, mode, file):
 
 
     elif mode == False:
-        if FileOpenTest() == True:
+        if FileOpenTest(file) == True:
             remove("/home/pi/.config/autostart/Welcome Launcher.desktop")
 
 
