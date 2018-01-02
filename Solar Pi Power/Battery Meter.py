@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from appJar import gui
+from time import sleep
 
 num = 0
 def updateMeter():
@@ -10,9 +11,11 @@ def updateMeter():
     num += 1
 
 def over(param):
-    program.setTransparency(5)
+    program.hide()
+
 def leave(param):
-    program.setTransparency(100)
+    sleep(1)
+    program.show()
 
 with gui() as program:
     program.hideTitleBar()
