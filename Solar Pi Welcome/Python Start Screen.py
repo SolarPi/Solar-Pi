@@ -177,11 +177,11 @@ with program.notebook("MainTabs", colspan=2):
     with program.note("Welcome!"):
         program.setPadding(10, 10)
         with program.frame("frame4", 0, 0, colspan=3):
-            program.addLabel("text3", "Welcome to your ", 0, 0)
+            program.addLabel("text3", "Welcome to your  ", 0, 0)
             program.setLabelAlign("text3", "right")
             program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
-            program.addImage("logo text", "../Resources/Images/Solar Pi text.gif", 0, 1)
-            program.zoomImage("logo text", -45)
+            program.addImage("logo text", "../Resources/Images/Solar Pi text small.gif", 0, 1)
+            program.zoomImage("logo text", -2)
             program.setImageSticky("logo text", "nsw")
         with program.frame("frame5", 1, 0):
             program.setPadding(10, 10)
@@ -189,16 +189,34 @@ with program.notebook("MainTabs", colspan=2):
             program.addButton("Get Started", ButtonHandler)
             program.addNamedButton("Docs", "docs", Guides)
             program.addButton("About", ButtonHandler)
-
         program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
         program.zoomImage("logo4", -4)
-
         with program.frame("frame6", 1, 2):
             program.setPadding(10, 10)
             program.addNamedButton("Programming", "programming2", Programming)
             program.addButton("Settings", Settings)
             program.addButton("Change\nLanguage", ButtonHandler)
-
+   # with program.note("Welcome! V2"):
+    #     program.setPadding(10, 10)
+    #
+    #     program.addLabel("text3", "Welcome to your ", 0, 0, colspan=2)
+    #     program.setLabelAlign("text3", "right")
+    #     program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
+    #     program.addImage("logo text", "../Resources/Images/Solar Pi text small.gif", 0, 2)
+    #     program.zoomImage("logo text", -45)
+    #     program.setImageSticky("logo text", "nsw")
+    #
+    #     program.setBg("white", override=True)
+    #     program.addButton("Get Started", ButtonHandler, 1, 0)
+    #     program.addNamedButton("Docs", "docs", Guides, 2, 0)
+    #     program.addButton("About", ButtonHandler, 3, 0)
+    #
+    #     program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+    #     program.zoomImage("logo4", -4)
+    #
+    #     program.addNamedButton("Programming", "programming2", Programming, 1, 2)
+    #     program.addButton("Settings", Settings, 2, 2)
+    #     program.addButton("Change\nLanguage", ButtonHandler, 3, 2)
 
     with program.note("Get Started"):
         program.setPadding(10, 10)
