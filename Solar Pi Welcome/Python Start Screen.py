@@ -375,7 +375,7 @@ should show 100%."""
 
 
 def Startup(param):
-    value = program.getCheckBox("Launch this at startup")
+    value = program.getCheckBox("Launch at startup")
     with open("../Solar Pi Settings/Settings.ini", "r") as file:
         data = file.readlines()
     data = data[0]
@@ -391,9 +391,9 @@ def Startup(param):
 
 with program.frame("startup", 1, 0):
     program.setPadding(3, 3)
-    program.addCheckBox("Launch this at startup", 0, 1)
-    program.setCheckBoxChangeFunction("Launch this at startup", Startup)
-    program.setCheckBox("Launch this at startup", ticked=LaunchWelcome())
+    program.addCheckBox("Launch at startup", 0, 1)
+    program.setCheckBoxChangeFunction("Launch at startup", Startup)
+    program.setCheckBox("Launch at startup", ticked=LaunchWelcome())
 
 
 num = 0
