@@ -5,7 +5,7 @@ from appJar import gui
 from subprocess import Popen, call
 #from AutorunConfig import Autorun
 from sys import exit
-#from SettingsGet import *
+from SettingsGet import LaunchWelcome
 
 
 with open("../Solar Pi Settings/Settings.ini", "r") as file:
@@ -46,8 +46,12 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
     elif press == "Change Advanced Settings":  # Launches RPi settings window
         Popen("/usr/bin/rc_gui")
-    elif press == "Languages":
+    elif press == "Change\nLanguage":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
+    elif press == "Get Started":
+        program.setNotebook("MainTabs", "Get Started")  # Set tab/note to Get Started
+    elif press == "Charging":
+        print("Charging")  # Set tab/note to Charging
 
 
 def MenuHandler(press):
@@ -89,7 +93,7 @@ def ToolbarHandler(press):
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
         # TODO: Fix docs launch
-        Popen("chromium-browser \"127.0.0.1:8000/solar%20pi%20apps/index.html#solar-pi-welcome\"")
+        Popen("chromium-browser \"localhost/solar-pi-apps/index.html#solar-pi-welcome\"")
 
 def PerfBattery(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Perf Battery Launcher.sh")
@@ -109,9 +113,9 @@ def Settings(press):
 
 def Guides(press):
     # TODO: Fix docs launch
-    Popen("chromium-browser \"127.0.0.1:8000\"")  # Launch guides here
+    Popen("chromium-browser \"localhost\"")  # Launch guides here
 
-program.setFont(11, font="Dejavu Sans")
+#program.setFont(11, font="Dejavu Sans")
 
 
 # About Popup
@@ -138,7 +142,7 @@ with program.subWindow("About Solar Pi", modal=True):
 
 # Main Window
 program.setPadding(3, 3)
-with program.notebook("MainTabs", colspan=4):
+with program.notebook("MainTabs", colspan=2):
 
     #program.setTabbedFrameTabExpand("MainTabs", expand=True)
 
@@ -152,18 +156,48 @@ with program.notebook("MainTabs", colspan=4):
     tools = ["Off", "Settings", "Files", "About", "Help"]
     program.addToolbar(tools, ToolbarHandler, findIcon=True)
 
+
+    """
+                Old Welcome Tab
+    """
     # Welcome Tab
+    # with program.note("Welcome!"):
+    #     program.setPadding(10, 10)
+    #     program.addImage("logo", "../Resources/Images/Solar Pi logo.gif", colspan=2)
+    #     program.zoomImage("logo", -2)
+    #     program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
+    #     program.setLabelAlign("welcome", "center")
+    #     program.getLabelWidget("welcome").config(font=("Dejavu Sans", "20"))
+    #     program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to open the starter guide -->", 2, 0)  # Update translation
+    #     #program.addButton("Get Started", ButtonHandler, 2, 1)
+    #     #program.addLabel("label1", "Your Solar Pi is a solar powered Raspberry Pi based computer.\nStart by clicking one of the tabs above.  ^^^", colspan=2)
+    #     #program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
+
+
     with program.note("Welcome!"):
         program.setPadding(10, 10)
-        program.addImage("logo", "../Resources/Images/Solar Pi logo.gif", colspan=2)
-        program.zoomImage("logo", -2)
-        program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
-        program.setLabelAlign("welcome", "center")
-        program.getLabelWidget("welcome").config(font=("Dejavu Sans", "20"))
-        program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to open the starter guide -->", 2, 0)  # Update translation
-        program.addButton("Get Started", ButtonHandler, 2, 1)
-        #program.addLabel("label1", "Your Solar Pi is a solar powered Raspberry Pi based computer.\nStart by clicking one of the tabs above.  ^^^", colspan=2)
-        program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
+        with program.frame("frame4", 0, 0, colspan=3):
+            program.addLabel("text3", "Welcome to your ", 0, 0)
+            program.setLabelAlign("text3", "right")
+            program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
+            program.addImage("logo text", "../Resources/Images/Solar Pi text.gif", 0, 1)
+            program.zoomImage("logo text", -45)
+            program.setImageSticky("logo text", "nsw")
+        with program.frame("frame5", 1, 0):
+            program.setPadding(10, 10)
+            program.setBg("white", override=True)
+            program.addButton("Get Started", ButtonHandler)
+            program.addNamedButton("Docs", "docs", Guides)
+            program.addButton("About", ButtonHandler)
+
+        program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+        program.zoomImage("logo4", -4)
+
+        with program.frame("frame6", 1, 2):
+            program.setPadding(10, 10)
+            program.addNamedButton("Programming", "programming2", Programming)
+            program.addButton("Settings", Settings)
+            program.addButton("Change\nLanguage", ButtonHandler)
 
 
     with program.note("Get Started"):
@@ -181,6 +215,36 @@ with program.notebook("MainTabs", colspan=4):
         with program.frame("frame"):
             program.addLabel("info4", "Read more:  ", 0, 0)
             program.setLabelAlign("info4", "right")
+            program.addButton("Charging", ButtonHandler, 0, 1)
+
+
+
+    with program.note("Charging"):
+        program.setPadding(10, 10)
+        program.addLabel("title5", "Charging your Solar Pi", colspan=2)
+        program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
+        program.setLabelSticky("title5", "ew")
+        program.setLabelAlign("title5", "center")
+        text = """The battery meter below this page and in the
+bottom left of the display shows how much power
+is left in the batteries of your Solar Pi.
+A full bar (100%) means most power, and an empty
+bar (0%) means no power left.
+    
+When the battery meter gets close to 0% and your
+Solar Pi shuts down, you need to charge it.
+To do this, fold out the solar panels, and make
+sure that the Solar Pi is facing the sun.
+You will then need to wait for a few hours until it is
+charged up.
+    
+Once your Solar Pi is charged, the battery meter
+should show 100%."""
+        program.addLabel("info5", text)
+        #program.getLabelWidget("info5").config(font=("Piboto", "13"))
+        with program.frame("frame1", 1, 1, rowspan=5):
+            program.addLabel("read", "Read more:", 0, 0)
+            program.setLabelAlign("read", "e")
             program.addButton("Starter Guide", Guides, 0, 1)
 
 
@@ -256,6 +320,11 @@ with program.notebook("MainTabs", colspan=4):
                 program.setImageTooltip("scratch_logo", "A beginner's tutorial on how to use Scratch.")
                 program.addButton("Scratch Tutorial", ButtonHandler, 0, 1)
 
+
+    """
+                Removed Settings
+    """
+
     # Settings Tab
     # with program.note("Settings"):
     #     with program.labelFrame("Settings"):
@@ -286,22 +355,45 @@ with program.notebook("MainTabs", colspan=4):
 
 #program.setBg("white")
 
+
+def Startup(param):
+    value = program.getCheckBox("Launch this at startup")
+    with open("../Solar Pi Settings/Settings.ini", "r") as file:
+        data = file.readlines()
+    data = data[0]
+    data = data.split(",")
+    clock = data[0]
+    battery = data[1]
+    value = str(value)
+    theme = data[3]
+
+    data = clock + "," + battery + "," + value + "," + theme
+    with open("../Solar Pi Settings/Settings.ini", "w") as file:
+        file.write(data)
+
+with program.frame("startup", 1, 0):
+    program.setPadding(3, 3)
+    program.addCheckBox("Launch this at startup", 0, 1)
+    program.setCheckBoxChangeFunction("Launch this at startup", Startup)
+    program.setCheckBox("Launch this at startup", ticked=LaunchWelcome())
+
+
 num = 0
 def updateMeter():
     global num
     program.setMeter("battery", num)
     #program.setLabel("level", str(num)+"%")
     num += 1
-
-program.addLabel("battery", "Battery Remaining:", 1, 0)  # Update translation
-#program.setLabelAlign("battery", "right")
-program.setLabelAnchor("battery", "e")
-program.addMeter("battery", 1, 2)
-program.setMeterFill("battery", "#13d323")
-program.addLabel("blank", "", 1, 3)
-#program.setMeterPadding("battery", 5, 5)
-program.registerEvent(updateMeter)
-program.setPollTime(10000)
+with program.frame("battery", 1, 1):
+    program.addLabel("battery", "Battery Remaining: ", 0, 0)  # Update translation
+    #program.setLabelAlign("battery", "right")
+    program.setLabelAnchor("battery", "e")
+    program.addMeter("battery", 0, 2)
+    program.setMeterFill("battery", "#13d323")
+    program.addLabel("blank", "", 0, 3)
+    #program.setMeterPadding("battery", 5, 5)
+    program.registerEvent(updateMeter)
+    program.setPollTime(10000)
 
 
 with open("language.txt", "r") as file:

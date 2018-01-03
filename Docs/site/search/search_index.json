@@ -31,88 +31,103 @@
             "title": "Raspbian"
         },
         {
-            "location": "/Getting Started/index.html",
+            "location": "/getting-started/index.html",
             "text": "Getting Started\n\n\nYour Solar Pi is a Raspberry Pi based computer. It can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, so that you have an advantage over others when you get employed.\n\n\nGood luck, and we hope that you enjoy using your Solar Pi!\n\n\nInput\n\n\nTouchscreen\n\n\nYour Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer. You can press buttons, access menus and look through this documentation. Also, you can use the on screen keyboard by clicking on the icon in the toolbar at the top of the screen.\n\n\n\n\nKeyboard & Trackpad\n\n\nYour Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.",
             "title": "Getting Started"
         },
         {
-            "location": "/Getting Started/index.html#getting-started",
+            "location": "/getting-started/index.html#getting-started",
             "text": "Your Solar Pi is a Raspberry Pi based computer. It can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, so that you have an advantage over others when you get employed.  Good luck, and we hope that you enjoy using your Solar Pi!",
             "title": "Getting Started"
         },
         {
-            "location": "/Getting Started/index.html#input",
+            "location": "/getting-started/index.html#input",
             "text": "",
             "title": "Input"
         },
         {
-            "location": "/Getting Started/index.html#touchscreen",
+            "location": "/getting-started/index.html#touchscreen",
             "text": "Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer. You can press buttons, access menus and look through this documentation. Also, you can use the on screen keyboard by clicking on the icon in the toolbar at the top of the screen.",
             "title": "Touchscreen"
         },
         {
-            "location": "/Getting Started/index.html#keyboard-trackpad",
+            "location": "/getting-started/index.html#keyboard-trackpad",
             "text": "Your Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.",
             "title": "Keyboard &amp; Trackpad"
         },
         {
-            "location": "/solar pi apps/index.html",
-            "text": "Solar Pi Apps\n\n\nYou Solar Pi comes with a few custom apps that we have written to help you use your Solar Pi. Here, we'll explain what each one is for, and how to use them.\n\n\nSolar Pi Welcome\n\n\nThis is the main Solar Pi app that you see when you first log on to your Solar Pi.\n\n\nWelcome!\n\n\ntext goes here\n\n\nGet Started\n\n\ntext goes here\n\n\nApplications\n\n\ntext goes here\n\n\nGuides & Tutorials\n\n\ntext goes here\n\n\nStart Programming\n\n\ntext goes here\n\n\nPython Guides\n\n\ntext goes here\n\n\nSolar Pi Docs\n\n\ntext goes here\n\n\nSolar Pi Settings\n\n\ntext goes here\n\n\nLanguages\n\n\ntext goes here",
+            "location": "/solar-pi-apps/index.html",
+            "text": "Solar Pi Apps\n\n\nYour Solar Pi comes with a few custom apps that we have written to help you use your Solar Pi. Here, we'll explain what each one is for, and how to use them.\n\n\nSolar Pi Welcome\n\n\nThis is the main Solar Pi app that you see when you first log on to your Solar Pi. The toolbar at the top gives you options to shutdown, reboot of log out of your Pi. Also, you can change settings, open the file manager, see what the Solar Pi project is about and read these docs.\n\n\n\n\nAlso, at the bottom of the window, there is a bar showing how much battery is remaining in your Solar Pi. 100% means that your Solar Pi is fully charged, and 0% means that your Solar Pi has no power and you need to charge it.\n\n\n\n\nWelcome!\n\n\n\n\nThis tab introduces you to your Solar Pi. There are popups to show you what the Solar Pi project is about and also links you to the \nlanguages\n app, to allow you to change the display language of your Solar Pi.\n\n\nGet Started\n\n\n\n\nIn this tab, it explains the touchscreen and the Main Menu. It also provides a link to this page in the docs.\n\n\nApplications\n\n\n\n\nThe applications tab shows you apps that you might find useful. On the top row, you can access the \nSolar Pi Settings\n app, and an app that will help explain the main programming languages supported on the Solar Pi, and the IDEs (\nI\nntegrated \nD\nevelopment \nE\nnvironment) that go with them.\n\n\nOn the second row, you'll find launchers for IDEs for each main programming language. You can also hover over the icons to get a brief overview of what each application does.\n\n\nGuides & Tutorials\n\n\n\n\nHere, you'll find the guides and tutorials for programming. Click on the buttons to launch the applications, and hover over the icons to get a brief overview on what the guides and tutorials help you with.\n\n\nStart Programming\n\n\nThis app helps you decide where to start programming. It explains the 3 main programming languages supported on the Solar Pi: Scratch, \nPython\n and Java.\n\n\n\n\nTo do this, select a language, and click \"More Info\". A popup box should then appear giving you a brief overview of the language. Once you have decided, click \"Go\", and the relevant IDE should launch.\n\n\nPython Guides\n\n\ntext goes here\n\n\nSolar Pi Docs\n\n\nNot really an app, but still important. This is all the documentation for your Solar Pi. It opens in the Chromium web browser, to allow for easy navigation with a touchscreen. You can navigate different pages via clicking on the icon in the top left, and you can skip through different sections of a page through the menu on the right. You can search through the docs using the search bar in the top right. Links are highlighted in \ngreen\n, and these will take you to different places in the docs.\n\n\nSolar Pi Settings\n\n\nThe Solar Pi Settings app allows you to change settings for your Solar Pi. These are settings that can't be changed from the default Raspbian installation, and are specific to the Solar Pi. When you have finished changing the settings, ensure that you click 'Apply' and reboot.\n\n\nIf you want to revert to default settings, click 'Restore Defaults' and reboot.\n\n\nPerformance & Power\n\n\nThese settings are related to the performance and power of your Solar Pi. The slider at the top of this section allows you to change the clock speed of your Solar Pi's CPU (\nC\nentral \nP\nrocessing \nU\nnit - effectively the 'brain' of your Solar Pi.). The default is 1200MHz (Megahertz), which will give you maximum performance, but you can lower it to 600MHz if you would like to extend the battery life of your Solar Pi. There is also a text box where you can type the clock speed in, if this is easier for you.\n\n\nThe checkbox that's labelled \n'Show standalone battery meter'\n controls whether you see the battery meter that is on the bottom left of your screen. If this gets in the way, you can remove it.\n\n\nUpdates\n\n\nCurrently, you need an internet connection to update your Solar Pi, but this is due to change in the near future.\n\n\nOther Settings\n\n\nThe checkbox that's labelled \n'Launch the Solar Pi welcome application at startup'\n controls if you see the Solar Pi Welcome app when you log in. This is on by default, but once you get used to using your Solar Pi, you can turn it off.\n\n\nThe next option is labelled \n'Theme for Solar Pi apps:'\n. This controls how Solar Pi apps look. The default is \n'plastik'\n, but you can always change it by clicking on the box, and selecting from the drop down menu.\n\n\nFinally, at the bottom of the section, there are buttons which say \n'Change Advanced Settings'\n and \n'Languages'\n. The \n'Change Advanced Settings'\n takes you to the Raspberry Pi Configuration app, and will allow you to tweak things further. The \n'Languages'\n button takes you to the \nLanguages app\n, and will allow you to change the display language of your Solar Pi.\n\n\n\n\nWarning\n\n\nOnly go into the Advanced Settings if you know what you are doing!\n\n\n\n\nLanguages\n\n\nThis allows you to change the display language of your Solar Pi. If the language that is currently used is not suitable, you can change it by clicking on the button for your language. After that, you'll need to reboot your Solar Pi.",
             "title": "Solar Pi Apps"
         },
         {
-            "location": "/solar pi apps/index.html#solar-pi-apps",
-            "text": "You Solar Pi comes with a few custom apps that we have written to help you use your Solar Pi. Here, we'll explain what each one is for, and how to use them.",
+            "location": "/solar-pi-apps/index.html#solar-pi-apps",
+            "text": "Your Solar Pi comes with a few custom apps that we have written to help you use your Solar Pi. Here, we'll explain what each one is for, and how to use them.",
             "title": "Solar Pi Apps"
         },
         {
-            "location": "/solar pi apps/index.html#solar-pi-welcome",
-            "text": "This is the main Solar Pi app that you see when you first log on to your Solar Pi.",
+            "location": "/solar-pi-apps/index.html#solar-pi-welcome",
+            "text": "This is the main Solar Pi app that you see when you first log on to your Solar Pi. The toolbar at the top gives you options to shutdown, reboot of log out of your Pi. Also, you can change settings, open the file manager, see what the Solar Pi project is about and read these docs.   Also, at the bottom of the window, there is a bar showing how much battery is remaining in your Solar Pi. 100% means that your Solar Pi is fully charged, and 0% means that your Solar Pi has no power and you need to charge it.",
             "title": "Solar Pi Welcome"
         },
         {
-            "location": "/solar pi apps/index.html#welcome",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#welcome",
+            "text": "This tab introduces you to your Solar Pi. There are popups to show you what the Solar Pi project is about and also links you to the  languages  app, to allow you to change the display language of your Solar Pi.",
             "title": "Welcome!"
         },
         {
-            "location": "/solar pi apps/index.html#get-started",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#get-started",
+            "text": "In this tab, it explains the touchscreen and the Main Menu. It also provides a link to this page in the docs.",
             "title": "Get Started"
         },
         {
-            "location": "/solar pi apps/index.html#applications",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#applications",
+            "text": "The applications tab shows you apps that you might find useful. On the top row, you can access the  Solar Pi Settings  app, and an app that will help explain the main programming languages supported on the Solar Pi, and the IDEs ( I ntegrated  D evelopment  E nvironment) that go with them.  On the second row, you'll find launchers for IDEs for each main programming language. You can also hover over the icons to get a brief overview of what each application does.",
             "title": "Applications"
         },
         {
-            "location": "/solar pi apps/index.html#guides-tutorials",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#guides-tutorials",
+            "text": "Here, you'll find the guides and tutorials for programming. Click on the buttons to launch the applications, and hover over the icons to get a brief overview on what the guides and tutorials help you with.",
             "title": "Guides &amp; Tutorials"
         },
         {
-            "location": "/solar pi apps/index.html#start-programming",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#start-programming",
+            "text": "This app helps you decide where to start programming. It explains the 3 main programming languages supported on the Solar Pi: Scratch,  Python  and Java.   To do this, select a language, and click \"More Info\". A popup box should then appear giving you a brief overview of the language. Once you have decided, click \"Go\", and the relevant IDE should launch.",
             "title": "Start Programming"
         },
         {
-            "location": "/solar pi apps/index.html#python-guides",
+            "location": "/solar-pi-apps/index.html#python-guides",
             "text": "text goes here",
             "title": "Python Guides"
         },
         {
-            "location": "/solar pi apps/index.html#solar-pi-docs",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#solar-pi-docs",
+            "text": "Not really an app, but still important. This is all the documentation for your Solar Pi. It opens in the Chromium web browser, to allow for easy navigation with a touchscreen. You can navigate different pages via clicking on the icon in the top left, and you can skip through different sections of a page through the menu on the right. You can search through the docs using the search bar in the top right. Links are highlighted in  green , and these will take you to different places in the docs.",
             "title": "Solar Pi Docs"
         },
         {
-            "location": "/solar pi apps/index.html#solar-pi-settings",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#solar-pi-settings",
+            "text": "The Solar Pi Settings app allows you to change settings for your Solar Pi. These are settings that can't be changed from the default Raspbian installation, and are specific to the Solar Pi. When you have finished changing the settings, ensure that you click 'Apply' and reboot.  If you want to revert to default settings, click 'Restore Defaults' and reboot.",
             "title": "Solar Pi Settings"
         },
         {
-            "location": "/solar pi apps/index.html#languages",
-            "text": "text goes here",
+            "location": "/solar-pi-apps/index.html#performance-power",
+            "text": "These settings are related to the performance and power of your Solar Pi. The slider at the top of this section allows you to change the clock speed of your Solar Pi's CPU ( C entral  P rocessing  U nit - effectively the 'brain' of your Solar Pi.). The default is 1200MHz (Megahertz), which will give you maximum performance, but you can lower it to 600MHz if you would like to extend the battery life of your Solar Pi. There is also a text box where you can type the clock speed in, if this is easier for you.  The checkbox that's labelled  'Show standalone battery meter'  controls whether you see the battery meter that is on the bottom left of your screen. If this gets in the way, you can remove it.",
+            "title": "Performance &amp; Power"
+        },
+        {
+            "location": "/solar-pi-apps/index.html#updates",
+            "text": "Currently, you need an internet connection to update your Solar Pi, but this is due to change in the near future.",
+            "title": "Updates"
+        },
+        {
+            "location": "/solar-pi-apps/index.html#other-settings",
+            "text": "The checkbox that's labelled  'Launch the Solar Pi welcome application at startup'  controls if you see the Solar Pi Welcome app when you log in. This is on by default, but once you get used to using your Solar Pi, you can turn it off.  The next option is labelled  'Theme for Solar Pi apps:' . This controls how Solar Pi apps look. The default is  'plastik' , but you can always change it by clicking on the box, and selecting from the drop down menu.  Finally, at the bottom of the section, there are buttons which say  'Change Advanced Settings'  and  'Languages' . The  'Change Advanced Settings'  takes you to the Raspberry Pi Configuration app, and will allow you to tweak things further. The  'Languages'  button takes you to the  Languages app , and will allow you to change the display language of your Solar Pi.   Warning  Only go into the Advanced Settings if you know what you are doing!",
+            "title": "Other Settings"
+        },
+        {
+            "location": "/solar-pi-apps/index.html#languages",
+            "text": "This allows you to change the display language of your Solar Pi. If the language that is currently used is not suitable, you can change it by clicking on the button for your language. After that, you'll need to reboot your Solar Pi.",
             "title": "Languages"
         },
         {
@@ -126,269 +141,539 @@
             "title": "Hardware"
         },
         {
-            "location": "/Advanced Things/commands/index.html",
-            "text": "Info\n\n\nNote: This came from official Raspberry Pi documentation.\n\n\n\n\nHere are some fundamental and common Linux commands with example usage:\n\n\nFilesystem\n\n\nls\n\n\nThe \nls\n command lists the content of the current directory (or one that is specified). It can be used with the \n-l\n flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The \n-a\n flag allows you to view files beginning with \n.\n (i.e. dotfiles).\n\n\ncd\n\n\nUsing \ncd\n changes the current directory to the one specified. You can use relative (i.e. \ncd directoryA\n) or absolute (i.e. \ncd /home/pi/directoryA\n) paths.\n\n\npwd\n\n\nThe \npwd\n command displays the name of the present working directory: on a Raspberry Pi, entering \npwd\n will output something like \n/home/pi\n.\n\n\nmkdir\n\n\nYou can use \nmkdir\n to create a new directory, e.g. \nmkdir newDir\n would create the directory \nnewDir\n in the present working directory.\n\n\nrmdir\n\n\nTo remove empty directories, use \nrmdir\n. So, for example, \nrmdir oldDir\n will remove the directory \noldDir\n only if it is empty.\n\n\nrm\n\n\nThe command \nrm\nremoves the specified file (or recursively from a directory when used with \n-r\n). Be careful with this command: files deleted in this way are mostly gone for good!\n\n\ncp\n\n\nUsing \ncp\n makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example, \ncp ~/fileA /home/otherUser/\n would copy the file \nfileA\n from your home directory to that of the user \notherUser\n (assuming you have permission to copy it there). This command can either take \nFILE FILE\n (\ncp fileA fileB\n), \nFILE DIR\n (\ncp fileA /directoryB/\n) or \n-r DIR DIR\n (which recursively copies the contents of directories) as arguments.\n\n\nmv\n\n\nThe \nmv\n command moves a file and places it at the specified location (so where \ncp\n performs a 'copy-paste', \nmv\n performs a 'cut-paste'). The usage is similar to \ncp\n. So \nmv ~/fileA /home/otherUser/\n would move the file \nfileA\n from your home directory to that of the user otherUser. This command can either take \nFILE FILE\n (\nmv fileA fileB\n), \nFILE DIR\n (\nmv fileA /directoryB/\n) or \nDIR DIR\n (\nmv /directoryB /directoryC\n) as arguments. This command is also useful as a method to rename files and directories after they've been created.\n\n\ntouch\n\n\nThe command \ntouch\n sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.\n\n\ncat\n\n\nYou can use \ncat\n to list the contents of file(s), e.g. \ncat thisFile\n will display the contents of \nthisFile\n. Can be used to list the contents of multiple files, i.e. \ncat *.txt\n will list the contents of all \n.txt\n files in the current directory.\n\n\nhead\n\n\nThe \nhead\n command displays the beginning of a file. Can be used with \n-n\n to specify the number of lines to show (by default ten), or with \n-c\n to specify the number of bytes.\n\n\ntail\n\n\nThe opposite of \nhead\n, \ntail\n displays the end of a file. The starting point in the file can be specified either through \n-b\n for 512 byte blocks, \n-c\n for bytes, or \n-n\n for number of lines.\n\n\nchmod\n\n\nYou would normally use \nchmod\n to change the permissions for a file. The \nchmod\n command can use symbols \nu\n (user that owns the file), \ng\n (the files group) ,  and \no\n (other users) and the permissions \nr\n (read), \nw\n (write), and \nx\n (execute). Using \nchmod u+x *filename*\n will add execute permission for the owner of the file.\n\n\nchown\n\n\nThe \nchown\n command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. \nsudo chown pi:root *filename*\n will change the owner to pi and the group to root. \n\n\nssh\n\n\nssh\n denotes the secure shell. Connect to another computer using an encrypted network connection.\n\n\nscp\n\n\nThe \nscp\n command copies a file from one computer to another using \nssh\n.\n\n\nsudo\n\n\nThe \nsudo\n command enables you to run a command as a superuser, or another user. Use \nsudo -s\n for a superuser shell.\n\n\ndd\n\n\nThe \ndd\n command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example, \ndd if=/dev/sdd of=backup.img\n will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.\n\n\ndf\n\n\nUse \ndf\n to display the disk space available and used on the mounted filesystems. Use \ndf -h\n to see the output in a human-readable format using M for MBs rather than showing number of bytes. \n\n\nunzip\n\n\nThe \nunzip\n command extracts the files from a compressed zip file. \n\n\ntar\n\n\nUse \ntar\n to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. \n\n\nTo create a compressed file, use \ntar -cvzf *filename.tar.gz* *directory/*\n\nTo extract the contents of a file, use \ntar -xvzf *filename.tar.gz*\n\n\npipes\n\n\nA pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line \n|\n. For example, to only show the first ten entries of the \nls\n command it can be piped through the head command \nls | head\n\n\ntree\n\n\nUse the \ntree\n command to show a directory and all subdirectories and files indented as a tree structure.\n\n\n&\n\n\nRun a command in the background with \n&\n, freeing up the shell for future commands. \n\n\nwget\n\n\nDownload a file from the web directly to the computer with \nwget\n. So \nwget https://www.raspberrypi.org/documentation/linux/usage/commands.md\n will download this file to your computer as \ncommands.md\n\n\ncurl\n\n\nUse \ncurl\n to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.\n\n\nman\n\n\nShow the manual page for a file with \nman\n. To find out more, run \nman man\n to view the manual page of the man command. \n\n\nSearch\n\n\ngrep\n\n\nUse \ngrep\n to search inside files for certain search patterns. For example, \ngrep \"search\" *.txt\n will look in all the files in the current directory ending with .txt for the string search.\n\n\nThe \ngrep\n command supports regular expressions which allows special letter combinations to be included in the search.\n\n\nawk\n\n\nawk\n is a programming language useful for searching and manipulating text files.\n\n\nfind\n\n\nThe \nfind\n command searches a directory and subdirectories for files matching certain patterns. \n\n\nwhereis\n\n\nUse \nwhereis\n to find the location of a command. It looks through standard program locations until it finds the requested command.\n\n\nNetworking\n\n\nping\n\n\nThe \nping\n utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. \nping raspberrypi.org\n) or an IP address (e.g. \nping 8.8.8.8\n). It can specify the number of packets to send with the \n-c\n flag.\n\n\nnmap\n\n\nnmap\n is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just \nnmap\n will display the options available as well as example usage.\n\n\nhostname\n\n\nThe \nhostname\n command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. \nhostname new-host\n).\n\n\nifconfig\n\n\nUse \nifconfig\n to display the network configuration details for the interfaces on the current system when run without any arguments (i.e. \nifconfig\n). By supplying the command with the name of an interface (e.g. \neth0\n or \nlo\n) you can then alter the configuration: check the manual page for more details.",
+            "location": "/Advanced-Things/commands/index.html",
+            "text": "Info\n\n\nNote: This came from official \nRaspberry Pi documentation\n.\n\n\n\n\nHere are some fundamental and common Linux commands with example usage:\n\n\nFilesystem\n\n\nls\n\n\nThe \nls\n command lists the content of the current directory (or one that is specified). It can be used with the \n-l\n flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The \n-a\n flag allows you to view files beginning with \n.\n (i.e. dotfiles).\n\n\ncd\n\n\nUsing \ncd\n changes the current directory to the one specified. You can use relative (i.e. \ncd directoryA\n) or absolute (i.e. \ncd /home/pi/directoryA\n) paths.\n\n\npwd\n\n\nThe \npwd\n command displays the name of the present working directory: on a Raspberry Pi, entering \npwd\n will output something like \n/home/pi\n.\n\n\nmkdir\n\n\nYou can use \nmkdir\n to create a new directory, e.g. \nmkdir newDir\n would create the directory \nnewDir\n in the present working directory.\n\n\nrmdir\n\n\nTo remove empty directories, use \nrmdir\n. So, for example, \nrmdir oldDir\n will remove the directory \noldDir\n only if it is empty.\n\n\nrm\n\n\nThe command \nrm\nremoves the specified file (or recursively from a directory when used with \n-r\n). Be careful with this command: files deleted in this way are mostly gone for good!\n\n\ncp\n\n\nUsing \ncp\n makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example, \ncp ~/fileA /home/otherUser/\n would copy the file \nfileA\n from your home directory to that of the user \notherUser\n (assuming you have permission to copy it there). This command can either take \nFILE FILE\n (\ncp fileA fileB\n), \nFILE DIR\n (\ncp fileA /directoryB/\n) or \n-r DIR DIR\n (which recursively copies the contents of directories) as arguments.\n\n\nmv\n\n\nThe \nmv\n command moves a file and places it at the specified location (so where \ncp\n performs a 'copy-paste', \nmv\n performs a 'cut-paste'). The usage is similar to \ncp\n. So \nmv ~/fileA /home/otherUser/\n would move the file \nfileA\n from your home directory to that of the user otherUser. This command can either take \nFILE FILE\n (\nmv fileA fileB\n), \nFILE DIR\n (\nmv fileA /directoryB/\n) or \nDIR DIR\n (\nmv /directoryB /directoryC\n) as arguments. This command is also useful as a method to rename files and directories after they've been created.\n\n\ntouch\n\n\nThe command \ntouch\n sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.\n\n\ncat\n\n\nYou can use \ncat\n to list the contents of file(s), e.g. \ncat thisFile\n will display the contents of \nthisFile\n. Can be used to list the contents of multiple files, i.e. \ncat *.txt\n will list the contents of all \n.txt\n files in the current directory.\n\n\nhead\n\n\nThe \nhead\n command displays the beginning of a file. Can be used with \n-n\n to specify the number of lines to show (by default ten), or with \n-c\n to specify the number of bytes.\n\n\ntail\n\n\nThe opposite of \nhead\n, \ntail\n displays the end of a file. The starting point in the file can be specified either through \n-b\n for 512 byte blocks, \n-c\n for bytes, or \n-n\n for number of lines.\n\n\nchmod\n\n\nYou would normally use \nchmod\n to change the permissions for a file. The \nchmod\n command can use symbols \nu\n (user that owns the file), \ng\n (the files group) ,  and \no\n (other users) and the permissions \nr\n (read), \nw\n (write), and \nx\n (execute). Using \nchmod u+x *filename*\n will add execute permission for the owner of the file.\n\n\nchown\n\n\nThe \nchown\n command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. \nsudo chown pi:root *filename*\n will change the owner to pi and the group to root. \n\n\nssh\n\n\nssh\n denotes the secure shell. Connect to another computer using an encrypted network connection.\n\n\nscp\n\n\nThe \nscp\n command copies a file from one computer to another using \nssh\n.\n\n\nsudo\n\n\nThe \nsudo\n command enables you to run a command as a superuser, or another user. Use \nsudo -s\n for a superuser shell.\n\n\ndd\n\n\nThe \ndd\n command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example, \ndd if=/dev/sdd of=backup.img\n will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.\n\n\ndf\n\n\nUse \ndf\n to display the disk space available and used on the mounted filesystems. Use \ndf -h\n to see the output in a human-readable format using M for MBs rather than showing number of bytes. \n\n\nunzip\n\n\nThe \nunzip\n command extracts the files from a compressed zip file. \n\n\ntar\n\n\nUse \ntar\n to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. \n\n\nTo create a compressed file, use \ntar -cvzf *filename.tar.gz* *directory/*\n\nTo extract the contents of a file, use \ntar -xvzf *filename.tar.gz*\n\n\npipes\n\n\nA pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line \n|\n. For example, to only show the first ten entries of the \nls\n command it can be piped through the head command \nls | head\n\n\ntree\n\n\nUse the \ntree\n command to show a directory and all subdirectories and files indented as a tree structure.\n\n\n&\n\n\nRun a command in the background with \n&\n, freeing up the shell for future commands. \n\n\nwget\n\n\nDownload a file from the web directly to the computer with \nwget\n. So \nwget https://www.raspberrypi.org/documentation/linux/usage/commands.md\n will download this file to your computer as \ncommands.md\n\n\ncurl\n\n\nUse \ncurl\n to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.\n\n\nman\n\n\nShow the manual page for a file with \nman\n. To find out more, run \nman man\n to view the manual page of the man command. \n\n\nSearch\n\n\ngrep\n\n\nUse \ngrep\n to search inside files for certain search patterns. For example, \ngrep \"search\" *.txt\n will look in all the files in the current directory ending with .txt for the string search.\n\n\nThe \ngrep\n command supports regular expressions which allows special letter combinations to be included in the search.\n\n\nawk\n\n\nawk\n is a programming language useful for searching and manipulating text files.\n\n\nfind\n\n\nThe \nfind\n command searches a directory and subdirectories for files matching certain patterns. \n\n\nwhereis\n\n\nUse \nwhereis\n to find the location of a command. It looks through standard program locations until it finds the requested command.\n\n\nNetworking\n\n\nping\n\n\nThe \nping\n utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. \nping raspberrypi.org\n) or an IP address (e.g. \nping 8.8.8.8\n). It can specify the number of packets to send with the \n-c\n flag.\n\n\nnmap\n\n\nnmap\n is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just \nnmap\n will display the options available as well as example usage.\n\n\nhostname\n\n\nThe \nhostname\n command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. \nhostname new-host\n).\n\n\nifconfig\n\n\nUse \nifconfig\n to display the network configuration details for the interfaces on the current system when run without any arguments (i.e. \nifconfig\n). By supplying the command with the name of an interface (e.g. \neth0\n or \nlo\n) you can then alter the configuration: check the manual page for more details.",
             "title": "Linux Commands"
         },
         {
-            "location": "/Advanced Things/commands/index.html#filesystem",
+            "location": "/Advanced-Things/commands/index.html#filesystem",
             "text": "",
             "title": "Filesystem"
         },
         {
-            "location": "/Advanced Things/commands/index.html#ls",
+            "location": "/Advanced-Things/commands/index.html#ls",
             "text": "The  ls  command lists the content of the current directory (or one that is specified). It can be used with the  -l  flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The  -a  flag allows you to view files beginning with  .  (i.e. dotfiles).",
             "title": "ls"
         },
         {
-            "location": "/Advanced Things/commands/index.html#cd",
+            "location": "/Advanced-Things/commands/index.html#cd",
             "text": "Using  cd  changes the current directory to the one specified. You can use relative (i.e.  cd directoryA ) or absolute (i.e.  cd /home/pi/directoryA ) paths.",
             "title": "cd"
         },
         {
-            "location": "/Advanced Things/commands/index.html#pwd",
+            "location": "/Advanced-Things/commands/index.html#pwd",
             "text": "The  pwd  command displays the name of the present working directory: on a Raspberry Pi, entering  pwd  will output something like  /home/pi .",
             "title": "pwd"
         },
         {
-            "location": "/Advanced Things/commands/index.html#mkdir",
+            "location": "/Advanced-Things/commands/index.html#mkdir",
             "text": "You can use  mkdir  to create a new directory, e.g.  mkdir newDir  would create the directory  newDir  in the present working directory.",
             "title": "mkdir"
         },
         {
-            "location": "/Advanced Things/commands/index.html#rmdir",
+            "location": "/Advanced-Things/commands/index.html#rmdir",
             "text": "To remove empty directories, use  rmdir . So, for example,  rmdir oldDir  will remove the directory  oldDir  only if it is empty.",
             "title": "rmdir"
         },
         {
-            "location": "/Advanced Things/commands/index.html#rm",
+            "location": "/Advanced-Things/commands/index.html#rm",
             "text": "The command  rm removes the specified file (or recursively from a directory when used with  -r ). Be careful with this command: files deleted in this way are mostly gone for good!",
             "title": "rm"
         },
         {
-            "location": "/Advanced Things/commands/index.html#cp",
+            "location": "/Advanced-Things/commands/index.html#cp",
             "text": "Using  cp  makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example,  cp ~/fileA /home/otherUser/  would copy the file  fileA  from your home directory to that of the user  otherUser  (assuming you have permission to copy it there). This command can either take  FILE FILE  ( cp fileA fileB ),  FILE DIR  ( cp fileA /directoryB/ ) or  -r DIR DIR  (which recursively copies the contents of directories) as arguments.",
             "title": "cp"
         },
         {
-            "location": "/Advanced Things/commands/index.html#mv",
+            "location": "/Advanced-Things/commands/index.html#mv",
             "text": "The  mv  command moves a file and places it at the specified location (so where  cp  performs a 'copy-paste',  mv  performs a 'cut-paste'). The usage is similar to  cp . So  mv ~/fileA /home/otherUser/  would move the file  fileA  from your home directory to that of the user otherUser. This command can either take  FILE FILE  ( mv fileA fileB ),  FILE DIR  ( mv fileA /directoryB/ ) or  DIR DIR  ( mv /directoryB /directoryC ) as arguments. This command is also useful as a method to rename files and directories after they've been created.",
             "title": "mv"
         },
         {
-            "location": "/Advanced Things/commands/index.html#touch",
+            "location": "/Advanced-Things/commands/index.html#touch",
             "text": "The command  touch  sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.",
             "title": "touch"
         },
         {
-            "location": "/Advanced Things/commands/index.html#cat",
+            "location": "/Advanced-Things/commands/index.html#cat",
             "text": "You can use  cat  to list the contents of file(s), e.g.  cat thisFile  will display the contents of  thisFile . Can be used to list the contents of multiple files, i.e.  cat *.txt  will list the contents of all  .txt  files in the current directory.",
             "title": "cat"
         },
         {
-            "location": "/Advanced Things/commands/index.html#head",
+            "location": "/Advanced-Things/commands/index.html#head",
             "text": "The  head  command displays the beginning of a file. Can be used with  -n  to specify the number of lines to show (by default ten), or with  -c  to specify the number of bytes.",
             "title": "head"
         },
         {
-            "location": "/Advanced Things/commands/index.html#tail",
+            "location": "/Advanced-Things/commands/index.html#tail",
             "text": "The opposite of  head ,  tail  displays the end of a file. The starting point in the file can be specified either through  -b  for 512 byte blocks,  -c  for bytes, or  -n  for number of lines.",
             "title": "tail"
         },
         {
-            "location": "/Advanced Things/commands/index.html#chmod",
+            "location": "/Advanced-Things/commands/index.html#chmod",
             "text": "You would normally use  chmod  to change the permissions for a file. The  chmod  command can use symbols  u  (user that owns the file),  g  (the files group) ,  and  o  (other users) and the permissions  r  (read),  w  (write), and  x  (execute). Using  chmod u+x *filename*  will add execute permission for the owner of the file.",
             "title": "chmod"
         },
         {
-            "location": "/Advanced Things/commands/index.html#chown",
+            "location": "/Advanced-Things/commands/index.html#chown",
             "text": "The  chown  command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g.  sudo chown pi:root *filename*  will change the owner to pi and the group to root.",
             "title": "chown"
         },
         {
-            "location": "/Advanced Things/commands/index.html#ssh",
+            "location": "/Advanced-Things/commands/index.html#ssh",
             "text": "ssh  denotes the secure shell. Connect to another computer using an encrypted network connection.",
             "title": "ssh"
         },
         {
-            "location": "/Advanced Things/commands/index.html#scp",
+            "location": "/Advanced-Things/commands/index.html#scp",
             "text": "The  scp  command copies a file from one computer to another using  ssh .",
             "title": "scp"
         },
         {
-            "location": "/Advanced Things/commands/index.html#sudo",
+            "location": "/Advanced-Things/commands/index.html#sudo",
             "text": "The  sudo  command enables you to run a command as a superuser, or another user. Use  sudo -s  for a superuser shell.",
             "title": "sudo"
         },
         {
-            "location": "/Advanced Things/commands/index.html#dd",
+            "location": "/Advanced-Things/commands/index.html#dd",
             "text": "The  dd  command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example,  dd if=/dev/sdd of=backup.img  will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.",
             "title": "dd"
         },
         {
-            "location": "/Advanced Things/commands/index.html#df",
+            "location": "/Advanced-Things/commands/index.html#df",
             "text": "Use  df  to display the disk space available and used on the mounted filesystems. Use  df -h  to see the output in a human-readable format using M for MBs rather than showing number of bytes.",
             "title": "df"
         },
         {
-            "location": "/Advanced Things/commands/index.html#unzip",
+            "location": "/Advanced-Things/commands/index.html#unzip",
             "text": "The  unzip  command extracts the files from a compressed zip file.",
             "title": "unzip"
         },
         {
-            "location": "/Advanced Things/commands/index.html#tar",
+            "location": "/Advanced-Things/commands/index.html#tar",
             "text": "Use  tar  to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file.   To create a compressed file, use  tar -cvzf *filename.tar.gz* *directory/* \nTo extract the contents of a file, use  tar -xvzf *filename.tar.gz*",
             "title": "tar"
         },
         {
-            "location": "/Advanced Things/commands/index.html#pipes",
+            "location": "/Advanced-Things/commands/index.html#pipes",
             "text": "A pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line  | . For example, to only show the first ten entries of the  ls  command it can be piped through the head command  ls | head",
             "title": "pipes"
         },
         {
-            "location": "/Advanced Things/commands/index.html#tree",
+            "location": "/Advanced-Things/commands/index.html#tree",
             "text": "Use the  tree  command to show a directory and all subdirectories and files indented as a tree structure.",
             "title": "tree"
         },
         {
-            "location": "/Advanced Things/commands/index.html#_1",
+            "location": "/Advanced-Things/commands/index.html#_1",
             "text": "Run a command in the background with  & , freeing up the shell for future commands.",
             "title": "&amp;"
         },
         {
-            "location": "/Advanced Things/commands/index.html#wget",
+            "location": "/Advanced-Things/commands/index.html#wget",
             "text": "Download a file from the web directly to the computer with  wget . So  wget https://www.raspberrypi.org/documentation/linux/usage/commands.md  will download this file to your computer as  commands.md",
             "title": "wget"
         },
         {
-            "location": "/Advanced Things/commands/index.html#curl",
+            "location": "/Advanced-Things/commands/index.html#curl",
             "text": "Use  curl  to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.",
             "title": "curl"
         },
         {
-            "location": "/Advanced Things/commands/index.html#man",
+            "location": "/Advanced-Things/commands/index.html#man",
             "text": "Show the manual page for a file with  man . To find out more, run  man man  to view the manual page of the man command.",
             "title": "man"
         },
         {
-            "location": "/Advanced Things/commands/index.html#search",
+            "location": "/Advanced-Things/commands/index.html#search",
             "text": "",
             "title": "Search"
         },
         {
-            "location": "/Advanced Things/commands/index.html#grep",
+            "location": "/Advanced-Things/commands/index.html#grep",
             "text": "Use  grep  to search inside files for certain search patterns. For example,  grep \"search\" *.txt  will look in all the files in the current directory ending with .txt for the string search.  The  grep  command supports regular expressions which allows special letter combinations to be included in the search.",
             "title": "grep"
         },
         {
-            "location": "/Advanced Things/commands/index.html#awk",
+            "location": "/Advanced-Things/commands/index.html#awk",
             "text": "awk  is a programming language useful for searching and manipulating text files.",
             "title": "awk"
         },
         {
-            "location": "/Advanced Things/commands/index.html#find",
+            "location": "/Advanced-Things/commands/index.html#find",
             "text": "The  find  command searches a directory and subdirectories for files matching certain patterns.",
             "title": "find"
         },
         {
-            "location": "/Advanced Things/commands/index.html#whereis",
+            "location": "/Advanced-Things/commands/index.html#whereis",
             "text": "Use  whereis  to find the location of a command. It looks through standard program locations until it finds the requested command.",
             "title": "whereis"
         },
         {
-            "location": "/Advanced Things/commands/index.html#networking",
+            "location": "/Advanced-Things/commands/index.html#networking",
             "text": "",
             "title": "Networking"
         },
         {
-            "location": "/Advanced Things/commands/index.html#ping",
+            "location": "/Advanced-Things/commands/index.html#ping",
             "text": "The  ping  utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g.  ping raspberrypi.org ) or an IP address (e.g.  ping 8.8.8.8 ). It can specify the number of packets to send with the  -c  flag.",
             "title": "ping"
         },
         {
-            "location": "/Advanced Things/commands/index.html#nmap",
+            "location": "/Advanced-Things/commands/index.html#nmap",
             "text": "nmap  is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just  nmap  will display the options available as well as example usage.",
             "title": "nmap"
         },
         {
-            "location": "/Advanced Things/commands/index.html#hostname",
+            "location": "/Advanced-Things/commands/index.html#hostname",
             "text": "The  hostname  command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g.  hostname new-host ).",
             "title": "hostname"
         },
         {
-            "location": "/Advanced Things/commands/index.html#ifconfig",
+            "location": "/Advanced-Things/commands/index.html#ifconfig",
             "text": "Use  ifconfig  to display the network configuration details for the interfaces on the current system when run without any arguments (i.e.  ifconfig ). By supplying the command with the name of an interface (e.g.  eth0  or  lo ) you can then alter the configuration: check the manual page for more details.",
             "title": "ifconfig"
         },
         {
-            "location": "/Advanced Things/python/index.html",
-            "text": "Python\n\n\n\n\nInfo\n\n\nNote: This came from the official Raspberry Pi documentation.\n\n\n\n\nPython is a wonderful and powerful programming language that's easy to use (easy to read \nand\n write) and with Raspberry Pi lets you connect your project to the real world.\n\n\nPython syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.\n\n\nIDLE\n\n\nThe easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:\n\n\n\n\nIDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using \nprint\n.\n\n\nNote two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3.\n\n\nYou can use variables if you need to but you can even use it like a calculator. For example:\n\n\n>>>\n \n1\n \n+\n \n2\n\n\n3\n\n\n>>>\n \nname\n \n=\n \n\"Sarah\"\n\n\n>>>\n \n\"Hello \"\n \n+\n \nname\n\n\n'Hello Sarah'\n\n\n\n\n\n\nIDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with \nAlt + P\n (previous) and \nAlt + N\n (next).\n\n\nBasic Python usage\n\n\nHello world in Python:\n\n\nprint\n(\n\"Hello world\"\n)\n\n\n\n\n\n\nSimple as that!\n\n\nIndentation\n\n\nSome languages use curly braces \n{\n and \n}\n to wrap around lines of code which belong together, and leave it to the writer to indent these lines to appear visually nested. However, Python does not use curly braces but instead requires indentation for nesting. For example a \nfor\n loop in Python:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n10\n):\n\n    \nprint\n(\n\"Hello\"\n)\n\n\n\n\n\n\nThe indentation is necessary here. A second line indented would be a part of the loop, and a second line not indented would be outside of the loop. For example:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n2\n):\n\n    \nprint\n(\n\"A\"\n)\n\n    \nprint\n(\n\"B\"\n)\n\n\n\n\n\n\nwould print:\n\n\nA\nB\nA\nB\n\n\n\n\n\nwhereas the following:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n2\n):\n\n    \nprint\n(\n\"A\"\n)\n\n\nprint\n(\n\"B\"\n)\n\n\n\n\n\n\nwould print:\n\n\nA\nA\nB\n\n\n\n\n\nVariables\n\n\nTo save a value to a variable, assign it like so:\n\n\nname\n \n=\n \n\"Bob\"\n\n\nage\n \n=\n \n15\n\n\n\n\n\n\nNote here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).\n\n\nage\n \n=\n \n15\n\n\nage\n \n+=\n \n1\n  \n# increment age by 1\n\n\nprint\n(\nage\n)\n\n\n\n\n\n\nThis time I used comments beside the increment command.\n\n\nComments\n\n\nComments are ignored in the program but there for you to leave notes, and are denoted by the hash \n#\n symbol. Multi-line comments use triple quotes like so:\n\n\n\"\"\"\n\n\nThis is a very simple Python program that prints \"Hello\".\n\n\nThat's all it does.\n\n\n\"\"\"\n\n\n\nprint\n(\n\"Hello\"\n)\n\n\n\n\n\n\nLists\n\n\nPython also has lists (called arrays in some languages) which are collections of data of any type:\n\n\nnumbers\n \n=\n \n[\n1\n,\n \n2\n,\n \n3\n]\n\n\n\n\n\n\nLists are denoted by the use of square brackets \n[]\n and each item is separated by a comma.\n\n\nIteration\n\n\nSome data types are iterable, which means you can loop over the values they contain. For example a list:\n\n\nnumbers\n \n=\n \n[\n1\n,\n \n2\n,\n \n3\n]\n\n\n\nfor\n \nnumber\n \nin\n \nnumbers\n:\n\n    \nprint\n(\nnumber\n)\n\n\n\n\n\n\nThis takes each item in the list \nnumbers\n and prints out the item:\n\n\n1\n2\n3\n\n\n\n\n\nNote I used the word \nnumber\n to denote each item. This is merely the word I chose for this - it's recommended you choose descriptive words for variables - using plurals for lists, and singular for each item makes sense. It makes it easier to understand when reading.\n\n\nOther data types are iterable, for example the string:\n\n\ndog_name\n \n=\n \n\"BINGO\"\n\n\n\nfor\n \nchar\n \nin\n \ndog_name\n:\n\n    \nprint\n(\nchar\n)\n\n\n\n\n\n\nThis loops over each character and prints them out:\n\n\nB\nI\nN\nG\nO\n\n\n\n\n\nRange\n\n\nThe integer data type is not iterable and trying to iterate over it will produce an error. For example:\n\n\nfor\n \ni\n \nin\n \n3\n:\n\n    \nprint\n(\ni\n)\n\n\n\n\n\n\nwill produce:\n\n\nTypeError\n:\n \n'int'\n \nobject\n \nis\n \nnot\n \niterable\n\n\n\n\n\n\n\n\nHowever you can make an iterable object using the \nrange\n function:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n3\n):\n\n    \nprint\n(\ni\n)\n\n\n\n\n\n\nrange(5)\n contains the numbers \n0\n, \n1\n, \n2\n, \n3\n and \n4\n (five numbers in total). To get the numbers \n1\n to \n5\n use \nrange(1, 6)\n.\n\n\nLength\n\n\nYou can use functions like \nlen\n to find the length of a string or a list:\n\n\nname\n \n=\n \n\"Jamie\"\n\n\nprint\n(\nlen\n(\nname\n))\n  \n# 5\n\n\n\nnames\n \n=\n \n[\n\"Bob\"\n,\n \n\"Jane\"\n,\n \n\"James\"\n,\n \n\"Alice\"\n]\n\n\nprint\n(\nlen\n(\nnames\n))\n  \n# 4\n\n\n\n\n\n\nIf statements\n\n\nYou can use \nif\n statements for control flow:\n\n\nname\n \n=\n \n\"Joe\"\n\n\n\nif\n \nlen\n(\nname\n)\n \n>\n \n3\n:\n\n    \nprint\n(\n\"Nice name,\"\n)\n\n    \nprint\n(\nname\n)\n\n\nelse\n:\n\n    \nprint\n(\n\"That's a short name,\"\n)\n\n    \nprint\n(\nname\n)\n\n\n\n\n\n\nPython files in IDLE\n\n\nTo create a Python file in IDLE, click \nFile > New File\n and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.\n\n\nFor example, in the new window, type:\n\n\nn\n \n=\n \n0\n\n\n\nfor\n \ni\n \nin\n \nrange\n(\n1\n,\n \n101\n):\n\n    \nn\n \n+=\n \ni\n\n\n\nprint\n(\n\"The sum of the numbers 1 to 100 is:\"\n)\n\n\nprint\n(\nn\n)\n\n\n\n\n\n\nThen save this file (\nFile > Save\n or \nCtrl + S\n) and run (\nRun > Run Module\n or hit \nF5\n) and you'll see the output in your original Python window.\n\n\nExecuting Python files from the command line\n\n\nYou can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use \ncd\n and \nls\n for guidance) and run with \npython\n, e.g. \npython hello.py\n.",
+            "location": "/Advanced-Things/python/index.html",
+            "text": "Python\n\n\n\n\nInfo\n\n\nNote: This came from the official \nRaspberry Pi documentation\n.\n\n\n\n\nPython is a wonderful and powerful programming language that's easy to use (easy to read \nand\n write) and with Raspberry Pi lets you connect your project to the real world.\n\n\nPython syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.\n\n\nIDLE\n\n\nThe easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:\n\n\n\n\nIDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using \nprint\n.\n\n\nNote two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3.\n\n\nYou can use variables if you need to but you can even use it like a calculator. For example:\n\n\n>>>\n \n1\n \n+\n \n2\n\n\n3\n\n\n>>>\n \nname\n \n=\n \n\"Sarah\"\n\n\n>>>\n \n\"Hello \"\n \n+\n \nname\n\n\n'Hello Sarah'\n\n\n\n\n\n\nIDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with \nAlt + P\n (previous) and \nAlt + N\n (next).\n\n\nBasic Python usage\n\n\nHello world in Python:\n\n\nprint\n(\n\"Hello world\"\n)\n\n\n\n\n\n\nSimple as that!\n\n\nIndentation\n\n\nSome languages use curly braces \n{\n and \n}\n to wrap around lines of code which belong together, and leave it to the writer to indent these lines to appear visually nested. However, Python does not use curly braces but instead requires indentation for nesting. For example a \nfor\n loop in Python:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n10\n):\n\n    \nprint\n(\n\"Hello\"\n)\n\n\n\n\n\n\nThe indentation is necessary here. A second line indented would be a part of the loop, and a second line not indented would be outside of the loop. For example:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n2\n):\n\n    \nprint\n(\n\"A\"\n)\n\n    \nprint\n(\n\"B\"\n)\n\n\n\n\n\n\nwould print:\n\n\nA\nB\nA\nB\n\n\n\n\n\nwhereas the following:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n2\n):\n\n    \nprint\n(\n\"A\"\n)\n\n\nprint\n(\n\"B\"\n)\n\n\n\n\n\n\nwould print:\n\n\nA\nA\nB\n\n\n\n\n\nVariables\n\n\nTo save a value to a variable, assign it like so:\n\n\nname\n \n=\n \n\"Bob\"\n\n\nage\n \n=\n \n15\n\n\n\n\n\n\nNote here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).\n\n\nage\n \n=\n \n15\n\n\nage\n \n+=\n \n1\n  \n# increment age by 1\n\n\nprint\n(\nage\n)\n\n\n\n\n\n\nThis time I used comments beside the increment command.\n\n\nComments\n\n\nComments are ignored in the program but there for you to leave notes, and are denoted by the hash \n#\n symbol. Multi-line comments use triple quotes like so:\n\n\n\"\"\"\n\n\nThis is a very simple Python program that prints \"Hello\".\n\n\nThat's all it does.\n\n\n\"\"\"\n\n\n\nprint\n(\n\"Hello\"\n)\n\n\n\n\n\n\nLists\n\n\nPython also has lists (called arrays in some languages) which are collections of data of any type:\n\n\nnumbers\n \n=\n \n[\n1\n,\n \n2\n,\n \n3\n]\n\n\n\n\n\n\nLists are denoted by the use of square brackets \n[]\n and each item is separated by a comma.\n\n\nIteration\n\n\nSome data types are iterable, which means you can loop over the values they contain. For example a list:\n\n\nnumbers\n \n=\n \n[\n1\n,\n \n2\n,\n \n3\n]\n\n\n\nfor\n \nnumber\n \nin\n \nnumbers\n:\n\n    \nprint\n(\nnumber\n)\n\n\n\n\n\n\nThis takes each item in the list \nnumbers\n and prints out the item:\n\n\n1\n2\n3\n\n\n\n\n\nNote I used the word \nnumber\n to denote each item. This is merely the word I chose for this - it's recommended you choose descriptive words for variables - using plurals for lists, and singular for each item makes sense. It makes it easier to understand when reading.\n\n\nOther data types are iterable, for example the string:\n\n\ndog_name\n \n=\n \n\"BINGO\"\n\n\n\nfor\n \nchar\n \nin\n \ndog_name\n:\n\n    \nprint\n(\nchar\n)\n\n\n\n\n\n\nThis loops over each character and prints them out:\n\n\nB\nI\nN\nG\nO\n\n\n\n\n\nRange\n\n\nThe integer data type is not iterable and trying to iterate over it will produce an error. For example:\n\n\nfor\n \ni\n \nin\n \n3\n:\n\n    \nprint\n(\ni\n)\n\n\n\n\n\n\nwill produce:\n\n\nTypeError\n:\n \n'int'\n \nobject\n \nis\n \nnot\n \niterable\n\n\n\n\n\n\n\n\nHowever you can make an iterable object using the \nrange\n function:\n\n\nfor\n \ni\n \nin\n \nrange\n(\n3\n):\n\n    \nprint\n(\ni\n)\n\n\n\n\n\n\nrange(5)\n contains the numbers \n0\n, \n1\n, \n2\n, \n3\n and \n4\n (five numbers in total). To get the numbers \n1\n to \n5\n use \nrange(1, 6)\n.\n\n\nLength\n\n\nYou can use functions like \nlen\n to find the length of a string or a list:\n\n\nname\n \n=\n \n\"Jamie\"\n\n\nprint\n(\nlen\n(\nname\n))\n  \n# 5\n\n\n\nnames\n \n=\n \n[\n\"Bob\"\n,\n \n\"Jane\"\n,\n \n\"James\"\n,\n \n\"Alice\"\n]\n\n\nprint\n(\nlen\n(\nnames\n))\n  \n# 4\n\n\n\n\n\n\nIf statements\n\n\nYou can use \nif\n statements for control flow:\n\n\nname\n \n=\n \n\"Joe\"\n\n\n\nif\n \nlen\n(\nname\n)\n \n>\n \n3\n:\n\n    \nprint\n(\n\"Nice name,\"\n)\n\n    \nprint\n(\nname\n)\n\n\nelse\n:\n\n    \nprint\n(\n\"That's a short name,\"\n)\n\n    \nprint\n(\nname\n)\n\n\n\n\n\n\nPython files in IDLE\n\n\nTo create a Python file in IDLE, click \nFile > New File\n and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.\n\n\nFor example, in the new window, type:\n\n\nn\n \n=\n \n0\n\n\n\nfor\n \ni\n \nin\n \nrange\n(\n1\n,\n \n101\n):\n\n    \nn\n \n+=\n \ni\n\n\n\nprint\n(\n\"The sum of the numbers 1 to 100 is:\"\n)\n\n\nprint\n(\nn\n)\n\n\n\n\n\n\nThen save this file (\nFile > Save\n or \nCtrl + S\n) and run (\nRun > Run Module\n or hit \nF5\n) and you'll see the output in your original Python window.\n\n\nExecuting Python files from the command line\n\n\nYou can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use \ncd\n and \nls\n for guidance) and run with \npython\n, e.g. \npython hello.py\n.",
             "title": "Python"
         },
         {
-            "location": "/Advanced Things/python/index.html#python",
-            "text": "Info  Note: This came from the official Raspberry Pi documentation.   Python is a wonderful and powerful programming language that's easy to use (easy to read  and  write) and with Raspberry Pi lets you connect your project to the real world.  Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.",
+            "location": "/Advanced-Things/python/index.html#python",
+            "text": "Info  Note: This came from the official  Raspberry Pi documentation .   Python is a wonderful and powerful programming language that's easy to use (easy to read  and  write) and with Raspberry Pi lets you connect your project to the real world.  Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.",
             "title": "Python"
         },
         {
-            "location": "/Advanced Things/python/index.html#idle",
+            "location": "/Advanced-Things/python/index.html#idle",
             "text": "The easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:   IDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using  print .  Note two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3.  You can use variables if you need to but you can even use it like a calculator. For example:  >>>   1   +   2  3  >>>   name   =   \"Sarah\"  >>>   \"Hello \"   +   name  'Hello Sarah'   IDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with  Alt + P  (previous) and  Alt + N  (next).",
             "title": "IDLE"
         },
         {
-            "location": "/Advanced Things/python/index.html#basic-python-usage",
+            "location": "/Advanced-Things/python/index.html#basic-python-usage",
             "text": "Hello world in Python:  print ( \"Hello world\" )   Simple as that!",
             "title": "Basic Python usage"
         },
         {
-            "location": "/Advanced Things/python/index.html#indentation",
+            "location": "/Advanced-Things/python/index.html#indentation",
             "text": "Some languages use curly braces  {  and  }  to wrap around lines of code which belong together, and leave it to the writer to indent these lines to appear visually nested. However, Python does not use curly braces but instead requires indentation for nesting. For example a  for  loop in Python:  for   i   in   range ( 10 ): \n     print ( \"Hello\" )   The indentation is necessary here. A second line indented would be a part of the loop, and a second line not indented would be outside of the loop. For example:  for   i   in   range ( 2 ): \n     print ( \"A\" ) \n     print ( \"B\" )   would print:  A\nB\nA\nB  whereas the following:  for   i   in   range ( 2 ): \n     print ( \"A\" )  print ( \"B\" )   would print:  A\nA\nB",
             "title": "Indentation"
         },
         {
-            "location": "/Advanced Things/python/index.html#variables",
+            "location": "/Advanced-Things/python/index.html#variables",
             "text": "To save a value to a variable, assign it like so:  name   =   \"Bob\"  age   =   15   Note here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).  age   =   15  age   +=   1    # increment age by 1  print ( age )   This time I used comments beside the increment command.",
             "title": "Variables"
         },
         {
-            "location": "/Advanced Things/python/index.html#comments",
+            "location": "/Advanced-Things/python/index.html#comments",
             "text": "Comments are ignored in the program but there for you to leave notes, and are denoted by the hash  #  symbol. Multi-line comments use triple quotes like so:  \"\"\"  This is a very simple Python program that prints \"Hello\".  That's all it does.  \"\"\"  print ( \"Hello\" )",
             "title": "Comments"
         },
         {
-            "location": "/Advanced Things/python/index.html#lists",
+            "location": "/Advanced-Things/python/index.html#lists",
             "text": "Python also has lists (called arrays in some languages) which are collections of data of any type:  numbers   =   [ 1 ,   2 ,   3 ]   Lists are denoted by the use of square brackets  []  and each item is separated by a comma.",
             "title": "Lists"
         },
         {
-            "location": "/Advanced Things/python/index.html#iteration",
+            "location": "/Advanced-Things/python/index.html#iteration",
             "text": "Some data types are iterable, which means you can loop over the values they contain. For example a list:  numbers   =   [ 1 ,   2 ,   3 ]  for   number   in   numbers : \n     print ( number )   This takes each item in the list  numbers  and prints out the item:  1\n2\n3  Note I used the word  number  to denote each item. This is merely the word I chose for this - it's recommended you choose descriptive words for variables - using plurals for lists, and singular for each item makes sense. It makes it easier to understand when reading.  Other data types are iterable, for example the string:  dog_name   =   \"BINGO\"  for   char   in   dog_name : \n     print ( char )   This loops over each character and prints them out:  B\nI\nN\nG\nO",
             "title": "Iteration"
         },
         {
-            "location": "/Advanced Things/python/index.html#range",
+            "location": "/Advanced-Things/python/index.html#range",
             "text": "The integer data type is not iterable and trying to iterate over it will produce an error. For example:  for   i   in   3 : \n     print ( i )   will produce:  TypeError :   'int'   object   is   not   iterable    However you can make an iterable object using the  range  function:  for   i   in   range ( 3 ): \n     print ( i )   range(5)  contains the numbers  0 ,  1 ,  2 ,  3  and  4  (five numbers in total). To get the numbers  1  to  5  use  range(1, 6) .",
             "title": "Range"
         },
         {
-            "location": "/Advanced Things/python/index.html#length",
+            "location": "/Advanced-Things/python/index.html#length",
             "text": "You can use functions like  len  to find the length of a string or a list:  name   =   \"Jamie\"  print ( len ( name ))    # 5  names   =   [ \"Bob\" ,   \"Jane\" ,   \"James\" ,   \"Alice\" ]  print ( len ( names ))    # 4",
             "title": "Length"
         },
         {
-            "location": "/Advanced Things/python/index.html#if-statements",
+            "location": "/Advanced-Things/python/index.html#if-statements",
             "text": "You can use  if  statements for control flow:  name   =   \"Joe\"  if   len ( name )   >   3 : \n     print ( \"Nice name,\" ) \n     print ( name )  else : \n     print ( \"That's a short name,\" ) \n     print ( name )",
             "title": "If statements"
         },
         {
-            "location": "/Advanced Things/python/index.html#python-files-in-idle",
+            "location": "/Advanced-Things/python/index.html#python-files-in-idle",
             "text": "To create a Python file in IDLE, click  File > New File  and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.  For example, in the new window, type:  n   =   0  for   i   in   range ( 1 ,   101 ): \n     n   +=   i  print ( \"The sum of the numbers 1 to 100 is:\" )  print ( n )   Then save this file ( File > Save  or  Ctrl + S ) and run ( Run > Run Module  or hit  F5 ) and you'll see the output in your original Python window.",
             "title": "Python files in IDLE"
         },
         {
-            "location": "/Advanced Things/python/index.html#executing-python-files-from-the-command-line",
+            "location": "/Advanced-Things/python/index.html#executing-python-files-from-the-command-line",
             "text": "You can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use  cd  and  ls  for guidance) and run with  python , e.g.  python hello.py .",
             "title": "Executing Python files from the command line"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html",
+            "text": "Programming Glossary\n\n\n\n\nInfo\n\n\nNote: This came from \nProgramming for Beginners\n.\n\n\n\n\nalgorithm\n\n\n\n\n(noun) a step-by-step procedure to achieve a specific goal. Can be implemented with code.\n\n\n\n\nExample: I used the quicksort algorithm to sort the array alphabetically.\n\n\nargument\n\n\n\n\n(noun) a value that is passed into a function when it is called. Arguments are said to be \u201cpassed\u201d into a function, and functions are said to \u201ctake\u201d arguments. Also known as a \u201cparameter.\u201d\n\n\n\n\nExample: That function takes two arguments.\n\n\narray\n\n\n\n\n(noun) a type of value that contains a sequence of other values.\n\n\n\n\nExample: I put all our names into an array of strings.\n\n\nassignment\n\n\n\n\n(noun) the act of putting a value into a variable.\n\n\n\n\nExample: I assigned the number \n22\n to the \nage\n variable.\n\n\nbrackets\n\n\n\n\n(noun) characters often used to surround text. The different types of brackets are:\nParenthesis/parens/round brackets: \n( )\n\nCurly brackets/braces: \n{ }\n\nAngle brackets: \n< >\n\nSquare brackets: \n[ ]\n\nThe bracket at the beginning is called the \u201copening\u201d or the \u201cleft\u201d bracket. The bracket at the end is called the \u201cclosing\u201d or \u201cright\u201d bracket.\n\n\n\n\nExample: Your code won\u2019t compile because you forgot a closing bracket.\n\n\nbug\n\n\n\n\n(noun) a mistake in a program.\n\n\n\n\nExample: There must be a bug because the output is wrong.\n\n\ncall\n\n\n\n\n(verb) to run the code in a function. Also referred to as \u201crunning,\u201d \u201cexecuting,\u201d or \u201cinvoking\u201d a function. For the noun, see function call.\n\n\n\n\nExample: I called the \nrand\n function and it returned \n42\n.\n\n\nclass\n\n\n\n\n(noun) a type that can be defined by the programmer. Classes are defined in order to create objects of that class. See object\n\n\n\n\nExample: I made a \nPerson\n class that holds a person\u2019s name and age.\n\n\ncomment\n\n\n\n\n(noun) arbitrary text written around code, but which is never run, and is generally ignored by the computer. Used to leave notes and documentation for people who read the code later. Also used to stop code from running (see comment out).\n\n\n\n\nExample: I wrote comments in my code so I could understand it later.\n\n\ncomment out\n\n\n\n\n(verb) to turn code into a comment so that it does not get run.\n\n\n\n\nExample: I commented out this line of code, and it doesn\u2019t crash any more.\n\n\ncompiler\n\n\n\n\n(noun) a program that converts code into an executable, and checks that the syntax is correct. Sometimes compilers convert code into other code.\n\n\n\n\nExample: The compiler is giving me an error, so I must have incorrect syntax somewhere.\n\n\nconstant\n\n\n\n\n(noun) a variable that never changes its value.\n\n\n\n\nExample: The \nPI\n constant has the value \n3.14\n.\n\n\ncrash\n\n\n\n\n(verb) to cause a running program to stop due to an error.\n\n\n\n\nExample: I tried to divide a number by zero, which made the program crash.\n\n\ndata structure\n\n\n\n\n(noun) a value that contains other values.\n\n\n\n\nExample: Arrays are one kind of data structure.\n\n\ndebug\n\n\n\n\n(verb) to investigate and fix bugs.\n\n\n\n\nExample: I spent all day debugging a complicated error.\n\n\ndeclaration\n\n\n\n\n(noun) code that declares that something exists \u2013 usually a variable, function or a class. A declaration might not fully define the thing it is declaring. E.g. a constant may be declared to exist, without actually defining what it\u2019s value is. Not all programming languages allow for declarations.\n\n\n\n\nExample: My code won\u2019t compile because I wrote a function declaration, but I forgot to write the actual function.\n\n\ndefinition\n\n\n\n\n(noun) code that fully implements something \u2013 usually a variable, function or a class. The code that implements a class is called the \u201cclass definition.\u201d The code that implements a function is called the \u201cfunction definition.\u201d\n\n\n\n\nExample: The function wasn\u2019t doing what I expected, so I had a look at its definition.\n\n\ndouble\n\n\n\n\n(noun) a float that can represent a wider range of numbers than a normal float. Short for \u201cdouble-precision floating-point number.\u201d See float.\n\n\n\n\nExample: The number was so tiny I had to use a \ndouble\n instead of a \nfloat\n.\n\n\nexecute\n\n\n\n\n(verb) Synonym for run.\n\n\n\n\nExample: I can\u2019t execute my program because it won\u2019t compile.\n\n\nexecutable\n\n\n\n\n(noun) a program, usually a single file, ready to be run.\n\n\n\n\nExample: Give me the executable so I can try out your program.\n\n\nfloat\n\n\n\n\n(noun) a type of value that represents numbers with fractional parts. Short for \u201cfloating-point number\u201d.\n\n\n\n\nExample: The value \n3.14\n is a float.\n\n\nfunction\n\n\n\n\n(noun) a piece of code that is not run until it is called. Functions take zero or more arguments. When a function finishes running, it returns a return value back to the code that called it.\n\n\n\n\nExample: I wrote a function that takes an array of numbers as an argument, and returns the average.\n\n\nfunction call\n\n\n\n\n(noun) code for calling a function. Function calls specify which function to call, and all of the arguments that the function requires. The result of a function call is a return value. Not all functions have a return value.\n\n\n\n\nExample: The function call \nadd(1,2,3)\n returns the value \n6\n.\n\n\nimplement\n\n\n\n\n(verb) to write all the code to complete something \u2013 usually a function or a class.\n\n\n\n\nExample: I finished implementing those functions.\n\n\ninstance\n\n\n\n\n(noun) Synonym for object.\n\n\n\n\nExample: I created an instance of the \nPerson\n class.\n\n\ninstance variable\n\n\n\n\n(noun) a variable that is attached to an object. Also known as a \u201cmember variable\u201d or just a \u201cmember.\u201d\n\n\n\n\nExample: On the tom object, I assigned the value \n\"Tom Dalling\"\n to the \nname\n instance variable.\n\n\ninstantiate\n\n\n\n\n(verb) to create an object from a class.\n\n\n\n\nExample: I instantiated an object of the \nPerson\n class.\n\n\ninteger\n\n\n\n\n(noun) a type of value that represents whole numbers. For fractional numbers, see float.\n\n\n\n\nExample: \n42\n is an integer value.\n\n\ninterpreter\n\n\n\n\n(noun) a program that runs code. For languages that are not compiled, the source code is run directly by an interpreter. Compiled programming languages do not usually have an interpreter.\n\n\n\n\nExample: I installed the Ruby interpreter so I can run my Ruby code.\n\n\ninvoke\n\n\n\n\n(verb) Synonym for call.\n\n\n\n\nExample: I invoked the function with the wrong arguments, and it crashed.\n\n\niterate\n\n\n\n\n(verb) Synonym for loop.\n\n\n\n\nExample: I iterated over all the values in the array.\n\n\nloop\n\n\n\n\n(noun) a piece of code that runs itself repeatedly. Commonly used to run a piece code for every value in an array. Also known as \u201citeration\u201d.\n\n\n\n\nExample: The code loops until the user types in \n\"quit\"\n.\n\n\nmember function\n\n\n\n\n(noun) Synonym for method.\n\n\n\n\nExample: This class has three member functions.\n\n\nmember variable\n\n\n\n\n(noun) Synonym for instance variable.\n\n\n\n\nExample: This class has two member variables.\n\n\nmethod\n\n\n\n\n(noun) a function that is attached to an object. Methods belong to, and are defined in, a class. Also known as a \u201cmember function.\u201d\n\n\n\n\nExample: The length method returns the number of characters in a string object.\n\n\nnested\n\n\n\n\n(adjective) contained within something like itself. E.g. a nested array is an array that is inside another array, and a nested class is a class defined inside the definition of another class.\n\n\n\n\nExample: I used a nested loop to loop over a grid \u2013 the outer loop for the x coordinate, and the inner loop for the y coordinate.\n\n\nobject\n\n\n\n\n(noun) a value created from a class. E.g. If you want to represent your family in code then you might make a class called FamilyMember, and create several objects from that class \u2013 one object for each person in your family.\n\n\nObjects usually contain other values inside instance variables, and have methods attached to them. E.g. each FamilyMember object might have a name instance variable. Objects combine the concept of variables and functions into a single value. Also known as an \u201cinstance.\u201d\n\n\n\n\nExample: I make the enemy move by changing the position instance variable of the enemy object.\n\n\nobject-oriented\n\n\n\n\n(adjective) designed using objects.\n\n\n\n\nExample: Ruby is an object-oriented programming language because all values are objects in Ruby.\n\n\nparameter\n\n\n\n\n(noun) Synonym for argument.\n\n\n\n\nExample: That function takes two parameters.\n\n\nparenthesis\n\n\n\n\n(noun) A type of bracket.\n\n\n\n\nExample: Lisp-like programming languages use a lot of parenthesis in their syntax.\n\n\nprocedure\n\n\n\n\n(noun) Synonym for function.\n\n\n\n\nExample: That procedure takes two arguments.\n\n\nprogram\n\n\n\n\n(noun) a full piece of software that is ready to be run. Usually an executable.\n\n\n\n\nExample: I wrote a program that keeps track of my todo list.\n\n\nread\n\n\n\n\n(verb) to retrieve input data values from an external source \u2013 usually from a file. Can refer to retrieving data over a network, such as the internet. The opposite of writing.\n\n\n\n\nExample: I read the contents of file into a string.\n\n\nreturn\n\n\n\n\n(verb) to immediately stop a called function from running, possibly providing a return value. A function automatically returns once all of its code has been run. However, the code in the function definition can force the function to return at any point.\n\n\n\n\nExample: If the array is empty, the function returns early without running the rest of its code.\n\n\nreturn value\n\n\n\n\n(noun) the value that results from a completed function call.\n\n\n\n\nExample: The return value of the rand function is a random float between \n0.0\n and \n1.0\n.\n\n\nrun\n\n\n\n\n(verb) to perform the instructions written in code or an executable. Code is a set of instructions, and \u201crunning\u201d code is when the computer actually performs those instructions. To \u201crun\u201d a function means to call that function (see call).\n\n\n\n\nExample: I wrote a new feature, and ran the code to check that it works.\n\n\nstring\n\n\n\n\n(noun) a type of value that represents text. The word \u201cstring\u201d derives from the phrase \u201cstring of characters.\u201d E.g. The string \n\"cat\"\n is a string (a.k.a. sequence) of the characters \n\u2018c\u2019\n, \n\u2018a\u2019\n, and \n\u2018t\u2019\n.\n\n\n\n\nExample: I represented my name as a string in the code.\n\n\nsyntax\n\n\n\n\n(noun) the grammatical rules of a programming language. Every programming language has different syntax. Syntax determines whether code is written correctly or incorrectly, and is enforced by the compiler or interpreter. Code will not compile or run unless the syntax is correct.\n\n\n\n\nExample: I forgot to write the brackets, so the compiler gave me a syntax error.\n\n\ntype\n\n\n\n\n(noun) the kind or category of a value. Every value has a type.\n\n\nThe value \n5\n is of the integer type.\n\n\nThe value \n5.2\n is of the float type.\n\n\nThe value \n\"cat\"\n is of the string type.\n\n\nSimple types, like integers, are usually provided by the programming language. The programmer can define more complicated types using classes. The type of an object determines what methods and instance variables are attached to that object.\n\n\n\n\nExample: I got a crash because the variable contained the wrong type of value \u2013 I thought it would be an integer, but it was actually a string.\n\n\nvalue\n\n\n\n\n(noun) a piece of data that can be contained inside a variable. Every value has a type. Values represent information, in a way that code can work upon.\n\n\nCode can: send and receive values over the internet save values into files convert values into different values etc.\n\n\n\n\nExample: My program asks a user for the year they were born, then uses that value to calculate their age.\n\n\nvariable\n\n\n\n\n(noun) a named container for a single value. Variables are not values themselves, they are merely containers for values. Putting a value into a variable is referred to as assignment. Variables are named after the fact that their value can vary \u2013 a different value can be assigned to a variable at any time.\n\n\n\n\nExample: I assigned the string value \n\"Tom\"\n to the \nname\n variable.\n\n\nwrite\n\n\n\n\n(verb) to send output data values to an external destination \u2013 usually to a file. Can refer to sending data over a network, such as the internet. The opposite of reading.\n\n\n\n\nExample: The program writes all its data to a file before it quits, so it can read the data back again next time it is run.",
+            "title": "Programming Glossary"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#programming-glossary",
+            "text": "Info  Note: This came from  Programming for Beginners .",
+            "title": "Programming Glossary"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#algorithm",
+            "text": "(noun) a step-by-step procedure to achieve a specific goal. Can be implemented with code.   Example: I used the quicksort algorithm to sort the array alphabetically.",
+            "title": "algorithm"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#argument",
+            "text": "(noun) a value that is passed into a function when it is called. Arguments are said to be \u201cpassed\u201d into a function, and functions are said to \u201ctake\u201d arguments. Also known as a \u201cparameter.\u201d   Example: That function takes two arguments.",
+            "title": "argument"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#array",
+            "text": "(noun) a type of value that contains a sequence of other values.   Example: I put all our names into an array of strings.",
+            "title": "array"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#assignment",
+            "text": "(noun) the act of putting a value into a variable.   Example: I assigned the number  22  to the  age  variable.",
+            "title": "assignment"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#brackets",
+            "text": "(noun) characters often used to surround text. The different types of brackets are:\nParenthesis/parens/round brackets:  ( ) \nCurly brackets/braces:  { } \nAngle brackets:  < > \nSquare brackets:  [ ] \nThe bracket at the beginning is called the \u201copening\u201d or the \u201cleft\u201d bracket. The bracket at the end is called the \u201cclosing\u201d or \u201cright\u201d bracket.   Example: Your code won\u2019t compile because you forgot a closing bracket.",
+            "title": "brackets"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#bug",
+            "text": "(noun) a mistake in a program.   Example: There must be a bug because the output is wrong.",
+            "title": "bug"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#call",
+            "text": "(verb) to run the code in a function. Also referred to as \u201crunning,\u201d \u201cexecuting,\u201d or \u201cinvoking\u201d a function. For the noun, see function call.   Example: I called the  rand  function and it returned  42 .",
+            "title": "call"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#class",
+            "text": "(noun) a type that can be defined by the programmer. Classes are defined in order to create objects of that class. See object   Example: I made a  Person  class that holds a person\u2019s name and age.",
+            "title": "class"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#comment",
+            "text": "(noun) arbitrary text written around code, but which is never run, and is generally ignored by the computer. Used to leave notes and documentation for people who read the code later. Also used to stop code from running (see comment out).   Example: I wrote comments in my code so I could understand it later.",
+            "title": "comment"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#comment-out",
+            "text": "(verb) to turn code into a comment so that it does not get run.   Example: I commented out this line of code, and it doesn\u2019t crash any more.",
+            "title": "comment out"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#compiler",
+            "text": "(noun) a program that converts code into an executable, and checks that the syntax is correct. Sometimes compilers convert code into other code.   Example: The compiler is giving me an error, so I must have incorrect syntax somewhere.",
+            "title": "compiler"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#constant",
+            "text": "(noun) a variable that never changes its value.   Example: The  PI  constant has the value  3.14 .",
+            "title": "constant"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#crash",
+            "text": "(verb) to cause a running program to stop due to an error.   Example: I tried to divide a number by zero, which made the program crash.",
+            "title": "crash"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#data-structure",
+            "text": "(noun) a value that contains other values.   Example: Arrays are one kind of data structure.",
+            "title": "data structure"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#debug",
+            "text": "(verb) to investigate and fix bugs.   Example: I spent all day debugging a complicated error.",
+            "title": "debug"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#declaration",
+            "text": "(noun) code that declares that something exists \u2013 usually a variable, function or a class. A declaration might not fully define the thing it is declaring. E.g. a constant may be declared to exist, without actually defining what it\u2019s value is. Not all programming languages allow for declarations.   Example: My code won\u2019t compile because I wrote a function declaration, but I forgot to write the actual function.",
+            "title": "declaration"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#definition",
+            "text": "(noun) code that fully implements something \u2013 usually a variable, function or a class. The code that implements a class is called the \u201cclass definition.\u201d The code that implements a function is called the \u201cfunction definition.\u201d   Example: The function wasn\u2019t doing what I expected, so I had a look at its definition.",
+            "title": "definition"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#double",
+            "text": "(noun) a float that can represent a wider range of numbers than a normal float. Short for \u201cdouble-precision floating-point number.\u201d See float.   Example: The number was so tiny I had to use a  double  instead of a  float .",
+            "title": "double"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#execute",
+            "text": "(verb) Synonym for run.   Example: I can\u2019t execute my program because it won\u2019t compile.",
+            "title": "execute"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#executable",
+            "text": "(noun) a program, usually a single file, ready to be run.   Example: Give me the executable so I can try out your program.",
+            "title": "executable"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#float",
+            "text": "(noun) a type of value that represents numbers with fractional parts. Short for \u201cfloating-point number\u201d.   Example: The value  3.14  is a float.",
+            "title": "float"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#function",
+            "text": "(noun) a piece of code that is not run until it is called. Functions take zero or more arguments. When a function finishes running, it returns a return value back to the code that called it.   Example: I wrote a function that takes an array of numbers as an argument, and returns the average.",
+            "title": "function"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#function-call",
+            "text": "(noun) code for calling a function. Function calls specify which function to call, and all of the arguments that the function requires. The result of a function call is a return value. Not all functions have a return value.   Example: The function call  add(1,2,3)  returns the value  6 .",
+            "title": "function call"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#implement",
+            "text": "(verb) to write all the code to complete something \u2013 usually a function or a class.   Example: I finished implementing those functions.",
+            "title": "implement"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#instance",
+            "text": "(noun) Synonym for object.   Example: I created an instance of the  Person  class.",
+            "title": "instance"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#instance-variable",
+            "text": "(noun) a variable that is attached to an object. Also known as a \u201cmember variable\u201d or just a \u201cmember.\u201d   Example: On the tom object, I assigned the value  \"Tom Dalling\"  to the  name  instance variable.",
+            "title": "instance variable"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#instantiate",
+            "text": "(verb) to create an object from a class.   Example: I instantiated an object of the  Person  class.",
+            "title": "instantiate"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#integer",
+            "text": "(noun) a type of value that represents whole numbers. For fractional numbers, see float.   Example:  42  is an integer value.",
+            "title": "integer"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#interpreter",
+            "text": "(noun) a program that runs code. For languages that are not compiled, the source code is run directly by an interpreter. Compiled programming languages do not usually have an interpreter.   Example: I installed the Ruby interpreter so I can run my Ruby code.",
+            "title": "interpreter"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#invoke",
+            "text": "(verb) Synonym for call.   Example: I invoked the function with the wrong arguments, and it crashed.",
+            "title": "invoke"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#iterate",
+            "text": "(verb) Synonym for loop.   Example: I iterated over all the values in the array.",
+            "title": "iterate"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#loop",
+            "text": "(noun) a piece of code that runs itself repeatedly. Commonly used to run a piece code for every value in an array. Also known as \u201citeration\u201d.   Example: The code loops until the user types in  \"quit\" .",
+            "title": "loop"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#member-function",
+            "text": "(noun) Synonym for method.   Example: This class has three member functions.",
+            "title": "member function"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#member-variable",
+            "text": "(noun) Synonym for instance variable.   Example: This class has two member variables.",
+            "title": "member variable"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#method",
+            "text": "(noun) a function that is attached to an object. Methods belong to, and are defined in, a class. Also known as a \u201cmember function.\u201d   Example: The length method returns the number of characters in a string object.",
+            "title": "method"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#nested",
+            "text": "(adjective) contained within something like itself. E.g. a nested array is an array that is inside another array, and a nested class is a class defined inside the definition of another class.   Example: I used a nested loop to loop over a grid \u2013 the outer loop for the x coordinate, and the inner loop for the y coordinate.",
+            "title": "nested"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#object",
+            "text": "(noun) a value created from a class. E.g. If you want to represent your family in code then you might make a class called FamilyMember, and create several objects from that class \u2013 one object for each person in your family.  Objects usually contain other values inside instance variables, and have methods attached to them. E.g. each FamilyMember object might have a name instance variable. Objects combine the concept of variables and functions into a single value. Also known as an \u201cinstance.\u201d   Example: I make the enemy move by changing the position instance variable of the enemy object.",
+            "title": "object"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#object-oriented",
+            "text": "(adjective) designed using objects.   Example: Ruby is an object-oriented programming language because all values are objects in Ruby.",
+            "title": "object-oriented"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#parameter",
+            "text": "(noun) Synonym for argument.   Example: That function takes two parameters.",
+            "title": "parameter"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#parenthesis",
+            "text": "(noun) A type of bracket.   Example: Lisp-like programming languages use a lot of parenthesis in their syntax.",
+            "title": "parenthesis"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#procedure",
+            "text": "(noun) Synonym for function.   Example: That procedure takes two arguments.",
+            "title": "procedure"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#program",
+            "text": "(noun) a full piece of software that is ready to be run. Usually an executable.   Example: I wrote a program that keeps track of my todo list.",
+            "title": "program"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#read",
+            "text": "(verb) to retrieve input data values from an external source \u2013 usually from a file. Can refer to retrieving data over a network, such as the internet. The opposite of writing.   Example: I read the contents of file into a string.",
+            "title": "read"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#return",
+            "text": "(verb) to immediately stop a called function from running, possibly providing a return value. A function automatically returns once all of its code has been run. However, the code in the function definition can force the function to return at any point.   Example: If the array is empty, the function returns early without running the rest of its code.",
+            "title": "return"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#return-value",
+            "text": "(noun) the value that results from a completed function call.   Example: The return value of the rand function is a random float between  0.0  and  1.0 .",
+            "title": "return value"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#run",
+            "text": "(verb) to perform the instructions written in code or an executable. Code is a set of instructions, and \u201crunning\u201d code is when the computer actually performs those instructions. To \u201crun\u201d a function means to call that function (see call).   Example: I wrote a new feature, and ran the code to check that it works.",
+            "title": "run"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#string",
+            "text": "(noun) a type of value that represents text. The word \u201cstring\u201d derives from the phrase \u201cstring of characters.\u201d E.g. The string  \"cat\"  is a string (a.k.a. sequence) of the characters  \u2018c\u2019 ,  \u2018a\u2019 , and  \u2018t\u2019 .   Example: I represented my name as a string in the code.",
+            "title": "string"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#syntax",
+            "text": "(noun) the grammatical rules of a programming language. Every programming language has different syntax. Syntax determines whether code is written correctly or incorrectly, and is enforced by the compiler or interpreter. Code will not compile or run unless the syntax is correct.   Example: I forgot to write the brackets, so the compiler gave me a syntax error.",
+            "title": "syntax"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#type",
+            "text": "(noun) the kind or category of a value. Every value has a type.  The value  5  is of the integer type.  The value  5.2  is of the float type.  The value  \"cat\"  is of the string type.  Simple types, like integers, are usually provided by the programming language. The programmer can define more complicated types using classes. The type of an object determines what methods and instance variables are attached to that object.   Example: I got a crash because the variable contained the wrong type of value \u2013 I thought it would be an integer, but it was actually a string.",
+            "title": "type"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#value",
+            "text": "(noun) a piece of data that can be contained inside a variable. Every value has a type. Values represent information, in a way that code can work upon.  Code can: send and receive values over the internet save values into files convert values into different values etc.   Example: My program asks a user for the year they were born, then uses that value to calculate their age.",
+            "title": "value"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#variable",
+            "text": "(noun) a named container for a single value. Variables are not values themselves, they are merely containers for values. Putting a value into a variable is referred to as assignment. Variables are named after the fact that their value can vary \u2013 a different value can be assigned to a variable at any time.   Example: I assigned the string value  \"Tom\"  to the  name  variable.",
+            "title": "variable"
+        },
+        {
+            "location": "/Glossaries/programming-glossary/index.html#write",
+            "text": "(verb) to send output data values to an external destination \u2013 usually to a file. Can refer to sending data over a network, such as the internet. The opposite of reading.   Example: The program writes all its data to a file before it quits, so it can read the data back again next time it is run.",
+            "title": "write"
         }
     ]
 }

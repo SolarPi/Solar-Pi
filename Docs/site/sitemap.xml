@@ -4,23 +4,23 @@
     
     <url>
      <loc>/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/Getting Started/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <loc>/getting-started/index.html</loc>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/solar pi apps/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <loc>/solar-pi-apps/index.html</loc>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>/raspbian/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +36,7 @@
     
     <url>
      <loc>/hardware/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,14 +44,24 @@
     
         
     <url>
-     <loc>/Advanced Things/commands/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <loc>/Advanced-Things/commands/index.html</loc>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/Advanced Things/python/index.html</loc>
-     <lastmod>2017-12-21</lastmod>
+     <loc>/Advanced-Things/python/index.html</loc>
+     <lastmod>2018-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/Glossaries/programming-glossary/index.html</loc>
+     <lastmod>2018-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
