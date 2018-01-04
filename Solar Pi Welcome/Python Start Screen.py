@@ -6,6 +6,7 @@ from subprocess import Popen, call
 #from AutorunConfig import Autorun
 from sys import exit
 from SettingsGet import LaunchWelcome
+import webbrowser
 
 
 with open("../Solar Pi Settings/Settings.ini", "r") as file:
@@ -93,7 +94,7 @@ def ToolbarHandler(press):
     elif press == "About":
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
-        Popen("../Resources/Launchers/Docs/welcome.sh")
+        webbrowser.open("localhost/solar-pi-apps/index.html#solar-pi-welcome")
 
 def PerfBattery(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Perf Battery Launcher.sh")
@@ -112,7 +113,17 @@ def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 def Guides(press):
-    Popen("../Resources/Launchers/Docs/Docs Launcher.sh")  # Launch guides here
+    webbrowser.open("localhost")  # Launch guides here
+
+def PythonIntro(press):  # RPi Python Introduction
+    pass
+def Glossary(press):  # Programming Glossary
+    pass
+def ByteofPython(press):  # Byte of Python
+    pass
+def GoogleTutorial(press):  # Google's Python Tutorial
+    pass
+
 
 #program.setFont(11, font="Dejavu Sans")
 
@@ -333,27 +344,38 @@ should show 100%."""
 
 
     # Guides & Tutorials Tab
-    with program.note("Guides & Tutorials"):
-        with program.labelFrame("Guides & Tutorials"):
+    with program.note("Python Guides & Tutorials"):
+        with program.labelFrame("Python Guides & Tutorials"):
             program.setSticky("ew")
             program.setPadding(10, 10)
-            program.addLabel("guides_info", "Hover over the icons to see more information about each guide/tutorial.", colspan=2)
+            with program.frame("frame2", 0, 0, colspan=2):
+                program.addLabel("guides_info", "Hover over each button to see more information about each resource.", 0, 0)
+                program.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
+                program.zoomImage("python", -2)
 
-            # Python Guides
-            with program.labelFrame("Python Guides & Tutorials"):
+            # RPi Foundation Python Tutorial
+            with program.labelFrame("Introduction to Python", 1, 0):
                 program.setPadding(10, 10)
-                program.addImage("python_logo", "../Resources/Images/Python icon.gif", 0, 0)
-                program.zoomImage("python_logo", -4)
-                program.setImageTooltip("python_logo", "A collection of tutorials and Python documentation to help you learn Python.")
-                program.addButton("Python Guides", PythonGuides, 0, 1)
+                program.addButton("Python Intro", PythonIntro)
+                program.setButtonTooltip("Python Intro", "An introduction to Python, written by the Raspberry Pi Foundation")
 
-            # Scratch Tutorial
-            with program.labelFrame("Scratch Tutorial", 1, 1):
+            # Programming Glossary
+            with program.labelFrame("Programming Glossary", 1, 1):
                 program.setPadding(10, 10)
-                program.addImage("scratch_logo", "../Resources/Images/scratch logo.gif", 0, 0)
-                program.zoomImage("scratch_logo", -50)
-                program.setImageTooltip("scratch_logo", "A beginner's tutorial on how to use Scratch.")
-                program.addButton("Scratch Tutorial", ButtonHandler, 0, 1)
+                program.addButton("Glossary", Glossary)
+                program.setButtonTooltop("Glossary", "Gives you definitions of words that you might not have heard before")
+
+            # A Byte of Python
+            with program.labelFrame("A Byte of Python", 2, 0):
+                program.setPadding(10, 10)
+                program.addButton("A Byte of Python", ByteofPython)
+                program.setButtonTooltip("A Byte of Python", "A popular Ebook that teaches you Python")
+
+            # Google Python Tutorial
+            with program.labelFrame("Google's Python Tutorial", 2, 1):
+                program.setPadding(10, 10)
+                program.addButton("Google's Tutorial", GoogleTutorial, 0, 1)
+                program.setButtonTooltip("Google's Tutorial", "A Python tutorial, created by Google, for beginners")
 
 
     """
@@ -446,9 +468,11 @@ program.setLabelFrameStyle("IDEs", "TFrame")
 program.setLabelFrameStyle("Scratch", "TFrame")
 program.setLabelFrameStyle("Python", "TFrame")
 program.setLabelFrameStyle("Java", "TFrame")
-program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
 program.setLabelFrameStyle("Python Guides & Tutorials", "TFrame")
-program.setLabelFrameStyle("Scratch Tutorial", "TFrame")
+program.setLabelFrameStyle("Introduction to Python", "TFrame")
+program.setLabelFrameStyle("Programming Glossary", "TFrame")
+program.setLabelFrameStyle("A Byte of Python", "TFrame")
+program.setLabelFrameStyle("Google's Python Tutorial", "TFrame")
 program.setLabelFrameStyle("About", "TFrame")
 
 program.go(language=lang)
