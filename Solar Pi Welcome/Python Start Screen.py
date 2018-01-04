@@ -49,9 +49,10 @@ def ButtonHandler(press):
     elif press == "Change\nLanguage":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
     elif press == "Get Started":
-        program.setNotebook("MainTabs", "Get Started")  # Set tab/note to Get Started
+        program.getNotebookWidget("MainTabs").select([1])
     elif press == "Charging":
-        print("Charging")  # Set tab/note to Charging
+        #program.notebook.select(2)
+        program.getNotebookWidget("MainTabs").select([2])
 
 
 def MenuHandler(press):
@@ -92,7 +93,6 @@ def ToolbarHandler(press):
     elif press == "About":
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
-        # TODO: Fix docs launch
         Popen("../Resources/Launchers/Docs/welcome.sh")
 
 def PerfBattery(press):
@@ -112,7 +112,6 @@ def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 def Guides(press):
-    # TODO: Fix docs launch
     Popen("../Resources/Launchers/Docs/Docs Launcher.sh")  # Launch guides here
 
 #program.setFont(11, font="Dejavu Sans")
@@ -128,8 +127,8 @@ with program.subWindow("About Solar Pi", modal=True):
     program.setLocation(250, 150)
     program.setResizable(canResize=False)
     with program.labelFrame("About"):
+        program.ttkStyle.configure(".", background="white", foreground="black")
         program.setBg("white")
-        #program.getLabelFrameWidget("About").config(font="bold")
         program.setPadding(10, 10)
         program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
     program.addButton("Close", ButtonHandler)
@@ -174,49 +173,67 @@ with program.notebook("MainTabs", colspan=2):
     #     #program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
 
 
+    # with program.note("Welcome!"):
+    #     program.setPadding(10, 10)
+    #     with program.frame("frame4", 0, 0, colspan=3):
+    #         program.addLabel("text4", "Welcome to your  ", 0, 0)
+    #         program.setLabelAlign("text4", "right")
+    #         program.getLabelWidget("text4").config(font=("Dejavu Sans", "20"))
+    #         program.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
+    #         program.zoomImage("logo text1", -2)
+    #         program.setImageSticky("logo text1", "nsw")
+    #     with program.frame("frame5", 1, 0):
+    #         program.setPadding(10, 10)
+    #         program.setBg("white", override=True)
+    #         program.addButton("Get Started1", ButtonHandler)
+    #         program.addNamedButton("Docs", "docs1", Guides)
+    #         program.addButton("About1", ButtonHandler)
+    #     program.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+    #     program.zoomImage("logo5", -4)
+    #     with program.frame("frame6", 1, 2):
+    #         #program.setPadding(10, 10)
+    #         program.addNamedButton("Programming", "programming3", Programming)
+    #         #program.setButtonPadding("programming3", [10, 10])
+    #         program.addButton("Settings1", Settings)
+    #         program.addButton("Change\nLanguage1", ButtonHandler)
+
+
     with program.note("Welcome!"):
+
         program.setPadding(10, 10)
-        with program.frame("frame4", 0, 0, colspan=3):
+
+        with program.labelFrame("-"):
             program.addLabel("text3", "Welcome to your  ", 0, 0)
-            program.setLabelAlign("text3", "right")
+            program.setLabelAnchor("text3", "e")
             program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
+            program.setLabelSticky("text3", "e")
             program.addImage("logo text", "../Resources/Images/Solar Pi text small.gif", 0, 1)
             program.zoomImage("logo text", -2)
-            program.setImageSticky("logo text", "nsw")
-        with program.frame("frame5", 1, 0):
+            program.setImageAlign("logo text", "left")
+            program.setImageSticky("logo text", "w")
+
+        with program.labelFrame(""):
             program.setPadding(10, 10)
             program.setBg("white", override=True)
-            program.addButton("Get Started", ButtonHandler)
-            program.addNamedButton("Docs", "docs", Guides)
-            program.addButton("About", ButtonHandler)
-        program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
-        program.zoomImage("logo4", -4)
-        with program.frame("frame6", 1, 2):
-            program.setPadding(10, 10)
-            program.addNamedButton("Programming", "programming2", Programming)
-            program.addButton("Settings", Settings)
-            program.addButton("Change\nLanguage", ButtonHandler)
-   # with program.note("Welcome! V2"):
-    #     program.setPadding(10, 10)
-    #
-    #     program.addLabel("text3", "Welcome to your ", 0, 0, colspan=2)
-    #     program.setLabelAlign("text3", "right")
-    #     program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
-    #     program.addImage("logo text", "../Resources/Images/Solar Pi text small.gif", 0, 2)
-    #     program.zoomImage("logo text", -45)
-    #     program.setImageSticky("logo text", "nsw")
-    #
-    #     program.setBg("white", override=True)
-    #     program.addButton("Get Started", ButtonHandler, 1, 0)
-    #     program.addNamedButton("Docs", "docs", Guides, 2, 0)
-    #     program.addButton("About", ButtonHandler, 3, 0)
-    #
-    #     program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
-    #     program.zoomImage("logo4", -4)
-    #
-    #     program.addNamedButton("Programming", "programming2", Programming, 1, 2)
-    #     program.addButton("Settings", Settings, 2, 2)
-    #     program.addButton("Change\nLanguage", ButtonHandler, 3, 2)
+            program.addButton("Get Started", ButtonHandler, 1, 0)
+            program.setButtonSticky("Get Started", "nesw")
+            #program.setButtonPadding("Get Started", [10, 10])
+            program.addNamedButton("Docs", "docs", Guides, 2, 0)
+            program.setButtonSticky("docs", "nesw")
+            program.addButton("About", ButtonHandler, 3, 0)
+            program.setButtonSticky("About", "nesw")
+
+            program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+            program.zoomImage("logo4", -4)
+            program.setImageSticky("logo4", "nesw")
+
+            program.addNamedButton("Programming", "programming2", Programming, 1, 2)
+            program.setButtonSticky("programming2", "nesw")
+            program.addButton("Settings", Settings, 2, 2)
+            program.setButtonSticky("Settings", "nesw")
+            program.addButton("Change\nLanguage", ButtonHandler, 3, 2)
+            program.setButtonSticky("Change\nLanguage", "nesw")
+
 
     with program.note("Get Started"):
         program.setPadding(10, 10)
@@ -389,11 +406,10 @@ def Startup(param):
     with open("../Solar Pi Settings/Settings.ini", "w") as file:
         file.write(data)
 
-with program.frame("startup", 1, 0):
-    program.setPadding(3, 3)
-    program.addCheckBox("Launch at startup", 0, 1)
-    program.setCheckBoxChangeFunction("Launch at startup", Startup)
-    program.setCheckBox("Launch at startup", ticked=LaunchWelcome())
+program.setPadding(5, 5)
+program.addCheckBox("Launch at startup", 1, 0)
+program.setCheckBoxChangeFunction("Launch at startup", Startup)
+program.setCheckBox("Launch at startup", ticked=LaunchWelcome())
 
 
 num = 0
@@ -421,6 +437,8 @@ with open("language.txt", "r") as file:
 
 #print(lang)
 
+program.setLabelFrameStyle("-", "TFrame")
+program.setLabelFrameStyle("", "TFrame")
 program.setLabelFrameStyle("Applications", "TFrame")
 program.setLabelFrameStyle("Start Programming", "TFrame")
 program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
@@ -431,5 +449,6 @@ program.setLabelFrameStyle("Java", "TFrame")
 program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
 program.setLabelFrameStyle("Python Guides & Tutorials", "TFrame")
 program.setLabelFrameStyle("Scratch Tutorial", "TFrame")
+program.setLabelFrameStyle("About", "TFrame")
 
 program.go(language=lang)
