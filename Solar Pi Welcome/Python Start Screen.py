@@ -94,7 +94,7 @@ def ToolbarHandler(press):
     elif press == "About":
         program.showSubWindow("About Solar Pi")
     elif press == "Help":
-        webbrowser.open("localhost/solar-pi-apps/index.html#solar-pi-welcome")
+        webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#solar-pi-welcome")
 
 def PerfBattery(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Perf Battery Launcher.sh")
@@ -113,16 +113,16 @@ def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
 def Guides(press):
-    webbrowser.open("localhost")  # Launch guides here
+    webbrowser.get("chromium-browser").open("http://localhost/")  # Launch guides here
 
 def PythonIntro(press):  # RPi Python Introduction
-    pass
+    webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")
 def Glossary(press):  # Programming Glossary
-    pass
+    webbrowser.get("chromium-browser").open("http://localhost/Glossaries/programming-glossary/index.html")
 def ByteofPython(press):  # Byte of Python
-    pass
-def GoogleTutorial(press):  # Google's Python Tutorial
-    pass
+    webbrowser.get("chromium-browser").open("http://localhost:81/")
+def Java(press):  # Google's Python Tutorial
+    webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
 
 
 #program.setFont(11, font="Dejavu Sans")
@@ -344,14 +344,13 @@ should show 100%."""
 
 
     # Guides & Tutorials Tab
-    with program.note("Python Guides & Tutorials"):
-        with program.labelFrame("Python Guides & Tutorials"):
+    with program.note("Guides & Tutorials"):
+        with program.labelFrame("Guides & Tutorials"):
             program.setSticky("ew")
             program.setPadding(10, 10)
-            with program.frame("frame2", 0, 0, colspan=2):
-                program.addLabel("guides_info", "Hover over each button to see more information about each resource.", 0, 0)
-                program.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
-                program.zoomImage("python", -2)
+            program.addLabel("guides_info", "Hover over each button to see more information about each resource.", 0, 0, colspan=2)
+            #    program.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
+             #   program.zoomImage("python", -2)
 
             # RPi Foundation Python Tutorial
             with program.labelFrame("Introduction to Python", 1, 0):
@@ -363,7 +362,7 @@ should show 100%."""
             with program.labelFrame("Programming Glossary", 1, 1):
                 program.setPadding(10, 10)
                 program.addButton("Glossary", Glossary)
-                program.setButtonTooltop("Glossary", "Gives you definitions of words that you might not have heard before")
+                program.setButtonTooltip("Glossary", "Gives you definitions of words that you might not have heard before")
 
             # A Byte of Python
             with program.labelFrame("A Byte of Python", 2, 0):
@@ -372,10 +371,10 @@ should show 100%."""
                 program.setButtonTooltip("A Byte of Python", "A popular Ebook that teaches you Python")
 
             # Google Python Tutorial
-            with program.labelFrame("Google's Python Tutorial", 2, 1):
+            with program.labelFrame("Java Guide", 2, 1):
                 program.setPadding(10, 10)
-                program.addButton("Google's Tutorial", GoogleTutorial, 0, 1)
-                program.setButtonTooltip("Google's Tutorial", "A Python tutorial, created by Google, for beginners")
+                program.addButton("Java Guide", Java, 0, 1)
+                program.setButtonTooltip("Java Guide", "A guide on Java to help you get to know the basics of Java 8")
 
 
     """
@@ -468,11 +467,11 @@ program.setLabelFrameStyle("IDEs", "TFrame")
 program.setLabelFrameStyle("Scratch", "TFrame")
 program.setLabelFrameStyle("Python", "TFrame")
 program.setLabelFrameStyle("Java", "TFrame")
-program.setLabelFrameStyle("Python Guides & Tutorials", "TFrame")
+program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
 program.setLabelFrameStyle("Introduction to Python", "TFrame")
 program.setLabelFrameStyle("Programming Glossary", "TFrame")
 program.setLabelFrameStyle("A Byte of Python", "TFrame")
-program.setLabelFrameStyle("Google's Python Tutorial", "TFrame")
+program.setLabelFrameStyle("Java Guide", "TFrame")
 program.setLabelFrameStyle("About", "TFrame")
 
 program.go(language=lang)
