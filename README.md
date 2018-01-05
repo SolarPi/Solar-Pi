@@ -1,4 +1,4 @@
-# Solar-Pi-Core
+# Solar Pi
 All custom software for Solar Pi.
 
 Includes software to:
