@@ -1,32 +1,41 @@
 #!/usr/bin/python
 # Configures autorun
 
-def FileOpenTest():
+from os import remove, chmod
+
+def FileOpenTest(file):
     try:
-        with open("/home/pi/.config/autostart/Welcome Launcher.desktop", "r") as file:
+        with open(file, "r") as file2:
             return True
     except IOError:
         return False
 
-def Autorun(mode):
-    from os import remove, chmod
-    if mode == "add":
-        if FileOpenTest() == False:
-            with open("/home/pi/.config/autostart/Welcome Launcher.desktop", "w") as file:
-                data = """[Desktop Entry]
-Name=Solar Pi Welcome
-Type=Application
-Comment=Launch the main Solar Pi application
-Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
-"""
-                file.write(data)
-            chmod("/home/pi/.config/autostart/Welcome Launcher.desktop", 0o775)
+def Autorun(item, mode, file):
+    if mode == True:
+        if FileOpenTest(file) == False:
+            with open(file, "w") as file2:
+                if item == "welcome":
+                    data = """[Desktop Entry]
+    Name=Solar Pi Welcome
+    Type=Application
+    Comment=Launch the main Solar Pi application
+    Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
+    """
+                elif item == "battery":
+                    data = """[Desktop Entry]
+    Name=Battery Meter
+    Type=Application
+    Comment=Display the battery meter in the bottom left of the display
+    Exec="/usr/local/bin/Solar Pi/Solar Pi Power/Battery Meter exec"
+    """
 
-    elif mode == "remove":
-        if FileOpenTest() == True:
-            remove("/home/pi/.config/autostart/Welcome Launcher.desktop")
-        else:
-            pass
+                file2.write(data)
+            chmod(file, 0o775)
+
+
+    elif mode == False:
+        if FileOpenTest(file) == True:
+            remove(file)
 
 
 if __name__ == "__main__":

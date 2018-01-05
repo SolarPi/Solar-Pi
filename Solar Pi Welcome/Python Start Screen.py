@@ -7,6 +7,7 @@ from subprocess import Popen, call
 from sys import exit
 from SettingsGet import LaunchWelcome
 import webbrowser
+from AutorunConfig import Autorun
 
 
 with open("../Solar Pi Settings/Settings.ini", "r") as file:
@@ -426,6 +427,8 @@ def Startup(param):
     data = clock + "," + battery + "," + value + "," + theme
     with open("../Solar Pi Settings/Settings.ini", "w") as file:
         file.write(data)
+
+    Autorun("welcome", value, "/home/pi/.config/autostart/welcome launcher.desktop")
 
 program.setPadding(5, 5)
 program.addCheckBox("Launch at startup", 1, 0)
