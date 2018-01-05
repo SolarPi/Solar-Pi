@@ -2,6 +2,7 @@
 # Configures autorun
 
 from os import remove, chmod
+from shutil import chown
 
 def FileOpenTest(file):
     try:
@@ -31,6 +32,7 @@ def Autorun(item, mode, file):
 
                 file2.write(data)
             chmod(file, 0o775)
+            chown(file, "pi", group=None)
 
 
     elif mode == False:

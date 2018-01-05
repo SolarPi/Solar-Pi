@@ -421,19 +421,19 @@ def Startup(param):
     data = data.split(",")
     clock = data[0]
     battery = data[1]
-    value = str(value)
+    welcome = str(value)
     theme = data[3]
 
-    data = clock + "," + battery + "," + value + "," + theme
+    data = clock + "," + battery + "," + welcome + "," + theme
     with open("../Solar Pi Settings/Settings.ini", "w") as file:
         file.write(data)
-
-    Autorun("welcome", value, "/home/pi/.config/autostart/welcome launcher.desktop")
+    
+    Autorun("welcome", value, "/home/pi/.config/autostart/Welcome Launcher.desktop")
 
 program.setPadding(5, 5)
 program.addCheckBox("Launch at startup", 1, 0)
-program.setCheckBoxChangeFunction("Launch at startup", Startup)
 program.setCheckBox("Launch at startup", ticked=LaunchWelcome())
+program.setCheckBoxChangeFunction("Launch at startup", Startup)
 
 
 num = 0
