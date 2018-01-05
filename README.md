@@ -1,5 +1,5 @@
 # Solar Pi
-All custom software for Solar Pi.
+All custom software for the Solar Pi STEM project.
 
 Includes software to:
 * Get the user more familiar with using a computer
