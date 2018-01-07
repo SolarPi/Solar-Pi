@@ -21,12 +21,12 @@ def ButtonHandler(press):
         if option == "Scratch (Easy)":
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Scratch Launcher.sh")
         elif option == "Python (Intermedium/Hard)":
-            webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch guides here
+            webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch Python starter guide
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Thonny Launcher.sh")
-            webbrowser.get("chromium-browser").open("http://localhost:81")
+            webbrowser.get("chromium-browser").open("http://localhost:81")  # Launch A Byte of Python
         elif option == "Java (Hard)":
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/BlueJ Launcher.sh")
-            webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
+            webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
         
     elif press == "More Info":
         if option == "Scratch (Easy)":
