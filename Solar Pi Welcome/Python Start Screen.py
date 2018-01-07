@@ -13,12 +13,10 @@ from AutorunConfig import Autorun
 with open("../Solar Pi Settings/Settings.ini", "r") as file:
     data = file.readlines()[0]
 data = data.split(",")
-theme = data[3]
+theme1 = data[3]
 
 program = gui("Solar Pi Welcome", useTtk=True)  # When switch to ttk, change to 650x375
-program.setTtkTheme(theme)
-program.ttkStyle.configure(".", background="white", foreground="black")
-program.ttkStyle.configure("TLabelframe", background="white")
+
 
 # program.ttkStyle = ThemedStyle(program.topLevel)
 # program.ttkStyle.set_theme(theme)
@@ -33,7 +31,7 @@ def ButtonHandler(press):
 
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
         exit()
-    elif press == "About":  # Opens the About subwindow
+    elif press == " About":  # Opens the About subwindow
         program.showSubWindow("About Solar Pi")
     elif press == "Close":  # Closes the About subwindow
         program.hideSubWindow("About Solar Pi")
@@ -48,7 +46,7 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
     elif press == "Change Advanced Settings":  # Launches RPi settings window
         Popen("/usr/bin/rc_gui")
-    elif press == "Change\nLanguage":
+    elif press == "  Languages":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
     elif press == "Get Started":
         program.getNotebookWidget("MainTabs").select([1])
@@ -227,24 +225,26 @@ with program.notebook("MainTabs", colspan=2):
         with program.labelFrame(""):
             program.setPadding(10, 10)
             program.setBg("white", override=True)
-            program.addButton("Get Started", ButtonHandler, 1, 0)
+
+            #program.setBg("grey")
+            program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, column=0)
             program.setButtonSticky("Get Started", "nesw")
             #program.setButtonPadding("Get Started", [10, 10])
-            program.addNamedButton("Docs", "docs", Guides, 2, 0)
-            program.setButtonSticky("docs", "nesw")
-            program.addButton("About", ButtonHandler, 3, 0)
-            program.setButtonSticky("About", "nesw")
+            program.addImageButton(" Docs", Guides, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
+            program.setButtonSticky(" Docs", "nesw")
+            program.addIconButton(" About", ButtonHandler, "about", align="left", row=3, column=0)
+            program.setButtonSticky(" About", "nesw")
 
             program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
             program.zoomImage("logo4", -4)
             program.setImageSticky("logo4", "nesw")
 
-            program.addNamedButton("Programming", "programming2", Programming, 1, 2)
-            program.setButtonSticky("programming2", "nesw")
-            program.addButton("Settings", Settings, 2, 2)
+            program.addImageButton("  Programming", Programming, "../Resources/Images/Programming icon small.gif", align="left", row=1, column=2)
+            program.setButtonSticky("  Programming", "nesw")
+            program.addIconButton("Settings", Settings, "settings", align="left", row=2, column=2)
             program.setButtonSticky("Settings", "nesw")
-            program.addButton("Change\nLanguage", ButtonHandler, 3, 2)
-            program.setButtonSticky("Change\nLanguage", "nesw")
+            program.addImageButton("  Languages", ButtonHandler, "../Resources/Images/languages small.gif", align="left", row=3, column=2)
+            program.setButtonSticky("  Languages", "nesw")
 
 
     with program.note("Get Started"):
@@ -268,7 +268,7 @@ with program.notebook("MainTabs", colspan=2):
 
     with program.note("Charging"):
         program.setPadding(10, 10)
-        program.addLabel("title5", "Charging your Solar Pi", colspan=2)
+        program.addLabel("title5", "Charging your Solar Pi", colspan=3)
         program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
         program.setLabelSticky("title5", "ew")
         program.setLabelAlign("title5", "center")
@@ -287,12 +287,13 @@ charged up.
     
 Once your Solar Pi is charged, the battery meter
 should show 100%."""
-        program.addLabel("info5", text)
+        program.addLabel("info5", text, rowspan=2)
         #program.getLabelWidget("info5").config(font=("Piboto", "13"))
-        with program.frame("frame1", 1, 1, rowspan=5):
-            program.addLabel("read", "Read more:", 0, 0)
-            program.setLabelAlign("read", "e")
-            program.addButton("Starter Guide", Guides, 0, 1)
+
+        program.addLabel("read", "Read more:", 1, 1)
+        program.setLabelAnchor("read", "e")
+        program.addButton("Starter Guide", Guides, 1, 2)
+        program.setButtonSticky("Starter Guide", "")
 
 
     # Applications Tab
@@ -349,33 +350,41 @@ should show 100%."""
         with program.labelFrame("Guides & Tutorials"):
             program.setSticky("ew")
             program.setPadding(10, 10)
-            program.addLabel("guides_info", "Hover over each button to see more information about each resource.", 0, 0, colspan=2)
+            program.addLabel("guides_info", "Hover over the icons to see more information about each resource.", 0, 0, colspan=2)
             #    program.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
              #   program.zoomImage("python", -2)
 
             # RPi Foundation Python Tutorial
             with program.labelFrame("Introduction to Python", 1, 0):
                 program.setPadding(10, 10)
-                program.addButton("Python Intro", PythonIntro)
-                program.setButtonTooltip("Python Intro", "An introduction to Python, written by the Raspberry Pi Foundation")
+                program.addImage("python2", "../Resources/Images/Python icon.gif", 0, 0)
+                program.zoomImage("python2", -4)
+                program.setImageTooltip("python2", "An introduction to Python, written by the Raspberry Pi Foundation")
+                program.addButton("Python Intro", PythonIntro, 0, 1)
 
             # Programming Glossary
             with program.labelFrame("Programming Glossary", 1, 1):
                 program.setPadding(10, 10)
-                program.addButton("Glossary", Glossary)
-                program.setButtonTooltip("Glossary", "Gives you definitions of words that you might not have heard before")
+                program.addImage("programming_icon2", "../Resources/Images/Programming icon cropped.gif", 0, 0)
+                program.zoomImage("programming_icon2", -10)
+                program.setImageTooltip("programming_icon2", "Gives you definitions of words that you might not have heard before")
+                program.addButton("Glossary", Glossary, 0, 1)
 
             # A Byte of Python
             with program.labelFrame("A Byte of Python", 2, 0):
                 program.setPadding(10, 10)
-                program.addButton("A Byte of Python", ByteofPython)
-                program.setButtonTooltip("A Byte of Python", "A popular Ebook that teaches you Python")
+                program.addImage("python3", "../Resources/Images/Python icon.gif", 0, 0)
+                program.zoomImage("python3", -4)
+                program.setImageTooltip("python3", "A popular Ebook that teaches you Python")
+                program.addButton("A Byte of Python", ByteofPython, 0, 1)
 
             # Google Python Tutorial
             with program.labelFrame("Java Guide", 2, 1):
                 program.setPadding(10, 10)
+                program.addImage("java_logo2", "../Resources/Images/java logo.gif", 0, 0)
+                program.zoomImage("java_logo2", -5)
+                program.setImageTooltip("java_logo2", "A guide on Java to help you get to know the basics of Java 8")
                 program.addButton("Java Guide", Java, 0, 1)
-                program.setButtonTooltip("Java Guide", "A guide on Java to help you get to know the basics of Java 8")
 
 
     """
@@ -460,6 +469,10 @@ with open("language.txt", "r") as file:
 
 
 #print(lang)
+program.setTtkTheme(theme1)
+program.ttkStyle.configure(".", background="white", foreground="black")
+program.ttkStyle.configure("TLabelframe", background="white")
+
 
 program.setLabelFrameStyle("-", "TFrame")
 program.setLabelFrameStyle("", "TFrame")
@@ -476,5 +489,6 @@ program.setLabelFrameStyle("Programming Glossary", "TFrame")
 program.setLabelFrameStyle("A Byte of Python", "TFrame")
 program.setLabelFrameStyle("Java Guide", "TFrame")
 program.setLabelFrameStyle("About", "TFrame")
+
 
 program.go(language=lang)
