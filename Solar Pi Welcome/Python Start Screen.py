@@ -10,27 +10,19 @@ import webbrowser
 from AutorunConfig import Autorun
 
 
-with open("../Solar Pi Settings/Settings.ini", "r") as file:
+with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.ini file
     data = file.readlines()[0]
 data = data.split(",")
 theme1 = data[3]
 
-program = gui("Solar Pi Welcome", useTtk=True)  # When switch to ttk, change to 650x375
+program = gui("Solar Pi Welcome", useTtk=True)
 
-
-# program.ttkStyle = ThemedStyle(program.topLevel)
-# program.ttkStyle.set_theme(theme)
-
-#program.useTtk()
-
-#program.setIcon("E:\\1Home\\Main\\School\\Homework\\Year 10\\Solar Pi NEW\\Solar Pi Applications & Resources\\Applications\\Python Start Screen\\Logo_NEW_2.gif")
-#program.setIcon("/usr/local/bin/Solar Pi/Resources/Images/Logo_NEW_2.gif")
-
+# Event Handler for buttons
 def ButtonHandler(press):
     #tab_selected = program.getTabbedFrameSelectedTab("MainTabs")  # Fetches the current tab
 
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
-        exit()
+        exit()  # Quits program
     elif press == " About":  # Opens the About subwindow
         program.showSubWindow("About Solar Pi")
     elif press == "Close":  # Closes the About subwindow
@@ -39,31 +31,31 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
     elif press == "Python":  # Launches a Python IDE
         if program.yesNoBox("Python", "Would you like to use the Thonny Python IDE instead of the IDLE?") == True:
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")  # Launches Thonny
         else:
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")  # Launches IDLE
     elif press == "Java":  # Launches BlueJ
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
     elif press == "Change Advanced Settings":  # Launches RPi settings window
         Popen("/usr/bin/rc_gui")
     elif press == "  Languages":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Launches settings for display language
     elif press == "Get Started":
-        program.getNotebookWidget("MainTabs").select([1])
+        program.getNotebookWidget("MainTabs").select([1])  # Sets selected note/tab to Get Started
     elif press == "Charging":
-        #program.notebook.select(2)
-        program.getNotebookWidget("MainTabs").select([2])
+        program.getNotebookWidget("MainTabs").select([2])  # Set selected note/tab to Charging
 
 
+# Menu event handler
 def MenuHandler(press):
     if press == "Shutdown":
         if program.yesNoBox("Shutdown", "Are you sure that you want to shutdown your Solar Pi now?") == True:
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Shutdown.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Shutdown.sh")  # Shuts down RPi
     elif press == "Reboot":
         if program.yesNoBox("Reboot", "Are you sure that you want to reboot your Solar Pi now?") == True:
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")  # Reboots RPi
     elif press == "Leafpad":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Leafpad Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Leafpad Launcher.sh")  # Launches Leafpad
     elif press == "Start Programming":
         Programming(None)
     elif press == "Python Guides":
@@ -71,7 +63,7 @@ def MenuHandler(press):
     elif press == "Performance to Battery Life":
         PerfBattery(None)
     elif press == "All Files":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/pcmanfm Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/pcmanfm Launcher.sh")  # Launches file manager
     elif press == "Desktop":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Desktop Launcher.sh")
     elif press == "Documents":
@@ -224,7 +216,7 @@ with program.notebook("MainTabs", colspan=2):
 
         with program.labelFrame(""):
             program.setPadding(10, 10)
-            program.setBg("white", override=True)
+            program.setBg("white")
 
             #program.setBg("grey")
             program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, column=0)

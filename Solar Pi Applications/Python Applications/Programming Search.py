@@ -5,7 +5,7 @@
 from appJar import *
 from os import system
 from subprocess import Popen
-from ttkthemes import ThemedStyle
+import webbrowser
 
 with open("../../Solar Pi Settings/Settings.ini", "r") as file:
     data = file.readlines()[0]
@@ -21,10 +21,12 @@ def ButtonHandler(press):
         if option == "Scratch (Easy)":
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Scratch Launcher.sh")
         elif option == "Python (Intermedium/Hard)":
+            webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch guides here
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Thonny Launcher.sh")
+            webbrowser.get("chromium-browser").open("http://localhost:81")
         elif option == "Java (Hard)":
             Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/BlueJ Launcher.sh")
-            pass
+            webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
         
     elif press == "More Info":
         if option == "Scratch (Easy)":
@@ -48,8 +50,12 @@ def MenuHandler(press):
     elif press == "Java":
         Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/blueJ Launcher.sh")
 
+def ToolbarHandler(press):
+    if press == "Help":
+        webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
+
 # GUI Parameters
-with gui("Programming", "400x290", useTtk=True) as program:
+with gui("Programming", "400x320", useTtk=True) as program:
     program.setTtkTheme(theme)
     program.ttkStyle.configure(".", background="white", foreground="black")
 
