@@ -19,13 +19,13 @@ def ButtonHandler(press):
         quit()
     elif press == "Go":
         if option == "Scratch (Easy)":
-            Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Scratch Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
         elif option == "Python (Intermedium/Hard)":
             webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch Python starter guide
-            Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Thonny Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:81")  # Launch A Byte of Python
         elif option == "Java (Hard)":
-            Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/BlueJ Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
         
     elif press == "More Info":
@@ -38,17 +38,17 @@ def ButtonHandler(press):
 
 def MenuHandler(press):
     if press == "Solar Pi Home":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Welcome/Welcome Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Welcome Launcher.sh")
     elif press == "Leafpad":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Leafpad Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Leafpad Launcher.sh")
     elif press == "Scratch":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Scratch Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
     elif press == "Python IDLE":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/IDLE Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
     elif press == "Thonny Python":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/Thonny Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")
     elif press == "Java":
-        Popen("/usr/local/bin/Solar Pi/Solar Pi Applications/Python Applications/blueJ Launcher.sh")
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/blueJ Launcher.sh")
 
 def ToolbarHandler(press):
     if press == "Help":
