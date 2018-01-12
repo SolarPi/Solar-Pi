@@ -59,7 +59,7 @@ def ClockChange(clock):
 def ApplySettings(press):
     # Fetches data from widgets
     clock_speed = int(program.getEntry("Max Clock Speed: "))
-    battery_meter = program.getCheckBox("Show standalone battery meter")
+    battery_meter = program.getCheckBox("Show battery meter in corner")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     theme = program.getOptionBox("Themes").lower()
 
@@ -86,7 +86,7 @@ def ApplySettings(press):
 
 def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to set controls
     program.setScale("slider", clock_speed)
-    program.setCheckBox("Show standalone battery meter", battery_meter)
+    program.setCheckBox("Show battery meter in corner", battery_meter)
     program.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
     program.setOptionBox("Themes", theme[0].upper() + theme[1:])
 
@@ -182,7 +182,7 @@ with gui("Settings", useTtk=True) as program:
 
         # Buttons
         program.addLabel("filler1", "")
-        program.addCheckBox("Show standalone battery meter", colspan=2)
+        program.addCheckBox("Show battery meter in corner", colspan=2)
         #program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
     with program.labelFrame("Updates", 0, 2):
