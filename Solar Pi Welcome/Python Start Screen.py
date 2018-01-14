@@ -15,7 +15,34 @@ with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.in
 data = data.split(",")
 theme1 = data[3]
 
+if theme1 == "Solar Pi":
+    custom = True
+else:
+    custom = False
+
 program = gui("Solar Pi Welcome", useTtk=True)
+if custom == True:
+    program.setTtkTheme("clam")
+
+    # Custom Notebook
+    program.ttkStyle.configure("TNotebook", background="white");
+    program.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
+                foreground=[("selected", "white")]);
+    program.ttkStyle.configure("TNotebook.Tab", background="light grey", foreground="black");  # Unselected tab
+
+    # Custom buttons
+
+    # Highlighted button
+    program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+    program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+    # Regular button
+    program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
+elif custom == False:
+    program.setTtkTheme(theme1)
 
 # Event Handler for buttons
 def ButtonHandler(press):
@@ -42,6 +69,7 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Launches settings for display language
     elif press == "Get Started":
         program.getNotebookWidget("MainTabs").select([1])  # Sets selected note/tab to Get Started
+
     elif press == "Charging":
         program.getNotebookWidget("MainTabs").select([2])  # Set selected note/tab to Charging
 
@@ -121,7 +149,6 @@ def Java(press):  # Google's Python Tutorial
 
 # About Popup
 with program.subWindow("About Solar Pi", modal=True):
-    program.ttkStyle.configure(".", background="white", foreground="black")
     program.setPadding(5, 5)
     program.setBg("white")
     program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
@@ -129,83 +156,41 @@ with program.subWindow("About Solar Pi", modal=True):
     program.setLocation(250, 150)
     program.setResizable(canResize=False)
     with program.labelFrame("About"):
-        program.ttkStyle.configure(".", background="white", foreground="black")
         program.setBg("white")
         program.setPadding(10, 10)
         program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
     program.addButton("Close", ButtonHandler)
+    if custom == True:
+        program.setButtonStyle("Close", "H.TButton")
     program.setBg("white")
 
 
-# Languages Window
+# Menu bar
+program.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
+program.addMenuList("Applications", ["Leafpad", "Start Programming", "Performance to Battery Life"], MenuHandler)
+program.addMenuList("Guides", ["Python Guides"], MenuHandler)
+program.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
 
 
+tools = ["Off", "Settings", "Files", "About", "Help"]
+program.addToolbar(tools, ToolbarHandler, findIcon=True)
+#if theme1 == "Solar Pi":
+#    var = program.widgetManager.group(program.Widgets.Toolbar)
+#    var["Off"].config(fg="#dbdce2")
+#program.setToolbarFg("white")
 
 # Main Window
 program.setPadding(3, 3)
+
 with program.notebook("MainTabs", colspan=2):
 
-    #program.setTabbedFrameTabExpand("MainTabs", expand=True)
-
-    # Menu bar
-    program.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
-    program.addMenuList("Applications", ["Leafpad", "Start Programming", "Performance to Battery Life"], MenuHandler)
-    program.addMenuList("Guides", ["Python Guides"], MenuHandler)
-    program.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
-
-
-    tools = ["Off", "Settings", "Files", "About", "Help"]
-    program.addToolbar(tools, ToolbarHandler, findIcon=True)
-
-
-    """
-                Old Welcome Tab
-    """
-    # Welcome Tab
-    # with program.note("Welcome!"):
-    #     program.setPadding(10, 10)
-    #     program.addImage("logo", "../Resources/Images/Solar Pi logo.gif", colspan=2)
-    #     program.zoomImage("logo", -2)
-    #     program.addLabel("welcome", "Welcome to your Solar Pi!", colspan=2)  # Update translation
-    #     program.setLabelAlign("welcome", "center")
-    #     program.getLabelWidget("welcome").config(font=("Dejavu Sans", "20"))
-    #     program.addLabel("get_started", "To help you start to use your Solar Pi, click\non the button to open the starter guide -->", 2, 0)  # Update translation
-    #     #program.addButton("Get Started", ButtonHandler, 2, 1)
-    #     #program.addLabel("label1", "Your Solar Pi is a solar powered Raspberry Pi based computer.\nStart by clicking one of the tabs above.  ^^^", colspan=2)
-    #     #program.addButtons(["About", "Languages", "Exit"], ButtonHandler, colspan=2)
-
-
-    # with program.note("Welcome!"):
-    #     program.setPadding(10, 10)
-    #     with program.frame("frame4", 0, 0, colspan=3):
-    #         program.addLabel("text4", "Welcome to your  ", 0, 0)
-    #         program.setLabelAlign("text4", "right")
-    #         program.getLabelWidget("text4").config(font=("Dejavu Sans", "20"))
-    #         program.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
-    #         program.zoomImage("logo text1", -2)
-    #         program.setImageSticky("logo text1", "nsw")
-    #     with program.frame("frame5", 1, 0):
-    #         program.setPadding(10, 10)
-    #         program.setBg("white", override=True)
-    #         program.addButton("Get Started1", ButtonHandler)
-    #         program.addNamedButton("Docs", "docs1", Guides)
-    #         program.addButton("About1", ButtonHandler)
-    #     program.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
-    #     program.zoomImage("logo5", -4)
-    #     with program.frame("frame6", 1, 2):
-    #         #program.setPadding(10, 10)
-    #         program.addNamedButton("Programming", "programming3", Programming)
-    #         #program.setButtonPadding("programming3", [10, 10])
-    #         program.addButton("Settings1", Settings)
-    #         program.addButton("Change\nLanguage1", ButtonHandler)
-
-
     with program.note("Welcome!"):
-
         program.setPadding(10, 10)
+        program.setBg("white")
 
         with program.labelFrame("-"):
-            program.addLabel("text3", "Welcome to your  ", 0, 0)
+            program.setPadding(10, 10)
+            program.addLabel("text3", "Welcome to your", 0, 0)
             program.setLabelAnchor("text3", "e")
             program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
             program.setLabelSticky("text3", "e")
@@ -219,7 +204,10 @@ with program.notebook("MainTabs", colspan=2):
             program.setBg("white")
 
             #program.setBg("grey")
-            program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, column=0)
+            if custom == True:
+                program.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
+            else:
+                program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
             program.setButtonSticky("Get Started", "nesw")
             #program.setButtonPadding("Get Started", [10, 10])
             program.addImageButton(" Docs", Guides, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
@@ -233,13 +221,17 @@ with program.notebook("MainTabs", colspan=2):
 
             program.addImageButton("  Programming", Programming, "../Resources/Images/Programming icon small.gif", align="left", row=1, column=2)
             program.setButtonSticky("  Programming", "nesw")
-            program.addIconButton("Settings", Settings, "settings", align="left", row=2, column=2)
-            program.setButtonSticky("Settings", "nesw")
+            program.addIconButton(" Settings", Settings, "settings", align="left", row=2, column=2)
+            program.setButtonSticky(" Settings", "nesw")
             program.addImageButton("  Languages", ButtonHandler, "../Resources/Images/languages small.gif", align="left", row=3, column=2)
             program.setButtonSticky("  Languages", "nesw")
 
+        if custom == True:
+            program.setButtonStyle("Get Started", "H.TButton")
 
-    with program.note("Get Started"):
+
+    with program.note("Starter Guide"):
+
         program.setPadding(10, 10)
         program.addLabel("title", "Solar Pi Starter Guide", colspan=2)
         program.getLabelWidget("title").config(font=("Dejavu Sans", "15"))
@@ -256,10 +248,13 @@ with program.notebook("MainTabs", colspan=2):
             program.setLabelAlign("info4", "right")
             program.addButton("Charging", ButtonHandler, 0, 1)
 
+        if custom == True:
+            program.setButtonStyle("Charging", "H.TButton")
 
 
     with program.note("Charging"):
-        program.setPadding(10, 10)
+
+        #program.setPadding(10, 10)
         program.addLabel("title5", "Charging your Solar Pi", colspan=3)
         program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
         program.setLabelSticky("title5", "ew")
@@ -269,17 +264,18 @@ bottom left of the display shows how much power
 is left in the batteries of your Solar Pi.
 A full bar (100%) means most power, and an empty
 bar (0%) means no power left.
-    
+
 When the battery meter gets close to 0% and your
 Solar Pi shuts down, you need to charge it.
 To do this, fold out the solar panels, and make
 sure that the Solar Pi is facing the sun.
 You will then need to wait for a few hours until it is
 charged up.
-    
+
 Once your Solar Pi is charged, the battery meter
 should show 100%."""
-        program.addLabel("info5", text, rowspan=2)
+        program.addLabel("info5", text)
+        program.setLabelAlign("info5", "center")
         #program.getLabelWidget("info5").config(font=("Piboto", "13"))
 
         program.addLabel("read", "Read more:", 1, 1)
@@ -287,9 +283,13 @@ should show 100%."""
         program.addButton("Starter Guide", Guides, 1, 2)
         program.setButtonSticky("Starter Guide", "")
 
+        if custom == True:
+            program.setButtonStyle("Starter Guide", "H.TButton")
+
 
     # Applications Tab
     with program.note("Applications"):
+
         with program.labelFrame("Applications"):
             program.setSticky("ew")
             program.setPadding(10, 10)
@@ -314,6 +314,7 @@ should show 100%."""
             # IDEs
             with program.labelFrame("IDEs", 2, 0, colspan=2):
                 program.setPadding(10, 10)
+                program.setSticky("nesw")
 
                 with program.labelFrame("Scratch", 1, 0):
                     program.setPadding(10, 10)
@@ -336,9 +337,13 @@ should show 100%."""
                     program.setImageTooltip("java_logo", "The BlueJ Java IDE. Create Java applications.")
                     program.addButton("Java", ButtonHandler, 0, 1)
 
+        if custom == True:
+            program.setButtonStyle("Start Programming", "H.TButton")
+
 
     # Guides & Tutorials Tab
     with program.note("Guides & Tutorials"):
+
         with program.labelFrame("Guides & Tutorials"):
             program.setSticky("ew")
             program.setPadding(10, 10)
@@ -379,39 +384,9 @@ should show 100%."""
                 program.addButton("Java Guide", Java, 0, 1)
 
 
-    """
-                Removed Settings
-    """
+        if custom == True:
+            program.setButtonStyle("Python Intro", "H.TButton")
 
-    # Settings Tab
-    # with program.note("Settings"):
-    #     with program.labelFrame("Settings"):
-    #         program.setSticky("ew")
-    #         program.setPadding(10, 10)
-    #         with program.labelFrame("General Settings", 0, 0):
-    #             program.setSticky("ew")
-    #             program.setPadding(10, 10)
-    #             program.addCheckBox("Launch this application at startup")
-    #             program.setCheckBox("Launch this application at startup", ticked=True)
-    #             program.addButton("Change Advanced Settings", ButtonHandler)
-    #             program.addButton("Change Performance & Battery Life Settings", PerfBattery)
-    #             program.addButton("Apply Changes", Settings)
-    #             program.setButtonSticky("Apply Changes", "Both")
-    #             program.setButtonBg("Apply Changes", "gray")
-    #             program.setButtonFg("Apply Changes", "white")
-    #
-    #         with program.labelFrame("Update", 0, 1):
-    #             program.setSticky("ew")
-    #             program.setPadding(10, 10)
-    #             program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
-    #             program.addCheckBox("Update Operating System & Installed Programs")
-    #             program.addCheckBox("Update appJar")
-    #             program.addButton("Go", Update)
-    #             program.setButtonBg("Go", "gray")
-    #             program.setButtonFg("Go", "white")
-
-
-#program.setBg("white")
 
 
 def Startup(param):
@@ -459,15 +434,12 @@ with open("language.txt", "r") as file:
     lang = file.readline()
     lang.rstrip("\n")
 
-
 #print(lang)
-program.setTtkTheme(theme1)
-program.ttkStyle.configure(".", background="white", foreground="black")
-program.ttkStyle.configure("TLabelframe", background="white")
-
-
 program.setLabelFrameStyle("-", "TFrame")
 program.setLabelFrameStyle("", "TFrame")
+#program.ttkStyle.configure(".", background="white", foreground="black")
+program.ttkStyle.configure("TLabelframe", background="white")
+
 program.setLabelFrameStyle("Applications", "TFrame")
 program.setLabelFrameStyle("Start Programming", "TFrame")
 program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
