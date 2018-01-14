@@ -12,10 +12,10 @@ with open("../../Solar Pi Settings/Settings.ini", "r") as file:
 data = data.split(",")
 theme = data[3]
 
-if theme == "solar pi":
-    ttk = False
+if theme == "Solar Pi":
+    custom = True
 else:
-    ttk = True
+    custom = False
 
 # Handlers
 def ButtonHandler(press):
@@ -60,8 +60,16 @@ def ToolbarHandler(press):
         webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
 
 # GUI Parameters
-with gui("Programming", "400x325", useTtk=ttk) as program:  # 400x320
-    if ttk == True:
+with gui("Programming", "400x325", useTtk=True) as program:  # 400x320
+    if custom == True:
+        program.setTtkTheme("clam")
+        program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+        program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+        # Regular button
+        program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+        # Radiobutton
+        program.ttkStyle.map("TRadiobutton", background=[("active", "white")])
+    else:
         program.setTtkTheme(theme)
         program.ttkStyle.configure(".", background="white", foreground="black")
 
@@ -80,30 +88,13 @@ with gui("Programming", "400x325", useTtk=ttk) as program:  # 400x320
 
     program.addLabel("title", "Choose a Programming Language:")
     program.addHorizontalSeparator()
-    if ttk == False:
-        program.setLabelBg("title", "light gray")
     #program.setLabelBg("title", "light gray")
 
     program.addRadioButton("language", "Scratch (Easy)")
     program.addRadioButton("language", "Python (Intermedium/Hard)")
     program.addRadioButton("language", "Java (Hard)")
-    if ttk == True:
-        program.addButtons(["Go", "More Info", "Exit"], ButtonHandler)
-    if ttk == False:
-        with program.frame("frame"):
-            program.setPadding(10, 10)
-            program.addButton("Go", ButtonHandler, 0, 0)
-            program.addButton("More Info", ButtonHandler, 0, 1)
-            program.addButton("Exit", ButtonHandler, 0, 2)
+    program.addButtons(["Go", "More Info", "Exit"], ButtonHandler)
 
-        program.setButtonRelief("Go", "groove")
-        program.setButtonBg("Go", "#324581")
-        program.setButtonFg("Go", "white")
-        program.setButtonSticky("Go", "nesw")
-        program.setButtonPadding("Go", [5, 5])
-        program.setButtonRelief("More Info", "groove")
-        program.setButtonBg("More Info", "#dbdce2")
-        program.setButtonSticky("More Info", "nesw")
-        program.setButtonRelief("Exit", "groove")
-        program.setButtonBg("Exit", "#dbdce2")
-        program.setButtonSticky("Exit", "nesw")
+    if custom == True:
+        program.setButtonStyle("Go", "H.TButton")
+

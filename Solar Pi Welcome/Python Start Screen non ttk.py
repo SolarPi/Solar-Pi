@@ -70,7 +70,9 @@ if ttk == True:
         program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
 
         # Regular button
-        program.ttkStyle.configure("D.TButton", background="#dbdce2", bordercolor="#687396")
+        program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     elif custom == False:
         program.setTtkTheme(theme1)
@@ -363,11 +365,6 @@ if ttk == False:
 elif custom == True:
     print("custom: True")
     program.setButtonStyle("Get Started", "H.TButton")
-    program.setButtonStyle(" Docs", "D.TButton")
-    program.setButtonStyle(" About", "D.TButton")
-    program.setButtonStyle("  Programming", "D.TButton")
-    program.setButtonStyle(" Settings", "D.TButton")
-    program.setButtonStyle("  Languages", "D.TButton")
     program.stopNote()
 elif ttk == True:
     program.stopNote()
@@ -532,10 +529,6 @@ if ttk == False:
     program.stopTab()
 elif custom == True:
     program.setButtonStyle("Start Programming", "H.TButton")
-    program.setButtonStyle("Solar Pi Settings", "D.TButton")
-    program.setButtonStyle("Scratch", "D.TButton")
-    program.setButtonStyle("Python", "D.TButton")
-    program.setButtonStyle("Java", "D.TButton")
     program.stopNote()
 elif ttk == True:
     program.stopNote()
@@ -607,9 +600,6 @@ if ttk == False:
     program.stopTab()
 elif custom == True:
     program.setButtonStyle("Python Intro", "H.TButton")
-    program.setButtonStyle("Glossary", "D.TButton")
-    program.setButtonStyle("A Byte of Python", "D.TButton")
-    program.setButtonStyle("Java Guide", "D.TButton")
     program.stopNote()
 elif ttk == True:
     program.stopNote()

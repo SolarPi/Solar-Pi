@@ -64,7 +64,7 @@ def ApplySettings(press):
     theme = program.getOptionBox("Themes")
     if theme == "Solar Pi":
         program.setTtkTheme("clam")
-        # @TODO Set ttk style
+
     else:
         theme = theme.lower()
         program.setTtkTheme(theme)  # Sets theme
@@ -109,11 +109,7 @@ def Defaults(press):  # Procedure to reset to default
 
     ClockChange(1200)  # Changes max clock speed to 1200 MHz
 
-
-
     program.setTtkTheme("clam")  # Sets plastik theme for application
-    # @TODO Set ttk style
-    # ttk style
 
     # Prompts user to restart to apply changes
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
@@ -151,9 +147,18 @@ RESTORE = "\u21BA"
 # GUI code
 with gui("Settings", useTtk=True) as program:
     if theme == "Solar Pi":
+        custom = True
         program.setTtkTheme("clam")
-        # TODO Set ttk style
+        program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+        program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+        # Regular button
+        program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
     else:
+        custom = False
         program.setTtkTheme(theme)
         program.ttkStyle.configure(".", background="white", foreground="black")
     program.setBg("white")
@@ -213,7 +218,7 @@ with gui("Settings", useTtk=True) as program:
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["Solar Pi", "Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
+        themes = ["Solar Pi", "Plastik", "Arc", "Clearlooks", "Radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
@@ -238,6 +243,10 @@ with gui("Settings", useTtk=True) as program:
     program.setButtonSticky(" Restore Defaults ", "e")
     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 2, 2, align="right")
 
+    if custom == True:
+        program.setButtonStyle("More Info", "H.TButton")
+        program.setButtonStyle("Update System", "H.TButton")
+        program.setButtonStyle("Apply ", "H.TButton")
 
 
 
