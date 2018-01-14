@@ -152,7 +152,7 @@ with program.subWindow("About Solar Pi", modal=True):
     program.addButton("Close", ButtonHandler)
     if ttk == False:
         program.setButtonRelief("Close", "groove")
-        program.setButtonBg("Close", "#3577e0")
+        program.setButtonBg("Close", "#324581")
         program.setButtonFg("Close", "white")
     program.setBg("white")
 
@@ -173,7 +173,7 @@ elif ttk == False:
     #program.setTabbedFrameInactiveBg("MainTabs", "light blue")
     program.setTabbedFrameInactiveBg("MainTabs", "light gray")
     program.setTabbedFrameInactiveFg("MainTabs", "black")
-    program.setTabbedFrameTabExpand("MainTabs", expand=True)
+    #program.setTabbedFrameTabExpand("MainTabs", expand=True)
 
 
         #program.setTabbedFrameTabExpand("MainTabs", expand=True)
@@ -254,7 +254,10 @@ with program.labelFrame(""):
     program.setBg("white")
 
     #program.setBg("grey")
-    program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, column=0)
+    if ttk == False:
+        program.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
+    elif ttk == True:
+        program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
     program.setButtonSticky("Get Started", "nesw")
     #program.setButtonPadding("Get Started", [10, 10])
     program.addImageButton(" Docs", Guides, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
@@ -275,12 +278,24 @@ with program.labelFrame(""):
 
 if ttk == False:
     program.setButtonRelief("Get Started", "groove")
+    program.getButtonWidget("Get Started").config(borderwidth=2)
     program.setButtonRelief(" Docs", "groove")
+    program.setButtonBg(" Docs", "#dbdce2")
+    program.getButtonWidget(" Docs").config(borderwidth=2)
     program.setButtonRelief(" About", "groove")
+    program.setButtonBg(" About", "#dbdce2")
+    program.getButtonWidget(" About").config(borderwidth=2)
     program.setButtonRelief("  Programming", "groove")
+    program.setButtonBg("  Programming", "#dbdce2")
+    program.getButtonWidget("  Programming").config(borderwidth=2)
     program.setButtonRelief(" Settings", "groove")
+    program.setButtonBg(" Settings", "#dbdce2")
+    program.getButtonWidget(" Settings").config(borderwidth=2)
     program.setButtonRelief("  Languages", "groove")
-    program.setButtonBg("Get Started", "#3577e0")
+    program.setButtonBg("  Languages", "#dbdce2")
+    program.getButtonWidget("  Languages").config(borderwidth=2)
+    program.setButtonBg("Get Started", "#324581")
+    #program.setButtonBg("Get Started", "#3577e0")
     program.setButtonFg("Get Started", "white")
     program.stopTab()
 elif ttk == True:
@@ -312,7 +327,8 @@ with program.frame("frame"):
     program.addButton("Charging", ButtonHandler, 0, 1)
 if ttk == False:
     program.setButtonRelief("Charging", "groove")
-    program.setButtonBg("Charging", "#3577e0")
+    program.getButtonWidget("Charging").config(borderwidth=2)
+    program.setButtonBg("Charging", "#324581")
     program.setButtonFg("Charging", "white")
     program.stopTab()
 elif ttk == True:
@@ -325,7 +341,7 @@ elif ttk == False:
     program.startTab("Charging")
     program.setBg("white")
 
-program.setPadding(10, 10)
+#program.setPadding(10, 10)
 program.addLabel("title5", "Charging your Solar Pi", colspan=3)
 program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
 program.setLabelSticky("title5", "ew")
@@ -345,7 +361,8 @@ charged up.
 
 Once your Solar Pi is charged, the battery meter
 should show 100%."""
-program.addLabel("info5", text, rowspan=2)
+program.addLabel("info5", text)
+program.setLabelAlign("info5", "center")
 #program.getLabelWidget("info5").config(font=("Piboto", "13"))
 
 program.addLabel("read", "Read more:", 1, 1)
@@ -354,7 +371,8 @@ program.addButton("Starter Guide", Guides, 1, 2)
 program.setButtonSticky("Starter Guide", "")
 if ttk == False:
     program.setButtonRelief("Starter Guide", "groove")
-    program.setButtonBg("Starter Guide", "#3577e0")
+    program.getButtonWidget("Starter Guide").config(borderwidth=2)
+    program.setButtonBg("Starter Guide", "#324581")
     program.setButtonFg("Starter Guide", "white")
     program.stopTab()
 elif ttk == True:
@@ -393,6 +411,7 @@ with program.labelFrame("Applications"):
     # IDEs
     with program.labelFrame("IDEs", 2, 0, colspan=2):
         program.setPadding(10, 10)
+        program.setSticky("nesw")
 
         with program.labelFrame("Scratch", 1, 0):
             program.setPadding(10, 10)
@@ -417,11 +436,20 @@ with program.labelFrame("Applications"):
 
 if ttk == False:
     program.setButtonRelief("Start Programming", "groove")
+    program.getButtonWidget("Start Programming").config(borderwidth=2)
     program.setButtonRelief("Solar Pi Settings", "groove")
+    program.getButtonWidget("Solar Pi Settings").config(borderwidth=2)
+    program.setButtonBg("Solar Pi Settings", "#dbdce2")
     program.setButtonRelief("Scratch", "groove")
+    program.getButtonWidget("Scratch").config(borderwidth=2)
+    program.setButtonBg("Scratch", "#dbdce2")
     program.setButtonRelief("Python", "groove")
+    program.getButtonWidget("Python").config(borderwidth=2)
+    program.setButtonBg("Python", "#dbdce2")
     program.setButtonRelief("Java", "groove")
-    program.setButtonBg("Start Programming", "#3577e0")
+    program.getButtonWidget("Java").config(borderwidth=2)
+    program.setButtonBg("Java", "#dbdce2")
+    program.setButtonBg("Start Programming", "#324581")
     program.setButtonFg("Start Programming", "white")
     program.stopTab()
 elif ttk == True:
@@ -479,10 +507,17 @@ with program.labelFrame("Guides & Tutorials"):
 
 if ttk == False:
     program.setButtonRelief("Python Intro", "groove")
+    program.getButtonWidget("Python Intro").config(borderwidth=2)
     program.setButtonRelief("Glossary", "groove")
+    program.getButtonWidget("Glossary").config(borderwidth=2)
+    program.setButtonBg("Glossary", "#dbdce2")
     program.setButtonRelief("A Byte of Python", "groove")
+    program.getButtonWidget("A Byte of Python").config(borderwidth=2)
+    program.setButtonBg("A Byte of Python", "#dbdce2")
     program.setButtonRelief("Java Guide", "groove")
-    program.setButtonBg("Python Intro", "#3577e0")
+    program.getButtonWidget("Java Guide").config(borderwidth=2)
+    program.setButtonBg("Java Guide", "#dbdce2")
+    program.setButtonBg("Python Intro", "#324581")
     program.setButtonFg("Python Intro", "white")
     program.stopTab()
 elif ttk == True:
