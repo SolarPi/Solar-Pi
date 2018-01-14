@@ -25,10 +25,10 @@ if custom == True:
     program.setTtkTheme("clam")
 
     # Custom Notebook
-    program.ttkStyle.configure("TNotebook", background="white");
+    program.ttkStyle.configure("TNotebook", background="white")
     program.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
-                foreground=[("selected", "white")]);
-    program.ttkStyle.configure("TNotebook.Tab", background="light grey", foreground="black");  # Unselected tab
+                foreground=[("selected", "white")])
+    program.ttkStyle.configure("TNotebook.Tab", background="light grey", foreground="black")  # Unselected tab
 
     # Custom buttons
 
