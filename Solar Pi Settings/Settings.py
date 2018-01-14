@@ -61,13 +61,16 @@ def ApplySettings(press):
     clock_speed = int(program.getEntry("Max Clock Speed: "))
     battery_meter = program.getCheckBox("Show battery meter in corner")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
-    theme = program.getOptionBox("Themes").lower()
+    theme = program.getOptionBox("Themes")
+    if theme == "Solar Pi":
+        program.setTtkTheme("clam")
+        # @TODO Set ttk style
+    else:
+        theme = theme.lower()
+        program.setTtkTheme(theme)  # Sets theme
+        program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
 
     program.setScale("slider", clock_speed)  # Sets slider to value in entry
-
-    program.setTtkTheme(theme)  # Sets theme
-    program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
-
 
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes appropriate action for running Welcome at startup
 
@@ -88,14 +91,17 @@ def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to
     program.setScale("slider", clock_speed)
     program.setCheckBox("Show battery meter in corner", battery_meter)
     program.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
-    program.setOptionBox("Themes", theme[0].upper() + theme[1:])
+    if theme == "Solar Pi":
+        program.setOptionBox("Themes", theme)
+    else:
+        program.setOptionBox("Themes", theme[0].upper() + theme[1:])
 
 
 def Defaults(press):  # Procedure to reset to default
     with open("Settings.ini", "w") as file:
         file.write("1200,True,True,plastik")  # Writes default settings to file
 
-    SetItems(1200, True, True, "plastik")  # Sets controls to default
+    SetItems(1200, True, True, "Solar Pi")  # Sets controls to default
 
     Autorun("welcome", True, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Creates .desktop file for welcome
 
@@ -103,7 +109,11 @@ def Defaults(press):  # Procedure to reset to default
 
     ClockChange(1200)  # Changes max clock speed to 1200 MHz
 
-    program.setTtkTheme("plastik")  # Sets plastik theme for application
+
+
+    program.setTtkTheme("clam")  # Sets plastik theme for application
+    # @TODO Set ttk style
+    # ttk style
 
     # Prompts user to restart to apply changes
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
@@ -140,14 +150,18 @@ RESTORE = "\u21BA"
 
 # GUI code
 with gui("Settings", useTtk=True) as program:
-    program.setTtkTheme(theme)
+    if theme == "Solar Pi":
+        program.setTtkTheme("clam")
+        # TODO Set ttk style
+    else:
+        program.setTtkTheme(theme)
+        program.ttkStyle.configure(".", background="white", foreground="black")
     program.setBg("white")
     #program.setResizable(canResize=False)
     #program.ttkStyle.configure("TLabelframe.Label", background="white")
     #program.ttkStyle.configure("TScale", background="white")
     #program.ttkStyle.configure("TFrame", background="white")
     #program.ttkStyle.configure("TCheckbutton", background="white")
-    program.ttkStyle.configure(".", background="white", foreground="black")
     
 
     with program.labelFrame("Performance & Power", 0, 0, colspan=2):
@@ -199,7 +213,7 @@ with gui("Settings", useTtk=True) as program:
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
+        themes = ["Solar Pi", "Plastik", "Arc", "Clam", "Clearlooks", "Radiance"]
         program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)

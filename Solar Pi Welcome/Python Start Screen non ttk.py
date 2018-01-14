@@ -15,14 +15,65 @@ with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.in
 data = data.split(",")
 theme1 = data[3]
 
-if theme1 == "solar pi":
+if theme1 == "solar pi2":
     ttk = False
+    custom = False
+elif theme1 == "Solar Pi":
+    ttk = True
+    custom = True
 else:
     ttk = True
+    custom = False
 
 if ttk == True:
     program = gui("Solar Pi Welcome", useTtk=True)
-    program.setTtkTheme(theme1)
+    if custom == True:
+        program.setTtkTheme("clam")
+
+        # program.ttkStyle.theme_create("SolarPi", parent="clam", settings={
+        #      "TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0]}},
+        #      "TNotebook.Tab": {
+        #          "configure": {"padding": [5, 3], "background": "light gray"},
+        #          "map": {"background": [("selected", "#324581")],
+        #                  "expand": [("selected", [1, 1, 1, 0])],
+        #                  "foreground": [("selected", "white")]}},
+        #      "TButton": {"configure": {"relief": "groove"}}
+        #  }
+        #      )
+
+        # program.ttkStyle.element_create('Plain.Notebook.tab', "from", 'clam')
+        # # Redefine the TNotebook Tab layout to use the new element
+        # program.ttkStyle.layout("TNotebook.Tab",
+        #                   [('Plain.Notebook.tab', {'children':
+        #                                                [('Notebook.padding', {'side': 'top', 'children':
+        #                                                    [('Notebook.focus', {'side': 'top', 'children':
+        #                                                        [('Notebook.label', {'side': 'top', 'sticky': ''})],
+        #                                                                         'sticky': 'nswe'})],
+        #                                                                       'sticky': 'nswe'})],
+        #                                            'sticky': 'nswe'})])
+        # #program.ttkStyle.configure("TNotebook", background="blue", borderwidth=0)
+        # program.ttkStyle.configure("TNotebook.Tab", background="green", foreground="white", borderwidth=2)
+        # #program.configure("TFrame", background=COLOR_1, foreground=COLOR_2, borderwidth=0)
+        #
+        #program.ttkStyle.theme_use("SolarPi")
+
+        # Custom Notebook
+        program.ttkStyle.configure("TNotebook", background="white");
+        program.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
+                    foreground=[("selected", "white")]);
+        program.ttkStyle.configure("TNotebook.Tab", background="light grey", foreground="black");  # Unselected tab
+
+        # Custom buttons
+
+        # Highlighted button
+        program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+        program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+        # Regular button
+        program.ttkStyle.configure("D.TButton", background="#dbdce2", bordercolor="#687396")
+
+    elif custom == False:
+        program.setTtkTheme(theme1)
 
 elif ttk == False:
     program = gui("Solar Pi Welcome", "700x500")  # 700x500
@@ -36,6 +87,10 @@ def ButtonHandler(press):
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
         exit()  # Quits program
     elif press == " About":  # Opens the About subwindow
+        program.setTtkTheme("plastik")
+        #program.ttkStyle.theme_use("SolarPi")
+        program.setTtkTheme("clam")
+
         program.showSubWindow("About Solar Pi")
     elif press == "Close":  # Closes the About subwindow
         program.hideSubWindow("About Solar Pi")
@@ -154,6 +209,8 @@ with program.subWindow("About Solar Pi", modal=True):
         program.setButtonRelief("Close", "groove")
         program.setButtonBg("Close", "#324581")
         program.setButtonFg("Close", "white")
+    elif custom == True:
+        program.setButtonStyle("Close", "H.TButton")
     program.setBg("white")
 
 
@@ -187,6 +244,9 @@ program.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pic
 
 tools = ["Off", "Settings", "Files", "About", "Help"]
 program.addToolbar(tools, ToolbarHandler, findIcon=True)
+#if theme1 == "Solar Pi":
+#    var = program.widgetManager.group(program.Widgets.Toolbar)
+#    var["Off"].config(fg="#dbdce2")
 #program.setToolbarFg("white")
 
 
@@ -240,7 +300,8 @@ program.setPadding(10, 10)
 program.setBg("white")
 
 with program.labelFrame("-"):
-    program.addLabel("text3", "Welcome to your  ", 0, 0)
+    program.setPadding(10, 10)
+    program.addLabel("text3", "Welcome to your", 0, 0)
     program.setLabelAnchor("text3", "e")
     program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
     program.setLabelSticky("text3", "e")
@@ -254,7 +315,7 @@ with program.labelFrame(""):
     program.setBg("white")
 
     #program.setBg("grey")
-    if ttk == False:
+    if ttk == False or custom == True:
         program.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
     elif ttk == True:
         program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
@@ -298,8 +359,19 @@ if ttk == False:
     #program.setButtonBg("Get Started", "#3577e0")
     program.setButtonFg("Get Started", "white")
     program.stopTab()
+
+elif custom == True:
+    print("custom: True")
+    program.setButtonStyle("Get Started", "H.TButton")
+    program.setButtonStyle(" Docs", "D.TButton")
+    program.setButtonStyle(" About", "D.TButton")
+    program.setButtonStyle("  Programming", "D.TButton")
+    program.setButtonStyle(" Settings", "D.TButton")
+    program.setButtonStyle("  Languages", "D.TButton")
+    program.stopNote()
 elif ttk == True:
     program.stopNote()
+
 
 
 
@@ -331,6 +403,9 @@ if ttk == False:
     program.setButtonBg("Charging", "#324581")
     program.setButtonFg("Charging", "white")
     program.stopTab()
+elif custom == True:
+    program.setButtonStyle("Charging", "H.TButton")
+    program.stopNote()
 elif ttk == True:
     program.stopNote()
 
@@ -375,6 +450,9 @@ if ttk == False:
     program.setButtonBg("Starter Guide", "#324581")
     program.setButtonFg("Starter Guide", "white")
     program.stopTab()
+elif custom == True:
+    program.setButtonStyle("Starter Guide", "H.TButton")
+    program.stopNote()
 elif ttk == True:
     program.stopNote()
 
@@ -452,6 +530,13 @@ if ttk == False:
     program.setButtonBg("Start Programming", "#324581")
     program.setButtonFg("Start Programming", "white")
     program.stopTab()
+elif custom == True:
+    program.setButtonStyle("Start Programming", "H.TButton")
+    program.setButtonStyle("Solar Pi Settings", "D.TButton")
+    program.setButtonStyle("Scratch", "D.TButton")
+    program.setButtonStyle("Python", "D.TButton")
+    program.setButtonStyle("Java", "D.TButton")
+    program.stopNote()
 elif ttk == True:
     program.stopNote()
 
@@ -520,6 +605,12 @@ if ttk == False:
     program.setButtonBg("Python Intro", "#324581")
     program.setButtonFg("Python Intro", "white")
     program.stopTab()
+elif custom == True:
+    program.setButtonStyle("Python Intro", "H.TButton")
+    program.setButtonStyle("Glossary", "D.TButton")
+    program.setButtonStyle("A Byte of Python", "D.TButton")
+    program.setButtonStyle("Java Guide", "D.TButton")
+    program.stopNote()
 elif ttk == True:
     program.stopNote()
 

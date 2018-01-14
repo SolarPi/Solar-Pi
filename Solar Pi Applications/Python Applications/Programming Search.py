@@ -79,6 +79,7 @@ with gui("Programming", "400x325", useTtk=ttk) as program:  # 400x320
     program.zoomImage("solar_pi", -35)
 
     program.addLabel("title", "Choose a Programming Language:")
+    program.addHorizontalSeparator()
     if ttk == False:
         program.setLabelBg("title", "light gray")
     #program.setLabelBg("title", "light gray")
