@@ -23,6 +23,7 @@ else:
 program = gui("Solar Pi Welcome", useTtk=True)
 if custom == True:
     program.setTtkTheme("clam")
+    program.ttkStyle.configure(".", font="10")
 
     # Custom Notebook
     program.ttkStyle.configure("TNotebook", background="white")

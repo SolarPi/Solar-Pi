@@ -49,6 +49,18 @@ def ButtonHandler(press):
     elif press == "Languages":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages app
 
+def SolarPiTheme():
+    program.setTtkTheme("clam")
+    program.ttkStyle.configure(".", font="10")
+
+    program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+    program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+    # Regular button
+    program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
 def ClockChange(clock):
     # Opens and modifies config.txt file
     for line in fileinput.input(["/boot/config.txt"], inplace=True):
@@ -63,7 +75,7 @@ def ApplySettings(press):
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     theme = program.getOptionBox("Themes")
     if theme == "Solar Pi":
-        program.setTtkTheme("clam")
+        SolarPiTheme()
 
     else:
         theme = theme.lower()
@@ -109,7 +121,7 @@ def Defaults(press):  # Procedure to reset to default
 
     ClockChange(1200)  # Changes max clock speed to 1200 MHz
 
-    program.setTtkTheme("clam")  # Sets plastik theme for application
+    SolarPiTheme()  # Sets Solar Pi theme for application
 
     # Prompts user to restart to apply changes
     if program.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
@@ -148,14 +160,7 @@ RESTORE = "\u21BA"
 with gui("Settings", useTtk=True) as program:
     if theme == "Solar Pi":
         custom = True
-        program.setTtkTheme("clam")
-        program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
-        program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
-
-        # Regular button
-        program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
-
-        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+        SolarPiTheme()
 
     else:
         custom = False

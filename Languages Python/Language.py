@@ -31,10 +31,20 @@ with open("../Solar Pi Settings/Settings.ini") as file:
     theme = data[3]
 
 with gui("Languages", useTtk=True) as program:
+    if theme == "Solar Pi":
+        program.setTtkTheme("clam")
+        program.ttkStyle.configure(".", font="10", background="white")
 
-    program.setTtkTheme(theme)
+        # Highlighted button
+        program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+        program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
 
-    program.ttkStyle.configure(".", background="white", foreground="black")
+        # Regular button
+        program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+    else:
+        program.setTtkTheme(theme)
+        program.ttkStyle.configure(".", background="white", foreground="black")
     
     program.setPadding(5, 5)
     program.setBg("white")

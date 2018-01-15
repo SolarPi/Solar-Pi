@@ -27,8 +27,8 @@ def ButtonHandler(press):
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
         elif option == "Python (Intermedium/Hard)":
             webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch Python starter guide
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:81")  # Launch A Byte of Python
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
         elif option == "Java (Hard)":
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
@@ -63,6 +63,8 @@ def ToolbarHandler(press):
 with gui("Programming", "400x325", useTtk=True) as program:  # 400x320
     if custom == True:
         program.setTtkTheme("clam")
+        program.ttkStyle.configure(".", font="10")
+
         program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
         program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
         # Regular button
