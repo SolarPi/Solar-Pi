@@ -21,6 +21,8 @@ else:
     custom = False
 
 program = gui("Solar Pi Welcome", useTtk=True)
+program.setResizable(False)
+
 if custom == True:
     program.setTtkTheme("plastik")
     program.setTtkTheme("clam")

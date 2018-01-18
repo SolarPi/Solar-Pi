@@ -50,8 +50,9 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages app
 
 def SolarPiTheme():
+    program.setTtkTheme("plastik")
     program.setTtkTheme("clam")
-    program.ttkStyle.configure(".", font="10")
+    #program.ttkStyle.configure(".", font="10")
 
     program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
     program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
@@ -60,6 +61,12 @@ def SolarPiTheme():
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
     program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
+    program.setButtonStyle("More Info", "H.TButton")
+    program.setButtonStyle("Update System", "H.TButton")
+    program.setButtonStyle("Apply ", "H.TButton")
+
+    program.setBg("white")
 
 def ClockChange(clock):
     # Opens and modifies config.txt file
@@ -136,7 +143,7 @@ def Update(press):
         
 # Sets entry based on scale changes
 def ScaleChange(value):
-    value = int(program.getScale("slider"))
+    value = str(int(program.getScale("slider")))
     program.setEntry("Max Clock Speed: ", value)
 
 # Sets scale based on entry
@@ -158,9 +165,9 @@ RESTORE = "\u21BA"
 
 # GUI code
 with gui("Settings", useTtk=True) as program:
+    program.setResizable(False)
     if theme == "Solar Pi":
         custom = True
-        SolarPiTheme()
 
     else:
         custom = False
@@ -249,9 +256,7 @@ with gui("Settings", useTtk=True) as program:
     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 2, 2, align="right")
 
     if custom == True:
-        program.setButtonStyle("More Info", "H.TButton")
-        program.setButtonStyle("Update System", "H.TButton")
-        program.setButtonStyle("Apply ", "H.TButton")
+        SolarPiTheme()
 
 
 

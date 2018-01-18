@@ -31,9 +31,12 @@ with open("../Solar Pi Settings/Settings.ini") as file:
     theme = data[3]
 
 with gui("Languages", useTtk=True) as program:
+    program.setResizable(False)
+
     if theme == "Solar Pi":
+        program.setTtkTheme("plastik")
         program.setTtkTheme("clam")
-        program.ttkStyle.configure(".", font="10", background="white")
+        #program.ttkStyle.configure(".", font="10", background="white")
 
         # Highlighted button
         program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")

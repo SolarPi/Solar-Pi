@@ -60,10 +60,13 @@ def ToolbarHandler(press):
         webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
 
 # GUI Parameters
-with gui("Programming", "400x325", useTtk=True) as program:  # 400x320
+with gui("Programming", "400x335", useTtk=True) as program:  # 400x320
+    program.setResizable(False)
+
     if custom == True:
+        program.setTtkTheme("plastik")
         program.setTtkTheme("clam")
-        program.ttkStyle.configure(".", font="10")
+        #program.ttkStyle.configure(".", font="10")
 
         program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
         program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
