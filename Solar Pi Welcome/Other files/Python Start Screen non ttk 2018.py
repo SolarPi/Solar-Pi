@@ -293,6 +293,55 @@ program.addToolbar(tools, ToolbarHandler, findIcon=True)
 #         program.addButton("Settings1", Settings)
 #         program.addButton("Change\nLanguage1", ButtonHandler)
 
+
+########################################################################################################################
+# Old layout with labelframe
+########################################################################################################################
+
+# with program.note("Welcome!"):
+#     program.setPadding(10, 10)
+#     program.setBg("white")
+#
+#     with program.labelFrame("-"):
+#         program.setPadding(10, 10)
+#         program.addLabel("text3", "Welcome to your", 0, 0)
+#         program.setLabelAnchor("text3", "e")
+#         program.getLabelWidget("text3").config(font=("Dejavu Sans", "20"))
+#         program.setLabelSticky("text3", "e")
+#         program.addImage("logo text", "../Resources/Images/Solar Pi text small.gif", 0, 1)
+#         program.zoomImage("logo text", -2)
+#         program.setImageAlign("logo text", "left")
+#         program.setImageSticky("logo text", "w")
+#
+#     with program.labelFrame(""):
+#         program.setPadding(10, 10)
+#         program.setBg("white")
+#
+#         #program.setBg("grey")
+#         if custom == True:
+#             program.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
+#         else:
+#             program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
+#         program.setButtonSticky("Get Started", "nesw")
+#         #program.setButtonPadding("Get Started", [10, 10])
+#         program.addImageButton(" Docs", Guides, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
+#         program.setButtonSticky(" Docs", "nesw")
+#         program.addIconButton(" About", ButtonHandler, "about", align="left", row=3, column=0)
+#         program.setButtonSticky(" About", "nesw")
+#
+#         program.addImage("logo4", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+#         program.zoomImage("logo4", -4)
+#         program.setImageSticky("logo4", "nesw")
+#
+#         program.addImageButton("  Programming", Programming, "../Resources/Images/Programming icon small.gif", align="left", row=1, column=2)
+#         program.setButtonSticky("  Programming", "nesw")
+#         program.addIconButton(" Settings", Settings, "settings", align="left", row=2, column=2)
+#         program.setButtonSticky(" Settings", "nesw")
+#         program.addImageButton("  Languages", ButtonHandler, "../Resources/Images/languages small.gif", align="left", row=3, column=2)
+#         program.setButtonSticky("  Languages", "nesw")
+
+
+
 if ttk == True:
     program.startNote("Welcome!")
 elif ttk == False:
