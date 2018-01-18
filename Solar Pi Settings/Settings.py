@@ -62,8 +62,8 @@ def SolarPiTheme():
 
     program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
-    program.setButtonStyle("More Info", "H.TButton")
-    program.setButtonStyle("Update System", "H.TButton")
+    #program.setButtonStyle("More Info", "H.TButton")
+    #program.setButtonStyle("Update System", "H.TButton")
     program.setButtonStyle("Apply ", "H.TButton")
 
     program.setBg("white")

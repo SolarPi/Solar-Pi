@@ -19,8 +19,9 @@ def leave(param):
 
 with gui() as program:
     program.hideTitleBar()
-    program.setLocation(0, 570)
+    program.setLocation(0, 573)
     program.setPadding(0, 0)
+    program.setGuiPadding(0, 0)
     program.addMeter("battery", 1, 2)
     program.setMeterFill("battery", "#13d323")
     program.setMeterOverFunction("battery", [over, leave])
