@@ -32,7 +32,7 @@ if custom == True:
     program.ttkStyle.configure("TNotebook", background="white")
     program.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
                 foreground=[("selected", "white")])
-    program.ttkStyle.configure("TNotebook.Tab", background="light grey", foreground="black")  # Unselected tab
+    program.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black")  # Unselected tab
 
     # Custom buttons
 
