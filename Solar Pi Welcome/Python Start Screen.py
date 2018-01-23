@@ -153,21 +153,23 @@ def Java(press):  # Google's Python Tutorial
 
 # About Popup
 with program.subWindow("About Solar Pi", modal=True):
-    program.setPadding(5, 5)
-    program.setBg("white")
-    program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
-    program.zoomImage("solar_pi_logo", -3)
-    program.setLocation(250, 150)
-    program.setResizable(canResize=False)
-    with program.labelFrame("About"):
+    #program.setBg("white")
+    with program.frame("frame7"):  # Rename to frame6 to remove right hand button column on Welcome tab
+        program.setPadding(5, 5)
         program.setBg("white")
-        program.setPadding(10, 10)
-        program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
-    program.addButton("Close", ButtonHandler)
-    if custom == True:
-        program.setButtonStyle("Close", "H.TButton")
-    program.setBg("white")
-
+        program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
+        program.zoomImage("solar_pi_logo", -3)
+        program.setLocation(250, 150)
+        program.setResizable(canResize=False)
+        with program.labelFrame("About"):
+            program.setBg("white")
+            program.setPadding(10, 10)
+            program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
+            program.setMessageBg("about", "white")
+        program.addButton("Close", ButtonHandler)
+        program.setButtonSticky("Close", "")
+        if custom == True:
+            program.setButtonStyle("Close", "H.TButton")
 
 # Menu bar
 program.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
@@ -268,7 +270,6 @@ To do this, fold out the solar panels, and make
 sure that the Solar Pi is facing the sun.
 You will then need to wait for a few hours until it is
 charged up.
-
 Once your Solar Pi is charged, the battery meter
 should show 100%."""
         program.addLabel("info5", text)
@@ -437,19 +438,21 @@ with open("language.txt", "r") as file:
 #program.ttkStyle.configure(".", background="white", foreground="black")
 program.ttkStyle.configure("TLabelframe", background="white")
 
-program.setLabelFrameStyle("Applications", "TFrame")
-program.setLabelFrameStyle("Start Programming", "TFrame")
-program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
-program.setLabelFrameStyle("IDEs", "TFrame")
-program.setLabelFrameStyle("Scratch", "TFrame")
-program.setLabelFrameStyle("Python", "TFrame")
-program.setLabelFrameStyle("Java", "TFrame")
-program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-program.setLabelFrameStyle("Introduction to Python", "TFrame")
-program.setLabelFrameStyle("Programming Glossary", "TFrame")
-program.setLabelFrameStyle("A Byte of Python", "TFrame")
-program.setLabelFrameStyle("Java Guide", "TFrame")
-program.setLabelFrameStyle("About", "TFrame")
+if custom == False:
+    program.setLabelFrameStyle("Applications", "TFrame")
+    program.setLabelFrameStyle("Start Programming", "TFrame")
+    program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
+    program.setLabelFrameStyle("IDEs", "TFrame")
+    program.setLabelFrameStyle("Scratch", "TFrame")
+    program.setLabelFrameStyle("Python", "TFrame")
+    program.setLabelFrameStyle("Java", "TFrame")
+    program.setLabelFrameStyle("Guides & Tutorials", "TFrame")
+    program.setLabelFrameStyle("Introduction to Python", "TFrame")
+    program.setLabelFrameStyle("Programming Glossary", "TFrame")
+    program.setLabelFrameStyle("A Byte of Python", "TFrame")
+    program.setLabelFrameStyle("Java Guide", "TFrame")
+    program.setLabelFrameStyle("About", "TFrame")
 
+#print(program.ttkStyle.lookup("TFrame", "bordercolor"))
 
 program.go(language=lang)

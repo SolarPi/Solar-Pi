@@ -12,17 +12,14 @@ with open("../../Solar Pi Settings/Settings.ini", "r") as file:
 data = data.split(",")
 theme = data[3]
 
-if theme == "Solar Pi":
-    custom = True
-else:
-    custom = False
+custom = theme == "Solar Pi"
 
 # Handlers
 def ButtonHandler(press):
     option = program.getRadioButton("language")
-    if press == "Exit":
+    if press == "Exit ":
         quit()
-    elif press == "Go":
+    elif press == "Go  ":
         if option == "Scratch (Easy)":
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
         elif option == "Python (Intermedium/Hard)":
@@ -33,7 +30,7 @@ def ButtonHandler(press):
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
         
-    elif press == "More Info":
+    elif press == " More Info  ":
         if option == "Scratch (Easy)":
             program.infoBox("Scratch", "Scratch teaches you the logic of programming in an easy to understand way. This will set a firm foundation for beginners.")
         elif option == "Python (Intermedium/Hard)":
@@ -60,7 +57,7 @@ def ToolbarHandler(press):
         webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
 
 # GUI Parameters
-with gui("Programming", "400x335", useTtk=True) as program:  # 400x320
+with gui("Programming", useTtk=True) as program:  # 400x320 # "420x290"
     program.setResizable(False)
 
     if custom == True:
@@ -78,7 +75,6 @@ with gui("Programming", "400x335", useTtk=True) as program:  # 400x320
         program.setTtkTheme(theme)
         program.ttkStyle.configure(".", background="white", foreground="black")
 
-    program.setPadding(10, 10)
     program.setBg("white")
     #program.setResizable(canResize=False)
 
@@ -87,19 +83,31 @@ with gui("Programming", "400x335", useTtk=True) as program:  # 400x320
     program.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
 
     # Widgets
-    #program.addImage("solar_pi", "/usr/local/bin/Solar Pi/Resources/Images/Solar Pi text.gif")
+
+    program.setPadding(10, 10)
     program.addImage("solar_pi", "../../Resources/Images/Solar Pi text.gif")
     program.zoomImage("solar_pi", -35)
 
-    program.addLabel("title", "Choose a Programming Language:")
-    program.addHorizontalSeparator()
+    #program.addLabel("title", "Choose a Programming Language:")
+    #program.addHorizontalSeparator()
     #program.setLabelBg("title", "light gray")
 
-    program.addRadioButton("language", "Scratch (Easy)")
-    program.addRadioButton("language", "Python (Intermedium/Hard)")
-    program.addRadioButton("language", "Java (Hard)")
-    program.addButtons(["Go", "More Info", "Exit"], ButtonHandler)
+    with program.labelFrame("Choose a Programming Language:"):
+        program.setSticky("ew")
+        program.setPadding(10, 5)
+        program.addRadioButton("language", "Scratch (Easy)")
+        program.addRadioButton("language", "Python (Intermedium/Hard)")
+        program.addRadioButton("language", "Java (Hard)")
 
-    if custom == True:
-        program.setButtonStyle("Go", "H.TButton")
+    with program.frame("frame"):
+        program.setPadding(10, 10)
+        if custom == True:
+            program.addImageButton("Go  ", ButtonHandler, "../../Resources/Images/go white.gif", 0, 0, align="right")
+            program.setButtonStyle("Go  ", "H.TButton")
+        else:
+            program.addImageButton("Go  ", ButtonHandler, "../../Resources/Images/go black.gif", 0, 0, align="right")
+            program.setLabelFrameStyle("Choose a Programming Language:", "TFrame")
+        program.addImageButton(" More Info  ", ButtonHandler, "../../Resources/Images/more info.gif", 0, 1, align="right")
+        program.addImageButton("Exit ", ButtonHandler, "../../Resources/Images/cross.gif", 0, 2, align="right")
+
 

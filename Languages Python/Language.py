@@ -34,6 +34,7 @@ with gui("Languages", useTtk=True) as program:
     program.setResizable(False)
 
     if theme == "Solar Pi":
+        custom = True
         program.setTtkTheme("plastik")
         program.setTtkTheme("clam")
         #program.ttkStyle.configure(".", font="10", background="white")
@@ -46,6 +47,7 @@ with gui("Languages", useTtk=True) as program:
         program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
     else:
+        custom = False
         program.setTtkTheme(theme)
         program.ttkStyle.configure(".", background="white", foreground="black")
     
@@ -65,6 +67,6 @@ with gui("Languages", useTtk=True) as program:
             program.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
             program.addButton("Español", LanguageHandler, 0, 1)
 
-    program.setLabelFrameStyle("Languages", "TFrame")
-    program.setLabelFrameStyle("English", "TFrame")
-    program.setLabelFrameStyle("Español", "TFrame")
+    #program.setLabelFrameStyle("Languages", "TFrame")
+    #program.setLabelFrameStyle("English", "TFrame")
+    #program.setLabelFrameStyle("Español", "TFrame")

@@ -66,6 +66,8 @@ def SolarPiTheme():
     #program.setButtonStyle("Update System", "H.TButton")
     program.setButtonStyle("Apply ", "H.TButton")
 
+    #program.ttkStyle.configure("Horizontal.TScale", troughcolor="#84b6b7", sliderthickness="1", borderwidth="0", sliderrelief="flat")
+
     program.setBg("white")
 
 def ClockChange(clock):
@@ -182,9 +184,6 @@ with gui("Settings", useTtk=True) as program:
     
 
     with program.labelFrame("Performance & Power", 0, 0, colspan=2):
-
-        program.setLabelFrameStyle("Performance & Power", "TFrame")
-        
         # Title
 
         program.setPadding(4, 4)
@@ -218,7 +217,6 @@ with gui("Settings", useTtk=True) as program:
 
     with program.labelFrame("Updates", 0, 2):
         program.setPadding(5, 5)
-        program.setLabelFrameStyle("Updates", "TFrame")
         program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
         program.addCheckBox("Update Operating System &\nInstalled Programs")
         program.addCheckBox("Update appJar")
@@ -226,7 +224,6 @@ with gui("Settings", useTtk=True) as program:
 
 
     with program.labelFrame("Other Settings", 1, 0, colspan=2):
-        program.setLabelFrameStyle("Other Settings", "TFrame")
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
@@ -250,13 +247,18 @@ with gui("Settings", useTtk=True) as program:
     #     #program.setButtonSticky(" Restore Defaults ", "e")
     #     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 0, 2, align="right")
 
-    program.addImageButton("Apply ", ApplySettings, "tick.gif", 2, 0, align="right")
-    program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 2, 1, align="right")
+    program.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 2, 0, align="right")
+    program.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 2, 1, align="right")
     program.setButtonSticky(" Restore Defaults ", "e")
-    program.addImageButton("Exit ", ButtonHandler, "cross.gif", 2, 2, align="right")
+    program.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 2, 2, align="right")
+
 
     if custom == True:
         SolarPiTheme()
+    else:
+        program.setLabelFrameStyle("Performance & Power", "TFrame")
+        program.setLabelFrameStyle("Other Settings", "TFrame")
+        program.setLabelFrameStyle("Updates", "TFrame")
 
 
 
