@@ -70,6 +70,7 @@ def SolarPiTheme():
 
     program.setBg("white")
 
+
 def ClockChange(clock):
     # Opens and modifies config.txt file
     for line in fileinput.input(["/boot/config.txt"], inplace=True):
@@ -90,6 +91,9 @@ def ApplySettings(press):
         theme = theme.lower()
         program.setTtkTheme(theme)  # Sets theme
         program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
+        program.setLabelFrameStyle("Performance & Power", "TFrame")
+        program.setLabelFrameStyle("Other Settings", "TFrame")
+        program.setLabelFrameStyle("Updates", "TFrame")
 
     program.setScale("slider", clock_speed)  # Sets slider to value in entry
 
