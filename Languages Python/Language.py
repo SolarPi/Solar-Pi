@@ -67,6 +67,7 @@ with gui("Languages", useTtk=True) as program:
             program.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
             program.addButton("Español", LanguageHandler, 0, 1)
 
-    #program.setLabelFrameStyle("Languages", "TFrame")
-    #program.setLabelFrameStyle("English", "TFrame")
-    #program.setLabelFrameStyle("Español", "TFrame")
+    if custom == False:
+        program.setLabelFrameStyle("Languages", "TFrame")
+        program.setLabelFrameStyle("English", "TFrame")
+        program.setLabelFrameStyle("Español", "TFrame")
