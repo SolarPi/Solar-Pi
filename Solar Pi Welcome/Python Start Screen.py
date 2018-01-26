@@ -22,6 +22,7 @@ else:
 
 program = gui("Solar Pi Welcome", useTtk=True)
 program.setResizable(False)
+program.setLocation("CENTER")
 
 if custom == True:
     program.setTtkTheme("plastik")
@@ -159,7 +160,6 @@ with program.subWindow("About Solar Pi", modal=True):
         program.setBg("white")
         program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
         program.zoomImage("solar_pi_logo", -3)
-        program.setLocation(250, 150)
         program.setResizable(canResize=False)
         with program.labelFrame("About"):
             program.setBg("white")
