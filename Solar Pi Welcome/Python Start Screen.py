@@ -22,7 +22,7 @@ else:
 
 program = gui("Solar Pi Welcome", useTtk=True)
 program.setResizable(False)
-program.setLocation("CENTER")
+#program.setLocation("CENTER")
 
 if custom == True:
     program.setTtkTheme("plastik")
