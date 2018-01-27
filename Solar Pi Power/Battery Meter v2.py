@@ -48,39 +48,49 @@ class Handler(FileSystemEventHandler):
         elif event.event_type == 'modified':
             # Taken any action here when a file is modified.
             print("Received modified event")
-            with open("../ramdisk/power", "r") as file:
-                data = file.readlines()
+            meter()
+
+def meter():
+    with open("../ramdisk/power", "r") as file:
+            data = file.readlines()
             data = data[0]
             data = data.split(",")
             percent = float(data[0])
-            if percent >= 100:  # 100
+            if data[1] == "B":
+                program.hideImage("bolt")
+                if percent >= 100:  # 100
+                    program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8", "9"], "green")
+                elif percent > 80 and percent < 90:  # 87.5
+                    program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8"], "green")
+                    program.setLabelBg("9", "black")
+                elif percent > 70 and percent < 80:  # 75
+                    program.setLabelBg(["1", "2", "3", "4", "5", "6", "7"], "green")
+                    program.setLabelBg(["8", "9"], "black")
+                elif percent > 55 and percent < 70:  # 62
+                    program.setLabelBg(["1", "2", "3", "4", "5", "6"], "green")
+                    program.setLabelBg(["7", "8", "9"], "black")
+                elif percent > 45 and percent < 55:  # 50
+                    program.setLabelBg(["1", "2", "3", "4", "5"], "green")
+                    program.setLabelBg(["6", "7", "8", "9"], "black")
+                elif percent > 25 and percent < 45:  # 37
+                    program.setLabelBg(["1", "2", "3", "4"], "#a5dd24")
+                    program.setLabelBg(["5", "6", "7", "8", "9"], "black")
+                elif percent > 20 and percent < 30:  # 25
+                    program.setLabelBg(["1", "2", "3"], "#ddc724")
+                    program.setLabelBg(["4", "5", "6", "7", "8", "9"], "black")
+                elif percent > 7 and percent < 17:  # 12.5
+                    program.setLabelBg(["1", "2"], "#dd6524")
+                    program.setLabelBg(["3", "4", "5", "6", "7", "8", "9"], "black")
+                elif percent > 4 and percent < 7:  # 5.5
+                    program.setLabelBg("1", "#dd4125")
+                    program.setLabelBg(["2", "3", "4", "5", "6", "7", "8", "9"], "black")
+                elif percent < 4:
+                    program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8", "9"], "black")
+
+            elif data[1] == "C":
                 program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8", "9"], "green")
-            elif percent > 80 and percent < 90:  # 87.5
-                program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8"], "green")
-                program.setLabelBg("9", "black")
-            elif percent > 70 and percent < 80:  # 75
-                program.setLabelBg(["1", "2", "3", "4", "5", "6", "7"], "green")
-                program.setLabelBg(["8", "9"], "black")
-            elif percent > 55 and percent < 70:  # 62
-                program.setLabelBg(["1", "2", "3", "4", "5", "6"], "green")
-                program.setLabelBg(["7", "8", "9"], "black")
-            elif percent > 45 and percent < 55:  # 50
-                program.setLabelBg(["1", "2", "3", "4", "5"], "green")
-                program.setLabelBg(["6", "7", "8", "9"], "black")
-            elif percent > 25 and percent < 45:  # 37
-                program.setLabelBg(["1", "2", "3", "4"], "green")
-                program.setLabelBg(["5", "6", "7", "8", "9"], "black")
-            elif percent > 20 and percent < 30:  # 25
-                program.setLabelBg(["1", "2", "3"], "green")
-                program.setLabelBg(["4", "5", "6", "7", "8", "9"], "black")
-            elif percent > 7 and percent < 17:  # 12.5
-                program.setLabelBg(["1", "2"], "green")
-                program.setLabelBg(["3", "4", "5", "6", "7", "8", "9"], "black")
-            elif percent > 4 and percent < 7:  # 5.5
-                program.setLabelBg("1", "green")
-                program.setLabelBg(["2", "3", "4", "5", "6", "7", "8", "9"], "black")
-            elif percent < 4:
-                program.setLabelBg(["1", "2", "3", "4", "5", "6", "7", "8", "9"], "black")
+                program.showImage("bolt")
+
 
 
 def batt_watcher():
@@ -88,9 +98,9 @@ def batt_watcher():
     w.run()
 
 
-with gui("meter", "80x40") as program:
+with gui("meter", "85x40") as program:
     program.hideTitleBar()
-    program.setLocation(0, 573)
+    program.setLocation(0, 562)
     program.setSticky("nesw")
     program.setGuiPadding(0, 0)
     with program.frame("frame"):
@@ -105,7 +115,13 @@ with gui("meter", "80x40") as program:
         program.setLabelBg("10", "grey")
         program.setLabelSticky("10", "w")
 
+        program.addImage("bolt", "../Resources/Images/lightning bolt.gif", 0, 2, colspan=5)
+        program.zoomImage("bolt", -7)
+        program.hideImage("bolt")
+
     program.setFrameOverFunction("frame", [over, leave])
+    meter()
+    
 
     t = Thread(target=batt_watcher)
     t.start()

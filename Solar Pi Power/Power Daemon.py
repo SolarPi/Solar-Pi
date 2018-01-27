@@ -2,7 +2,7 @@ from time import sleep
 import smbus
 from appJar import gui
 
-i2c = smbus.SMbus(1)
+i2c = smbus.SMBus(1)
 cache = 0
 
 def pwr_mode():
@@ -26,24 +26,46 @@ def bat_percent():
 def close():
     app.stop()
 
+ignore = False
 
 while True:
-    if cache != bat_percent():
-        with open("../ramdisk/power", "w") as file:
-            file.write(str(bat_percent()) + "," + pwr_mode())
+    percentage = bat_percent()
+    mode = pwr_mode()
 
-        cache = bat_percent()
+    print(percentage, mode)
+    
+    if cache != percentage or ignore == True:
+        if percentage > 101 and mode == "B":
+            ignore = True
+        else:
+            with open("../ramdisk/power", "w") as file:
+                file.write(str(percentage) + "," + mode)
+            ignore = False
 
-    else:
-        pass
+        cache = percentage
 
     if bat_percent() < 10:
         with gui("Notification", useTtk=True) as app:
+            with open("../Solar Pi Settings/Settings.ini", "r") as file:
+                data = file.readlines()
+            data = data[0]
+            theme = data[3]
+            if theme == "Solar Pi":
+                app.setTtkTheme("plastik")
+                app.setTtkTheme("clam")
+                app.ttkStyle.configure("TButton", background="#324581", foreground="white", bordercolor="#687396")
+                app.ttkStyle.map("TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+            else:
+                app.setTtkTheme(theme)
+            
             app.setBg("white")
-            app.hideTitleBar()
-            app.ttkStyle.configure("TButton", background="#324581", foreground="white", bordercolor="#687396")
-            app.ttkStyle.map("TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
-            app.addLabel("label", "The battery of your Solar Pi is running low.\nPlease save your work, as your Solar Pi will shut down soon.")
-            app.addButton("Close", close)
+            #app.hideTitleBar()
+            app.setPadding(10, 10)
+            
+            app.addImage("warning", "/usr/local/bin/Solar Pi/Resources/Images/warning icon.gif")
+            app.zoomImage("warning", -4)
+            app.addLabel("label", "The battery of your Solar Pi is running low.\nPlease save your work, as your Solar Pi will shut down soon.", 0, 1)
+            app.addButton("Close", close, colspan=2)
+
 
     sleep(90)
