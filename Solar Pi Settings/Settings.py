@@ -182,7 +182,7 @@ with gui("Settings", useTtk=True) as program:
 
         # Scale
         program.addScale("slider", 1, 0)
-        program.setScaleFunction("slider", ScaleChange)
+        program.setScaleChangeFunction("slider", ScaleChange)
         program.setScaleSticky("slider", "ew")
         program.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
         #program.setScaleIncrement("slider", 100)
@@ -218,6 +218,10 @@ with gui("Settings", useTtk=True) as program:
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
         themes = ["Solar Pi", "Plastik", "Arc", "Clearlooks", "Radiance"]  # TODO: Remove Radiance???
+        #program.setTtkTheme("arc")
+        #program.setTtkTheme("clam")
+        #themes = program.getTtkThemes()
+        #print(themes)
         program.addOptionBox("Themes", themes, 1, 1)
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
