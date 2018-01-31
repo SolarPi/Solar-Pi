@@ -1,37 +1,20 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from appJar import gui
 import sys
 import fileinput
 from subprocess import Popen, call
-#from ttkthemes import ThemedStyle
 import os
 from AutorunConfig import Autorun
 from SettingsGet import *
 
 # Add translations for all
 
-# Fetch settinga in Settings.ini
+# Fetch settings in Settings.ini
 clock_speed = Clock()
 battery_meter = BatteryMeter()
 launch_welcome = LaunchWelcome()
 theme = Theme()
-
-
-# Reads Settings.ini file
-# with open("Settings.ini", "r") as file:
-#     data = file.readlines()[0]
-# data = data.split(",")
-# clock_speed = data[0]
-# if data[1] == "False":
-#         battery_meter = False
-# elif data[1] == "True":
-#         battery_meter = True
-# if data[2] == "False":
-#         launch_welcome = False
-# elif data[2] == "True":
-#         launch_welcome = True
-# theme = data[3]
 
 
 # Button Events
@@ -50,23 +33,26 @@ def ButtonHandler(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages app
 
 def SolarPiTheme():
+    # Sets Solar Pi theme for application
     program.setTtkTheme("plastik")
     program.setTtkTheme("clam")
     #program.ttkStyle.configure(".", font="10")
 
+    # Highlighted button
     program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
     program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
 
     # Regular button
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
+    # Fix CheckButton background
     program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     #program.setButtonStyle("More Info", "H.TButton")
     #program.setButtonStyle("Update System", "H.TButton")
-    program.setButtonStyle("Apply ", "H.TButton")
+    program.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to Apply button
 
-    #program.ttkStyle.configure("Horizontal.TScale", troughcolor="#84b6b7", sliderthickness="1", borderwidth="0", sliderrelief="flat")
+    program.ttkStyle.configure("Horizontal.TScale", troughcolor="light grey", sliderthickness="1", borderwidth="0", sliderrelief="flat")
 
     program.setBg("white")
 
@@ -88,6 +74,7 @@ def ApplySettings(press):
         SolarPiTheme()
 
     else:
+        # Sets options for other themes
         theme = theme.lower()
         program.setTtkTheme(theme)  # Sets theme
         program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
@@ -186,15 +173,14 @@ with gui("Settings", useTtk=True) as program:
     #program.ttkStyle.configure("TFrame", background="white")
     #program.ttkStyle.configure("TCheckbutton", background="white")
     
-
+    # Settings relating to performance and power
     with program.labelFrame("Performance & Power", 0, 0, colspan=2):
-        # Title
-
         program.setPadding(4, 4)
 
         program.addLabel("title", "Clock Speed Changer", colspan=2)
         program.setLabelSticky("title", "ew")
 
+        # Scale
         program.addScale("slider", 1, 0)
         program.setScaleFunction("slider", ScaleChange)
         program.setScaleSticky("slider", "ew")
@@ -202,14 +188,13 @@ with gui("Settings", useTtk=True) as program:
         #program.setScaleIncrement("slider", 100)
         program.addButton("More Info", ButtonHandler, 1, 1)
 
+        # Entry to display and enter clock speed
         program.addLabelNumericEntry("Max Clock Speed: ", 2, 0)
         program.setEntry("Max Clock Speed: ", str(clock_speed))
         program.setEntryMaxLength("Max Clock Speed: ", 4)
         program.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
         program.addLabel("scale", "MHz", 2, 1)
         program.setLabelSticky("scale", "nws")
-
-        # Scale
 
         # Label
         program.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
@@ -219,6 +204,7 @@ with gui("Settings", useTtk=True) as program:
         program.addCheckBox("Show battery meter in corner", colspan=2)
         #program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
+    # Settings relating to Updates
     with program.labelFrame("Updates", 0, 2):
         program.setPadding(5, 5)
         program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
@@ -226,13 +212,13 @@ with gui("Settings", useTtk=True) as program:
         program.addCheckBox("Update appJar")
         program.addButton("Update System", Update)
 
-
+    # Uncategorised settings
     with program.labelFrame("Other Settings", 1, 0, colspan=2):
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["Solar Pi", "Plastik", "Arc", "Clearlooks", "Radiance"]
-        program.addOptionBox("Themes", themes, 1, 1)  # Touch friendly???
+        themes = ["Solar Pi", "Plastik", "Arc", "Clearlooks", "Radiance"]  # TODO: Remove Radiance???
+        program.addOptionBox("Themes", themes, 1, 1)
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)
         program.setButtonSticky("Languages", "ew")
@@ -251,6 +237,7 @@ with gui("Settings", useTtk=True) as program:
     #     #program.setButtonSticky(" Restore Defaults ", "e")
     #     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 0, 2, align="right")
 
+    # Buttons to apply, restore defaults and exit
     program.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 2, 0, align="right")
     program.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 2, 1, align="right")
     program.setButtonSticky(" Restore Defaults ", "e")
@@ -258,9 +245,9 @@ with gui("Settings", useTtk=True) as program:
 
 
     if custom == True:
-        SolarPiTheme()
+        SolarPiTheme()  # Sets theme to Solar Pi theme
     else:
-        program.setLabelFrameStyle("Performance & Power", "TFrame")
+        program.setLabelFrameStyle("Performance & Power", "TFrame")  # Ensures that LabelFrame background is white
         program.setLabelFrameStyle("Other Settings", "TFrame")
         program.setLabelFrameStyle("Updates", "TFrame")
 

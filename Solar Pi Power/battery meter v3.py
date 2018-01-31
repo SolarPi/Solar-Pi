@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from appJar import gui
 from PIL import Image, ImageTk
 from time import sleep
