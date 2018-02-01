@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from appJar import *
+from appJar import gui
 from subprocess import Popen
 
 def LanguageHandler(press):
@@ -46,15 +46,17 @@ with gui("Languages", useTtk=True) as program:
         # Regular button
         program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
+        program.setBg("white")
+
     else:
         custom = False
         program.setTtkTheme(theme)
-        program.ttkStyle.configure(".", background="white", foreground="black")
-    
+        if theme != "black":
+            program.ttkStyle.configure(".", background="white", foreground="black")
+            program.setBg("white")
+
     program.setPadding(5, 5)
-    program.setBg("white")
     with program.labelFrame("Languages"):
-        program.setBg("white")
         program.setPadding(5, 5)
         
         with program.labelFrame("English", 0, 0):
