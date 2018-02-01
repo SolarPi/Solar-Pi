@@ -15,16 +15,21 @@ with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.in
 data = data.split(",")
 theme1 = data[3]
 
-if theme1 == "Solar Pi":
-    custom = True
-else:
-    custom = False
-
 program = gui("Solar Pi Welcome", useTtk=True)
 program.setResizable(False)
 #program.setLocation("CENTER")
 
-if custom == True:
+if theme1 == "Solar Pi":
+    solar_theme = True
+else:
+    solar_theme = False
+    program.setTtkTheme(theme1)
+    if theme1 != "black":
+        program.ttkStyle.configure(".", foreground="black", background="white")
+        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+        program.setBg("white")
+
+if solar_theme == True:
     program.setTtkTheme("plastik")
     program.setTtkTheme("clam")
     #program.ttkStyle.configure(".", font="10")
@@ -41,13 +46,14 @@ if custom == True:
     program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
     program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
 
+    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
     # Regular button
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
-    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+    program.ttkStyle.map("TLabelFrame", border=[("active", "black")])
 
-elif custom == False:
-    program.setTtkTheme(theme1)
+
 
 # Event Handler for buttons
 def ButtonHandler(press):
@@ -157,18 +163,22 @@ with program.subWindow("About Solar Pi", modal=True):
     #program.setBg("white")
     with program.frame("frame7"):  # Rename to frame6 to remove right hand button column on Welcome tab
         program.setPadding(5, 5)
-        program.setBg("white")
+        #program.setBg("white")
         program.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
         program.zoomImage("solar_pi_logo", -3)
         program.setResizable(canResize=False)
         with program.labelFrame("About"):
-            program.setBg("white")
+            #program.setBg("white")
             program.setPadding(10, 10)
             program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
-            program.setMessageBg("about", "white")
+            if theme1 == "black":
+                program.setMessageBg("about", "#424242")
+                program.setMessageFg("about", "white")
+            else:
+                program.setMessageBg("about", "white")
         program.addButton("Close", ButtonHandler)
         program.setButtonSticky("Close", "")
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Close", "H.TButton")
 
 # Menu bar
@@ -194,14 +204,14 @@ with program.notebook("MainTabs", colspan=2):
         with program.frame("frame4", 0, 0, colspan=3):
             program.addLabel("text4", "Welcome to your  ", 0, 0)
             program.setLabelAlign("text4", "right")
-            program.getLabelWidget("text4").config(font=("Dejavu Sans", "20"))
+            program.getLabelWidget("text4").config(font=("ubuntu", "20"))
             program.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
             program.zoomImage("logo text1", -2)
             program.setImageSticky("logo text1", "nsw")
 
         with program.frame("frame5", 1, 0):
             program.setPadding(10, 10)
-            if custom == True:
+            if solar_theme == True or theme1 == "black":
                 program.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
             else:
                 program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
@@ -225,7 +235,7 @@ with program.notebook("MainTabs", colspan=2):
             program.setButtonSticky("  Languages", "nesw")
 
 
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Get Started", "H.TButton")
 
 
@@ -247,7 +257,7 @@ with program.notebook("MainTabs", colspan=2):
             program.setLabelAlign("info4", "right")
             program.addButton("Charging", ButtonHandler, 0, 1)
 
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Charging", "H.TButton")
 
 
@@ -281,7 +291,7 @@ should show 100%."""
         program.addButton("Starter Guide", Guides, 1, 2)
         program.setButtonSticky("Starter Guide", "")
 
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Starter Guide", "H.TButton")
 
 
@@ -335,7 +345,7 @@ should show 100%."""
                     program.setImageTooltip("java_logo", "The BlueJ Java IDE. Create Java applications.")
                     program.addButton("Java", ButtonHandler, 0, 1)
 
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Start Programming", "H.TButton")
 
 
@@ -382,7 +392,7 @@ should show 100%."""
                 program.addButton("Java Guide", Java, 0, 1)
 
 
-        if custom == True:
+        if solar_theme == True:
             program.setButtonStyle("Python Intro", "H.TButton")
 
 
@@ -410,22 +420,22 @@ program.setCheckBox("Launch at startup", ticked=LaunchWelcome())
 program.setCheckBoxChangeFunction("Launch at startup", Startup)
 
 
-num = 0
-def updateMeter():
-    global num
-    program.setMeter("battery", num)
-    #program.setLabel("level", str(num)+"%")
-    num += 1
-with program.frame("battery", 1, 1):
-    program.addLabel("battery", "Battery Remaining: ", 0, 0)  # Update translation
-    #program.setLabelAlign("battery", "right")
-    program.setLabelAnchor("battery", "e")
-    program.addMeter("battery", 0, 2)
-    program.setMeterFill("battery", "#13d323")
-    program.addLabel("blank", "", 0, 3)
-    #program.setMeterPadding("battery", 5, 5)
-    program.registerEvent(updateMeter)
-    program.setPollTime(10000)
+# num = 0
+# def updateMeter():
+#     global num
+#     program.setMeter("battery", num)
+#     #program.setLabel("level", str(num)+"%")
+#     num += 1
+# with program.frame("battery", 1, 1):
+#     program.addLabel("battery", "Battery Remaining: ", 0, 0)  # Update translation
+#     #program.setLabelAlign("battery", "right")
+#     program.setLabelAnchor("battery", "e")
+#     program.addMeter("battery", 0, 2)
+#     program.setMeterFill("battery", "#13d323")
+#     program.addLabel("blank", "", 0, 3)
+#     #program.setMeterPadding("battery", 5, 5)
+#     program.registerEvent(updateMeter)
+#     program.setPollTime(10000)
 
 
 with open("language.txt", "r") as file:
@@ -436,9 +446,10 @@ with open("language.txt", "r") as file:
 #program.setLabelFrameStyle("-", "TFrame")
 #program.setLabelFrameStyle("", "TFrame")
 #program.ttkStyle.configure(".", background="white", foreground="black")
-program.ttkStyle.configure("TLabelframe", background="white")
 
-if custom == False:
+if solar_theme == False:
+    ##program.ttkStyle.configure("TLabelframe", background="white")
+
     program.setLabelFrameStyle("Applications", "TFrame")
     program.setLabelFrameStyle("Start Programming", "TFrame")
     program.setLabelFrameStyle("Solar Pi Settings", "TFrame")
@@ -452,6 +463,9 @@ if custom == False:
     program.setLabelFrameStyle("A Byte of Python", "TFrame")
     program.setLabelFrameStyle("Java Guide", "TFrame")
     program.setLabelFrameStyle("About", "TFrame")
+
+if theme1 != "black":
+    program.setBg("white")
 
 #print(program.ttkStyle.lookup("TFrame", "bordercolor"))
 

@@ -73,9 +73,10 @@ with gui("Programming", useTtk=True) as program:  # 400x320 # "420x290"
         program.ttkStyle.map("TRadiobutton", background=[("active", "white")])
     else:
         program.setTtkTheme(theme)
-        program.ttkStyle.configure(".", background="white", foreground="black")
+        if theme != "black":
+            program.ttkStyle.configure(".", background="white", foreground="black")
+            program.ttkStyle.map("TRadiobutton", background=[("active", "white")])
 
-    program.setBg("white")
     #program.setResizable(canResize=False)
 
     # Menu
@@ -101,7 +102,7 @@ with gui("Programming", useTtk=True) as program:  # 400x320 # "420x290"
 
     with program.frame("frame"):
         program.setPadding(10, 10)
-        if custom == True:
+        if custom == True or theme == "black":
             program.addImageButton("Go  ", ButtonHandler, "../../Resources/Images/go white.gif", 0, 0, align="right")
             program.setButtonStyle("Go  ", "H.TButton")
         else:
@@ -109,5 +110,8 @@ with gui("Programming", useTtk=True) as program:  # 400x320 # "420x290"
             program.setLabelFrameStyle("Choose a Programming Language:", "TFrame")
         program.addImageButton(" More Info  ", ButtonHandler, "../../Resources/Images/more info.gif", 0, 1, align="right")
         program.addImageButton("Exit ", ButtonHandler, "../../Resources/Images/cross.gif", 0, 2, align="right")
+
+    if theme != "black":
+        program.setBg("white")
 
 

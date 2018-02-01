@@ -46,7 +46,7 @@ def SolarPiTheme():
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
     # Fix CheckButton background
-    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+    #program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     #program.setButtonStyle("More Info", "H.TButton")
     #program.setButtonStyle("Update System", "H.TButton")
@@ -73,6 +73,10 @@ def ApplySettings(press):
     if theme == "Solar Pi":
         SolarPiTheme()
 
+    elif theme == "black":
+        program.setTtkTheme("black")
+        program.ttkStyle.configure(".", background="#424242", foreground="white")  # TODO: Fix black theme when changing themes
+
     else:
         # Sets options for other themes
         theme = theme.lower()
@@ -81,6 +85,7 @@ def ApplySettings(press):
         program.setLabelFrameStyle("Performance & Power", "TFrame")
         program.setLabelFrameStyle("Other Settings", "TFrame")
         program.setLabelFrameStyle("Updates", "TFrame")
+        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     program.setScale("slider", clock_speed)  # Sets slider to value in entry
 
@@ -162,11 +167,16 @@ with gui("Settings", useTtk=True) as program:
     if theme == "Solar Pi":
         custom = True
 
+    elif theme == "black":
+        custom = False
+        program.setTtkTheme(theme)
+
     else:
         custom = False
         program.setTtkTheme(theme)
         program.ttkStyle.configure(".", background="white", foreground="black")
-    program.setBg("white")
+        program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+        program.setBg("white")
     #program.setResizable(canResize=False)
     #program.ttkStyle.configure("TLabelframe.Label", background="white")
     #program.ttkStyle.configure("TScale", background="white")
@@ -217,11 +227,10 @@ with gui("Settings", useTtk=True) as program:
         program.setPadding(5, 5)
         program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
         program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["Solar Pi", "Plastik", "Arc", "Clearlooks", "Radiance"]  # TODO: Remove Radiance???
+        themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
         #program.setTtkTheme("arc")
         #program.setTtkTheme("clam")
         #themes = program.getTtkThemes()
-        #print(themes)
         program.addOptionBox("Themes", themes, 1, 1)
         program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
         program.addButton("Languages", ButtonHandler, 2, 1)

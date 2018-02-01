@@ -48,9 +48,11 @@ while True:  # Repeat infinitely
     if percentage < 10 and shown == False:  # Triggered if battery level is low
         shown = True
         with gui("Notification", useTtk=True) as app:
+            app.setResizable(False)
             with open("../Solar Pi Settings/Settings.ini", "r") as file:
                 data = file.readlines()
             data = data[0]
+            data = data.split(",")
             theme = data[3]  # Gets theme from settings file
             if theme == "Solar Pi":
                 # Configures and sets custom theme
@@ -60,15 +62,18 @@ while True:  # Repeat infinitely
                 app.ttkStyle.map("TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
             else:
                 app.setTtkTheme(theme)  # Sets ttk theme
-            
-            app.setBg("white")
-            #app.hideTitleBar()
+
+            # app.hideTitleBar()
             app.setPadding(10, 10)
-            
+
             app.addImage("warning", "../Resources/Images/warning icon.gif")  # Warning icon
             app.zoomImage("warning", -4)
             app.addLabel("label", "The battery of your Solar Pi is running low.\nPlease save your work, as your Solar Pi will shut down soon.", 0, 1)
             app.addButton("Close", app.stop, colspan=2)  # Button to close GUI
+
+            if theme != "black":
+                app.setBg("white")
+                app.ttkStyle.configure(".", background="white", foreground="black")
 
 
     sleep(30)
