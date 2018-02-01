@@ -46,7 +46,7 @@ def SolarPiTheme():
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
     # Fix CheckButton background
-    #program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+    program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     #program.setButtonStyle("More Info", "H.TButton")
     #program.setButtonStyle("Update System", "H.TButton")
@@ -73,9 +73,8 @@ def ApplySettings(press):
     if theme == "Solar Pi":
         SolarPiTheme()
 
-    elif theme == "black":
+    elif theme == "Black":
         program.setTtkTheme("black")
-        program.ttkStyle.configure(".", background="#424242", foreground="white")  # TODO: Fix black theme when changing themes
 
     else:
         # Sets options for other themes
