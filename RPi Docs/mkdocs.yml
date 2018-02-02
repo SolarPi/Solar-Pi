@@ -1,0 +1,18 @@
+site_name: Raspberry Pi Docs
+
+markdown_extensions:
+    - admonition
+    - codehilite
+    - pymdownx.emoji:
+        emoji_generator: !!python/name:pymdownx.emoji.to_svg
+
+theme:
+    name: material
+    palette:
+        primary: "pink"
+        accent: "green"
+    favicon: img/raspberry-pi-logo.png
+    logo: img/raspberry-pi-logo.png
+    
+use_directory_urls: False
+

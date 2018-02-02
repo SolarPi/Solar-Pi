@@ -1,0 +1,3981 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../img/raspberry-pi-logo.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.2.5">
+    
+    
+      
+        <title>Compute Module Attaching and Enabling Peripherals Guide - Raspberry Pi Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.bcabdff3.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.792431c1.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    
+      <body data-md-color-primary="pink" data-md-color-accent="green">
+    
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../../index.html" title="Raspberry Pi Docs" class="md-header-nav__button md-logo">
+          
+            <img src="../../../img/raspberry-pi-logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Raspberry Pi Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Compute Module Attaching and Enabling Peripherals Guide
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../../img/raspberry-pi-logo.png" width="24" height="24">
+      
+    </span>
+    Raspberry Pi Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../index.html" title="Raspberry Pi Documentation" class="md-nav__link">
+      Raspberry Pi Documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/README/index.html" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/audio-config/index.html" title="Audio configuration" class="md-nav__link">
+      Audio configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/camera/index.html" title="Camera configuration" class="md-nav__link">
+      Camera configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/cmdline-txt/index.html" title="The Kernel Command Line" class="md-nav__link">
+      The Kernel Command Line
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/index.html" title="config.txt" class="md-nav__link">
+      config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/device-tree/index.html" title="Device Trees, overlays, and parameters" class="md-nav__link">
+      Device Trees, overlays, and parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/external-storage/index.html" title="External Storage configuration" class="md-nav__link">
+      External Storage configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/localisation/index.html" title="Localisation" class="md-nav__link">
+      Localisation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/pin-configuration/index.html" title="Changing the default pin configuration" class="md-nav__link">
+      Changing the default pin configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/raspi-config/index.html" title="raspi-config" class="md-nav__link">
+      raspi-config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/screensaver/index.html" title="Setting the screen saver/screen blanking" class="md-nav__link">
+      Setting the screen saver/screen blanking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/security/index.html" title="Securing your Raspberry Pi" class="md-nav__link">
+      Securing your Raspberry Pi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/uart/index.html" title="The Raspberry Pi UARTs" class="md-nav__link">
+      The Raspberry Pi UARTs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/warning-icons/index.html" title="Firmware warning icons" class="md-nav__link">
+      Firmware warning icons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-15" type="checkbox" id="nav-2-15">
+    
+    <label class="md-nav__link" for="nav-2-15">
+      Config txt
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-15">
+        Config txt
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/README/index.html" title="config.txt" class="md-nav__link">
+      config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/audio/index.html" title="Onboard analogue audio options in config.txt (3.5mm jack)" class="md-nav__link">
+      Onboard analogue audio options in config.txt (3.5mm jack)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/boot/index.html" title="Boot options in config.txt" class="md-nav__link">
+      Boot options in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/camera/index.html" title="Camera Settings in config.txt" class="md-nav__link">
+      Camera Settings in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/codeclicence/index.html" title="Licence key and codec options in config.txt" class="md-nav__link">
+      Licence key and codec options in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/conditional/index.html" title="Conditional filters in config.txt" class="md-nav__link">
+      Conditional filters in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/memory/index.html" title="Memory options in config.txt" class="md-nav__link">
+      Memory options in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/misc/index.html" title="Miscellaneous options in config.txt" class="md-nav__link">
+      Miscellaneous options in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/overclocking/index.html" title="Overclocking options in config.txt" class="md-nav__link">
+      Overclocking options in config.txt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/config-txt/video/index.html" title="Video options in config.txt" class="md-nav__link">
+      Video options in config.txt
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-16" type="checkbox" id="nav-2-16">
+    
+    <label class="md-nav__link" for="nav-2-16">
+      Wireless
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-16">
+        Wireless
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/wireless/README/index.html" title="Wireless connectivity" class="md-nav__link">
+      Wireless connectivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/wireless/access-point/index.html" title="Setting up a Raspberry Pi as an access point in a standalone network" class="md-nav__link">
+      Setting up a Raspberry Pi as an access point in a standalone network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/wireless/desktop/index.html" title="Wireless connectivity in the PIXEL desktop" class="md-nav__link">
+      Wireless connectivity in the PIXEL desktop
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../configuration/wireless/wireless-cli/index.html" title="Setting WiFi up via the command line" class="md-nav__link">
+      Setting WiFi up via the command line
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Hardware
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../README/index.html" title="Raspberry Pi Hardware" class="md-nav__link">
+      Raspberry Pi Hardware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Camera
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Camera
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camera/README/index.html" title="Camera Module" class="md-nav__link">
+      Camera Module
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Computemodule
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Computemodule
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../README/index.html" title="Compute Module" class="md-nav__link">
+      Compute Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cm-designguide/index.html" title="Compute Module Hardware Design Guide" class="md-nav__link">
+      Compute Module Hardware Design Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cm-emmc-flashing/index.html" title="Flashing the Compute Module eMMC" class="md-nav__link">
+      Flashing the Compute Module eMMC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Compute Module Attaching and Enabling Peripherals Guide
+      </label>
+    
+    <a href="index.html" title="Compute Module Attaching and Enabling Peripherals Guide" class="md-nav__link md-nav__link--active">
+      Compute Module Attaching and Enabling Peripherals Guide
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bcm283x-gpios" title="BCM283x GPIOs" class="md-nav__link">
+    BCM283x GPIOs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bcm283x-boot-process" title="BCM283x Boot Process" class="md-nav__link">
+    BCM283x Boot Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree" title="Device Tree" class="md-nav__link">
+    Device Tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dt-blobbin" title="dt-blob.bin" class="md-nav__link">
+    dt-blob.bin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm-linux-device-tree" title="ARM Linux Device Tree" class="md-nav__link">
+    ARM Linux Device Tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree-source-and-compilation" title="Device Tree Source and Compilation" class="md-nav__link">
+    Device Tree Source and Compilation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree-debugging" title="Device Tree Debugging" class="md-nav__link">
+    Device Tree Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" title="Getting Help" class="md-nav__link">
+    Getting Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-attaching-an-i2c-rtc-to-bank1-pins" title="Example 1 - attaching an I2C RTC to BANK1 pins" class="md-nav__link">
+    Example 1 - attaching an I2C RTC to BANK1 pins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-attaching-an-enc28j60-spi-ethernet-controller-on-bank0" title="Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0" class="md-nav__link">
+    Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attaching-a-camera-or-cameras" title="Attaching a camera or cameras" class="md-nav__link">
+    Attaching a camera or cameras
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cmio-camera/index.html" title="Cmio camera" class="md-nav__link">
+      Cmio camera
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cmio-display/index.html" title="Cmio display" class="md-nav__link">
+      Cmio display
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../datasheet/index.html" title="Datasheet" class="md-nav__link">
+      Datasheet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../designfiles/index.html" title="Designfiles" class="md-nav__link">
+      Designfiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../schematics/index.html" title="Schematics" class="md-nav__link">
+      Schematics
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Display
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Display
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../display/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../display/troubleshooting/index.html" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Industrial
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        Industrial
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../industrial/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Raspberrypi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        Raspberrypi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/conformity/index.html" title="Conformity" class="md-nav__link">
+      Conformity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/peripheral_addresses/index.html" title="Peripheral addresses" class="md-nav__link">
+      Peripheral addresses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-4" type="checkbox" id="nav-3-6-4">
+    
+    <label class="md-nav__link" for="nav-3-6-4">
+      Bcm2835
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-4">
+        Bcm2835
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bcm2835/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-5" type="checkbox" id="nav-3-6-5">
+    
+    <label class="md-nav__link" for="nav-3-6-5">
+      Bcm2836
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-5">
+        Bcm2836
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bcm2836/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-6" type="checkbox" id="nav-3-6-6">
+    
+    <label class="md-nav__link" for="nav-3-6-6">
+      Bcm2837
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-6">
+        Bcm2837
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bcm2837/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-7" type="checkbox" id="nav-3-6-7">
+    
+    <label class="md-nav__link" for="nav-3-6-7">
+      Bootmodes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-7">
+        Bootmodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/bootflow/index.html" title="Bootflow" class="md-nav__link">
+      Bootflow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/device/index.html" title="Device" class="md-nav__link">
+      Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/host/index.html" title="Host" class="md-nav__link">
+      Host
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/msd/index.html" title="Msd" class="md-nav__link">
+      Msd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/net/index.html" title="Net" class="md-nav__link">
+      Net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/net_tutorial/index.html" title="Net tutorial" class="md-nav__link">
+      Net tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/net_tutorial_windows/index.html" title="Net tutorial windows" class="md-nav__link">
+      Net tutorial windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/netboot_server_easy/index.html" title="Netboot server easy" class="md-nav__link">
+      Netboot server easy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/sdcard/index.html" title="Sdcard" class="md-nav__link">
+      Sdcard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/bootmodes/usb/index.html" title="Usb" class="md-nav__link">
+      Usb
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-8" type="checkbox" id="nav-3-6-8">
+    
+    <label class="md-nav__link" for="nav-3-6-8">
+      Dpi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-8">
+        Dpi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/dpi/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-9" type="checkbox" id="nav-3-6-9">
+    
+    <label class="md-nav__link" for="nav-3-6-9">
+      Gpio
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-9">
+        Gpio
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/gpio/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-10" type="checkbox" id="nav-3-6-10">
+    
+    <label class="md-nav__link" for="nav-3-6-10">
+      Mechanical
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-10">
+        Mechanical
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/mechanical/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-11" type="checkbox" id="nav-3-6-11">
+    
+    <label class="md-nav__link" for="nav-3-6-11">
+      Power
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-11">
+        Power
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/power/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-12" type="checkbox" id="nav-3-6-12">
+    
+    <label class="md-nav__link" for="nav-3-6-12">
+      Revision codes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-12">
+        Revision codes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/revision-codes/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-13" type="checkbox" id="nav-3-6-13">
+    
+    <label class="md-nav__link" for="nav-3-6-13">
+      Schematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-13">
+        Schematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/schematics/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-14" type="checkbox" id="nav-3-6-14">
+    
+    <label class="md-nav__link" for="nav-3-6-14">
+      Spi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-14">
+        Spi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/spi/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-15" type="checkbox" id="nav-3-6-15">
+    
+    <label class="md-nav__link" for="nav-3-6-15">
+      Usb
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-15">
+        Usb
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raspberrypi/usb/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      Sense hat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        Sense hat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sense-hat/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Installation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Installation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/noobs/index.html" title="Noobs" class="md-nav__link">
+      Noobs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/sd-cards/index.html" title="Sd cards" class="md-nav__link">
+      Sd cards
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/sdxc_formatting/index.html" title="Sdxc formatting" class="md-nav__link">
+      Sdxc formatting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Installing images
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Installing images
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/installing-images/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/installing-images/linux/index.html" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/installing-images/mac/index.html" title="Mac" class="md-nav__link">
+      Mac
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../installation/installing-images/windows/index.html" title="Windows" class="md-nav__link">
+      Windows
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Filesystem
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Filesystem
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/filesystem/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/filesystem/backup/index.html" title="Backup" class="md-nav__link">
+      Backup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/filesystem/home/index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/filesystem/whole-filesystem/index.html" title="Whole filesystem" class="md-nav__link">
+      Whole filesystem
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Kernel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Kernel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/building/index.html" title="Building" class="md-nav__link">
+      Building
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/configuring/index.html" title="Configuring" class="md-nav__link">
+      Configuring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/headers/index.html" title="Headers" class="md-nav__link">
+      Headers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/patching/index.html" title="Patching" class="md-nav__link">
+      Patching
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/kernel/updating/index.html" title="Updating" class="md-nav__link">
+      Updating
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Software
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/software/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/software/apt/index.html" title="Apt" class="md-nav__link">
+      Apt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/software/python/index.html" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/software/ruby/index.html" title="Ruby" class="md-nav__link">
+      Ruby
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Usage
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/bashrc/index.html" title="Bashrc" class="md-nav__link">
+      Bashrc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/commands/index.html" title="Commands" class="md-nav__link">
+      Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/cron/index.html" title="Cron" class="md-nav__link">
+      Cron
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/rc-local/index.html" title="Rc local" class="md-nav__link">
+      Rc local
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/root/index.html" title="Root" class="md-nav__link">
+      Root
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/scripting/index.html" title="Scripting" class="md-nav__link">
+      Scripting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/systemd/index.html" title="Systemd" class="md-nav__link">
+      Systemd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/text-editors/index.html" title="Text editors" class="md-nav__link">
+      Text editors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux/usage/users/index.html" title="Users" class="md-nav__link">
+      Users
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Raspbian
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Raspbian
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../raspbian/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../raspbian/updating/index.html" title="Updating" class="md-nav__link">
+      Updating
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Applications
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Applications
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../raspbian/applications/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../raspbian/applications/camera/index.html" title="Camera" class="md-nav__link">
+      Camera
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../raspbian/applications/omxplayer/index.html" title="Omxplayer" class="md-nav__link">
+      Omxplayer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Remote access
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Remote access
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ftp/index.html" title="Ftp" class="md-nav__link">
+      Ftp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ip-address/index.html" title="Ip address" class="md-nav__link">
+      Ip address
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      access over Internet
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        access over Internet
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/access-over-Internet/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
+    
+    <label class="md-nav__link" for="nav-7-5">
+      Ssh
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        Ssh
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/android/index.html" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/ios/index.html" title="Ios" class="md-nav__link">
+      Ios
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/passwordless/index.html" title="Passwordless" class="md-nav__link">
+      Passwordless
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/rsync/index.html" title="Rsync" class="md-nav__link">
+      Rsync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/scp/index.html" title="Scp" class="md-nav__link">
+      Scp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/sftp/index.html" title="Sftp" class="md-nav__link">
+      Sftp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/sshfs/index.html" title="Sshfs" class="md-nav__link">
+      Sshfs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/unix/index.html" title="Unix" class="md-nav__link">
+      Unix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/ssh/windows/index.html" title="Windows" class="md-nav__link">
+      Windows
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
+    
+    <label class="md-nav__link" for="nav-7-6">
+      Vnc
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-6">
+        Vnc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/vnc/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Web server
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Web server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/web-server/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/web-server/apache/index.html" title="Apache" class="md-nav__link">
+      Apache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../remote-access/web-server/nginx/index.html" title="Nginx" class="md-nav__link">
+      Nginx
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../setup/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../setup/monitor-connection/index.html" title="Monitor connection" class="md-nav__link">
+      Monitor connection
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Usage
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Audio
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Audio
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/audio/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      Camera
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        Camera
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3-2" type="checkbox" id="nav-9-3-2">
+    
+    <label class="md-nav__link" for="nav-9-3-2">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-9-3-2">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/python/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3-3" type="checkbox" id="nav-9-3-3">
+    
+    <label class="md-nav__link" for="nav-9-3-3">
+      Raspicam
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-9-3-3">
+        Raspicam
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/raspicam/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/raspicam/raspistill/index.html" title="Raspistill" class="md-nav__link">
+      Raspistill
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/raspicam/raspivid/index.html" title="Raspivid" class="md-nav__link">
+      Raspivid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/raspicam/raspiyuv/index.html" title="Raspiyuv" class="md-nav__link">
+      Raspiyuv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/camera/raspicam/timelapse/index.html" title="Timelapse" class="md-nav__link">
+      Timelapse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-4" type="checkbox" id="nav-9-4">
+    
+    <label class="md-nav__link" for="nav-9-4">
+      Demos
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-4">
+        Demos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-audio/index.html" title="Hello audio" class="md-nav__link">
+      Hello audio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-fractal/index.html" title="Hello fractal" class="md-nav__link">
+      Hello fractal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-teapot/index.html" title="Hello teapot" class="md-nav__link">
+      Hello teapot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-triangle/index.html" title="Hello triangle" class="md-nav__link">
+      Hello triangle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-video/index.html" title="Hello video" class="md-nav__link">
+      Hello video
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/demos/hello-world/index.html" title="Hello world" class="md-nav__link">
+      Hello world
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-5" type="checkbox" id="nav-9-5">
+    
+    <label class="md-nav__link" for="nav-9-5">
+      Gpio
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-5">
+        Gpio
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/gpio/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-6" type="checkbox" id="nav-9-6">
+    
+    <label class="md-nav__link" for="nav-9-6">
+      Gpio plus and raspi2
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-6">
+        Gpio plus and raspi2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/gpio-plus-and-raspi2/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-7" type="checkbox" id="nav-9-7">
+    
+    <label class="md-nav__link" for="nav-9-7">
+      Kodi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-7">
+        Kodi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/kodi/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-8" type="checkbox" id="nav-9-8">
+    
+    <label class="md-nav__link" for="nav-9-8">
+      Mathematica
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-8">
+        Mathematica
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/mathematica/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-9" type="checkbox" id="nav-9-9">
+    
+    <label class="md-nav__link" for="nav-9-9">
+      Minecraft
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-9">
+        Minecraft
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/minecraft/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-10" type="checkbox" id="nav-9-10">
+    
+    <label class="md-nav__link" for="nav-9-10">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-10">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/python/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/python/more/index.html" title="More" class="md-nav__link">
+      More
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-11" type="checkbox" id="nav-9-11">
+    
+    <label class="md-nav__link" for="nav-9-11">
+      Python games
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-11">
+        Python games
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/python-games/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-12" type="checkbox" id="nav-9-12">
+    
+    <label class="md-nav__link" for="nav-9-12">
+      Scratch
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-12">
+        Scratch
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/scratch/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-12-2" type="checkbox" id="nav-9-12-2">
+    
+    <label class="md-nav__link" for="nav-9-12-2">
+      Gpio
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-9-12-2">
+        Gpio
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/scratch/gpio/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-13" type="checkbox" id="nav-9-13">
+    
+    <label class="md-nav__link" for="nav-9-13">
+      Sonic pi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-13">
+        Sonic pi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/sonic-pi/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-14" type="checkbox" id="nav-9-14">
+    
+    <label class="md-nav__link" for="nav-9-14">
+      Terminal
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-14">
+        Terminal
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/terminal/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-15" type="checkbox" id="nav-9-15">
+    
+    <label class="md-nav__link" for="nav-9-15">
+      Video
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-15">
+        Video
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/video/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-16" type="checkbox" id="nav-9-16">
+    
+    <label class="md-nav__link" for="nav-9-16">
+      Webcams
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-16">
+        Webcams
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/webcams/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-17" type="checkbox" id="nav-9-17">
+    
+    <label class="md-nav__link" for="nav-9-17">
+      Wordpress
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-17">
+        Wordpress
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/wordpress/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-18" type="checkbox" id="nav-9-18">
+    
+    <label class="md-nav__link" for="nav-9-18">
+      Xbmc
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-18">
+        Xbmc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/xbmc/README/index.html" title="README" class="md-nav__link">
+      README
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bcm283x-gpios" title="BCM283x GPIOs" class="md-nav__link">
+    BCM283x GPIOs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bcm283x-boot-process" title="BCM283x Boot Process" class="md-nav__link">
+    BCM283x Boot Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree" title="Device Tree" class="md-nav__link">
+    Device Tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dt-blobbin" title="dt-blob.bin" class="md-nav__link">
+    dt-blob.bin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm-linux-device-tree" title="ARM Linux Device Tree" class="md-nav__link">
+    ARM Linux Device Tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree-source-and-compilation" title="Device Tree Source and Compilation" class="md-nav__link">
+    Device Tree Source and Compilation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-tree-debugging" title="Device Tree Debugging" class="md-nav__link">
+    Device Tree Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" title="Getting Help" class="md-nav__link">
+    Getting Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-attaching-an-i2c-rtc-to-bank1-pins" title="Example 1 - attaching an I2C RTC to BANK1 pins" class="md-nav__link">
+    Example 1 - attaching an I2C RTC to BANK1 pins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-attaching-an-enc28j60-spi-ethernet-controller-on-bank0" title="Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0" class="md-nav__link">
+    Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attaching-a-camera-or-cameras" title="Attaching a camera or cameras" class="md-nav__link">
+    Attaching a camera or cameras
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="compute-module-attaching-and-enabling-peripherals-guide">Compute Module Attaching and Enabling Peripherals Guide</h1>
+<p><strong> Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). </strong></p>
+<h2 id="introduction">Introduction</h2>
+<p>This guide is designed to help developers using the Compute Module (and Compute Module 3) get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.</p>
+<p>The Compute Module (CM) and Compute Module 3 (CM3) contain the Raspberry Pi BCM2835 (or BCM2837 for CM3) system on a chip (SoC) or 'processor', memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board. Unlike SD cards, the eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).</p>
+<p>To use the Compute Module, a user needs to design a (relatively simple) 'motherboard' which can provide power to the Compute Module (3.3V and 1.8V at minimum), and which connects the pins to the required peripherals for the user's application.</p>
+<p>Raspberry Pi provides a minimal motherboard for the Compute Module (called the Compute Module IO Board, or CMIO Board) which powers the module, brings out the GPIO to pin headers, and brings the camera and display interfaces out to FFC connectors. It also provides HDMI, USB, and an 'ACT' LED, as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.</p>
+<p>This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO (or CMIO V3 for CM3) Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.</p>
+<h2 id="bcm283x-gpios">BCM283x GPIOs</h2>
+<p>BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.</p>
+<p>On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.</p>
+<p>It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected, or to get a look at the pin states during hardware debug.</p>
+<p>Raspberry Pi provides the <code>raspi-gpio</code> package which is a tool for hacking and debugging GPIO (NOTE: you need to run it as root).
+To install <code>raspi-gpio</code>:</p>
+<div class="codehilite"><pre><span></span>sudo apt-get install raspi-gpio
+</pre></div>
+
+
+<p>If <code>apt-get</code> can't find the <code>raspi-gpio</code> package, you will need to do an update first:</p>
+<div class="codehilite"><pre><span></span>sudo apt-get update
+</pre></div>
+
+
+<p>To get help on <code>raspi-gpio</code>, run it with the <code>help</code> argument:</p>
+<div class="codehilite"><pre><span></span>sudo raspi-gpio help
+</pre></div>
+
+
+<p>For example, to see the current function and level of all GPIO pins use:</p>
+<div class="codehilite"><pre><span></span>sudo raspi-gpio get
+</pre></div>
+
+
+<p>Note that <code>raspi-gpio</code> can be used with the <code>funcs</code> argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a <code>.csv</code> file and then load this file using e.g. Excel:</p>
+<div class="codehilite"><pre><span></span>sudo raspi-gpio funcs &gt; gpio-funcs.csv
+</pre></div>
+
+
+<h2 id="bcm283x-boot-process">BCM283x Boot Process</h2>
+<p>BCM283x devices consist of a VideoCore GPU and ARM CPU cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics, and image compositing.</p>
+<p>In BCM283x devices, it is the DSP core in the GPU that boots first. It is responsible for general setup and housekeeping before booting up the main ARM processor(s).</p>
+<p>The BCM283x devices as used on Raspberry Pi and Compute Module boards have a three-stage boot process:</p>
+<ol>
+<li>
+<p>The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called <code>bootcode.bin</code> and to be on the first partition (which must be FAT32). If no SD card is found or <code>bootcode.bin</code> is not found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.</p>
+</li>
+<li>
+<p>The second stage boot loader (<code>bootcode.bin</code> on the sdcard or <code>usbbootcode.bin</code> for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system functions and then loading and executing the main GPU firmware (called <code>start.elf</code>, again on the primary SD card partition).</p>
+</li>
+<li>
+<p><code>start.elf</code> takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads <code>dt-blob.bin</code> to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses <code>config.txt</code>. It then loads an ARM device tree file (e.g. <code>bcm2708-rpi-cm.dtb</code> for a Compute Module) and any device tree overlays specified in <code>config.txt</code> before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.</p>
+</li>
+</ol>
+<h2 id="device-tree">Device Tree</h2>
+<p><a href="http://www.devicetree.org/">Device Tree</a> is a special way of encoding all the information about the hardware attached to a system (and consequently required drivers).</p>
+<p>On a Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension <code>.dtb</code>) are compiled from human readable text descriptions (usually files with extension <code>.dts</code>) by the Device Tree compiler.</p>
+<p>On a standard Raspbian image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Pi products:</p>
+<ul>
+<li><code>dt-blob.bin</code> (used by the GPU)</li>
+<li><code>bcm2708-rpi-b.dtb</code> (Used for Pi model A and B)</li>
+<li><code>bcm2708-rpi-b-plus.dtb</code> (Used for Pi model B+ and A+)</li>
+<li><code>bcm2709-rpi-2-b.dtb</code> (Used for Pi 2 model B)</li>
+<li><code>bcm2710-rpi-3-b.dtb</code> (Used for Pi 3 model B)</li>
+<li><code>bcm2708-rpi-cm.dtb</code> (Used for Pi Compute Module)</li>
+<li><code>bcm2710-rpi-cm3.dtb</code> (Used for Pi Compute Module 3)</li>
+</ul>
+<p>NOTE <code>dt-blob.bin</code> by default does not exist as there is a 'default' version compiled into <code>start.elf</code>, but for Compute Module projects it will often be necessary to provide a <code>dt-blob.bin</code> (which overrides the default built-in file).</p>
+<p>Note that <code>dt-blob.bin</code> is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.</p>
+<p>A guide to creating dt-blob.bin is <a href="../../../configuration/pin-configuration/index.html">here</a>.
+A comprehensive guide to the Linux Device Tree for Raspberry Pi is <a href="../../../configuration/device-tree/index.html">here</a>.</p>
+<p>During boot, the user can specify a specific ARM device tree to use via the <code>device_tree</code> parameter in <code>config.txt</code>, for example adding the line <code>device_tree=mydt.dtb</code> to <code>config.txt</code> where <code>mydt.dtb</code> is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).</p>
+<p>In addition to loading an ARM dtb, <code>start.elf</code> supports loading additional Device Tree 'overlays' via the <code>dtoverlay</code> parameter in <code>config.txt</code>, for example adding as many <code>dtoverlay=myoverlay</code> lines as required as overlays to <code>config.txt</code>, noting that overlays live in <code>/overlays</code> and are suffixed <code>-overlay.dtb</code> e.g. <code>/overlays/myoverlay-overlay.dtb</code>. Overlays are merged with the base dtb file before the data is passed to the Linux kernel when it starts.</p>
+<p>Overlays are used to add data to the base dtb that (nominally) describes non board-specific hardware. This includes GPIO pins used and their function, as well as the device(s) attached, so that the correct drivers can be loaded. The convention is that on a Raspberry Pi, all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions: you can roll all the information into one single dtb file, as previously described, replacing <code>bcm2708-rpi-cm.dtb</code>. However, following the conventions means that you can use a 'standard' Raspbian release, with its standard base dtb and all the product-specific information contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.</p>
+<h2 id="dt-blobbin">dt-blob.bin</h2>
+<p>When <code>start.elf</code> runs, it first reads something called <code>dt-blob.bin</code>. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from <code>dt-blob.bin</code>. </p>
+<p>NOTE: the <code>start.elf</code> firmware has a 'built-in' default <code>dt-blob.bin</code> which is used if no <code>dt-blob.bin</code> is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom <code>dt-blob.bin</code>. Note that <code>dt-blob.bin</code> specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. For information on <code>dt-blob.bin</code> see <a href="../../../configuration/pin-configuration/index.html">here</a>.</p>
+<p><a href="../minimal-cm-dt-blob.dts">minimal-cm-dt-blob.dts</a> is an example <code>.dts</code> device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.</p>
+<p>To compile the <code>minimal-cm-dt-blob.dts</code> to <code>dt-blob.bin</code> use the Device Tree Compiler <code>dtc</code>:</p>
+<div class="codehilite"><pre><span></span>dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
+</pre></div>
+
+
+<h2 id="arm-linux-device-tree">ARM Linux Device Tree</h2>
+<p>After <code>start.elf</code> has read <code>dt-blob.bin</code> and set up the initial pin states and clocks, it reads <code>config.txt</code> which contains many other options for system setup (see <a href="../../../configuration/config-txt/README/index.html">here</a> for a comprehensive guide).</p>
+<p>After reading <code>config.txt</code> another device tree file specific to the board the hardware is running on is read: this is <code>bcm2708-rpi-cm.dtb</code> for a Compute Module, or <code>bcm2710-rpi-cm.dtb</code> for CM3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in <code>dt-blob.bin</code> if it is different. It will also try to load driver(s) for the specific device(s).</p>
+<p>Although the <code>bcm2708-rpi-cm.dtb</code> file can be used to load all attached devices, the recommendation for Compute Module users is to leave this file alone. Instead, use the one supplied in the standard Raspbian software image, and add devices using a custom 'overlay' file as previously described. The <code>bcm2708-rpi-cm.dtb</code> file contains (disabled) entries for the various peripherals (I2C, SPI, I2S etc.) and no GPIO pin definitions, apart from the eMMC/SD Card peripheral which has GPIO defs and is enabled, because it is always on the same pins. The idea is that the separate overlay file will enable the required interfaces, describe the pins used, and also describe the required drivers. The <code>start.elf</code> firmware will read and merge the <code>bcm2708-rpi-cm.dtb</code> with the overlay data before giving the merged device tree to the Linux kernel as it boots up.</p>
+<h2 id="device-tree-source-and-compilation">Device Tree Source and Compilation</h2>
+<p>The Raspbian image provides compiled dtb files, but where are the source dts files? They live in the Raspberry Pi Linux kernel branch, on <a href="https://github.com/raspberrypi/linux">GitHub</a>. Look in the <code>arch/arm/boot/dts</code> folder.</p>
+<p>Some default overlay dts files live in <code>arch/arm/boot/dts/overlays</code>. Corresponding overlays for standard hardware that can be attached to a <strong>Raspberry Pi</strong> in the Raspbian image are on the FAT partition in the <code>/overlays</code> directory. Note that these assume certain pins on BANK0, as they are for use on a Raspberry Pi. In general, use the source of these standard overlays as a guide to creating your own, unless you are using the same GPIO pins as you would be using if the hardware was plugged into the GPIO header of a Raspberry Pi.</p>
+<p>Compiling these dts files to dtb files requires an up-to-date version of the Device Tree compiler <code>dtc</code>. More information can be found <a href="../../../configuration/device-tree/index.html">here</a>, but the easy way to install an appropriate version on a Pi is to run:</p>
+<div class="codehilite"><pre><span></span>sudo apt-get install device-tree-compiler
+</pre></div>
+
+
+<p>If you are building your own kernel then the build host also gets a version in <code>scripts/dtc</code>. You can arrange for your overlays to be built automatically by adding them to <code>Makefile</code> in <code>arch/arm/boot/dts/overlays</code>, and using the 'dtbs' make target.</p>
+<h2 id="device-tree-debugging">Device Tree Debugging</h2>
+<p>When the Linux kernel is booted on the ARM core(s), the GPU provides it with a fully assembled device tree, assembled from the base dts and any overlays. This full tree is available via the Linux proc interface in <code>/proc/device-tree</code>, where nodes become directories and properties become files.</p>
+<p>You can use <code>dtc</code> to write this out as a human readable dts file for debugging. You can see the fully assembled device tree, which is often very useful:</p>
+<div class="codehilite"><pre><span></span>dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
+</pre></div>
+
+
+<p>As previously explained in the GPIO section, it is also very useful to use <code>raspi-gpio</code> to look at the setup of the GPIO pins to check that they are as you expect:</p>
+<div class="codehilite"><pre><span></span>raspi-gpio get
+</pre></div>
+
+
+<p>If something seems to be going awry, useful information can also be found by dumping the GPU log messages:</p>
+<div class="codehilite"><pre><span></span>sudo vcdbg log msg
+</pre></div>
+
+
+<p>You can include more diagnostics in the output by adding <code>dtdebug=1</code> to <code>config.txt</code>.</p>
+<h2 id="getting-help">Getting Help</h2>
+<p>Please use the <a href="https://www.raspberrypi.org/forums/viewforum.php?f=107">Device Tree subforum</a> on the Raspberry Pi forums to ask Device Tree related questions.</p>
+<h2 id="examples">Examples</h2>
+<p>For these simple examples I used a CMIO board with peripherals attached via jumper wires.</p>
+<p>For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspbian Lite version on the CM. See instructions <a href="../cm-emmc-flashing/index.html">here</a>.</p>
+<p>The examples here require internet connectivity, so a USB hub plus keyboard plus WiFi or Ethernet dongle plugged into the CMIO USB port is recommended.</p>
+<p>If you suspect any issues or bugs with Device Tree it is always best to try a <code>sudo rpi-update</code> to make sure you are using the latest firmware. </p>
+<p>WARNING: if you have edited any of the default .dtb files in <code>/boot</code> or <code>/boot/overlays</code> these may be overwritten by rpi-update.</p>
+<p>Please post any issues, bugs or questions on the Raspberry Pi <a href="https://www.raspberrypi.org/forums/viewforum.php?f=107">Device Tree subforum</a>.</p>
+<h2 id="example-1-attaching-an-i2c-rtc-to-bank1-pins">Example 1 - attaching an I2C RTC to BANK1 pins</h2>
+<p>In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.</p>
+<p>Download <a href="../minimal-cm-dt-blob.dts">minimal-cm-dt-blob.dts</a> and copy it to the SD card FAT partition, located in <code>/boot</code> when the CM has booted.</p>
+<p>Edit <code>minimal-cm-dt-blob.dts</code> and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:</p>
+<div class="codehilite"><pre><span></span>sudo nano /boot/minimal-cm-dt-blob.dts
+</pre></div>
+
+
+<p>Change lines:</p>
+<div class="codehilite"><pre><span></span>pin@p44 { function = &quot;input&quot;; termination = &quot;pull_down&quot;; }; // DEFAULT STATE WAS INPUT NO PULL
+pin@p45 { function = &quot;input&quot;; termination = &quot;pull_down&quot;; }; // DEFAULT STATE WAS INPUT NO PULL
+</pre></div>
+
+
+<p>to:</p>
+<div class="codehilite"><pre><span></span>pin@p44 { function = &quot;i2c1&quot;; termination = &quot;pull_up&quot;; }; // SDA1
+pin@p45 { function = &quot;i2c1&quot;; termination = &quot;pull_up&quot;; }; // SCL1
+</pre></div>
+
+
+<p>NOTE: we could use this <code>dt-blob.dts</code> with no changes The Linux Device Tree will (re)configure these pins during Linux kernel boot when the specific drivers are loaded, so it is up to you whether you modify <code>dt-blob.dts</code>. I like to configure <code>dt-blob.dts</code> to what I expect the final GPIOs to be, as they are then set to their final state as soon as possible during the GPU boot stage, but this is not strictly necessary. You may find that in some cases you do need pins to be configured at GPU boot time, so they are in a specific state when Linux drivers are loaded. For example, a reset line may need to be held in the correct orientation.</p>
+<p>Compile <code>dt-blob.bin</code>:</p>
+<div class="codehilite"><pre><span></span>sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
+</pre></div>
+
+
+<p>Grab <a href="../example1-overlay.dts">example1-overlay.dts</a> and put it in <code>/boot</code> then compile it:</p>
+<div class="codehilite"><pre><span></span>sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1.dtbo /boot/example1-overlay.dts
+</pre></div>
+
+
+<p>Note the '-@' in the <code>dtc</code> command line. This is necessary if you are compiling dts files with external references, as overlays tend to be.</p>
+<p>Edit <code>/boot/config.txt</code> and add the line:</p>
+<div class="codehilite"><pre><span></span>dtoverlay=example1
+</pre></div>
+
+
+<p>Now save and reboot.</p>
+<p>Once rebooted, you should see an rtc0 entry in /dev. Running:</p>
+<div class="codehilite"><pre><span></span>sudo hwclock
+</pre></div>
+
+
+<p>will return with the hardware clock time, and not an error.</p>
+<h2 id="example-2-attaching-an-enc28j60-spi-ethernet-controller-on-bank0">Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0</h2>
+<p>In this example we use one of the already available overlays in /boot/overlays to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO25 for a falling edge interrupt, and of course GND and 3V3.</p>
+<p>In this example we won't change <code>dt-blob.bin</code>, although of course you can if you wish. We should see that Linux Device Tree correctly sets up the pins.</p>
+<p>Edit <code>/boot/config.txt</code> and add the line:</p>
+<div class="codehilite"><pre><span></span>dtoverlay=enc28j60
+</pre></div>
+
+
+<p>Now save and reboot.</p>
+<p>Once rebooted you should see, as before, an rtc0 entry in /dev. Running:</p>
+<div class="codehilite"><pre><span></span>sudo hwclock
+</pre></div>
+
+
+<p>will return with the hardware clock time, and not an error.</p>
+<p>You should also have Ethernet connectivity:</p>
+<div class="codehilite"><pre><span></span>ping 8.8.8.8
+</pre></div>
+
+
+<p>should work.</p>
+<p>finally running:</p>
+<div class="codehilite"><pre><span></span>sudo raspi-gpio get
+</pre></div>
+
+
+<p>should show that GPIO8-11 have changed to ALT0 (SPI) functions.</p>
+<h2 id="attaching-a-camera-or-cameras">Attaching a camera or cameras</h2>
+<p>To attach a camera or cameras see the documentation <a href="../cmio-camera/index.html">here</a></p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../cm-emmc-flashing/index.html" title="Flashing the Compute Module eMMC" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Flashing the Compute Module eMMC
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../cmio-camera/index.html" title="Cmio camera" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Cmio camera
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.6cdc17f0.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
