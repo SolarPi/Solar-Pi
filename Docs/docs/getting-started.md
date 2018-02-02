@@ -9,6 +9,6 @@ Good luck, and we hope that you enjoy using your Solar Pi!
 
 Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer. You can press buttons, access menus and look through this documentation. Also, you can use the on screen keyboard by clicking on the icon in the toolbar at the top of the screen.
 
-![keyboard](/img/keyboard-icon.png)
+![keyboard](/img/keyboard-icon.PNG)
 ### Keyboard & Trackpad
 Your Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.

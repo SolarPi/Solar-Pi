@@ -14,5 +14,5 @@ This will tell you the basics on how to use your Solar Pi.
 ### [Solar Pi Apps](solar-pi-apps.md)
 This will show you how to use the apps, and what they do.
 
-### [Raspbian](raspbian.md)
+### [Raspberry Pi Docs](http://localhost:83)
 This explains how to use the Raspbian operating system that is installed on your Solar Pi.

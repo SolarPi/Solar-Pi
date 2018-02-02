@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/index.html",
-            "text": "Solar Pi Docs\n\n\n\n\nWelcome to the home of Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. If you click on the icon with 3 white bars in the top left corner, you can browse through the docs, and in the top right, you can search for whatever you want.\n\n\n\nUseful Places\n\n\nHere are some places that you might find useful when starting out (click on the green text to visit the page):\n\n\nGetting Started\n\n\nThis will tell you the basics on how to use your Solar Pi.\n\n\nSolar Pi Apps\n\n\nThis will show you how to use the apps, and what they do.\n\n\nRaspbian\n\n\nThis explains how to use the Raspbian operating system that is installed on your Solar Pi.",
+            "text": "Solar Pi Docs\n\n\n\n\nWelcome to the home of Solar Pi documentation. Here you'll find (almost) everything you need to know about your Solar Pi. If you click on the icon with 3 white bars in the top left corner, you can browse through the docs, and in the top right, you can search for whatever you want.\n\n\n\nUseful Places\n\n\nHere are some places that you might find useful when starting out (click on the green text to visit the page):\n\n\nGetting Started\n\n\nThis will tell you the basics on how to use your Solar Pi.\n\n\nSolar Pi Apps\n\n\nThis will show you how to use the apps, and what they do.\n\n\nRaspberry Pi Docs\n\n\nThis explains how to use the Raspbian operating system that is installed on your Solar Pi.",
             "title": "Home"
         },
         {
@@ -26,9 +26,9 @@
             "title": "Solar Pi Apps"
         },
         {
-            "location": "/index.html#raspbian",
+            "location": "/index.html#raspberry-pi-docs",
             "text": "This explains how to use the Raspbian operating system that is installed on your Solar Pi.",
-            "title": "Raspbian"
+            "title": "Raspberry Pi Docs"
         },
         {
             "location": "/getting-started/index.html",
@@ -141,13 +141,8 @@
             "title": "Languages"
         },
         {
-            "location": "/raspbian/index.html",
-            "text": "",
-            "title": "Raspbian"
-        },
-        {
             "location": "/hardware/index.html",
-            "text": "Hardware\n\n\nYour Solar Pi is made up of many different parts; this page is here to tell you about them.\n\n\nRaspberry Pi 3 Model B\n\n\nThis is the heart of your Solar Pi. This is the 'computer' part of the Solar Pi, as it lets you do just about anything - without it, your Solar Pi would be useless. It's also got the last part of our name ('Pi')!\n\n\n19W Foldable Solar Panels\n\n\nThis has got the first part of our name (Solar), as it is also a important part of the Solar Pi. This provides power to all the components, and allows it to work in remote locations.\n\n\nWaveshare 7 Inch 1024x600 Touchscreen\n\n\nThis is the Solar Pi's display that also acts as an input device. This allows you to interact with the Raspberry Pi, as it displays items on the screen and acts as a combined mouse and keyboard.\n\n\n4x2250MaH (9000MaH total) Canwelum Batteries\n\n\nThese store power for your Solar Pi, and allow it to run indoors and where there isn't very much sunlight.\n\n\nPico UPS HAT\n\n\nThis is attatched on top of the Raspberry Pi to ensure that the batteries power it correctly, and tell it when the battery level is running low.\n\n\nMini Keyboard + Touchpad\n\n\nThis is an alternative input device that makes it easier for you to type large chunks of code and navigate Raspbian and other applications with better precision.",
+            "text": "Hardware\n\n\nYour Solar Pi is made up of many different parts; this page is here to tell you about them.\n\n\nRaspberry Pi 3 Model B\n\n\nThis is the heart of your Solar Pi. This is the 'computer' part of the Solar Pi, as it lets you do just about anything - without it, your Solar Pi would be useless. It's also got the last part of our name ('Pi')!\n\n\n19W Foldable Solar Panels\n\n\nThis has got the first part of our name ('Solar'), as it is also a important part of the Solar Pi. This provides power to all the components, and allows it to work in remote locations.\n\n\nWaveshare 7 Inch 1024x600 Touchscreen\n\n\nThis is the Solar Pi's display that also acts as an input device. This allows you to interact with the Raspberry Pi, as it displays items on the screen and acts as a combined mouse and keyboard.\n\n\n4 x 2250MaH (9000MaH total) Canwelum Batteries\n\n\nThese store power for your Solar Pi, and allow it to run indoors and where there isn't very much sunlight.\n\n\nPico UPS HAT\n\n\nThis is attatched on top of the Raspberry Pi to ensure that the batteries power it correctly, and tell it when the battery level is running low.\n\n\nMini Keyboard + Touchpad\n\n\nThis is an alternative input device that makes it easier for you to type large chunks of code and navigate Raspbian and other applications with better precision.",
             "title": "Hardware"
         },
         {
@@ -162,7 +157,7 @@
         },
         {
             "location": "/hardware/index.html#19w-foldable-solar-panels",
-            "text": "This has got the first part of our name (Solar), as it is also a important part of the Solar Pi. This provides power to all the components, and allows it to work in remote locations.",
+            "text": "This has got the first part of our name ('Solar'), as it is also a important part of the Solar Pi. This provides power to all the components, and allows it to work in remote locations.",
             "title": "19W Foldable Solar Panels"
         },
         {
@@ -171,9 +166,9 @@
             "title": "Waveshare 7 Inch 1024x600 Touchscreen"
         },
         {
-            "location": "/hardware/index.html#4x2250mah-9000mah-total-canwelum-batteries",
+            "location": "/hardware/index.html#4-x-2250mah-9000mah-total-canwelum-batteries",
             "text": "These store power for your Solar Pi, and allow it to run indoors and where there isn't very much sunlight.",
-            "title": "4x2250MaH (9000MaH total) Canwelum Batteries"
+            "title": "4 x 2250MaH (9000MaH total) Canwelum Batteries"
         },
         {
             "location": "/hardware/index.html#pico-ups-hat",
@@ -451,272 +446,272 @@
             "title": "Executing Python files from the command line"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html",
+            "location": "/Advanced-Things/programming-glossary/index.html",
             "text": "Programming Glossary\n\n\n\n\nInfo\n\n\nNote: This came from \nProgramming for Beginners\n.\n\n\n\n\nalgorithm\n\n\n\n\n(noun) a step-by-step procedure to achieve a specific goal. Can be implemented with code.\n\n\n\n\nExample: I used the quicksort algorithm to sort the array alphabetically.\n\n\nargument\n\n\n\n\n(noun) a value that is passed into a function when it is called. Arguments are said to be \u201cpassed\u201d into a function, and functions are said to \u201ctake\u201d arguments. Also known as a \u201cparameter.\u201d\n\n\n\n\nExample: That function takes two arguments.\n\n\narray\n\n\n\n\n(noun) a type of value that contains a sequence of other values.\n\n\n\n\nExample: I put all our names into an array of strings.\n\n\nassignment\n\n\n\n\n(noun) the act of putting a value into a variable.\n\n\n\n\nExample: I assigned the number \n22\n to the \nage\n variable.\n\n\nbrackets\n\n\n\n\n(noun) characters often used to surround text. The different types of brackets are:\nParenthesis/parens/round brackets: \n( )\n\nCurly brackets/braces: \n{ }\n\nAngle brackets: \n< >\n\nSquare brackets: \n[ ]\n\nThe bracket at the beginning is called the \u201copening\u201d or the \u201cleft\u201d bracket. The bracket at the end is called the \u201cclosing\u201d or \u201cright\u201d bracket.\n\n\n\n\nExample: Your code won\u2019t compile because you forgot a closing bracket.\n\n\nbug\n\n\n\n\n(noun) a mistake in a program.\n\n\n\n\nExample: There must be a bug because the output is wrong.\n\n\ncall\n\n\n\n\n(verb) to run the code in a function. Also referred to as \u201crunning,\u201d \u201cexecuting,\u201d or \u201cinvoking\u201d a function. For the noun, see function call.\n\n\n\n\nExample: I called the \nrand\n function and it returned \n42\n.\n\n\nclass\n\n\n\n\n(noun) a type that can be defined by the programmer. Classes are defined in order to create objects of that class. See object\n\n\n\n\nExample: I made a \nPerson\n class that holds a person\u2019s name and age.\n\n\ncomment\n\n\n\n\n(noun) arbitrary text written around code, but which is never run, and is generally ignored by the computer. Used to leave notes and documentation for people who read the code later. Also used to stop code from running (see comment out).\n\n\n\n\nExample: I wrote comments in my code so I could understand it later.\n\n\ncomment out\n\n\n\n\n(verb) to turn code into a comment so that it does not get run.\n\n\n\n\nExample: I commented out this line of code, and it doesn\u2019t crash any more.\n\n\ncompiler\n\n\n\n\n(noun) a program that converts code into an executable, and checks that the syntax is correct. Sometimes compilers convert code into other code.\n\n\n\n\nExample: The compiler is giving me an error, so I must have incorrect syntax somewhere.\n\n\nconstant\n\n\n\n\n(noun) a variable that never changes its value.\n\n\n\n\nExample: The \nPI\n constant has the value \n3.14\n.\n\n\ncrash\n\n\n\n\n(verb) to cause a running program to stop due to an error.\n\n\n\n\nExample: I tried to divide a number by zero, which made the program crash.\n\n\ndata structure\n\n\n\n\n(noun) a value that contains other values.\n\n\n\n\nExample: Arrays are one kind of data structure.\n\n\ndebug\n\n\n\n\n(verb) to investigate and fix bugs.\n\n\n\n\nExample: I spent all day debugging a complicated error.\n\n\ndeclaration\n\n\n\n\n(noun) code that declares that something exists \u2013 usually a variable, function or a class. A declaration might not fully define the thing it is declaring. E.g. a constant may be declared to exist, without actually defining what it\u2019s value is. Not all programming languages allow for declarations.\n\n\n\n\nExample: My code won\u2019t compile because I wrote a function declaration, but I forgot to write the actual function.\n\n\ndefinition\n\n\n\n\n(noun) code that fully implements something \u2013 usually a variable, function or a class. The code that implements a class is called the \u201cclass definition.\u201d The code that implements a function is called the \u201cfunction definition.\u201d\n\n\n\n\nExample: The function wasn\u2019t doing what I expected, so I had a look at its definition.\n\n\ndouble\n\n\n\n\n(noun) a float that can represent a wider range of numbers than a normal float. Short for \u201cdouble-precision floating-point number.\u201d See float.\n\n\n\n\nExample: The number was so tiny I had to use a \ndouble\n instead of a \nfloat\n.\n\n\nexecute\n\n\n\n\n(verb) Synonym for run.\n\n\n\n\nExample: I can\u2019t execute my program because it won\u2019t compile.\n\n\nexecutable\n\n\n\n\n(noun) a program, usually a single file, ready to be run.\n\n\n\n\nExample: Give me the executable so I can try out your program.\n\n\nfloat\n\n\n\n\n(noun) a type of value that represents numbers with fractional parts. Short for \u201cfloating-point number\u201d.\n\n\n\n\nExample: The value \n3.14\n is a float.\n\n\nfunction\n\n\n\n\n(noun) a piece of code that is not run until it is called. Functions take zero or more arguments. When a function finishes running, it returns a return value back to the code that called it.\n\n\n\n\nExample: I wrote a function that takes an array of numbers as an argument, and returns the average.\n\n\nfunction call\n\n\n\n\n(noun) code for calling a function. Function calls specify which function to call, and all of the arguments that the function requires. The result of a function call is a return value. Not all functions have a return value.\n\n\n\n\nExample: The function call \nadd(1,2,3)\n returns the value \n6\n.\n\n\nimplement\n\n\n\n\n(verb) to write all the code to complete something \u2013 usually a function or a class.\n\n\n\n\nExample: I finished implementing those functions.\n\n\ninstance\n\n\n\n\n(noun) Synonym for object.\n\n\n\n\nExample: I created an instance of the \nPerson\n class.\n\n\ninstance variable\n\n\n\n\n(noun) a variable that is attached to an object. Also known as a \u201cmember variable\u201d or just a \u201cmember.\u201d\n\n\n\n\nExample: On the tom object, I assigned the value \n\"Tom Dalling\"\n to the \nname\n instance variable.\n\n\ninstantiate\n\n\n\n\n(verb) to create an object from a class.\n\n\n\n\nExample: I instantiated an object of the \nPerson\n class.\n\n\ninteger\n\n\n\n\n(noun) a type of value that represents whole numbers. For fractional numbers, see float.\n\n\n\n\nExample: \n42\n is an integer value.\n\n\ninterpreter\n\n\n\n\n(noun) a program that runs code. For languages that are not compiled, the source code is run directly by an interpreter. Compiled programming languages do not usually have an interpreter.\n\n\n\n\nExample: I installed the Ruby interpreter so I can run my Ruby code.\n\n\ninvoke\n\n\n\n\n(verb) Synonym for call.\n\n\n\n\nExample: I invoked the function with the wrong arguments, and it crashed.\n\n\niterate\n\n\n\n\n(verb) Synonym for loop.\n\n\n\n\nExample: I iterated over all the values in the array.\n\n\nloop\n\n\n\n\n(noun) a piece of code that runs itself repeatedly. Commonly used to run a piece code for every value in an array. Also known as \u201citeration\u201d.\n\n\n\n\nExample: The code loops until the user types in \n\"quit\"\n.\n\n\nmember function\n\n\n\n\n(noun) Synonym for method.\n\n\n\n\nExample: This class has three member functions.\n\n\nmember variable\n\n\n\n\n(noun) Synonym for instance variable.\n\n\n\n\nExample: This class has two member variables.\n\n\nmethod\n\n\n\n\n(noun) a function that is attached to an object. Methods belong to, and are defined in, a class. Also known as a \u201cmember function.\u201d\n\n\n\n\nExample: The length method returns the number of characters in a string object.\n\n\nnested\n\n\n\n\n(adjective) contained within something like itself. E.g. a nested array is an array that is inside another array, and a nested class is a class defined inside the definition of another class.\n\n\n\n\nExample: I used a nested loop to loop over a grid \u2013 the outer loop for the x coordinate, and the inner loop for the y coordinate.\n\n\nobject\n\n\n\n\n(noun) a value created from a class. E.g. If you want to represent your family in code then you might make a class called FamilyMember, and create several objects from that class \u2013 one object for each person in your family.\n\n\nObjects usually contain other values inside instance variables, and have methods attached to them. E.g. each FamilyMember object might have a name instance variable. Objects combine the concept of variables and functions into a single value. Also known as an \u201cinstance.\u201d\n\n\n\n\nExample: I make the enemy move by changing the position instance variable of the enemy object.\n\n\nobject-oriented\n\n\n\n\n(adjective) designed using objects.\n\n\n\n\nExample: Ruby is an object-oriented programming language because all values are objects in Ruby.\n\n\nparameter\n\n\n\n\n(noun) Synonym for argument.\n\n\n\n\nExample: That function takes two parameters.\n\n\nparenthesis\n\n\n\n\n(noun) A type of bracket.\n\n\n\n\nExample: Lisp-like programming languages use a lot of parenthesis in their syntax.\n\n\nprocedure\n\n\n\n\n(noun) Synonym for function.\n\n\n\n\nExample: That procedure takes two arguments.\n\n\nprogram\n\n\n\n\n(noun) a full piece of software that is ready to be run. Usually an executable.\n\n\n\n\nExample: I wrote a program that keeps track of my todo list.\n\n\nread\n\n\n\n\n(verb) to retrieve input data values from an external source \u2013 usually from a file. Can refer to retrieving data over a network, such as the internet. The opposite of writing.\n\n\n\n\nExample: I read the contents of file into a string.\n\n\nreturn\n\n\n\n\n(verb) to immediately stop a called function from running, possibly providing a return value. A function automatically returns once all of its code has been run. However, the code in the function definition can force the function to return at any point.\n\n\n\n\nExample: If the array is empty, the function returns early without running the rest of its code.\n\n\nreturn value\n\n\n\n\n(noun) the value that results from a completed function call.\n\n\n\n\nExample: The return value of the rand function is a random float between \n0.0\n and \n1.0\n.\n\n\nrun\n\n\n\n\n(verb) to perform the instructions written in code or an executable. Code is a set of instructions, and \u201crunning\u201d code is when the computer actually performs those instructions. To \u201crun\u201d a function means to call that function (see call).\n\n\n\n\nExample: I wrote a new feature, and ran the code to check that it works.\n\n\nstring\n\n\n\n\n(noun) a type of value that represents text. The word \u201cstring\u201d derives from the phrase \u201cstring of characters.\u201d E.g. The string \n\"cat\"\n is a string (a.k.a. sequence) of the characters \n\u2018c\u2019\n, \n\u2018a\u2019\n, and \n\u2018t\u2019\n.\n\n\n\n\nExample: I represented my name as a string in the code.\n\n\nsyntax\n\n\n\n\n(noun) the grammatical rules of a programming language. Every programming language has different syntax. Syntax determines whether code is written correctly or incorrectly, and is enforced by the compiler or interpreter. Code will not compile or run unless the syntax is correct.\n\n\n\n\nExample: I forgot to write the brackets, so the compiler gave me a syntax error.\n\n\ntype\n\n\n\n\n(noun) the kind or category of a value. Every value has a type.\n\n\nThe value \n5\n is of the integer type.\n\n\nThe value \n5.2\n is of the float type.\n\n\nThe value \n\"cat\"\n is of the string type.\n\n\nSimple types, like integers, are usually provided by the programming language. The programmer can define more complicated types using classes. The type of an object determines what methods and instance variables are attached to that object.\n\n\n\n\nExample: I got a crash because the variable contained the wrong type of value \u2013 I thought it would be an integer, but it was actually a string.\n\n\nvalue\n\n\n\n\n(noun) a piece of data that can be contained inside a variable. Every value has a type. Values represent information, in a way that code can work upon.\n\n\nCode can: send and receive values over the internet save values into files convert values into different values etc.\n\n\n\n\nExample: My program asks a user for the year they were born, then uses that value to calculate their age.\n\n\nvariable\n\n\n\n\n(noun) a named container for a single value. Variables are not values themselves, they are merely containers for values. Putting a value into a variable is referred to as assignment. Variables are named after the fact that their value can vary \u2013 a different value can be assigned to a variable at any time.\n\n\n\n\nExample: I assigned the string value \n\"Tom\"\n to the \nname\n variable.\n\n\nwrite\n\n\n\n\n(verb) to send output data values to an external destination \u2013 usually to a file. Can refer to sending data over a network, such as the internet. The opposite of reading.\n\n\n\n\nExample: The program writes all its data to a file before it quits, so it can read the data back again next time it is run.",
             "title": "Programming Glossary"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#programming-glossary",
+            "location": "/Advanced-Things/programming-glossary/index.html#programming-glossary",
             "text": "Info  Note: This came from  Programming for Beginners .",
             "title": "Programming Glossary"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#algorithm",
+            "location": "/Advanced-Things/programming-glossary/index.html#algorithm",
             "text": "(noun) a step-by-step procedure to achieve a specific goal. Can be implemented with code.   Example: I used the quicksort algorithm to sort the array alphabetically.",
             "title": "algorithm"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#argument",
+            "location": "/Advanced-Things/programming-glossary/index.html#argument",
             "text": "(noun) a value that is passed into a function when it is called. Arguments are said to be \u201cpassed\u201d into a function, and functions are said to \u201ctake\u201d arguments. Also known as a \u201cparameter.\u201d   Example: That function takes two arguments.",
             "title": "argument"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#array",
+            "location": "/Advanced-Things/programming-glossary/index.html#array",
             "text": "(noun) a type of value that contains a sequence of other values.   Example: I put all our names into an array of strings.",
             "title": "array"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#assignment",
+            "location": "/Advanced-Things/programming-glossary/index.html#assignment",
             "text": "(noun) the act of putting a value into a variable.   Example: I assigned the number  22  to the  age  variable.",
             "title": "assignment"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#brackets",
+            "location": "/Advanced-Things/programming-glossary/index.html#brackets",
             "text": "(noun) characters often used to surround text. The different types of brackets are:\nParenthesis/parens/round brackets:  ( ) \nCurly brackets/braces:  { } \nAngle brackets:  < > \nSquare brackets:  [ ] \nThe bracket at the beginning is called the \u201copening\u201d or the \u201cleft\u201d bracket. The bracket at the end is called the \u201cclosing\u201d or \u201cright\u201d bracket.   Example: Your code won\u2019t compile because you forgot a closing bracket.",
             "title": "brackets"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#bug",
+            "location": "/Advanced-Things/programming-glossary/index.html#bug",
             "text": "(noun) a mistake in a program.   Example: There must be a bug because the output is wrong.",
             "title": "bug"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#call",
+            "location": "/Advanced-Things/programming-glossary/index.html#call",
             "text": "(verb) to run the code in a function. Also referred to as \u201crunning,\u201d \u201cexecuting,\u201d or \u201cinvoking\u201d a function. For the noun, see function call.   Example: I called the  rand  function and it returned  42 .",
             "title": "call"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#class",
+            "location": "/Advanced-Things/programming-glossary/index.html#class",
             "text": "(noun) a type that can be defined by the programmer. Classes are defined in order to create objects of that class. See object   Example: I made a  Person  class that holds a person\u2019s name and age.",
             "title": "class"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#comment",
+            "location": "/Advanced-Things/programming-glossary/index.html#comment",
             "text": "(noun) arbitrary text written around code, but which is never run, and is generally ignored by the computer. Used to leave notes and documentation for people who read the code later. Also used to stop code from running (see comment out).   Example: I wrote comments in my code so I could understand it later.",
             "title": "comment"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#comment-out",
+            "location": "/Advanced-Things/programming-glossary/index.html#comment-out",
             "text": "(verb) to turn code into a comment so that it does not get run.   Example: I commented out this line of code, and it doesn\u2019t crash any more.",
             "title": "comment out"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#compiler",
+            "location": "/Advanced-Things/programming-glossary/index.html#compiler",
             "text": "(noun) a program that converts code into an executable, and checks that the syntax is correct. Sometimes compilers convert code into other code.   Example: The compiler is giving me an error, so I must have incorrect syntax somewhere.",
             "title": "compiler"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#constant",
+            "location": "/Advanced-Things/programming-glossary/index.html#constant",
             "text": "(noun) a variable that never changes its value.   Example: The  PI  constant has the value  3.14 .",
             "title": "constant"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#crash",
+            "location": "/Advanced-Things/programming-glossary/index.html#crash",
             "text": "(verb) to cause a running program to stop due to an error.   Example: I tried to divide a number by zero, which made the program crash.",
             "title": "crash"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#data-structure",
+            "location": "/Advanced-Things/programming-glossary/index.html#data-structure",
             "text": "(noun) a value that contains other values.   Example: Arrays are one kind of data structure.",
             "title": "data structure"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#debug",
+            "location": "/Advanced-Things/programming-glossary/index.html#debug",
             "text": "(verb) to investigate and fix bugs.   Example: I spent all day debugging a complicated error.",
             "title": "debug"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#declaration",
+            "location": "/Advanced-Things/programming-glossary/index.html#declaration",
             "text": "(noun) code that declares that something exists \u2013 usually a variable, function or a class. A declaration might not fully define the thing it is declaring. E.g. a constant may be declared to exist, without actually defining what it\u2019s value is. Not all programming languages allow for declarations.   Example: My code won\u2019t compile because I wrote a function declaration, but I forgot to write the actual function.",
             "title": "declaration"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#definition",
+            "location": "/Advanced-Things/programming-glossary/index.html#definition",
             "text": "(noun) code that fully implements something \u2013 usually a variable, function or a class. The code that implements a class is called the \u201cclass definition.\u201d The code that implements a function is called the \u201cfunction definition.\u201d   Example: The function wasn\u2019t doing what I expected, so I had a look at its definition.",
             "title": "definition"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#double",
+            "location": "/Advanced-Things/programming-glossary/index.html#double",
             "text": "(noun) a float that can represent a wider range of numbers than a normal float. Short for \u201cdouble-precision floating-point number.\u201d See float.   Example: The number was so tiny I had to use a  double  instead of a  float .",
             "title": "double"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#execute",
+            "location": "/Advanced-Things/programming-glossary/index.html#execute",
             "text": "(verb) Synonym for run.   Example: I can\u2019t execute my program because it won\u2019t compile.",
             "title": "execute"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#executable",
+            "location": "/Advanced-Things/programming-glossary/index.html#executable",
             "text": "(noun) a program, usually a single file, ready to be run.   Example: Give me the executable so I can try out your program.",
             "title": "executable"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#float",
+            "location": "/Advanced-Things/programming-glossary/index.html#float",
             "text": "(noun) a type of value that represents numbers with fractional parts. Short for \u201cfloating-point number\u201d.   Example: The value  3.14  is a float.",
             "title": "float"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#function",
+            "location": "/Advanced-Things/programming-glossary/index.html#function",
             "text": "(noun) a piece of code that is not run until it is called. Functions take zero or more arguments. When a function finishes running, it returns a return value back to the code that called it.   Example: I wrote a function that takes an array of numbers as an argument, and returns the average.",
             "title": "function"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#function-call",
+            "location": "/Advanced-Things/programming-glossary/index.html#function-call",
             "text": "(noun) code for calling a function. Function calls specify which function to call, and all of the arguments that the function requires. The result of a function call is a return value. Not all functions have a return value.   Example: The function call  add(1,2,3)  returns the value  6 .",
             "title": "function call"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#implement",
+            "location": "/Advanced-Things/programming-glossary/index.html#implement",
             "text": "(verb) to write all the code to complete something \u2013 usually a function or a class.   Example: I finished implementing those functions.",
             "title": "implement"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#instance",
+            "location": "/Advanced-Things/programming-glossary/index.html#instance",
             "text": "(noun) Synonym for object.   Example: I created an instance of the  Person  class.",
             "title": "instance"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#instance-variable",
+            "location": "/Advanced-Things/programming-glossary/index.html#instance-variable",
             "text": "(noun) a variable that is attached to an object. Also known as a \u201cmember variable\u201d or just a \u201cmember.\u201d   Example: On the tom object, I assigned the value  \"Tom Dalling\"  to the  name  instance variable.",
             "title": "instance variable"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#instantiate",
+            "location": "/Advanced-Things/programming-glossary/index.html#instantiate",
             "text": "(verb) to create an object from a class.   Example: I instantiated an object of the  Person  class.",
             "title": "instantiate"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#integer",
+            "location": "/Advanced-Things/programming-glossary/index.html#integer",
             "text": "(noun) a type of value that represents whole numbers. For fractional numbers, see float.   Example:  42  is an integer value.",
             "title": "integer"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#interpreter",
+            "location": "/Advanced-Things/programming-glossary/index.html#interpreter",
             "text": "(noun) a program that runs code. For languages that are not compiled, the source code is run directly by an interpreter. Compiled programming languages do not usually have an interpreter.   Example: I installed the Ruby interpreter so I can run my Ruby code.",
             "title": "interpreter"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#invoke",
+            "location": "/Advanced-Things/programming-glossary/index.html#invoke",
             "text": "(verb) Synonym for call.   Example: I invoked the function with the wrong arguments, and it crashed.",
             "title": "invoke"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#iterate",
+            "location": "/Advanced-Things/programming-glossary/index.html#iterate",
             "text": "(verb) Synonym for loop.   Example: I iterated over all the values in the array.",
             "title": "iterate"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#loop",
+            "location": "/Advanced-Things/programming-glossary/index.html#loop",
             "text": "(noun) a piece of code that runs itself repeatedly. Commonly used to run a piece code for every value in an array. Also known as \u201citeration\u201d.   Example: The code loops until the user types in  \"quit\" .",
             "title": "loop"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#member-function",
+            "location": "/Advanced-Things/programming-glossary/index.html#member-function",
             "text": "(noun) Synonym for method.   Example: This class has three member functions.",
             "title": "member function"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#member-variable",
+            "location": "/Advanced-Things/programming-glossary/index.html#member-variable",
             "text": "(noun) Synonym for instance variable.   Example: This class has two member variables.",
             "title": "member variable"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#method",
+            "location": "/Advanced-Things/programming-glossary/index.html#method",
             "text": "(noun) a function that is attached to an object. Methods belong to, and are defined in, a class. Also known as a \u201cmember function.\u201d   Example: The length method returns the number of characters in a string object.",
             "title": "method"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#nested",
+            "location": "/Advanced-Things/programming-glossary/index.html#nested",
             "text": "(adjective) contained within something like itself. E.g. a nested array is an array that is inside another array, and a nested class is a class defined inside the definition of another class.   Example: I used a nested loop to loop over a grid \u2013 the outer loop for the x coordinate, and the inner loop for the y coordinate.",
             "title": "nested"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#object",
+            "location": "/Advanced-Things/programming-glossary/index.html#object",
             "text": "(noun) a value created from a class. E.g. If you want to represent your family in code then you might make a class called FamilyMember, and create several objects from that class \u2013 one object for each person in your family.  Objects usually contain other values inside instance variables, and have methods attached to them. E.g. each FamilyMember object might have a name instance variable. Objects combine the concept of variables and functions into a single value. Also known as an \u201cinstance.\u201d   Example: I make the enemy move by changing the position instance variable of the enemy object.",
             "title": "object"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#object-oriented",
+            "location": "/Advanced-Things/programming-glossary/index.html#object-oriented",
             "text": "(adjective) designed using objects.   Example: Ruby is an object-oriented programming language because all values are objects in Ruby.",
             "title": "object-oriented"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#parameter",
+            "location": "/Advanced-Things/programming-glossary/index.html#parameter",
             "text": "(noun) Synonym for argument.   Example: That function takes two parameters.",
             "title": "parameter"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#parenthesis",
+            "location": "/Advanced-Things/programming-glossary/index.html#parenthesis",
             "text": "(noun) A type of bracket.   Example: Lisp-like programming languages use a lot of parenthesis in their syntax.",
             "title": "parenthesis"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#procedure",
+            "location": "/Advanced-Things/programming-glossary/index.html#procedure",
             "text": "(noun) Synonym for function.   Example: That procedure takes two arguments.",
             "title": "procedure"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#program",
+            "location": "/Advanced-Things/programming-glossary/index.html#program",
             "text": "(noun) a full piece of software that is ready to be run. Usually an executable.   Example: I wrote a program that keeps track of my todo list.",
             "title": "program"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#read",
+            "location": "/Advanced-Things/programming-glossary/index.html#read",
             "text": "(verb) to retrieve input data values from an external source \u2013 usually from a file. Can refer to retrieving data over a network, such as the internet. The opposite of writing.   Example: I read the contents of file into a string.",
             "title": "read"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#return",
+            "location": "/Advanced-Things/programming-glossary/index.html#return",
             "text": "(verb) to immediately stop a called function from running, possibly providing a return value. A function automatically returns once all of its code has been run. However, the code in the function definition can force the function to return at any point.   Example: If the array is empty, the function returns early without running the rest of its code.",
             "title": "return"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#return-value",
+            "location": "/Advanced-Things/programming-glossary/index.html#return-value",
             "text": "(noun) the value that results from a completed function call.   Example: The return value of the rand function is a random float between  0.0  and  1.0 .",
             "title": "return value"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#run",
+            "location": "/Advanced-Things/programming-glossary/index.html#run",
             "text": "(verb) to perform the instructions written in code or an executable. Code is a set of instructions, and \u201crunning\u201d code is when the computer actually performs those instructions. To \u201crun\u201d a function means to call that function (see call).   Example: I wrote a new feature, and ran the code to check that it works.",
             "title": "run"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#string",
+            "location": "/Advanced-Things/programming-glossary/index.html#string",
             "text": "(noun) a type of value that represents text. The word \u201cstring\u201d derives from the phrase \u201cstring of characters.\u201d E.g. The string  \"cat\"  is a string (a.k.a. sequence) of the characters  \u2018c\u2019 ,  \u2018a\u2019 , and  \u2018t\u2019 .   Example: I represented my name as a string in the code.",
             "title": "string"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#syntax",
+            "location": "/Advanced-Things/programming-glossary/index.html#syntax",
             "text": "(noun) the grammatical rules of a programming language. Every programming language has different syntax. Syntax determines whether code is written correctly or incorrectly, and is enforced by the compiler or interpreter. Code will not compile or run unless the syntax is correct.   Example: I forgot to write the brackets, so the compiler gave me a syntax error.",
             "title": "syntax"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#type",
+            "location": "/Advanced-Things/programming-glossary/index.html#type",
             "text": "(noun) the kind or category of a value. Every value has a type.  The value  5  is of the integer type.  The value  5.2  is of the float type.  The value  \"cat\"  is of the string type.  Simple types, like integers, are usually provided by the programming language. The programmer can define more complicated types using classes. The type of an object determines what methods and instance variables are attached to that object.   Example: I got a crash because the variable contained the wrong type of value \u2013 I thought it would be an integer, but it was actually a string.",
             "title": "type"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#value",
+            "location": "/Advanced-Things/programming-glossary/index.html#value",
             "text": "(noun) a piece of data that can be contained inside a variable. Every value has a type. Values represent information, in a way that code can work upon.  Code can: send and receive values over the internet save values into files convert values into different values etc.   Example: My program asks a user for the year they were born, then uses that value to calculate their age.",
             "title": "value"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#variable",
+            "location": "/Advanced-Things/programming-glossary/index.html#variable",
             "text": "(noun) a named container for a single value. Variables are not values themselves, they are merely containers for values. Putting a value into a variable is referred to as assignment. Variables are named after the fact that their value can vary \u2013 a different value can be assigned to a variable at any time.   Example: I assigned the string value  \"Tom\"  to the  name  variable.",
             "title": "variable"
         },
         {
-            "location": "/Glossaries/programming-glossary/index.html#write",
+            "location": "/Advanced-Things/programming-glossary/index.html#write",
             "text": "(verb) to send output data values to an external destination \u2013 usually to a file. Can refer to sending data over a network, such as the internet. The opposite of reading.   Example: The program writes all its data to a file before it quits, so it can read the data back again next time it is run.",
             "title": "write"
         }
