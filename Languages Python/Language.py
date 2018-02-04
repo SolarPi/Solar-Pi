@@ -46,6 +46,9 @@ with gui("Languages", useTtk=True) as program:
         # Regular button
         program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
+        # LabelFrame colour
+        program.ttkStyle.configure("TLabelframe", bordercolor="#687396")
+
         program.setBg("white")
 
     else:
@@ -58,6 +61,7 @@ with gui("Languages", useTtk=True) as program:
     program.setPadding(5, 5)
     with program.labelFrame("Languages"):
         program.setPadding(5, 5)
+        program.setSticky("nesw")
         
         with program.labelFrame("English", 0, 0):
             program.setPadding(5, 5)

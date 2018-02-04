@@ -35,10 +35,10 @@ if solar_theme == True:
     #program.ttkStyle.configure(".", font="10")
 
     # Custom Notebook
-    program.ttkStyle.configure("TNotebook", background="white")
+    program.ttkStyle.configure("TNotebook", background="white", bordercolor="#687396")
     program.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
                 foreground=[("selected", "white")])
-    program.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black")  # Unselected tab
+    program.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black", bordercolor="#687396")  # Unselected tab
 
     # Custom buttons
 
@@ -52,6 +52,8 @@ if solar_theme == True:
     program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
 
     program.ttkStyle.map("TLabelFrame", border=[("active", "black")])
+
+    program.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
 
 
@@ -353,7 +355,7 @@ should show 100%."""
     with program.note("Guides & Tutorials"):
 
         with program.labelFrame("Guides & Tutorials"):
-            program.setSticky("ew")
+            program.setSticky("nesw")
             program.setPadding(10, 10)
             program.addLabel("guides_info", "Hover over the icons to see more information about each resource.", 0, 0, colspan=2)
             #    program.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)

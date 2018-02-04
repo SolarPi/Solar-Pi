@@ -54,6 +54,8 @@ def SolarPiTheme():
 
     program.ttkStyle.configure("Horizontal.TScale", troughcolor="light grey", sliderthickness="1", borderwidth="0", sliderrelief="flat")
 
+    program.ttkStyle.configure("TLabelframe", bordercolor="#687396")  # LabelFrame border colour
+
     program.setBg("white")
 
 

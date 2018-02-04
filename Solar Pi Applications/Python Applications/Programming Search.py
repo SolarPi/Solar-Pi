@@ -64,13 +64,18 @@ with gui("Programming", useTtk=True) as program:  # 400x320 # "420x290"
         program.setTtkTheme("plastik")
         program.setTtkTheme("clam")
         #program.ttkStyle.configure(".", font="10")
-
+        # Highlighted button
         program.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
         program.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
         # Regular button
         program.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
         # Radiobutton
         program.ttkStyle.map("TRadiobutton", background=[("active", "white")])
+
+        # LabelFrame
+        program.ttkStyle.configure("TLabelframe", bordercolor="#687396")
     else:
         program.setTtkTheme(theme)
         if theme != "black":
