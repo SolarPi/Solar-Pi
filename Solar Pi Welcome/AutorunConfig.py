@@ -41,4 +41,4 @@ def Autorun(item, mode, file):
 
 
 if __name__ == "__main__":
-    Autorun()
+    print("You aren't supposed to run this Python file.")

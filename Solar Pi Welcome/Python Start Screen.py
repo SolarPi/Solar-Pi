@@ -62,7 +62,6 @@ if solar_theme == True:
     program.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
 title_font = ("ubuntu", 14, "normal")
-title_font2 = ("ubuntu", 12, "normal")
 program.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 program.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
@@ -395,9 +394,10 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
     with program.note("Applications b"):
         program.setSticky("nesw")
-        #program.setStretch("column")
+        program.setPadding(0, 0)
 
         with program.scrollPane("scroll"):
+            program.setPadding(0, 0)
             program.setSticky("nesw")
             program.addLabel("applications_title", "Solar Pi Applications")
             program.setLabelStyle("applications_title", "H.TLabel")
@@ -408,7 +408,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             program.addLabel("coding_title", "Start Coding", colspan=3)
             #program.setLabelAlign("coding_title", "center")
             program.setLabelStyle("coding_title", "Info.TLabel")
-            program.getLabelWidget("coding_title").config(font=title_font2)
+            program.getLabelWidget("coding_title").config(font=title_font)
             with program.frame("frame8"):
                 program.setPadding(10, 10)
                 program.addImage("coding_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
@@ -421,7 +421,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("settings_title", "Solar Pi Settings")
             program.setLabelStyle("settings_title", "Info.TLabel")
-            program.getLabelWidget("settings_title").config(font=title_font2)
+            program.getLabelWidget("settings_title").config(font=title_font)
             with program.frame("frame9"):
                 program.setPadding(10, 10)
                 program.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 0)
@@ -429,8 +429,8 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 program.addLabel("settings_info", "This allows you to change the settings for your Solar Pi.", 0, 1)
                 program.addButton("Settings", Settings, 0, 2)
 
-            program.addLabel("filler", "")
             #program.addHorizontalSeparator()
+            program.addLabel("filler", "")
 
             program.addLabel("ides", "IDEs (Places where you can code)")
             program.setLabelStyle("ides", "H.TLabel")
@@ -439,7 +439,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("scratch_title", "Scratch")
             program.setLabelStyle("scratch_title", "Info.TLabel")
-            program.getLabelWidget("scratch_title").config(font=title_font2)
+            program.getLabelWidget("scratch_title").config(font=title_font)
             with program.frame("frame10"):
                 program.setPadding(10, 10)
                 program.addImage("scratch_icon", "../Resources/Images/scratch logo.gif", 0, 0)
@@ -451,7 +451,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("python_title", "Python")
             program.setLabelStyle("python_title", "Info.TLabel")
-            program.getLabelWidget("python_title").config(font=title_font2)
+            program.getLabelWidget("python_title").config(font=title_font)
             with program.frame("frame11"):
                 program.setPadding(10, 10)
                 program.addImage("python_icon", "../Resources/Images/Python icon.gif", 0, 0)
@@ -463,13 +463,16 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("java_title", "Java")
             program.setLabelStyle("java_title", "Info.TLabel")
-            program.getLabelWidget("java_title").config(font=title_font2)
+            program.getLabelWidget("java_title").config(font=title_font)
             with program.frame("frame12"):
                 program.setPadding(10, 10)
                 program.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 0)
                 program.zoomImage("java_icon", -5)
                 program.addLabel("java_info", "The BlueJ Java IDE. Create Java applications.", 0, 1)
                 program.addNamedButton("Java", "java", ButtonHandler, 0, 2)
+
+            #program.addHorizontalSeparator()
+            program.addLabel("filler2", "")
 
             # TODO: Add launchers + calls for ButtonHandler for Libreoffice
             program.addLabel("libreoffice_title", "LibreOffice: A free office suite")
