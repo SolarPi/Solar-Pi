@@ -20,14 +20,20 @@ program.setResizable(False)
 #program.setLocation("CENTER")
 
 if theme1 == "Solar Pi":
+    msgFg = "black"
+    msgBg = "white"
     solar_theme = True
 else:
     solar_theme = False
     program.setTtkTheme(theme1)
+    msgFg = "white"
+    msgBg = "#424242"
     if theme1 != "black":
         program.ttkStyle.configure(".", foreground="black", background="white")
         program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
         program.setBg("white")
+        msgFg = "black"
+        msgBg = "white"
 
 if solar_theme == True:
     program.setTtkTheme("plastik")
@@ -67,14 +73,14 @@ def ButtonHandler(press):
         program.showSubWindow("About Solar Pi")
     elif press == "Close":  # Closes the About subwindow
         program.hideSubWindow("About Solar Pi")
-    elif press == "Scratch":  # Launches Scratch
+    elif press == "Scratch" or press == "scratch":  # Launches Scratch
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
-    elif press == "Python":  # Launches a Python IDE
+    elif press == "Python" or press == "python":  # Launches a Python IDE
         if program.yesNoBox("Python", "Would you like to use the Thonny Python IDE instead of the IDLE?") == True:
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")  # Launches Thonny
         else:
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")  # Launches IDLE
-    elif press == "Java":  # Launches BlueJ
+    elif press == "Java" or press == "java":  # Launches BlueJ
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
     elif press == "Change Advanced Settings":  # Launches RPi settings window
         Popen("/usr/bin/rc_gui")
@@ -144,7 +150,7 @@ def Update(press):
 def Settings(press):
     Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Settings Launcher.sh")
 
-def Guides(press):
+def Docs(press):
     webbrowser.get("chromium-browser").open("http://localhost/")  # Launch guides here
 
 def PythonIntro(press):  # RPi Python Introduction
@@ -173,11 +179,8 @@ with program.subWindow("About Solar Pi", modal=True):
             #program.setBg("white")
             program.setPadding(10, 10)
             program.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
-            if theme1 == "black":
-                program.setMessageBg("about", "#424242")
-                program.setMessageFg("about", "white")
-            else:
-                program.setMessageBg("about", "white")
+            program.setMessageBg("about", msgBg)
+            program.setMessageFg("about", msgFg)
         program.addButton("Close", ButtonHandler)
         program.setButtonSticky("Close", "")
         if solar_theme == True:
@@ -218,7 +221,7 @@ with program.notebook("MainTabs", colspan=2):
             else:
                 program.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
             program.setButtonSticky("Get Started", "nesw")
-            program.addImageButton(" Docs", Guides, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
+            program.addImageButton(" Docs", Docs, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
             program.setButtonSticky(" Docs", "nesw")
             program.addIconButton(" About", ButtonHandler, "about", align="left", row=3, column=0)
             program.setButtonSticky(" About", "nesw")
@@ -227,9 +230,9 @@ with program.notebook("MainTabs", colspan=2):
 
         with program.frame("frame6", 1, 2):
             program.setPadding(10, 10)
-            program.addImageButton("  Programming", Programming, "../Resources/Images/Programming icon small.gif",
+            program.addImageButton("  Coding", Programming, "../Resources/Images/Programming icon small.gif",
                                    align="left", row=1, column=2)
-            program.setButtonSticky("  Programming", "nesw")
+            program.setButtonSticky("  Coding", "nesw")
             program.addIconButton(" Settings", Settings, "settings", align="left", row=2, column=2)
             program.setButtonSticky(" Settings", "nesw")
             program.addImageButton("  Languages", ButtonHandler, "../Resources/Images/languages small.gif",
@@ -248,11 +251,21 @@ with program.notebook("MainTabs", colspan=2):
         program.getLabelWidget("title").config(font=("Dejavu Sans", "15"))
         program.setLabelSticky("title", "ew")
         program.setLabelAlign("title", "center")
-        program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
-        program.addImage("desktop", "../Resources/Images/Desktop.gif", 1, 1, rowspan=2)
+        #program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
+        program.addImage("desktop", "../Resources/Images/Desktop.gif", 1, 1)
         program.zoomImage("desktop", -7)
         #program.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
-        program.addLabel("info2", "•  The image on the right is of the Solar Pi desktop.\n•  There is a bar at the top, showing you what\nwindows are open.\n•  At the top left, there is a button to open a\nmenu. From here, you can open all the\napplications that are installed on your Solar Pi.")
+        #program.addLabel("info2", "
+
+        starter_info = """Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
+
+•  The image on the right is of the Solar Pi desktop.
+•  There is a bar at the top, showing you what windows are open.
+•  At the top left, there is a button to open a menu. From here, you can open all the applications that are installed on your Solar Pi."""
+        program.addMessage("starter_info", starter_info, 1, 0)
+        program.setMessageBg("starter_info", msgBg)
+        program.setMessageFg("starter_info", msgFg)
+        program.setMessageSticky("starter_info", "nesw")
 
         with program.frame("frame"):
             program.addLabel("info4", "Read more:  ", 0, 0)
@@ -270,27 +283,21 @@ with program.notebook("MainTabs", colspan=2):
         program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
         program.setLabelSticky("title5", "ew")
         program.setLabelAlign("title5", "center")
-        text = """The battery meter below this page and in the
-bottom left of the display shows how much power
-is left in the batteries of your Solar Pi.
-A full bar (100%) means most power, and an empty
-bar (0%) means no power left.
-
-When the battery meter gets close to 0% and your
-Solar Pi shuts down, you need to charge it.
-To do this, fold out the solar panels, and make
-sure that the Solar Pi is facing the sun.
-You will then need to wait for a few hours until it is
-charged up.
-Once your Solar Pi is charged, the battery meter
-should show 100%."""
-        program.addLabel("info5", text)
-        program.setLabelAlign("info5", "center")
+        charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
+When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
+Once your Solar Pi is charged, the battery meter should show 100%."""
+        #program.addLabel("info5", text)
+        #program.setLabelAlign("info5", "center")
         #program.getLabelWidget("info5").config(font=("Piboto", "13"))
+
+        program.addMessage("charge_info", charge_info)
+        program.setMessageBg("charge_info", msgBg)
+        program.setMessageFg("charge_info", msgFg)
+        program.setMessageSticky("charge_info", "nesw")
 
         program.addLabel("read", "Read more:", 1, 1)
         program.setLabelAnchor("read", "e")
-        program.addButton("Starter Guide", Guides, 1, 2)
+        program.addButton("Starter Guide", Docs, 1, 2)
         program.setButtonSticky("Starter Guide", "")
 
         if solar_theme == True:
@@ -351,6 +358,158 @@ should show 100%."""
             program.setButtonStyle("Start Programming", "H.TButton")
 
 
+    with program.note("Applications b"):
+        program.setSticky("nesw")
+        #program.setStretch("column")
+        title_font = ("ubuntu", 14, "normal")
+        program.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10])
+        program.ttkStyle.configure("Info.TLabel", padding=[10, 10])
+
+        with program.scrollPane("scroll"):
+            program.setSticky("nesw")
+            program.addLabel("applications_title", "Solar Pi Applications")
+            program.setLabelStyle("applications_title", "H.TLabel")
+            program.getLabelWidget("applications_title").config(font=("ubuntu", 15, "normal"))
+
+            program.addLabel("coding_title", "Start Coding", colspan=3)
+            #program.setLabelAlign("coding_title", "center")
+            program.setLabelStyle("coding_title", "Info.TLabel")
+            program.getLabelWidget("coding_title").config(font=title_font)
+            with program.frame("frame8"):
+                program.setPadding(10, 10)
+                program.addImage("coding_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
+                program.zoomImage("coding_icon", -13)
+                program.addLabel("coding_info", "This allows you to see and try the different options for coding.", 0, 1)
+                #program.addLabel("coding_info", "Cela vous permet de voir et d'essayer les différentes options de programmation.", 0, 1)
+                program.addNamedButton("Try it out!", "tryit1", Programming, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("settings_title", "Solar Pi Settings")
+            program.setLabelStyle("settings_title", "Info.TLabel")
+            program.getLabelWidget("settings_title").config(font=title_font)
+            with program.frame("frame9"):
+                program.setPadding(10, 10)
+                program.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 0)
+                program.zoomImage("settings_icon", -6)
+                program.addLabel("settings_info", "This allows you to change the settings for your Solar Pi.", 0, 1)
+                program.addButton("Settings", Settings, 0, 2)
+
+            #program.addHorizontalSeparator()
+
+            program.addLabel("ides", "IDEs (Places where you can code)")
+            program.setLabelStyle("ides", "H.TLabel")
+            program.getLabelWidget("ides").config(font=title_font)
+
+            program.addLabel("scratch_title", "Scratch")
+            program.setLabelStyle("scratch_title", "Info.TLabel")
+            program.getLabelWidget("scratch_title").config(font=title_font)
+            with program.frame("frame10"):
+                program.setPadding(10, 10)
+                program.addImage("scratch_icon", "../Resources/Images/scratch logo.gif", 0, 0)
+                program.zoomImage("scratch_icon", -50)
+                program.addLabel("scratch_info", "The Scratch 2 IDE. Create Scratch programs and games with this.", 0, 1)
+                program.addNamedButton("Scratch", "scratch", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("python_title", "Python")
+            program.setLabelStyle("python_title", "Info.TLabel")
+            program.getLabelWidget("python_title").config(font=title_font)
+            with program.frame("frame11"):
+                program.setPadding(10, 10)
+                program.addImage("python_icon", "../Resources/Images/Python icon.gif", 0, 0)
+                program.zoomImage("python_icon", -4)
+                program.addLabel("python_icon", "The Python IDE. Write and run Python applications.", 0, 1)
+                program.addNamedButton("Python", "python", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("java_title", "Java")
+            program.setLabelStyle("java_title", "Info.TLabel")
+            program.getLabelWidget("java_title").config(font=title_font)
+            with program.frame("frame12"):
+                program.setPadding(10, 10)
+                program.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 0)
+                program.zoomImage("java_icon", -5)
+                program.addLabel("java_info", "The BlueJ Java IDE. Create Java applications.", 0, 1)
+                program.addNamedButton("Java", "java", ButtonHandler, 0, 2)
+
+            # TODO: Add launchers + calls for ButtonHandler for Libreoffice
+            program.addLabel("libreoffice_title", "LibreOffice: A free office suite")
+            program.setLabelStyle("libreoffice_title", "H.TLabel")
+            program.getLabelWidget("libreoffice_title").config(font=title_font)
+
+            program.addLabel("writer_title", "Writer")
+            program.setLabelStyle("writer_title", "Info.TLabel")
+            program.getLabelWidget("writer_title").config(font=title_font)
+            with program.frame("frame13"):
+                program.setPadding(10, 10)
+                program.addImage("writer_icon", "../Resources/Images/writer.gif", 0, 0)
+                #program.zoomImage("writer_icon", -2)
+                program.addLabel("writer_info", "A simple, easy to use word processor.", 0, 1)
+                program.addButton("Writer", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("calc_title", "Calc")
+            program.setLabelStyle("calc_title", "Info.TLabel")
+            program.getLabelWidget("calc_title").config(font=title_font)
+            with program.frame("frame14"):
+                program.setPadding(10, 10)
+                program.addImage("calc_icon", "../Resources/Images/calc.gif", 0, 0)
+                # program.zoomImage("writer_icon", -2)
+                program.addLabel("calc_info", "Quickly make speadsheets and crunch numbers.", 0, 1)
+                program.addButton("Calc", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("impress_title", "Impress")
+            program.setLabelStyle("impress_title", "Info.TLabel")
+            program.getLabelWidget("impress_title").config(font=title_font)
+            with program.frame("frame15"):
+                program.setPadding(10, 10)
+                program.addImage("impress_icon", "../Resources/Images/impress.gif", 0, 0)
+                # program.zoomImage("writer_icon", -2)
+                program.addLabel("impress_info", "Create presentations!", 0, 1)
+                program.addButton("Impress", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("draw_title", "Draw")
+            program.setLabelStyle("draw_title", "Info.TLabel")
+            program.getLabelWidget("draw_title").config(font=title_font)
+            with program.frame("frame16"):
+                program.setPadding(10, 10)
+                program.addImage("draw_icon", "../Resources/Images/draw.gif", 0, 0)
+                # program.zoomImage("writer_icon", -2)
+                program.addLabel("draw_info", "Show off your art skills!", 0, 1)
+                program.addButton("Draw", ButtonHandler, 0, 2)
+
+            program.addHorizontalSeparator()
+
+            program.addLabel("apps_more_info", "Want to look at more apps?\nGo to the Main Menu to see all of the apps installed on your Solar Pi.")
+            program.setLabelStyle("apps_more_info", "H.TLabel")
+
+        if solar_theme == True:
+            program.setButtonStyle("tryit1", "H.TButton")
+            #program.setButtonStyle("Settings", "H.TButton")
+            #program.setButtonStyle("scratch", "H.TButton")
+            #program.setButtonStyle("python", "H.TButton")
+            #program.setButtonStyle("java", "H.TButton")
+
+
+    #     program.setSticky("nesw")
+    #    # program.setBg("white")
+    #     with program.scrollPane("scroll1"):
+    #         program.setSticky("nesw")
+    #         with program.frame("frame9"):
+    #             #program.setBg("white")
+    #             program.setSticky("nesw")
+    #             program.addButton("Button", None)
+    #             program.addMessage("m1", "jlkf;afd jfdkalf jkla;f jlk;afjkl;ajfkdlasf jkal; fjkadsl;f jkla;jklajkl;a kls akfl\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n;fjoiwejioruiowreu wqopuiqwopruiowqru oq[wruwioq[ruioq[ wru oq[wruoqwuro[iqruo[q uoq[urqow[ruoq")
+    #     #program.setScrollPaneBg("scroll1", "white")
+
     # Guides & Tutorials Tab
     with program.note("Guides & Tutorials"):
 
@@ -396,7 +555,6 @@ should show 100%."""
 
         if solar_theme == True:
             program.setButtonStyle("Python Intro", "H.TButton")
-
 
 
 def Startup(param):
