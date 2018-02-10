@@ -16,7 +16,7 @@ data = data.split(",")
 theme1 = data[3]
 
 program = gui("Solar Pi Welcome", useTtk=True)
-program.setResizable(False)
+program.setResizable(True)
 #program.setLocation("CENTER")
 
 if theme1 == "Solar Pi":
@@ -61,35 +61,39 @@ if solar_theme == True:
 
     program.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
-
+title_font = ("ubuntu", 14, "normal")
+title_font2 = ("ubuntu", 12, "normal")
+program.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
+program.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
 # Event Handler for buttons
 def ButtonHandler(press):
     #tab_selected = program.getTabbedFrameSelectedTab("MainTabs")  # Fetches the current tab
+    press = press.lower()
 
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
         exit()  # Quits program
-    elif press == " About":  # Opens the About subwindow
+    elif press == " about":  # Opens the About subwindow
         program.showSubWindow("About Solar Pi")
-    elif press == "Close":  # Closes the About subwindow
+    elif press == "close":  # Closes the About subwindow
         program.hideSubWindow("About Solar Pi")
-    elif press == "Scratch" or press == "scratch":  # Launches Scratch
+    elif press == "scratch":  # Launches Scratch
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
-    elif press == "Python" or press == "python":  # Launches a Python IDE
+    elif press == "python":  # Launches a Python IDE
         if program.yesNoBox("Python", "Would you like to use the Thonny Python IDE instead of the IDLE?") == True:
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")  # Launches Thonny
         else:
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")  # Launches IDLE
-    elif press == "Java" or press == "java":  # Launches BlueJ
+    elif press == "java":  # Launches BlueJ
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
-    elif press == "Change Advanced Settings":  # Launches RPi settings window
+    elif press == "change advanced settings":  # Launches RPi settings window
         Popen("/usr/bin/rc_gui")
-    elif press == "  Languages":
+    elif press == "  languages":
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Launches settings for display language
-    elif press == "Get Started":
+    elif press == "get started":
         program.getNotebookWidget("MainTabs").select([1])  # Sets selected note/tab to Get Started
 
-    elif press == "Charging":
+    elif press == "charging":
         program.getNotebookWidget("MainTabs").select([2])  # Set selected note/tab to Charging
 
 
@@ -245,63 +249,94 @@ with program.notebook("MainTabs", colspan=2):
 
 
     with program.note("Starter Guide"):
+        with program.scrollPane("scroll1"):
+            program.addLabel("starter_title", "Solar Pi Starter Guide", colspan=2)
+            program.getLabelWidget("starter_title").config(font=title_font)
+            program.setLabelStyle("starter_title", "H.TLabel")
+            #program.setLabelSticky("title", "ew")
+            #program.setLabelAlign("title", "center")
+            #program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
 
-        program.setPadding(10, 10)
-        program.addLabel("title", "Solar Pi Starter Guide", colspan=2)
-        program.getLabelWidget("title").config(font=("Dejavu Sans", "15"))
-        program.setLabelSticky("title", "ew")
-        program.setLabelAlign("title", "center")
-        #program.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
-        program.addImage("desktop", "../Resources/Images/Desktop.gif", 1, 1)
-        program.zoomImage("desktop", -7)
-        #program.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
-        #program.addLabel("info2", "
+            with program.frame("frame19"):
+                program.setPadding(10, 10)
+                program.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
+                program.zoomImage("desktop", -7)
+                #program.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
+                #program.addLabel("info2", "
 
-        starter_info = """Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
-
+                starter_info = """Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
+        
 •  The image on the right is of the Solar Pi desktop.
 •  There is a bar at the top, showing you what windows are open.
-•  At the top left, there is a button to open a menu. From here, you can open all the applications that are installed on your Solar Pi."""
-        program.addMessage("starter_info", starter_info, 1, 0)
-        program.setMessageBg("starter_info", msgBg)
-        program.setMessageFg("starter_info", msgFg)
-        program.setMessageSticky("starter_info", "nesw")
+•  At the top left, there is a button to open a menu. From here, you can see and run all of the applications that are installed on your Solar Pi."""
+                program.addMessage("starter_info", starter_info, 0, 0)
+                program.setMessageBg("starter_info", msgBg)
+                program.setMessageFg("starter_info", msgFg)
+                program.setMessageSticky("starter_info", "nesw")
 
-        with program.frame("frame"):
-            program.addLabel("info4", "Read more:  ", 0, 0)
-            program.setLabelAlign("info4", "right")
-            program.addButton("Charging", ButtonHandler, 0, 1)
+                with program.frame("frame"):
+                    program.addLabel("info4", "Read more:  ", 0, 0)
+                    program.setLabelAlign("info4", "right")
+                    program.addNamedButton("Docs", "docs", ButtonHandler, 0, 1)
 
-        if solar_theme == True:
-            program.setButtonStyle("Charging", "H.TButton")
+            program.addHorizontalSeparator()
 
-
-    with program.note("Charging"):
-
-        #program.setPadding(10, 10)
-        program.addLabel("title5", "Charging your Solar Pi", colspan=3)
-        program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
-        program.setLabelSticky("title5", "ew")
-        program.setLabelAlign("title5", "center")
-        charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
+            program.addLabel("charging_title", "Charging your Solar Pi", colspan=3)
+            program.setLabelStyle("charging_title", "H.TLabel")
+            program.getLabelWidget("charging_title").config(font=title_font)
+            #program.setLabelSticky("title5", "ew")
+            #program.setLabelAlign("title5", "center")
+            with program.frame("frame20"):
+                program.setPadding(10, 10)
+                program.setStretch("columns")
+                charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
 When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
 Once your Solar Pi is charged, the battery meter should show 100%."""
-        #program.addLabel("info5", text)
-        #program.setLabelAlign("info5", "center")
-        #program.getLabelWidget("info5").config(font=("Piboto", "13"))
+                # program.addLabel("info5", text)
+                # program.setLabelAlign("info5", "center")
+                # program.getLabelWidget("info5").config(font=("Piboto", "13"))
 
-        program.addMessage("charge_info", charge_info)
-        program.setMessageBg("charge_info", msgBg)
-        program.setMessageFg("charge_info", msgFg)
-        program.setMessageSticky("charge_info", "nesw")
+                program.addMessage("charge_info", charge_info)
+                program.setMessageBg("charge_info", msgBg)
+                program.setMessageFg("charge_info", msgFg)
 
-        program.addLabel("read", "Read more:", 1, 1)
-        program.setLabelAnchor("read", "e")
-        program.addButton("Starter Guide", Docs, 1, 2)
-        program.setButtonSticky("Starter Guide", "")
+                with program.frame("frame21"):
+                    program.addLabel("read", "Read more:", 0, 0)
+                    program.setLabelAnchor("read", "e")
+                    program.addButton("Starter Guide", Docs, 0, 1)
+                    program.setButtonSticky("Starter Guide", "")
 
-        if solar_theme == True:
-            program.setButtonStyle("Starter Guide", "H.TButton")
+            if solar_theme == True:
+                program.setButtonStyle("docs", "H.TButton")
+                program.setButtonStyle("Starter Guide", "H.TButton")
+
+
+#     with program.note("Charging"):
+#
+#         #program.setPadding(10, 10)
+#         program.addLabel("title5", "Charging your Solar Pi", colspan=3)
+#         program.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
+#         program.setLabelSticky("title5", "ew")
+#         program.setLabelAlign("title5", "center")
+#         charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
+# When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
+# Once your Solar Pi is charged, the battery meter should show 100%."""
+#         #program.addLabel("info5", text)
+#         #program.setLabelAlign("info5", "center")
+#         #program.getLabelWidget("info5").config(font=("Piboto", "13"))
+#
+#         program.addMessage("charge_info", charge_info)
+#         program.setMessageBg("charge_info", msgBg)
+#         program.setMessageFg("charge_info", msgFg)
+#         program.setMessageSticky("charge_info", "nesw")
+#
+#         program.addLabel("read", "Read more:", 1, 1)
+#         program.setLabelAnchor("read", "e")
+#         program.addButton("Starter Guide", Docs, 1, 2)
+#         program.setButtonSticky("Starter Guide", "")
+#
+#         if solar_theme == True:
+#             program.setButtonStyle("Starter Guide", "H.TButton")
 
 
     # Applications Tab
@@ -361,9 +396,6 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
     with program.note("Applications b"):
         program.setSticky("nesw")
         #program.setStretch("column")
-        title_font = ("ubuntu", 14, "normal")
-        program.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10])
-        program.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
         with program.scrollPane("scroll"):
             program.setSticky("nesw")
@@ -371,10 +403,12 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             program.setLabelStyle("applications_title", "H.TLabel")
             program.getLabelWidget("applications_title").config(font=("ubuntu", 15, "normal"))
 
+            program.addHorizontalSeparator()
+
             program.addLabel("coding_title", "Start Coding", colspan=3)
             #program.setLabelAlign("coding_title", "center")
             program.setLabelStyle("coding_title", "Info.TLabel")
-            program.getLabelWidget("coding_title").config(font=title_font)
+            program.getLabelWidget("coding_title").config(font=title_font2)
             with program.frame("frame8"):
                 program.setPadding(10, 10)
                 program.addImage("coding_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
@@ -387,7 +421,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("settings_title", "Solar Pi Settings")
             program.setLabelStyle("settings_title", "Info.TLabel")
-            program.getLabelWidget("settings_title").config(font=title_font)
+            program.getLabelWidget("settings_title").config(font=title_font2)
             with program.frame("frame9"):
                 program.setPadding(10, 10)
                 program.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 0)
@@ -395,15 +429,17 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 program.addLabel("settings_info", "This allows you to change the settings for your Solar Pi.", 0, 1)
                 program.addButton("Settings", Settings, 0, 2)
 
+            program.addLabel("filler", "")
             #program.addHorizontalSeparator()
 
             program.addLabel("ides", "IDEs (Places where you can code)")
             program.setLabelStyle("ides", "H.TLabel")
             program.getLabelWidget("ides").config(font=title_font)
+            program.addHorizontalSeparator()
 
             program.addLabel("scratch_title", "Scratch")
             program.setLabelStyle("scratch_title", "Info.TLabel")
-            program.getLabelWidget("scratch_title").config(font=title_font)
+            program.getLabelWidget("scratch_title").config(font=title_font2)
             with program.frame("frame10"):
                 program.setPadding(10, 10)
                 program.addImage("scratch_icon", "../Resources/Images/scratch logo.gif", 0, 0)
@@ -415,7 +451,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("python_title", "Python")
             program.setLabelStyle("python_title", "Info.TLabel")
-            program.getLabelWidget("python_title").config(font=title_font)
+            program.getLabelWidget("python_title").config(font=title_font2)
             with program.frame("frame11"):
                 program.setPadding(10, 10)
                 program.addImage("python_icon", "../Resources/Images/Python icon.gif", 0, 0)
@@ -427,7 +463,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             program.addLabel("java_title", "Java")
             program.setLabelStyle("java_title", "Info.TLabel")
-            program.getLabelWidget("java_title").config(font=title_font)
+            program.getLabelWidget("java_title").config(font=title_font2)
             with program.frame("frame12"):
                 program.setPadding(10, 10)
                 program.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 0)
@@ -439,6 +475,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             program.addLabel("libreoffice_title", "LibreOffice: A free office suite")
             program.setLabelStyle("libreoffice_title", "H.TLabel")
             program.getLabelWidget("libreoffice_title").config(font=title_font)
+            program.addHorizontalSeparator()
 
             program.addLabel("writer_title", "Writer")
             program.setLabelStyle("writer_title", "Info.TLabel")
@@ -556,6 +593,90 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         if solar_theme == True:
             program.setButtonStyle("Python Intro", "H.TButton")
 
+    with program.note("System Info"):
+        try:
+            call("uname -r > \"/usr/local/bin/Solar Pi/Solar Pi Welcome/sysinfo\"")
+            call("df -h --output=size,used,avail,pcent >> \"/usr/local/bin/Solar Pi/Solar Pi Welcome/sysinfo\"")
+            call("cat /etc/*release* > \"/usr/local/bin/Solar Pi/Solar Pi Welcome/osinfo\"")
+        except FileNotFoundError:
+            print("Running under Windows! ...or another machine that isn't a Solar Pi")
+
+        with open("osinfo", "r") as file:
+            data = file.readlines()
+        for line in data:
+            if line.startswith("DISTRIB_DESCRIPTION="):
+                os_v = line.split("=")[1]
+                os_v = os_v.lstrip("\"")
+                os_v = os_v.rstrip("\"\n")
+                break
+        with open("sysinfo", "r") as file:
+            data = file.readlines()
+        kernel_v = data[0].rstrip("\n")
+        disk_data = data[2].split()
+        total_disk = disk_data[0] + "B"
+        used_disk = disk_data[1] + "B"
+        avail_disk = disk_data[2] + "B"
+        pcent_disk_used = int(disk_data[3].rstrip("%"))
+        pcent_disk_avail = 100 - pcent_disk_used
+
+        bold_font = ("ubuntu", 12, "bold")
+
+        with program.labelFrame("Raspberry Pi Info"):
+            program.setPadding(10, 5)
+            program.addLabel("rpi_model", "Raspberry Pi Model:", 0, 0)
+            program.getLabelWidget("rpi_model").config(font=bold_font)
+            program.addLabel("rpi_model_value", "Raspberry Pi 3 Model B", 0, 1)
+
+            program.addLabel("soc", "SoC:", 0, 2)
+            program.getLabelWidget("soc").config(font=bold_font)
+            program.addLabel("soc_value", "Broadcom BCM2837", 0, 3)
+
+            program.addLabel("cpu", "CPU:", 1, 0)
+            program.getLabelWidget("cpu").config(font=bold_font)
+            program.addLabel("cpu_value", "4 x ARM Cortex A53, 1.2GHz", 1, 1)
+
+            program.addLabel("ram", "RAM:", 1, 2)
+            program.getLabelWidget("ram").config(font=bold_font)
+            program.addLabel("ram_value", "LPDDR2 1.0GB", 1, 3)
+
+        with program.labelFrame("OS Info"):
+            program.setPadding(10, 5)
+            program.addLabel("os_version", "Operating System:", 0, 0)
+            program.getLabelWidget("os_version").config(font=bold_font)
+            program.addLabel("os_version_value", os_v, 0, 1)
+
+            program.addLabel("kernel_version", "Kernel Version:", 0, 2)
+            program.getLabelWidget("kernel_version").config(font=bold_font)
+            program.addLabel("kernel_version_value", kernel_v, 0, 3)
+
+        with program.labelFrame("Disk Info"):
+            program.setPadding(10, 5)
+            program.addLabel("total_disk", "Total Disk Space:", 0, 0)
+            program.getLabelWidget("total_disk").config(font=bold_font)
+            program.addLabel("total_disk_value", total_disk, 0, 1)
+
+            program.addLabel("used_disk", "Used Disk Space:", 0, 2)
+            program.getLabelWidget("used_disk").config(font=bold_font)
+            program.addLabel("used_disk_value", used_disk, 0, 3)
+
+            program.addLabel("avail_disk", "Free Disk Space:", 0, 4)
+            program.getLabelWidget("avail_disk").config(font=bold_font)
+            program.addLabel("avail_disk_value", avail_disk, 0, 5)
+
+            with program.frame("frame22", 1, 0, colspan=2):
+                program.setPadding(5, 1)
+                program.addMeter("disk_usage", 0, 0)
+                program.setMeter("disk_usage", pcent_disk_used)
+                if pcent_disk_used < 85:
+                    program.setMeterFill("disk_usage", "#687396")
+                else:
+                    program.setMeterFill("disk_usage", "red")
+                program.setMeterSticky("disk_usage", "ew")
+                program.setMeterTooltip("disk_usage", "Used: " + used_disk + "\nFree: " + avail_disk)
+                program.addLabel("disk_label", avail_disk + " free of " + total_disk, 1, 0)
+            program.setFrameSticky("frame22", "ew")
+            #program.addPieChart("disk_chart", {"Available": pcent_disk_avail, "Used": pcent_disk_used}, 0, 1, rowspan=3)
+
 
 def Startup(param):
     value = program.getCheckBox("Launch at startup")
@@ -623,6 +744,9 @@ if solar_theme == False:
     program.setLabelFrameStyle("A Byte of Python", "TFrame")
     program.setLabelFrameStyle("Java Guide", "TFrame")
     program.setLabelFrameStyle("About", "TFrame")
+    program.setLabelFrameStyle("Raspberry Pi Info", "TFrame")
+    program.setLabelFrameStyle("OS Info", "TFrame")
+    program.setLabelFrameStyle("Disk Info", "TFrame")
 
 if theme1 != "black":
     program.setBg("white")
