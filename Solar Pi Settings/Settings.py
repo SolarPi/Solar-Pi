@@ -7,6 +7,8 @@ from subprocess import Popen, call
 import os
 from AutorunConfig import Autorun
 from SettingsGet import *
+from threading import Thread
+from time import sleep
 
 # Add translations for all
 
@@ -30,7 +32,7 @@ def ButtonHandler(press):
         Popen("/usr/bin/rc_gui")  # Runs Raspberry Pi Configuration
 
     elif press == "Languages":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages app
+        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/language_launcher.sh")  # Runs Languages program
 
 def SolarPiTheme():
     # Sets Solar Pi theme for application
@@ -50,7 +52,7 @@ def SolarPiTheme():
 
     #program.setButtonStyle("More Info", "H.TButton")
     #program.setButtonStyle("Update System", "H.TButton")
-    program.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to Apply button
+    program.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to apply button
 
     program.ttkStyle.configure("Horizontal.TScale", troughcolor="light grey", sliderthickness="1", borderwidth="0", sliderrelief="flat")
 
@@ -69,7 +71,7 @@ def ClockChange(clock):
 def ApplySettings(press):
     # Fetches data from widgets
     clock_speed = int(program.getEntry("Max Clock Speed: "))
-    battery_meter = program.getCheckBox("Show battery meter in corner")
+    battery_meter = program.getCheckBox("Show battery meter")
     launch_welcome = program.getCheckBox("Launch the Solar Pi Welcome application at startup")
     theme = program.getOptionBox("Themes")
     if theme == "Solar Pi":
@@ -83,16 +85,14 @@ def ApplySettings(press):
         theme = theme.lower()
         program.setTtkTheme(theme)  # Sets theme
         program.ttkStyle.configure(".", background="white", foreground="black")  # Sets additional options for theme
-        program.setLabelFrameStyle("Performance & Power", "TFrame")
-        program.setLabelFrameStyle("Other Settings", "TFrame")
-        program.setLabelFrameStyle("Updates", "TFrame")
+        program.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
         program.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
     program.setScale("slider", clock_speed)  # Sets slider to value in entry
 
-    Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes appropriate action for running Welcome at startup
+    Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
 
-    Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes appropriate action for running Battery meter at startup
+    Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
 
     ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
@@ -107,7 +107,7 @@ def ApplySettings(press):
 
 def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to set controls
     program.setScale("slider", clock_speed)
-    program.setCheckBox("Show battery meter in corner", battery_meter)
+    program.setCheckBox("Show battery meter", battery_meter)
     program.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
     if theme == "Solar Pi":
         program.setOptionBox("Themes", theme)
@@ -139,7 +139,39 @@ def Update(press):
         call("/usr/local/bin/Solar Pi/Resources/Launchers/System Update.sh")
     if program.getCheckBox("Update appJar") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
-        
+
+kill = False
+def MeterUpdate():
+    global kill
+    i = 0
+    while True:
+        print(kill)
+        if kill == True:
+            program.queueFunction(program.setMeter, "update_meter", 0)
+            break
+        for i in range(1, 51):
+            print(kill)
+            i = i * 2
+            program.queueFunction(program.setMeter, "update_meter", i)
+            sleep(0.05)
+            if kill == True:
+                program.queueFunction(program.setMeter, "update_meter", 0)
+                break
+
+
+def update2(press):  # TODO: Fix threading issues
+    global kill
+    t = Thread(target=MeterUpdate)
+    t.start()
+    kill = False
+    program.showSubWindow("Updating your Solar Pi")
+    print("hi")
+
+def stop():
+    global kill
+    kill = True
+    program.hideSubWindow("Updating your Solar Pi")
+
 # Sets entry based on scale changes
 def ScaleChange(value):
     value = str(int(program.getScale("slider")))
@@ -161,10 +193,14 @@ TICK = "\u2714"
 CROSS = "\u274C"
 RESTORE = "\u21BA"
 
+########################
+#     Code for GUI     #
+########################
 
-# GUI code
 with gui("Settings", useTtk=True) as program:
-    program.setResizable(False)
+    #program.setResizable(False)
+
+    # Configures themes
     if theme == "Solar Pi":
         custom = True
 
@@ -183,88 +219,118 @@ with gui("Settings", useTtk=True) as program:
     #program.ttkStyle.configure("TScale", background="white")
     #program.ttkStyle.configure("TFrame", background="white")
     #program.ttkStyle.configure("TCheckbutton", background="white")
-    
-    # Settings relating to performance and power
-    with program.labelFrame("Performance & Power", 0, 0, colspan=2):
-        program.setPadding(4, 4)
 
-        program.addLabel("title", "Clock Speed Changer", colspan=2)
-        program.setLabelSticky("title", "ew")
+    pages = [" Performance & Power", " Updates", " Other Settings"]  # Sets settings pages
 
-        # Scale
-        program.addScale("slider", 1, 0)
-        program.setScaleChangeFunction("slider", ScaleChange)
-        program.setScaleSticky("slider", "ew")
-        program.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
-        #program.setScaleIncrement("slider", 100)
-        program.addButton("More Info", ButtonHandler, 1, 1)
+    def change(listName):
+        program.getFrameWidget(program.listBox("list")[0]).lift()
 
-        # Entry to display and enter clock speed
-        program.addLabelNumericEntry("Max Clock Speed: ", 2, 0)
-        program.setEntry("Max Clock Speed: ", str(clock_speed))
-        program.setEntryMaxLength("Max Clock Speed: ", 4)
-        program.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
-        program.addLabel("scale", "MHz", 2, 1)
-        program.setLabelSticky("scale", "nws")
+    with program.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
+        lb = program.listBox("list", pages, change=change,
+                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"))  # Create ListBox
+        program.configure(sticky="news", stretch="both")
 
-        # Label
-        program.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
+        for pos, page in enumerate(pages):  # Iterate through pages
+            with program.frame(page, 0, 1, sticky="new") as f:  # Create frame for each page
+                if pos == 0:  # Code for first page
+                    program.setPadding(4, 4)
 
-        # Buttons
-        program.addLabel("filler1", "")
-        program.addCheckBox("Show battery meter in corner", colspan=2)
-        #program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
+                    program.addLabel("perf_title", "Performance & Power")
+                    program.getLabelWidget("perf_title").config(font=("ubuntu", 14, "normal"))
 
-    # Settings relating to Updates
-    with program.labelFrame("Updates", 0, 2):
-        program.setPadding(5, 5)
-        program.addLabel("info3", "Note: This will only work\nwith an internet connection.")
-        program.addCheckBox("Update Operating System &\nInstalled Programs")
-        program.addCheckBox("Update appJar")
-        program.addButton("Update System", Update)
+                    program.addHorizontalSeparator(colspan=2)
 
-    # Uncategorised settings
-    with program.labelFrame("Other Settings", 1, 0, colspan=2):
-        program.setPadding(5, 5)
-        program.addCheckBox("Launch the Solar Pi Welcome application at startup", 0, colspan=2)
-        program.addLabel("themes", "Themes for Solar Pi apps:", 1, 0)
-        themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
-        #program.setTtkTheme("arc")
-        #program.setTtkTheme("clam")
-        #themes = program.getTtkThemes()
-        program.addOptionBox("Themes", themes, 1, 1)
-        program.addButton("Change Advanced Settings", ButtonHandler, 2, 0)
-        program.addButton("Languages", ButtonHandler, 2, 1)
-        program.setButtonSticky("Languages", "ew")
-        program.setButtonSticky("Change Advanced Settings", "ew")
+                    program.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
+                    #program.getLabelWidget("title").config(font=("ubuntu", 12, "normal"))
+                    program.setLabelSticky("title", "ew")
+
+                    #program.addHorizontalSeparator(colspan=2)
+
+                    # Entry to display and enter clock speed
+                    program.addLabelNumericEntry("Max Clock Speed: ", 3, 0)
+                    program.setEntry("Max Clock Speed: ", str(clock_speed))
+                    program.setEntryMaxLength("Max Clock Speed: ", 4)
+                    program.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
+                    program.addLabel("scale", "MHz", 3, 1)
+                    program.setLabelSticky("scale", "nws")
+
+                    # Scale
+                    program.addScale("slider", 4, 0)
+                    program.setScaleChangeFunction("slider", ScaleChange)
+                    program.setScaleSticky("slider", "ew")
+                    program.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
+                    # program.setScaleIncrement("slider", 100)
+                    program.addButton("More Info", ButtonHandler, 4, 1)
+                    # Label
+                    program.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
+
+                    # Buttons
+                    program.addHorizontalSeparator(colspan=2)
+                    program.addCheckBox("Show battery meter", colspan=2)
+                    # program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
+
+                elif pos == 1:  # Code for second page
+                    program.setPadding(5, 5)
+                    program.addLabel("updates_title", "Updates")
+                    program.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
+                    program.addHorizontalSeparator()
+                    #program.addLabel("update_info", "Note: This will only work with an internet connection.")
+                    #program.addCheckBox("Update Operating System & Installed Programs")
+                    #program.addCheckBox("Update appJar")
+                    #program.addButton("Update System", Update
+                    program.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
+                    program.addButton("Update", update2)
 
 
-    #program.addButton("Apply", ApplySettings, 5, 0)
-    #program.addButton("Exit", ButtonHandler, 5, 1)
-    #program.addButtons(["Apply  " + TICK, "Restore Defaults  " + RESTORE, "Exit  " + CROSS], [ApplySettings, Defaults, ButtonHandler], colspan=3)
-    #program.addImageButton("Button  ", ButtonHandler, "tick.gif", align="right")
+                elif pos == 2:  # Code for third page
+                    program.setPadding(5, 5)
+                    program.addLabel("other_title", "Other Settings")
+                    program.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
+                    program.addHorizontalSeparator(colspan=2)
+                    program.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
+                    program.addLabel("themes", "Themes for Solar Pi programs:", 3, 0)
+                    themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
+                    # program.setTtkTheme("arc")
+                    # program.setTtkTheme("clam")
+                    # themes = program.getTtkThemes()
+                    program.addOptionBox("Themes", themes, 3, 1)
+                    program.addButton("Change Advanced Settings", ButtonHandler, 4, 0)
+                    program.addButton("Languages", ButtonHandler, 4, 1)
+                    program.setButtonSticky("Languages", "ew")
+                    program.setButtonSticky("Change Advanced Settings", "ew")
 
-    # with program.frame("frame", colspan=2):
-    #     program.setPadding(10, 10)
-    #     program.addImageButton("Apply ", ApplySettings, "tick.gif", 0, 0, align="right")
-    #     program.addImageButton(" Restore Defaults ", Defaults, "restore.gif", 0, 1, align="right")
-    #     #program.setButtonSticky(" Restore Defaults ", "e")
-    #     program.addImageButton("Exit ", ButtonHandler, "cross.gif", 0, 2, align="right")
+        program.configure(sticky="se", stretch="column")
+        program.selectListItemAtPos("list", 0, callFunction=True)
+
 
     # Buttons to apply, restore defaults and exit
-    program.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 2, 0, align="right")
-    program.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 2, 1, align="right")
-    program.setButtonSticky(" Restore Defaults ", "e")
-    program.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 2, 2, align="right")
+    with program.frame("frame3"):
+        program.setPadding(10, 5)
+        program.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
+        program.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
+        #program.setButtonSticky(" Restore Defaults ", "e")
+        program.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
 
+    # Second window for updates
+    with program.subWindow("Updating your Solar Pi", modal=True):
+        program.setResizable(False)
+        program.setStopFunction(stop)
+        with program.frame("frame23"):
+            program.setPadding(10, 10)
+            program.addSplitMeter("update_meter")
+            program.setMeterFill("update_meter", ["green", "white"])
+            program.setMeterSticky("update_meter", "ew")
+            program.addLabel("update_info2", "Please wait while we check the USB...")
 
+    # Configure themes
     if custom == True:
         SolarPiTheme()  # Sets theme to Solar Pi theme
     else:
-        program.setLabelFrameStyle("Performance & Power", "TFrame")  # Ensures that LabelFrame background is white
-        program.setLabelFrameStyle("Other Settings", "TFrame")
-        program.setLabelFrameStyle("Updates", "TFrame")
+        program.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
 
+    if theme == "black":
+        program.setListBoxBg("list", "#424242")
+        program.setListBoxFg("list", "white")
 
 
     SetItems(clock_speed, battery_meter, launch_welcome, theme)  # Sets controls to currently selected settings
