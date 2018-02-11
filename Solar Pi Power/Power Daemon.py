@@ -26,6 +26,7 @@ def bat_percent():  # Function for battery percentage
     percent = ((volts - 3.4) / 0.8) * 100
     return percent
 
+# Set variables
 ignore = False
 shown = False
 
@@ -45,9 +46,9 @@ while True:  # Repeat infinitely
 
         cache = [percentage, mode]  # Add battery data to cache
 
-    if percentage < 10 and shown == False:  # Triggered if battery level is low
+    if percentage < 15 and shown == False:  # Triggered if battery level is low
         shown = True
-        with gui("Notification", useTtk=True) as app:
+        with gui("Notification", useTtk=True) as app:  # GUI for low battery warning
             app.setResizable(False)
             with open("../Solar Pi Settings/Settings.ini", "r") as file:
                 data = file.readlines()
@@ -72,8 +73,8 @@ while True:  # Repeat infinitely
             app.addButton("Close", app.stop, colspan=2)  # Button to close GUI
 
             if theme != "black":
-                app.setBg("white")
+                app.setBg("white")  # Configures options for themes
                 app.ttkStyle.configure(".", background="white", foreground="black")
 
 
-    sleep(30)
+    sleep(30)  # Wait 30 secs before polling battery again
