@@ -11,4 +11,19 @@ Your Solar Pi has a touchscreen. This means that you can use your finger to touc
 
 ![keyboard](/img/keyboard-icon.PNG)
 ### Keyboard & Trackpad
-Your Solar Pi also comes with a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen. You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.
+You can also use a keyboard and trackpad. This makes it easier to use your Solar Pi when typing a lot or doing tasks that can't be done with the touchscreen.
+
+To use it, press the buttons on the keyboard to get the letters and numbers you want, and drag your finger around the trackpad to move the cursor (the black pointer). To click, tap on the trackpad, or press down on the bottom left area. You can also right click, by pressing down on the bottom right of the touchpad. This will bring up an additional menu.
+
+You will need to regularly charge your keyboard, and this can be done my plugging it into one of your Solar Pi's USB ports.
+
+## The Raspbian Desktop
+![desktop]()
+
+This is the 'heart' of the operating system. At the top left corner, there is a button to go to the Main Menu. From here you can launch all the progams that are installed on your Solar Pi.
+There are icons that sit on the desktop. You can make shortcuts to different programs, or you can save files here.
+
+### File Manager
+![file-manager]()
+
+The default file manager for Raspbian is PCmanFM. This has the icon that looks like an open yellow folder. With this, you can browse the files on the system.
