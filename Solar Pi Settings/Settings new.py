@@ -142,26 +142,38 @@ def Update(press):
     if program.getCheckBox("Update appJar") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
 
+kill = False
 def MeterUpdate():
+    global kill
+    i = 0
     while True:
-        for i in range(1, 101):
-            program.setMeter("update_meter", i)
-            sleep(0.1)
+        print(kill)
+        if kill == True:
+            program.queueFunction(program.setMeter, "update_meter", 0)
+            break
+        for i in range(1, 51):
+            print(kill)
+            i = i * 2
+            program.queueFunction(program.setMeter, "update_meter", i)
+            sleep(0.05)
+            if kill == True:
+                program.queueFunction(program.setMeter, "update_meter", 0)
+                break
 
-def update2(press):
-    with program.subWindow("Update", modal=True):
-        program.setResizable(False)
-        with program.frame("frame23"):
-            program.setPadding(10, 10)
-            program.addSplitMeter("update_meter")
-            program.setMeterFill("update_meter", ["green", "white"])
-            program.setMeterSticky("update_meter", "ew")
-            program.addLabel("update_info2", "Please wait while we check the USB...")
 
-    program.showSubWindow("Update")
+def update2(press):  # TODO: Fix threading issues
+    global kill
     t = Thread(target=MeterUpdate)
     t.start()
-        
+    kill = False
+    program.showSubWindow("Updating your Solar Pi")
+    print("hi")
+
+def stop():
+    global kill
+    kill = True
+    program.hideSubWindow("Updating your Solar Pi")
+
 # Sets entry based on scale changes
 def ScaleChange(value):
     value = str(int(program.getScale("slider")))
@@ -183,10 +195,14 @@ TICK = "\u2714"
 CROSS = "\u274C"
 RESTORE = "\u21BA"
 
+########################
+#     Code for GUI     #
+########################
 
-# GUI code
 with gui("Settings", useTtk=True) as program:
     #program.setResizable(False)
+
+    # Configures themes
     if theme == "Solar Pi":
         custom = True
 
@@ -206,19 +222,19 @@ with gui("Settings", useTtk=True) as program:
     #program.ttkStyle.configure("TFrame", background="white")
     #program.ttkStyle.configure("TCheckbutton", background="white")
 
-    pages = [" Performance & Power", " Updates", " Other Settings"]
+    pages = [" Performance & Power", " Updates", " Other Settings"]  # Sets settings pages
 
     def change(listName):
         program.getFrameWidget(program.listBox("list")[0]).lift()
 
-    with program.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):
+    with program.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
         lb = program.listBox("list", pages, change=change,
-                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"))
+                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"))  # Create ListBox
         program.configure(sticky="news", stretch="both")
 
-        for pos, page in enumerate(pages):
-            with program.frame(page, 0, 1, sticky="new") as f:
-                if pos == 0:
+        for pos, page in enumerate(pages):  # Iterate through pages
+            with program.frame(page, 0, 1, sticky="new") as f:  # Create frame for each page
+                if pos == 0:  # Code for first page
                     program.setPadding(4, 4)
 
                     program.addLabel("perf_title", "Performance & Power")
@@ -255,7 +271,7 @@ with gui("Settings", useTtk=True) as program:
                     program.addCheckBox("Show battery meter in corner", colspan=2)
                     # program.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
-                elif pos == 1:
+                elif pos == 1:  # Code for second page
                     program.setPadding(5, 5)
                     program.addLabel("updates_title", "Updates")
                     program.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
@@ -268,7 +284,7 @@ with gui("Settings", useTtk=True) as program:
                     program.addButton("Update", update2)
 
 
-                elif pos == 2:
+                elif pos == 2:  # Code for third page
                     program.setPadding(5, 5)
                     program.addLabel("other_title", "Other Settings")
                     program.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
@@ -297,7 +313,18 @@ with gui("Settings", useTtk=True) as program:
         #program.setButtonSticky(" Restore Defaults ", "e")
         program.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
 
+    # Second window for updates
+    with program.subWindow("Updating your Solar Pi", modal=True):
+        program.setResizable(False)
+        program.setStopFunction(stop)
+        with program.frame("frame23"):
+            program.setPadding(10, 10)
+            program.addSplitMeter("update_meter")
+            program.setMeterFill("update_meter", ["green", "white"])
+            program.setMeterSticky("update_meter", "ew")
+            program.addLabel("update_info2", "Please wait while we check the USB...")
 
+    # Configure themes
     if custom == True:
         SolarPiTheme()  # Sets theme to Solar Pi theme
     else:
