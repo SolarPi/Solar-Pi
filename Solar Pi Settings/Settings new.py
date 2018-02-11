@@ -7,6 +7,8 @@ from subprocess import Popen, call
 import os
 from AutorunConfig import Autorun
 from SettingsGet import *
+from threading import Thread
+from time import sleep
 
 # Add translations for all
 
@@ -139,6 +141,26 @@ def Update(press):
         call("/usr/local/bin/Solar Pi/Resources/Launchers/System Update.sh")
     if program.getCheckBox("Update appJar") == True:
         call("/usr/local/bin/Solar Pi/Resources/Launchers/appJar Update.sh")
+
+def MeterUpdate():
+    while True:
+        for i in range(1, 101):
+            program.setMeter("update_meter", i)
+            sleep(0.1)
+
+def update2(press):
+    with program.subWindow("Update", modal=True):
+        program.setResizable(False)
+        with program.frame("frame23"):
+            program.setPadding(10, 10)
+            program.addSplitMeter("update_meter")
+            program.setMeterFill("update_meter", ["green", "white"])
+            program.setMeterSticky("update_meter", "ew")
+            program.addLabel("update_info2", "Please wait while we check the USB...")
+
+    program.showSubWindow("Update")
+    t = Thread(target=MeterUpdate)
+    t.start()
         
 # Sets entry based on scale changes
 def ScaleChange(value):
@@ -184,57 +206,17 @@ with gui("Settings", useTtk=True) as program:
     #program.ttkStyle.configure("TFrame", background="white")
     #program.ttkStyle.configure("TCheckbutton", background="white")
 
-    pages = ["Power & Performance", "Updates", "Other Settings"]
-    showButtons = False
-
-
-    def doIt():
-        with program.labelFrame("Page 1"):
-            program.configure(sticky="")
-            program.addLabel("DATA")
-
-
-    def updateButtons():
-        currentPage = program.listBox("list")[0]
-        if currentPage == pages[0]:
-            program.disableButton("Previous")
-        elif currentPage == pages[-1]:
-            program.disableButton("Next")
-        else:
-            program.enableButton("Previous")
-            program.enableButton("Next")
-
+    pages = [" Performance & Power", " Updates", " Other Settings"]
 
     def change(listName):
         program.getFrameWidget(program.listBox("list")[0]).lift()
-        if showButtons:
-            updateButtons()
-
-
-    def press(btn):
-        pos = pages.index(program.listBox("list")[0])
-
-        if btn == "Previous":
-            pos -= 1
-        elif btn == "Next":
-            pos += 1
-
-        if pos < 0 or pos == len(pages):
-            program.bell()
-            return
-        else:
-            program.selectListItemAtPos("list", pos, True)
-
 
     with program.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):
         lb = program.listBox("list", pages, change=change,
-                         activestyle="none", selectbackground="#687396")
+                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"))
         program.configure(sticky="news", stretch="both")
 
         for pos, page in enumerate(pages):
-            #bg = program.RANDOM_COLOUR(),
-            #fg = program.RANDOM_COLOUR(),
-            #lb.itemconfig(pos, {'selectbackground': bg, 'selectforeground': fg})
             with program.frame(page, 0, 1, sticky="new") as f:
                 if pos == 0:
                     program.setPadding(4, 4)
@@ -244,8 +226,8 @@ with gui("Settings", useTtk=True) as program:
 
                     program.addHorizontalSeparator(colspan=2)
 
-                    program.addLabel("title", "Change the CPU Clock Speed", 2, 0, colspan=2)
-                    program.getLabelWidget("title").config(font=("ubuntu", 13, "normal"))
+                    program.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
+                    #program.getLabelWidget("title").config(font=("ubuntu", 12, "normal"))
                     program.setLabelSticky("title", "ew")
 
                     #program.addHorizontalSeparator(colspan=2)
@@ -278,10 +260,13 @@ with gui("Settings", useTtk=True) as program:
                     program.addLabel("updates_title", "Updates")
                     program.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
                     program.addHorizontalSeparator()
-                    program.addLabel("info3", "Note: This will only work with an internet connection.")
-                    program.addCheckBox("Update Operating System & Installed Programs")
-                    program.addCheckBox("Update appJar")
-                    program.addButton("Update System", Update)
+                    #program.addLabel("update_info", "Note: This will only work with an internet connection.")
+                    #program.addCheckBox("Update Operating System & Installed Programs")
+                    #program.addCheckBox("Update appJar")
+                    #program.addButton("Update System", Update
+                    program.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
+                    program.addButton("Update", update2)
+
 
                 elif pos == 2:
                     program.setPadding(5, 5)
@@ -301,12 +286,8 @@ with gui("Settings", useTtk=True) as program:
                     program.setButtonSticky("Change Advanced Settings", "ew")
 
         program.configure(sticky="se", stretch="column")
-        #if showButtons:
-         #   program.addButtons(["Previous", "Next"], press)
         program.selectListItemAtPos("list", 0, callFunction=True)
-        #with program.labelFrame("Page 1"):
-         #   program.configure(sticky="")
-          #  program.addButton("PRESS", doIt)
+
 
     # Buttons to apply, restore defaults and exit
     with program.frame("frame3"):
