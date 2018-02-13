@@ -5,7 +5,7 @@ import smbus
 from appJar import gui
 
 i2c = smbus.SMBus(1)
-cache = 0
+cache = [None, None]
 
 def pwr_mode():  # Function for powering mode
     data = i2c.read_byte_data(0x69, 0x00)
