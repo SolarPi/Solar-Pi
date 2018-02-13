@@ -170,7 +170,6 @@ def Java(press):  # Google's Python Tutorial
 
 #app.setFont(11, font="Dejavu Sans")
 
-
 # About Popup
 with app.subWindow("About Solar Pi", modal=True):
     app.setResizable(canResize=False)
@@ -236,6 +235,7 @@ app.addToolbar(tools, ToolbarHandler, findIcon=True)
 #    var = app.widgetManager.group(app.Widgets.Toolbar)
 #    var["Off"].config(fg="#dbdce2")
 #app.setToolbarFg("white")
+
 
 # Main Window
 app.setPadding(3, 3)
@@ -428,7 +428,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
     """
 
-    with app.note("Applications b2"):
+    with app.note("Applications"):
 
         with app.labelFrame("Applications"):
             app.setSticky("ew")
@@ -490,6 +490,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         if solar_theme == True:
             app.setButtonStyle("Start Coding", "H.TButton")
 
+    """
 
     with app.note("Applications b"):
         app.setSticky("nesw")
@@ -573,7 +574,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             #app.addHorizontalSeparator()
             app.addLabel("filler2", "")
 
-            """
+            
             # TODO: Add launchers + calls for ButtonHandler for Libreoffice
             app.addLabel("libreoffice_title", "LibreOffice: A free office suite")
             app.setLabelStyle("libreoffice_title", "H.TLabel")
@@ -661,6 +662,53 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         with app.labelFrame("Guides & Tutorials"):
             app.setSticky("nesw")
             app.setPadding(10, 10)
+            app.addLabel("guides_info", "Hover over the icons to see more information about each resource.", 0, 0,
+                         colspan=2)
+
+            # RPi Foundation Python Tutorial
+            with app.labelFrame("Python", colspan=2):
+                app.setPadding(10, 10)
+                app.setSticky("nesw")
+                with app.frame("python intro", 0, 0):
+                    app.setPadding(10, 10)
+                    app.addImage("python2", "../Resources/Images/Python icon.gif", 0, 0)
+                    app.zoomImage("python2", -4)
+                    app.setImageTooltip("python2", "An introduction to Python, written by the Raspberry Pi Foundation")
+                    app.addButton("Introduction to Python", PythonIntro, 0, 1)
+                with app.frame("byte of python", 0, 1):
+                    app.setPadding(10, 10)
+                    app.addImage("python3", "../Resources/Images/Python icon.gif", 0, 0)
+                    app.zoomImage("python3", -4)
+                    app.setImageTooltip("python3", "A popular Ebook that teaches you Python")
+                    app.addButton("A Byte of Python", ByteofPython, 0, 1)
+
+            # Programming Glossary
+            with app.labelFrame("Programming Glossary", 2, 0):
+                app.setPadding(10, 10)
+                app.addImage("programming_icon2", "../Resources/Images/Programming icon cropped.gif", 0, 0)
+                app.zoomImage("programming_icon2", -10)
+                app.setImageTooltip("programming_icon2",
+                                    "Gives you definitions of words that you might not have heard before")
+                app.addButton("Glossary", Glossary, 0, 1)
+
+            # Google Python Tutorial
+            with app.labelFrame("Java Guide", 2, 1):
+                app.setPadding(10, 10)
+                app.addImage("java_logo2", "../Resources/Images/java logo.gif", 0, 0)
+                app.zoomImage("java_logo2", -5)
+                app.setImageTooltip("java_logo2", "A guide on Java to help you get to know the basics of Java 8")
+                app.addButton("Java Guide", Java, 0, 1)
+
+        if solar_theme == True:
+            app.setButtonStyle("Introduction to Python", "H.TButton")
+
+    """
+
+    with app.note("Guides & Tutorials"):
+
+        with app.labelFrame("Guides & Tutorials"):
+            app.setSticky("nesw")
+            app.setPadding(10, 10)
             app.addLabel("guides_info", "Hover over the icons to see more information about each resource.", 0, 0, colspan=2)
             #    app.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
              #   app.zoomImage("python", -2)
@@ -700,6 +748,8 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
         if solar_theme == True:
             app.setButtonStyle("Python Intro", "H.TButton")
+        
+        """
 
     #########################
     #  Tab for System Info  #
