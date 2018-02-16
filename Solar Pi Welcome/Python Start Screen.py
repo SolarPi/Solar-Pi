@@ -781,8 +781,39 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         pcent_disk_used = int(disk_data[3].rstrip("%"))
         pcent_disk_avail = 100 - pcent_disk_used
 
+        with open("solarinfo", "r") as file:
+            data = file.readlines()
+        for line in data:
+            if line.startswith("RPI="):
+                rpi_model = line.split("=")[1].rstrip("\n")
+            elif line.startswith("SOFTWARE="):
+                solar_software = line.split("=")[1].rstrip("\n")
+            elif line.startswith("DISPLAY="):
+                display = line.split("=")[1].rstrip("\n")
+            elif line.startswith("BATTERY="):
+                battery = line.split("=")[1].rstrip("\n")
+
         bold_font = ("ubuntu", 12, "bold")
 
+        with app.labelFrame("Solar Pi Info"):
+            app.setPadding(10, 5)
+            app.addLabel("rpi_model", "Raspberry Pi:", 0, 0)
+            app.getLabelWidget("rpi_model").config(font=bold_font)
+            app.addLabel("rpi_model_value", rpi_model, 0, 1)
+
+            app.addLabel("solar_soft", "Solar Pi Software:", 0, 2)
+            app.getLabelWidget("solar_soft").config(font=bold_font)
+            app.addLabel("solar_soft_value", solar_software, 0, 3)
+
+            app.addLabel("display", "Display:", 1, 0)
+            app.getLabelWidget("display").config(font=bold_font)
+            app.addLabel("display_value", display, 1, 1)
+
+            app.addLabel("battery", "Battery:", 1, 2)
+            app.getLabelWidget("battery").config(font=bold_font)
+            app.addLabel("battery_value", battery, 1, 3)
+
+        """
         with app.labelFrame("Raspberry Pi Info"):
             app.setPadding(10, 5)
             app.addLabel("rpi_model", "Raspberry Pi Model:", 0, 0)
@@ -800,6 +831,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             app.addLabel("ram", "RAM:", 1, 2)
             app.getLabelWidget("ram").config(font=bold_font)
             app.addLabel("ram_value", "LPDDR2 1.0GB", 1, 3)
+        """
 
         with app.labelFrame("OS Info"):
             app.setPadding(10, 5)
@@ -810,6 +842,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             app.addLabel("kernel_version", "Kernel Version:", 0, 2)
             app.getLabelWidget("kernel_version").config(font=bold_font)
             app.addLabel("kernel_version_value", kernel_v, 0, 3)
+
 
         with app.labelFrame("Disk Info"):
             app.setPadding(10, 5)
