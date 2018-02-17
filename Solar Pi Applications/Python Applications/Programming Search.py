@@ -2,15 +2,12 @@
 # Programming Search Application
 
 # Import Modules
-from appJar import *
-from os import system
+from appJar import gui
 from subprocess import Popen
 import webbrowser
+from SettingsRW import *
 
-with open("../../Solar Pi Settings/Settings.ini", "r") as file:
-    data = file.readlines()[0]
-data = data.split(",")
-theme = data[3]
+theme = getSetting("theme")
 
 custom = theme == "Solar Pi"
 
@@ -21,13 +18,13 @@ def ButtonHandler(press):
         quit()
     elif press == "Go  ":
         if option == "Scratch (Easy)":
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/scratch launcher.sh")
         elif option == "Python (Intermedium/Hard)":
             webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")  # Launch Python starter guide
             webbrowser.get("chromium-browser").open("http://localhost:81")  # Launch A Byte of Python
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/thonny launcher.sh")
         elif option == "Java (Hard)":
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/BlueJ Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/bluej Launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
         
     elif press == " More Info  ":
@@ -57,7 +54,7 @@ def ToolbarHandler(press):
         webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
 
 # GUI Parameters
-with gui("Programming", useTtk=True) as app:  # 400x320 # "420x290"
+with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setResizable(False)
 
     if custom == True:
@@ -118,5 +115,3 @@ with gui("Programming", useTtk=True) as app:  # 400x320 # "420x290"
 
     if theme != "black":
         app.setBg("white")
-
-

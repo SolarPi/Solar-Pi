@@ -3,17 +3,19 @@
 
 from appJar import gui
 from subprocess import Popen, call
-#from AutorunConfig import Autorun
 from sys import exit
-from SettingsGet import LaunchWelcome
+#from SettingsGet import LaunchWelcome
 import webbrowser
 from AutorunConfig import Autorun
+from SettingsRW import *
 
 
-with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.ini file
-    data = file.readlines()[0]
-data = data.split(",")
-theme1 = data[3]
+#with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.ini file
+#    data = file.readlines()[0]
+#data = data.split(",")
+#theme1 = data[3]
+
+theme1 = getSetting("theme")
 
 app = gui("Solar Pi Welcome", useTtk=True)
 app.setResizable(False)
@@ -791,13 +793,13 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         with open("solarinfo", "r") as file:
             data = file.readlines()
         for line in data:  # Iterate through file
-            if line.startswith("RPI="):
+            if line.startswith("RPi="):
                 rpi_model = line.split("=")[1].rstrip("\n")  # Fetch RPi model
-            elif line.startswith("SOFTWARE="):
+            elif line.startswith("Software="):
                 solar_software = line.split("=")[1].rstrip("\n")  # Fetch Solar Pi software version
-            elif line.startswith("DISPLAY="):
+            elif line.startswith("Display="):
                 display = line.split("=")[1].rstrip("\n")  # Fetch display info
-            elif line.startswith("BATTERY="):
+            elif line.startswith("Battery="):
                 battery = line.split("=")[1].rstrip("\n")  # Fetch battery info
 
         bold_font = ("ubuntu", 12, "bold")
@@ -882,24 +884,12 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
 def Startup(param):
     value = app.getCheckBox("Launch at startup")
-    with open("../Solar Pi Settings/Settings.ini", "r") as file:
-        data = file.readlines()
-    data = data[0]
-    data = data.split(",")
-    clock = data[0]
-    battery = data[1]
-    welcome = str(value)
-    theme = data[3]
-
-    data = clock + "," + battery + "," + welcome + "," + theme
-    with open("../Solar Pi Settings/Settings.ini", "w") as file:
-        file.write(data)
-    
+    setSetting("welcome", str(value))
     Autorun("welcome", value, "/home/pi/.config/autostart/Welcome Launcher.desktop")
 
 app.setPadding(5, 5)
 app.addCheckBox("Launch at startup", 1, 0)
-app.setCheckBox("Launch at startup", ticked=LaunchWelcome())
+app.setCheckBox("Launch at startup", ticked=getSetting("welcome"))
 app.setCheckBoxChangeFunction("Launch at startup", Startup)
 
 
@@ -921,9 +911,9 @@ app.setCheckBoxChangeFunction("Launch at startup", Startup)
 #     app.setPollTime(10000)
 
 
-with open("language.txt", "r") as file:
-    lang = file.readline()
-    lang.rstrip("\n")
+#with open("language.txt", "r") as file:
+ #   lang = file.readline()
+  #  lang.rstrip("\n")
 
 #print(lang)
 #app.setLabelFrameStyle("-", "TFrame")
@@ -955,4 +945,4 @@ if theme1 != "black":
 
 #print(app.ttkStyle.lookup("TFrame", "bordercolor"))
 
-app.go(language=lang)
+app.go(language=getSetting("language"))

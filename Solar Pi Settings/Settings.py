@@ -6,17 +6,18 @@ import fileinput
 from subprocess import Popen, call
 import os
 from AutorunConfig import Autorun
-from SettingsGet import *
+#from SettingsGet import *
 from threading import Thread
 from time import sleep
+from SettingsRW import *
 
 # Add translations for all
 
 # Fetch settings in Settings.ini
-clock_speed = Clock()
-battery_meter = BatteryMeter()
-launch_welcome = LaunchWelcome()
-theme = Theme()
+clock_speed = getSetting("clock")
+battery_meter = getSetting("battery")
+launch_welcome = getSetting("welcome")
+theme = getSetting("theme")
 
 
 # Button Events
@@ -88,15 +89,23 @@ def ApplySettings(press):
 
     app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
+    setSetting("clock", str(clock_speed))
+    setSetting("battery", str(battery_meter))
+    setSetting("welcome", str(launch_welcome))
+    if theme == "Solar Pi":
+        setSetting("theme", "Solar Pi")
+    else:
+        setSetting("theme", theme.lower())
+
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
 
     Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
 
     ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
-    data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
-    with open("Settings.ini", "w") as file:
-        file.write(data)  # Writes settings to file
+    #data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
+    #with open("Settings.ini", "w") as file:
+    #    file.write(data)  # Writes settings to file
 
     # After settings have been changed
     if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
@@ -114,8 +123,12 @@ def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to
 
 
 def Defaults(press):  # Procedure to reset to default
-    with open("Settings.ini", "w") as file:
-        file.write("1200,True,True,plastik")  # Writes default settings to file
+    setSetting("clock", "1200")
+    setSetting("battery", "True")
+    setSetting("welcome", "True")
+    setSetting("theme", "Solar Pi")
+
+    SolarPiTheme()  # Sets Solar Pi theme for application
 
     SetItems(1200, True, True, "Solar Pi")  # Sets controls to default
 
@@ -124,8 +137,6 @@ def Defaults(press):  # Procedure to reset to default
     Autorun("battery", True, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Creates .desktop file for battery meter
 
     ClockChange(1200)  # Changes max clock speed to 1200 MHz
-
-    SolarPiTheme()  # Sets Solar Pi theme for application
 
     # Prompts user to restart to apply changes
     if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
@@ -225,7 +236,8 @@ with gui("Settings", useTtk=True) as app:
 
     with app.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
         lb = app.listBox("list", pages, change=change,
-                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"))  # Create ListBox
+                         activestyle="none", selectbackground="#687396", font=("ubuntu", 13, "normal"),
+                         selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
 
         for pos, page in enumerate(pages):  # Iterate through pages
