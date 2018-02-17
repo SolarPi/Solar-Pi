@@ -437,7 +437,8 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             with app.labelFrame("Solar Pi Apps"):
                 # Start Programming
-                app.setPadding(10, 10)
+                app.setPadding(5, 5)
+                app.setSticky("nesw")
                 with app.frame("Start Programming", 1, 0):
                     app.setPadding(10, 10)
                     app.addImage("programming_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
@@ -462,7 +463,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             # IDEs
             with app.labelFrame("IDEs", 2, 0, colspan=2):
-                app.setPadding(10, 10)
+                app.setPadding(5, 5)
                 app.setSticky("nesw")
 
                 with app.frame("Scratch", 1, 0):
@@ -667,20 +668,25 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
 
             # RPi Foundation Python Tutorial
             with app.labelFrame("Python", colspan=2):
+                app.ttkStyle.configure("P.TButton", padding=10)
                 app.setPadding(10, 10)
                 app.setSticky("nesw")
                 with app.frame("python intro", 0, 0):
-                    app.setPadding(10, 10)
+                    app.setPadding(5, 5)
                     app.addImage("python2", "../Resources/Images/Python icon.gif", 0, 0)
                     app.zoomImage("python2", -4)
                     app.setImageTooltip("python2", "An introduction to Python, written by the Raspberry Pi Foundation")
-                    app.addButton("Introduction to Python", PythonIntro, 0, 1)
+                    with app.frame("buttonframe1", 0, 1):
+                        app.setSticky("")
+                        app.addButton("Introduction to Python", PythonIntro, 0, 1)
                 with app.frame("byte of python", 0, 1):
-                    app.setPadding(10, 10)
+                    app.setPadding(5, 5)
                     app.addImage("python3", "../Resources/Images/Python icon.gif", 0, 0)
                     app.zoomImage("python3", -4)
                     app.setImageTooltip("python3", "A popular Ebook that teaches you Python")
-                    app.addButton("A Byte of Python", ByteofPython, 0, 1)
+                    with app.frame("buttonframe2", 0, 1):
+                        app.setSticky("")
+                        app.addButton("A Byte of Python", ByteofPython, 0, 1)
 
             # Programming Glossary
             with app.labelFrame("Programming Glossary", 2, 0):
@@ -756,42 +762,43 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
     #########################
 
     with app.note("System Info"):
+        # Retrieve System infomation
         try:
-            call("uname -r > \"../Solar Pi Welcome/sysinfo\"")
-            call("df -h --output=size,used,avail,pcent >> \"../Solar Pi Welcome/sysinfo\"")
-            call("cat /etc/*release* > \"../Solar Pi Welcome/osinfo\"")
-        except FileNotFoundError:
-            print("Running under Windows! ...or another machine that isn't a Solar Pi")
+            call("info.sh")  # TODO: Test! - it doesn't play nice in the VM :(
+        except OSError:
+            print("Running under Windows! ...or something has gone horribly wrong :(")
 
+        # Read osinfo file
         with open("osinfo", "r") as file:
             data = file.readlines()
         for line in data:
-            if line.startswith("DISTRIB_DESCRIPTION="):
-                os_v = line.split("=")[1]
-                os_v = os_v.lstrip("\"")
-                os_v = os_v.rstrip("\"\n")
+            if line.startswith("PRETTY_NAME="):  # Take line that matches PRETTY_NAME=
+                os_v = line.split("=")[1].lstrip("\"").rstrip("\"\n")  # Remove unnecessary elements of line
                 break
+
+        # Read sysinfo file
         with open("sysinfo", "r") as file:
             data = file.readlines()
-        kernel_v = data[0].rstrip("\n")
-        disk_data = data[2].split()
-        total_disk = disk_data[0] + "B"
-        used_disk = disk_data[1] + "B"
-        avail_disk = disk_data[2] + "B"
-        pcent_disk_used = int(disk_data[3].rstrip("%"))
-        pcent_disk_avail = 100 - pcent_disk_used
+        kernel_v = data[0].rstrip("\n")  # Kernel info in first line
+        disk_data = data[2].split()  # Disk info in third line
+        total_disk = disk_data[0] + "B"  # Fetch total disk space
+        used_disk = disk_data[1] + "B"  # Fetch used disk space
+        avail_disk = disk_data[2] + "B"  # Fetch available disk space
+        pcent_disk_used = int(disk_data[3].rstrip("%"))  # Fetch used percentage
+        pcent_disk_avail = 100 - pcent_disk_used  # Fetch used percentage
 
+        # Read solarinfo file
         with open("solarinfo", "r") as file:
             data = file.readlines()
-        for line in data:
+        for line in data:  # Iterate through file
             if line.startswith("RPI="):
-                rpi_model = line.split("=")[1].rstrip("\n")
+                rpi_model = line.split("=")[1].rstrip("\n")  # Fetch RPi model
             elif line.startswith("SOFTWARE="):
-                solar_software = line.split("=")[1].rstrip("\n")
+                solar_software = line.split("=")[1].rstrip("\n")  # Fetch Solar Pi software version
             elif line.startswith("DISPLAY="):
-                display = line.split("=")[1].rstrip("\n")
+                display = line.split("=")[1].rstrip("\n")  # Fetch display info
             elif line.startswith("BATTERY="):
-                battery = line.split("=")[1].rstrip("\n")
+                battery = line.split("=")[1].rstrip("\n")  # Fetch battery info
 
         bold_font = ("ubuntu", 12, "bold")
 
