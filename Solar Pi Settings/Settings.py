@@ -21,10 +21,8 @@ theme = Theme()
 
 # Button Events
 def ButtonHandler(press):
-    if press == "Exit ":  # If user clicks Exit
-        quit()
 
-    elif press == "More Info":  # If user clicks More Info
+    if press == "More Info":  # If user clicks More Info
         # Infobox showing info
         app.infoBox("More Information", "This program modifies a text file to change the clock speed of the processor.\nThe number shown on the slider marks the maximum clock speed of the CPU in MHz.\nIf the clock speed is low, the Raspberry Pi will draw less power with lower performance, if the clock speed is high, it will draw more power with more performance.\n\nNote: The default value is 1200MHz.")
 
@@ -309,7 +307,7 @@ with gui("Settings", useTtk=True) as app:
         app.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
         app.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
         #app.setButtonSticky(" Restore Defaults ", "e")
-        app.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
+        app.addImageButton("Exit ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
 
     # Second window for updates
     with app.subWindow("Updating your Solar Pi", modal=True):
