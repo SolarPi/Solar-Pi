@@ -4,16 +4,9 @@
 from appJar import gui
 from subprocess import Popen, call
 from sys import exit
-#from SettingsGet import LaunchWelcome
 import webbrowser
 from AutorunConfig import Autorun
 from SettingsRW import *
-
-
-#with open("../Solar Pi Settings/Settings.ini", "r") as file:  # Read Settings.ini file
-#    data = file.readlines()[0]
-#data = data.split(",")
-#theme1 = data[3]
 
 theme1 = getSetting("theme")
 

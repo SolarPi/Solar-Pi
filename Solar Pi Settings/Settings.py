@@ -103,10 +103,6 @@ def ApplySettings(press):
 
     ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
-    #data = str(clock_speed) + "," + str(battery_meter) + "," + str(launch_welcome) + "," + theme
-    #with open("Settings.ini", "w") as file:
-    #    file.write(data)  # Writes settings to file
-
     # After settings have been changed
     if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
