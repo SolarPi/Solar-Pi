@@ -308,28 +308,8 @@ with app.notebook("MainTabs", colspan=2):
                     images.append(app.addCanvasImage("c", pos, pos, image))
                     canvas.delete(images.pop(0))
                     sleep(0.045)
-                # for i in range(0, 256, 8):
-                #     print("things")
-                #     img.putalpha(i)
-                #     # app.queueFunction(app.addCanvasImage, "c", 400, 400, ImageTk.PhotoImage(img))
-                #     # app.threadCallback(app.addCanvasImage, images.append, "c", 400, 400, ImageTk.PhotoImage(img))
-                #     #images.append(app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img)))
-                #     image1 = app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img))
-                #     images.append(image1)
-                #     #print(images[0])
-                #     canvas.delete(images[0])
-                #     #print("images[0]", images[0])
-                #     sleep(0.045)
-
-                print(images)
 
                 sleep(15)
-
-                # for i in range(255, -1, -8):
-                #     img.putalpha(i)
-                #     images.append(app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img)))
-                #     canvas.delete(images.pop(0))
-                #     sleep(0.045)
 
                 for image in reversed(image_cache):
                     images.append(app.addCanvasImage("c", pos, pos, image))
@@ -337,7 +317,6 @@ with app.notebook("MainTabs", colspan=2):
                     sleep(0.045)
 
                 images = []
-                #canvas.delete("all")
 
                 sleep(0.25)
 
@@ -365,16 +344,11 @@ with app.notebook("MainTabs", colspan=2):
             app.addLabel("starter_title", "Solar Pi Starter Guide", colspan=2)
             app.getLabelWidget("starter_title").config(font=title_font)
             app.setLabelStyle("starter_title", "H.TLabel")
-            #app.setLabelSticky("title", "ew")
-            #app.setLabelAlign("title", "center")
-            #app.addLabel("info1", "Your Solar Pi has a touchscreen. This means that\nyou can use your finger to touch the screen\nand control the computer.")
 
             with app.frame("frame19"):
                 app.setPadding(10, 10)
                 app.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
                 app.zoomImage("desktop", -7)
-                #app.addLabel("info1", "Your Solar Pi is a Raspberry Pi based\ncomputer. It can do almost anything you\nwant, if you know how to program it.\nWe aim to teach you how to use a computer\nand how to code, so that you have an\nadvantage over others when you get\nemployed.")
-                #app.addLabel("info2", "
 
                 starter_info = """Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
         
@@ -902,25 +876,6 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
             app.getLabelWidget("battery").config(font=bold_font)
             app.addLabel("battery_value", battery, 1, 3)
 
-        """
-        with app.labelFrame("Raspberry Pi Info"):
-            app.setPadding(10, 5)
-            app.addLabel("rpi_model", "Raspberry Pi Model:", 0, 0)
-            app.getLabelWidget("rpi_model").config(font=bold_font)
-            app.addLabel("rpi_model_value", "Raspberry Pi 3 Model B", 0, 1)
-
-            app.addLabel("soc", "SoC:", 0, 2)
-            app.getLabelWidget("soc").config(font=bold_font)
-            app.addLabel("soc_value", "Broadcom BCM2837", 0, 3)
-
-            app.addLabel("cpu", "CPU:", 1, 0)
-            app.getLabelWidget("cpu").config(font=bold_font)
-            app.addLabel("cpu_value", "4 x ARM Cortex A53, 1.2GHz", 1, 1)
-
-            app.addLabel("ram", "RAM:", 1, 2)
-            app.getLabelWidget("ram").config(font=bold_font)
-            app.addLabel("ram_value", "LPDDR2 1.0GB", 1, 3)
-        """
 
         with app.labelFrame("OS Info"):
             app.setPadding(10, 5)
@@ -959,7 +914,6 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 app.setMeterTooltip("disk_usage", "Used: " + used_disk + "\nFree: " + avail_disk)
                 app.addLabel("disk_label", avail_disk + " free of " + total_disk, 1, 0)
             app.setFrameSticky("frame22", "ew")
-            #app.addPieChart("disk_chart", {"Available": pcent_disk_avail, "Used": pcent_disk_used}, 0, 1, rowspan=3)
 
 
 def Startup(param):
@@ -972,49 +926,15 @@ app.addCheckBox("Launch at startup", 1, 0)
 app.setCheckBox("Launch at startup", ticked=getSetting("welcome"))
 app.setCheckBoxChangeFunction("Launch at startup", Startup)
 
-
-# num = 0
-# def updateMeter():
-#     global num
-#     app.setMeter("battery", num)
-#     #app.setLabel("level", str(num)+"%")
-#     num += 1
-# with app.frame("battery", 1, 1):
-#     app.addLabel("battery", "Battery Remaining: ", 0, 0)  # Update translation
-#     #app.setLabelAlign("battery", "right")
-#     app.setLabelAnchor("battery", "e")
-#     app.addMeter("battery", 0, 2)
-#     app.setMeterFill("battery", "#13d323")
-#     app.addLabel("blank", "", 0, 3)
-#     #app.setMeterPadding("battery", 5, 5)
-#     app.registerEvent(updateMeter)
-#     app.setPollTime(10000)
-
-
-#with open("language.txt", "r") as file:
- #   lang = file.readline()
-  #  lang.rstrip("\n")
-
-#print(lang)
-#app.setLabelFrameStyle("-", "TFrame")
-#app.setLabelFrameStyle("", "TFrame")
-#app.ttkStyle.configure(".", background="white", foreground="black")
-
 if solar_theme == False:
     ##app.ttkStyle.configure("TLabelframe", background="white")
 
     app.setLabelFrameStyle("Applications", "TFrame")
-    #app.setLabelFrameStyle("Start Programming", "TFrame")
     app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
     app.setLabelFrameStyle("IDEs", "TFrame")
-    #app.setLabelFrameStyle("Scratch", "TFrame")
     app.setLabelFrameStyle("Python", "TFrame")
-    #app.setLabelFrameStyle("Java", "TFrame")
     app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-    #app.setLabelFrameStyle("Introduction to Python", "TFrame")
     app.setLabelFrameStyle("Programming Glossary", "TFrame")
-    #app.setLabelFrameStyle("A Byte of Python", "TFrame")
-    #app.setLabelFrameStyle("Java Guide", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
     app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
@@ -1022,8 +942,6 @@ if solar_theme == False:
 
 if theme1 != "black":
     app.setBg("white")
-
-#print(app.ttkStyle.lookup("TFrame", "bordercolor"))
 
 t = Thread(target=fade)
 t.start()

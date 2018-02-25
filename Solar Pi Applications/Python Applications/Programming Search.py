@@ -79,8 +79,6 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
             app.ttkStyle.configure(".", background="white", foreground="black")
             app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
 
-    #app.setResizable(canResize=False)
-
     # Menu
     app.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
     app.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
@@ -90,10 +88,6 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setPadding(10, 10)
     app.addImage("solar_pi", "../../Resources/Images/Solar Pi text.gif")
     app.zoomImage("solar_pi", -35)
-
-    #app.addLabel("title", "Choose a Programming Language:")
-    #app.addHorizontalSeparator()
-    #app.setLabelBg("title", "light gray")
 
     with app.labelFrame("Choose a Programming Language:"):
         app.setSticky("ew")

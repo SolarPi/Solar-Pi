@@ -4,9 +4,7 @@ from appJar import gui
 import sys
 import fileinput
 from subprocess import Popen, call
-import os
 from AutorunConfig import Autorun
-#from SettingsGet import *
 from threading import Thread
 from time import sleep
 from SettingsRW import *
@@ -203,7 +201,7 @@ RESTORE = "\u21BA"
 ########################
 
 with gui("Settings", useTtk=True) as app:
-    #app.setResizable(False)
+    app.setResizable(False)
 
     # Configures themes
     if theme == "Solar Pi":
@@ -219,7 +217,6 @@ with gui("Settings", useTtk=True) as app:
         app.ttkStyle.configure(".", background="white", foreground="black")
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
         app.setBg("white")
-    #app.setResizable(canResize=False)
     #app.ttkStyle.configure("TLabelframe.Label", background="white")
     #app.ttkStyle.configure("TScale", background="white")
     #app.ttkStyle.configure("TFrame", background="white")
@@ -236,74 +233,66 @@ with gui("Settings", useTtk=True) as app:
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
 
-        for pos, page in enumerate(pages):  # Iterate through pages
-            with app.frame(page, 0, 1, sticky="new") as f:  # Create frame for each page
-                if pos == 0:  # Code for first page
-                    app.setPadding(4, 4)
+        with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
+            app.setPadding(4, 4)
 
-                    app.addLabel("perf_title", "Performance & Power")
-                    app.getLabelWidget("perf_title").config(font=("ubuntu", 14, "normal"))
+            app.addLabel("perf_title", "Performance & Power")
+            app.getLabelWidget("perf_title").config(font=("ubuntu", 14, "normal"))
 
-                    app.addHorizontalSeparator(colspan=2)
+            app.addHorizontalSeparator(colspan=2)
 
-                    app.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
-                    #app.getLabelWidget("title").config(font=("ubuntu", 12, "normal"))
-                    app.setLabelSticky("title", "ew")
+            app.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
+            #app.getLabelWidget("title").config(font=("ubuntu", 12, "normal"))
+            app.setLabelSticky("title", "ew")
 
-                    #app.addHorizontalSeparator(colspan=2)
+            # Entry to display and enter clock speed
+            app.addLabelNumericEntry("Max Clock Speed: ", 3, 0)
+            app.setEntry("Max Clock Speed: ", str(clock_speed))
+            app.setEntryMaxLength("Max Clock Speed: ", 4)
+            app.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
+            app.addLabel("scale", "MHz", 3, 1)
+            app.setLabelSticky("scale", "nws")
 
-                    # Entry to display and enter clock speed
-                    app.addLabelNumericEntry("Max Clock Speed: ", 3, 0)
-                    app.setEntry("Max Clock Speed: ", str(clock_speed))
-                    app.setEntryMaxLength("Max Clock Speed: ", 4)
-                    app.setEntrySubmitFunction("Max Clock Speed: ", EntryScaleChange)
-                    app.addLabel("scale", "MHz", 3, 1)
-                    app.setLabelSticky("scale", "nws")
+            # Scale
+            app.addScale("slider", 4, 0)
+            app.setScaleChangeFunction("slider", ScaleChange)
+            app.setScaleSticky("slider", "ew")
+            app.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
+            # app.setScaleIncrement("slider", 100)
+            app.addButton("More Info", ButtonHandler, 4, 1)
+            # Label
+            app.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
 
-                    # Scale
-                    app.addScale("slider", 4, 0)
-                    app.setScaleChangeFunction("slider", ScaleChange)
-                    app.setScaleSticky("slider", "ew")
-                    app.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
-                    # app.setScaleIncrement("slider", 100)
-                    app.addButton("More Info", ButtonHandler, 4, 1)
-                    # Label
-                    app.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
+            # Buttons
+            app.addHorizontalSeparator(colspan=2)
+            app.addCheckBox("Show battery meter", colspan=2)
+            # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
-                    # Buttons
-                    app.addHorizontalSeparator(colspan=2)
-                    app.addCheckBox("Show battery meter", colspan=2)
-                    # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
+        with app.frame(pages[1], 0, 1, sticky="new"):  # Code for second page
+                app.setPadding(5, 5)
+                app.addLabel("updates_title", "Updates")
+                app.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
+                app.addHorizontalSeparator()
+                #app.addLabel("update_info", "Note: This will only work with an internet connection.")
+                #app.addCheckBox("Update Operating System & Installed Programs")
+                #app.addCheckBox("Update appJar")
+                #app.addButton("Update System", Update
+                app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
+                app.addButton("Update", update2)
 
-                elif pos == 1:  # Code for second page
-                    app.setPadding(5, 5)
-                    app.addLabel("updates_title", "Updates")
-                    app.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
-                    app.addHorizontalSeparator()
-                    #app.addLabel("update_info", "Note: This will only work with an internet connection.")
-                    #app.addCheckBox("Update Operating System & Installed Programs")
-                    #app.addCheckBox("Update appJar")
-                    #app.addButton("Update System", Update
-                    app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
-                    app.addButton("Update", update2)
-
-
-                elif pos == 2:  # Code for third page
-                    app.setPadding(5, 5)
-                    app.addLabel("other_title", "Other Settings")
-                    app.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
-                    app.addHorizontalSeparator(colspan=2)
-                    app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
-                    app.addLabel("themes", "Themes for Solar Pi programs:", 3, 0)
-                    themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
-                    # app.setTtkTheme("arc")
-                    # app.setTtkTheme("clam")
-                    # themes = app.getTtkThemes()
-                    app.addOptionBox("Themes", themes, 3, 1)
-                    app.addButton("Change Advanced Settings", ButtonHandler, 4, 0)
-                    app.addButton("Languages", ButtonHandler, 4, 1)
-                    app.setButtonSticky("Languages", "ew")
-                    app.setButtonSticky("Change Advanced Settings", "ew")
+        with app.frame(pages[2], 0, 1, sticky="new"):  # Code for third page
+                app.setPadding(5, 5)
+                app.addLabel("other_title", "Other Settings")
+                app.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
+                app.addHorizontalSeparator(colspan=2)
+                app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
+                app.addLabel("themes", "Themes for Solar Pi programs:", 3, 0)
+                themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
+                app.addOptionBox("Themes", themes, 3, 1)
+                app.addButton("Change Advanced Settings", ButtonHandler, 4, 0)
+                app.addButton("Languages", ButtonHandler, 4, 1)
+                app.setButtonSticky("Languages", "ew")
+                app.setButtonSticky("Change Advanced Settings", "ew")
 
         app.configure(sticky="se", stretch="column")
         app.selectListItemAtPos("list", 0, callFunction=True)
