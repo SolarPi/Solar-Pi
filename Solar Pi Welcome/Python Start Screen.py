@@ -7,6 +7,10 @@ from sys import exit
 import webbrowser
 from AutorunConfig import Autorun
 from SettingsRW import *
+from PIL import Image, ImageTk
+from time import sleep
+from threading import Thread
+
 
 theme1 = getSetting("theme")
 
@@ -257,8 +261,88 @@ with app.notebook("MainTabs", colspan=2):
             app.setButtonSticky(" Docs", "nesw")
             app.addIconButton(" About", ButtonHandler, "about", align="left", row=3, column=0)
             app.setButtonSticky(" About", "nesw")
-        app.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
-        app.zoomImage("logo5", -4)
+
+
+        ###########################
+        #     Animation Stuff     #
+        ###########################
+
+        # TODO: Test on RPI - performance & memory leaks
+
+        canvas = app.addCanvas("c", 1, 1, rowspan=3)  # Create canvas
+
+        if theme1 == "black":  # Configure options for black theme
+            app.setCanvasBg("c", "#424242")
+            img = Image.open("../Resources/Images/blackLogo.png")
+            canvas.config(bd=0, highlightthickness=0, width=130, height=130)
+            pos = 90
+        elif solar_theme == True:  # Configure options for Solar Pi theme
+            app.setCanvasBg("c", "white")
+            img = Image.open("../Resources/Images/whiteLogo2.png")
+            canvas.config(bd=0, highlightthickness=0, width=150, height=150)
+            pos = 100
+
+        else:
+            app.setCanvasBg("c", "white")  # Configure options for all other themes
+            img = Image.open("../Resources/Images/whiteLogo.png")
+            canvas.config(bd=0, highlightthickness=0, width=130, height=130)
+            pos = 90
+
+        images = []  # Create image cache
+        img.putalpha(0)  # Make first image transparent
+        images.append(app.addCanvasImage("c", pos, pos, ImageTk.PhotoImage(img)))  # Add to cache
+
+
+        def fade():
+            global images, img, canvas
+            image_cache = []  # Frames of animation
+            for i in range(0, 256, 8):  # Generate all 32 frames
+                img.putalpha(i)
+                image_cache.append(ImageTk.PhotoImage(img))
+            sleep(0.75)  # Pause so animation starts just after application launch
+
+            while True:
+                images.append(app.addCanvasImage("c", pos, pos, image_cache[0]))
+
+                for image in image_cache:
+                    images.append(app.addCanvasImage("c", pos, pos, image))
+                    canvas.delete(images.pop(0))
+                    sleep(0.045)
+                # for i in range(0, 256, 8):
+                #     print("things")
+                #     img.putalpha(i)
+                #     # app.queueFunction(app.addCanvasImage, "c", 400, 400, ImageTk.PhotoImage(img))
+                #     # app.threadCallback(app.addCanvasImage, images.append, "c", 400, 400, ImageTk.PhotoImage(img))
+                #     #images.append(app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img)))
+                #     image1 = app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img))
+                #     images.append(image1)
+                #     #print(images[0])
+                #     canvas.delete(images[0])
+                #     #print("images[0]", images[0])
+                #     sleep(0.045)
+
+                print(images)
+
+                sleep(15)
+
+                # for i in range(255, -1, -8):
+                #     img.putalpha(i)
+                #     images.append(app.addCanvasImage("c", 100, 100, ImageTk.PhotoImage(img)))
+                #     canvas.delete(images.pop(0))
+                #     sleep(0.045)
+
+                for image in reversed(image_cache):
+                    images.append(app.addCanvasImage("c", pos, pos, image))
+                    canvas.delete(images.pop(0))
+                    sleep(0.045)
+
+                images = []
+                #canvas.delete("all")
+
+                sleep(0.25)
+
+        #app.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
+        #app.zoomImage("logo5", -4)
 
         with app.frame("frame6", 1, 2):
             app.setPadding(10, 10)
@@ -307,13 +391,14 @@ with app.notebook("MainTabs", colspan=2):
                     app.setLabelAlign("info4", "right")
                     app.addNamedButton("Docs", "docs", ButtonHandler, 0, 1)
 
-            app.addHorizontalSeparator()
 
             app.addLabel("charging_title", "Charging your Solar Pi", colspan=3)
             app.setLabelStyle("charging_title", "H.TLabel")
             app.getLabelWidget("charging_title").config(font=title_font)
             #app.setLabelSticky("title5", "ew")
             #app.setLabelAlign("title5", "center")
+            app.addHorizontalSeparator()
+
             with app.frame("frame20"):
                 app.setPadding(10, 10)
                 app.setStretch("columns")
@@ -327,6 +412,8 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 app.addMessage("charge_info", charge_info)
                 app.setMessageBg("charge_info", msgBg)
                 app.setMessageFg("charge_info", msgFg)
+                app.setMessageSticky("charge_info", "nsw")
+
 
                 with app.frame("frame21"):
                     app.addLabel("read", "Read more:", 0, 0)
@@ -917,19 +1004,19 @@ if solar_theme == False:
     ##app.ttkStyle.configure("TLabelframe", background="white")
 
     app.setLabelFrameStyle("Applications", "TFrame")
-    app.setLabelFrameStyle("Start Programming", "TFrame")
-    app.setLabelFrameStyle("Solar Pi Settings", "TFrame")
+    #app.setLabelFrameStyle("Start Programming", "TFrame")
+    app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
     app.setLabelFrameStyle("IDEs", "TFrame")
-    app.setLabelFrameStyle("Scratch", "TFrame")
+    #app.setLabelFrameStyle("Scratch", "TFrame")
     app.setLabelFrameStyle("Python", "TFrame")
-    app.setLabelFrameStyle("Java", "TFrame")
+    #app.setLabelFrameStyle("Java", "TFrame")
     app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-    app.setLabelFrameStyle("Introduction to Python", "TFrame")
+    #app.setLabelFrameStyle("Introduction to Python", "TFrame")
     app.setLabelFrameStyle("Programming Glossary", "TFrame")
-    app.setLabelFrameStyle("A Byte of Python", "TFrame")
-    app.setLabelFrameStyle("Java Guide", "TFrame")
+    #app.setLabelFrameStyle("A Byte of Python", "TFrame")
+    #app.setLabelFrameStyle("Java Guide", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
-    app.setLabelFrameStyle("Raspberry Pi Info", "TFrame")
+    app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
     app.setLabelFrameStyle("Disk Info", "TFrame")
 
@@ -937,5 +1024,8 @@ if theme1 != "black":
     app.setBg("white")
 
 #print(app.ttkStyle.lookup("TFrame", "bordercolor"))
+
+t = Thread(target=fade)
+t.start()
 
 app.go(language=getSetting("language"))

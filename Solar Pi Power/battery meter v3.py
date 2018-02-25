@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from appJar import gui
-from PIL import Image, ImageTk
+from PIL import ImageTk
 from time import sleep
 from threading import Thread
 
@@ -204,7 +204,7 @@ with gui(size="60x35") as app:
         rec_list.append(r)  # Adds rectangles to list
         count += 6
     app.addCanvasRectangle("c", 54, 11, 7, 15, fill="grey", width=0)
-    image = app.addCanvasImage("c", 27, 19, ImageTk.PhotoImage(file="lightning-bolt2.png"))  # Charging image
+    image = app.addCanvasImage("c", 27, 19, ImageTk.PhotoImage(file="../Resources/Images/lightning-bolt2.png"))  # Charging image
     app.setCanvasOverFunction("c", [app.hide, show])  # Hide window when mouse over it
 
     canvas.itemconfig(image, state="hidden")  # Hide image
