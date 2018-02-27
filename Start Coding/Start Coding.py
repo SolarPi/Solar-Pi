@@ -86,7 +86,7 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
     # Widgets
 
     app.setPadding(10, 10)
-    app.addImage("solar_pi", "../../Resources/Images/Solar Pi text.gif")
+    app.addImage("solar_pi", "../Resources/Images/Solar Pi text.gif")
     app.zoomImage("solar_pi", -35)
 
     with app.labelFrame("Choose a Programming Language:"):
@@ -99,13 +99,13 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
     with app.frame("frame"):
         app.setPadding(10, 10)
         if custom == True or theme == "black":
-            app.addImageButton("Go  ", ButtonHandler, "../../Resources/Images/go white.gif", 0, 0, align="right")
+            app.addImageButton("Go  ", ButtonHandler, "../Resources/Images/go white.gif", 0, 0, align="right")
             app.setButtonStyle("Go  ", "H.TButton")
         else:
-            app.addImageButton("Go  ", ButtonHandler, "../../Resources/Images/go black.gif", 0, 0, align="right")
+            app.addImageButton("Go  ", ButtonHandler, "../Resources/Images/go black.gif", 0, 0, align="right")
             app.setLabelFrameStyle("Choose a Programming Language:", "TFrame")
-        app.addImageButton(" More Info  ", ButtonHandler, "../../Resources/Images/more info.gif", 0, 1, align="right")
-        app.addImageButton("Exit ", ButtonHandler, "../../Resources/Images/cross.gif", 0, 2, align="right")
+        app.addImageButton(" More Info  ", ButtonHandler, "../Resources/Images/more info.gif", 0, 1, align="right")
+        app.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
 
     if theme != "black":
         app.setBg("white")

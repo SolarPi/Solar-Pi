@@ -8,7 +8,7 @@
 ##############################
 
 def getSetting(setting):
-    with open("../../Solar Pi Settings/Settings.ini", "r") as file:
+    with open("../Solar Pi Settings/Settings.ini", "r") as file:
         data = file.readlines()[0].split(",")
     if setting == "clock":
         return int(data[0])
@@ -22,7 +22,7 @@ def getSetting(setting):
         return data[4]
 
 def setSetting(setting, value):
-    with open("../../Solar Pi Settings/Settings.ini", "r") as file:
+    with open("../Solar Pi Settings/Settings.ini", "r") as file:
         data = file.readlines()[0].split(",")
     
     clock = data[0]
