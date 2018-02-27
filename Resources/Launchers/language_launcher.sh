@@ -1,2 +1,3 @@
 #!/bin/bash
-sudo python3 "/usr/local/bin/Solar Pi/Languages Python/Language.py"
+cd "/usr/local/bin/Solar Pi/Languages Python"
+sudo python3 "Language.py"
