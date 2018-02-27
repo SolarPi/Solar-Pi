@@ -68,28 +68,31 @@ def meter():
     try:
         with open("../ramdisk/power", "r") as file:  # Attempts to open power file
             data = file.readlines()
-        data = data[0]
-        data = data.split(",")
-        percent = float(data[0])  # Takes percentage
-        mode = data[1]  # Gets power mode
-
-        if mode == "B":  # If battery powered
-            if charge == True:  # If battery powered and was charging
-                charge = False
-                for i in range(10):  # If battery was charging, attempt to update meter once animation has stopped
-                    meter_change(percent)
-                    sleep(1)
-            else:
-                meter_change(percent)  # If RPi is battery powered
-        
-        elif mode == "C":
-            charge = True
-            t1 = Thread(target=charging)  # If RPi is charging, start animation
-            t1.start()
             
     except IOError:  # If file opening fails, try again - ramdisk may not be created yet or Power Daemon isn't running
         sleep(1)
         meter()
+
+    data = data[0]
+    data = data.split(",")
+    percent = float(data[0])  # Takes percentage
+    mode = data[1]  # Gets power mode
+
+    if mode == "B":  # If battery powered
+        if charge == True:  # If battery powered and was charging
+            charge = False
+            canvas.itemconfig(image, state="hidden")  # Hide image
+            for i in range(10):  # If battery was charging, attempt to update meter once animation has stopped
+                meter_change(percent)
+                sleep(1.5)
+        else:
+            meter_change(percent)  # If RPi is battery powered
+    
+    elif mode == "C":
+        charge = True
+        t1 = Thread(target=charging)  # If RPi is charging, start animation
+        t1.start()
+
 
 def meter_change(percent):
     global change, canvas, image, rec_list
@@ -169,6 +172,8 @@ def meter_change(percent):
 
 def charging():
     global charge, rec_list
+    for i in range(9):
+        canvas.itemconfig(rec_list[i], fill="black")
     while charge == True:
         canvas.itemconfig(image, state="normal")  # Shows image
         for i in range(9):
@@ -192,6 +197,7 @@ charge = False
 with gui(size="60x35") as app:
     # Set GUI options
     app.setGuiPadding(0, 0)
+    app.setLocation(0, 565)
     app.hideTitleBar()
     app.setBg("white")
     canvas = app.addCanvas("c")
@@ -211,3 +217,6 @@ with gui(size="60x35") as app:
 
     t2 = Thread(target=batt_watcher)
     t2.start()  # Start the battery watcher in a new thread
+
+    meter()
+    
