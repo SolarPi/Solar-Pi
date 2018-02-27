@@ -400,90 +400,6 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 app.setButtonStyle("Starter Guide", "H.TButton")
 
 
-#     with app.note("Charging"):
-#
-#         #app.setPadding(10, 10)
-#         app.addLabel("title5", "Charging your Solar Pi", colspan=3)
-#         app.getLabelWidget("title5").config(font=("Dejavu Sans", "15"))
-#         app.setLabelSticky("title5", "ew")
-#         app.setLabelAlign("title5", "center")
-#         charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
-# When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
-# Once your Solar Pi is charged, the battery meter should show 100%."""
-#         #app.addLabel("info5", text)
-#         #app.setLabelAlign("info5", "center")
-#         #app.getLabelWidget("info5").config(font=("Piboto", "13"))
-#
-#         app.addMessage("charge_info", charge_info)
-#         app.setMessageBg("charge_info", msgBg)
-#         app.setMessageFg("charge_info", msgFg)
-#         app.setMessageSticky("charge_info", "nesw")
-#
-#         app.addLabel("read", "Read more:", 1, 1)
-#         app.setLabelAnchor("read", "e")
-#         app.addButton("Starter Guide", Docs, 1, 2)
-#         app.setButtonSticky("Starter Guide", "")
-#
-#         if solar_theme == True:
-#             app.setButtonStyle("Starter Guide", "H.TButton")
-
-    """
-
-    # Applications Tab
-    with app.note("Applications"):
-
-        with app.labelFrame("Applications"):
-            app.setSticky("ew")
-            app.setPadding(10, 10)
-            app.addLabel("applications_info", "Hover over the icons to see more information about each app.", colspan=2)
-
-            # Start Programming
-            with app.labelFrame("Start Programming", 1, 0):
-                app.setPadding(10, 15)
-                app.addImage("programming_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
-                app.zoomImage("programming_icon", -13)
-                app.setImageTooltip("programming_icon", "This allows you to see and try the different options for programming.")
-                app.addButton("Start Programming", Programming, 0, 1)
-
-            # Performance to Battery Life
-            with app.labelFrame("Solar Pi Settings", 1, 1):
-                app.setPadding(10, 10)
-                app.addImage("settings", "../Resources/Images/settings icon.gif", 0, 0)
-                app.zoomImage("settings", -5)
-                app.setImageTooltip("settings", "This allows you to change the settings for your Solar Pi.")
-                app.addButton("Solar Pi Settings", Settings, 0, 1)
-
-            # IDEs
-            with app.labelFrame("IDEs", 2, 0, colspan=2):
-                app.setPadding(10, 10)
-                app.setSticky("nesw")
-
-                with app.labelFrame("Scratch", 1, 0):
-                    app.setPadding(10, 10)
-                    app.addImage("scratch_logo2", "../Resources/Images/scratch logo.gif", 0, 0)
-                    app.zoomImage("scratch_logo2", -50)
-                    app.setImageTooltip("scratch_logo2", "The Scratch 2 IDE. Create Scratch programs and games with this.")
-                    app.addButton("Scratch", ButtonHandler, 0, 1)
-
-                with app.labelFrame("Python", 1, 1):
-                    app.setPadding(10, 10)
-                    app.addImage("python_logo2", "../Resources/Images/Python icon.gif", 0, 0)
-                    app.zoomImage("python_logo2", -4)
-                    app.setImageTooltip("python_logo2", "The Python IDE. Write and run Python applications.")
-                    app.addButton("Python", ButtonHandler, 0, 1)
-
-                with app.labelFrame("Java", 1, 2):
-                    app.setPadding(10, 10)
-                    app.addImage("java_logo", "../Resources/Images/java logo.gif", 0, 0)
-                    app.zoomImage("java_logo", -5)
-                    app.setImageTooltip("java_logo", "The BlueJ Java IDE. Create Java applications.")
-                    app.addButton("Java", ButtonHandler, 0, 1)
-
-        if solar_theme == True:
-            app.setButtonStyle("Start Programming", "H.TButton")
-
-    """
-
     with app.note("Applications"):
 
         with app.labelFrame("Applications"):
@@ -547,168 +463,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         if solar_theme == True:
             app.setButtonStyle("Start Coding", "H.TButton")
 
-    """
 
-    with app.note("Applications b"):
-        app.setSticky("nesw")
-        app.setPadding(0, 0)
-
-        with app.scrollPane("scroll"):
-            app.setPadding(0, 0)
-            app.setSticky("nesw")
-            app.addLabel("applications_title", "Solar Pi Applications")
-            app.setLabelStyle("applications_title", "H.TLabel")
-            app.getLabelWidget("applications_title").config(font=("ubuntu", 15, "normal"))
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("coding_title", "Start Coding", colspan=3)
-            #app.setLabelAlign("coding_title", "center")
-            app.setLabelStyle("coding_title", "Info.TLabel")
-            app.getLabelWidget("coding_title").config(font=title_font)
-            with app.frame("frame8"):
-                app.setPadding(10, 10)
-                app.addImage("coding_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
-                app.zoomImage("coding_icon", -13)
-                app.addLabel("coding_info", "This allows you to see and try the different options for coding.", 0, 1)
-                #app.addLabel("coding_info", "Cela vous permet de voir et d'essayer les différentes options de programmation.", 0, 1)
-                app.addNamedButton("Try it out!", "tryit1", Programming, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("settings_title", "Solar Pi Settings")
-            app.setLabelStyle("settings_title", "Info.TLabel")
-            app.getLabelWidget("settings_title").config(font=title_font)
-            with app.frame("frame9"):
-                app.setPadding(10, 10)
-                app.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 0)
-                app.zoomImage("settings_icon", -6)
-                app.addLabel("settings_info", "This allows you to change the settings for your Solar Pi.", 0, 1)
-                app.addButton("Settings", Settings, 0, 2)
-
-            #app.addHorizontalSeparator()
-            app.addLabel("filler", "")
-
-            app.addLabel("ides", "IDEs (Places where you can code)")
-            app.setLabelStyle("ides", "H.TLabel")
-            app.getLabelWidget("ides").config(font=title_font)
-            app.addHorizontalSeparator()
-
-            app.addLabel("scratch_title", "Scratch")
-            app.setLabelStyle("scratch_title", "Info.TLabel")
-            app.getLabelWidget("scratch_title").config(font=title_font)
-            with app.frame("frame10"):
-                app.setPadding(10, 10)
-                app.addImage("scratch_icon", "../Resources/Images/scratch logo.gif", 0, 0)
-                app.zoomImage("scratch_icon", -50)
-                app.addLabel("scratch_info", "The Scratch 2 IDE. Create Scratch programs and games with this.", 0, 1)
-                app.addNamedButton("Scratch", "scratch", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("python_title", "Python")
-            app.setLabelStyle("python_title", "Info.TLabel")
-            app.getLabelWidget("python_title").config(font=title_font)
-            with app.frame("frame11"):
-                app.setPadding(10, 10)
-                app.addImage("python_icon", "../Resources/Images/Python icon.gif", 0, 0)
-                app.zoomImage("python_icon", -4)
-                app.addLabel("python_icon", "The Python IDE. Write and run Python applications.", 0, 1)
-                app.addNamedButton("Python", "python", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("java_title", "Java")
-            app.setLabelStyle("java_title", "Info.TLabel")
-            app.getLabelWidget("java_title").config(font=title_font)
-            with app.frame("frame12"):
-                app.setPadding(10, 10)
-                app.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 0)
-                app.zoomImage("java_icon", -5)
-                app.addLabel("java_info", "The BlueJ Java IDE. Create Java applications.", 0, 1)
-                app.addNamedButton("Java", "java", ButtonHandler, 0, 2)
-
-            #app.addHorizontalSeparator()
-            app.addLabel("filler2", "")
-
-            
-            # TODO: Add launchers + calls for ButtonHandler for Libreoffice
-            app.addLabel("libreoffice_title", "LibreOffice: A free office suite")
-            app.setLabelStyle("libreoffice_title", "H.TLabel")
-            app.getLabelWidget("libreoffice_title").config(font=title_font)
-            app.addHorizontalSeparator()
-
-            app.addLabel("writer_title", "Writer")
-            app.setLabelStyle("writer_title", "Info.TLabel")
-            app.getLabelWidget("writer_title").config(font=title_font)
-            with app.frame("frame13"):
-                app.setPadding(10, 10)
-                app.addImage("writer_icon", "../Resources/Images/writer.gif", 0, 0)
-                #app.zoomImage("writer_icon", -2)
-                app.addLabel("writer_info", "A simple, easy to use word processor.", 0, 1)
-                app.addButton("Writer", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("calc_title", "Calc")
-            app.setLabelStyle("calc_title", "Info.TLabel")
-            app.getLabelWidget("calc_title").config(font=title_font)
-            with app.frame("frame14"):
-                app.setPadding(10, 10)
-                app.addImage("calc_icon", "../Resources/Images/calc.gif", 0, 0)
-                # app.zoomImage("writer_icon", -2)
-                app.addLabel("calc_info", "Quickly make speadsheets and crunch numbers.", 0, 1)
-                app.addButton("Calc", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("impress_title", "Impress")
-            app.setLabelStyle("impress_title", "Info.TLabel")
-            app.getLabelWidget("impress_title").config(font=title_font)
-            with app.frame("frame15"):
-                app.setPadding(10, 10)
-                app.addImage("impress_icon", "../Resources/Images/impress.gif", 0, 0)
-                # app.zoomImage("writer_icon", -2)
-                app.addLabel("impress_info", "Create presentations!", 0, 1)
-                app.addButton("Impress", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("draw_title", "Draw")
-            app.setLabelStyle("draw_title", "Info.TLabel")
-            app.getLabelWidget("draw_title").config(font=title_font)
-            with app.frame("frame16"):
-                app.setPadding(10, 10)
-                app.addImage("draw_icon", "../Resources/Images/draw.gif", 0, 0)
-                # app.zoomImage("writer_icon", -2)
-                app.addLabel("draw_info", "Show off your art skills!", 0, 1)
-                app.addButton("Draw", ButtonHandler, 0, 2)
-
-            app.addHorizontalSeparator()
-
-            app.addLabel("apps_more_info", "Want to look at more apps?\nGo to the Main Menu to see all of the apps installed on your Solar Pi.")
-            app.setLabelStyle("apps_more_info", "H.TLabel")
-
-        if solar_theme == True:
-            app.setButtonStyle("tryit1", "H.TButton")
-            #app.setButtonStyle("Settings", "H.TButton")
-            #app.setButtonStyle("scratch", "H.TButton")
-            #app.setButtonStyle("python", "H.TButton")
-            #app.setButtonStyle("java", "H.TButton")
-        
-        """
-
-
-    #     app.setSticky("nesw")
-    #    # app.setBg("white")
-    #     with app.scrollPane("scroll1"):
-    #         app.setSticky("nesw")
-    #         with app.frame("frame9"):
-    #             #app.setBg("white")
-    #             app.setSticky("nesw")
-    #             app.addButton("Button", None)
-    #             app.addMessage("m1", "jlkf;afd jfdkalf jkla;f jlk;afjkl;ajfkdlasf jkal; fjkadsl;f jkla;jklajkl;a kls akfl\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n;fjoiwejioruiowreu wqopuiqwopruiowqru oq[wruwioq[ruioq[ wru oq[wruoqwuro[iqruo[q uoq[urqow[ruoq")
-    #     #app.setScrollPaneBg("scroll1", "white")
 
     ##################################
     #  Tab for Guides and Tutorials  #
@@ -764,54 +519,6 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
         if solar_theme == True:
             app.setButtonStyle("Introduction to Python", "H.TButton")
 
-    """
-
-    with app.note("Guides & Tutorials"):
-
-        with app.labelFrame("Guides & Tutorials"):
-            app.setSticky("nesw")
-            app.setPadding(10, 10)
-            app.addLabel("guides_info", "Hover over the icons to see more information about each resource.", 0, 0, colspan=2)
-            #    app.addImage("python", "../Resources/Images/Python icon.gif", 0, 1)
-             #   app.zoomImage("python", -2)
-
-            # RPi Foundation Python Tutorial
-            with app.labelFrame("Introduction to Python", 1, 0):
-                app.setPadding(10, 10)
-                app.addImage("python2", "../Resources/Images/Python icon.gif", 0, 0)
-                app.zoomImage("python2", -4)
-                app.setImageTooltip("python2", "An introduction to Python, written by the Raspberry Pi Foundation")
-                app.addButton("Python Intro", PythonIntro, 0, 1)
-
-            # Programming Glossary
-            with app.labelFrame("Programming Glossary", 1, 1):
-                app.setPadding(10, 10)
-                app.addImage("programming_icon2", "../Resources/Images/Programming icon cropped.gif", 0, 0)
-                app.zoomImage("programming_icon2", -10)
-                app.setImageTooltip("programming_icon2", "Gives you definitions of words that you might not have heard before")
-                app.addButton("Glossary", Glossary, 0, 1)
-
-            # A Byte of Python
-            with app.labelFrame("A Byte of Python", 2, 0):
-                app.setPadding(10, 10)
-                app.addImage("python3", "../Resources/Images/Python icon.gif", 0, 0)
-                app.zoomImage("python3", -4)
-                app.setImageTooltip("python3", "A popular Ebook that teaches you Python")
-                app.addButton("A Byte of Python", ByteofPython, 0, 1)
-
-            # Google Python Tutorial
-            with app.labelFrame("Java Guide", 2, 1):
-                app.setPadding(10, 10)
-                app.addImage("java_logo2", "../Resources/Images/java logo.gif", 0, 0)
-                app.zoomImage("java_logo2", -5)
-                app.setImageTooltip("java_logo2", "A guide on Java to help you get to know the basics of Java 8")
-                app.addButton("Java Guide", Java, 0, 1)
-
-
-        if solar_theme == True:
-            app.setButtonStyle("Python Intro", "H.TButton")
-        
-        """
 
     #########################
     #  Tab for System Info  #
@@ -820,7 +527,7 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
     with app.note("System Info"):
         # Retrieve System infomation
         try:
-            call("info.sh")  # TODO: Test! - it doesn't play nice in the VM :(
+            call("/usr/local/bin/Solar Pi/Solar Pi Welcome/info.sh")
         except OSError:
             print("Running under Windows! ...or something has gone horribly wrong :(")
 
@@ -906,10 +613,10 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 app.setPadding(5, 1)
                 app.addMeter("disk_usage", 0, 0)
                 app.setMeter("disk_usage", pcent_disk_used)
-                if pcent_disk_used < 85:
-                    app.setMeterFill("disk_usage", "#687396")
-                else:
+                if pcent_disk_used > 90:
                     app.setMeterFill("disk_usage", "red")
+                else:
+                    app.setMeterFill("disk_usage", "#687396")
                 app.setMeterSticky("disk_usage", "ew")
                 app.setMeterTooltip("disk_usage", "Used: " + used_disk + "\nFree: " + avail_disk)
                 app.addLabel("disk_label", avail_disk + " free of " + total_disk, 1, 0)
