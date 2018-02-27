@@ -134,7 +134,7 @@ def ToolbarHandler(press):
 def PerfBattery(press):
     Popen("../Resources/Launchers/Perf Battery Launcher.sh")
 def Programming(press):
-    Popen("../Resources/Launchers/Programming Launcher.sh")
+    Popen("../Resources/Launchers/Start Coding.sh")
 def PythonGuides(press):
     Popen("../Resources/Launchers/Python Guide Launcher.sh")
 # def Update(press):
