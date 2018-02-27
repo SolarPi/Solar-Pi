@@ -17,18 +17,18 @@ def Autorun(item, mode, file):
             with open(file, "w") as file2:
                 if item == "welcome":
                     data = """[Desktop Entry]
-    Name=Solar Pi Welcome
-    Type=Application
-    Comment=Launch the main Solar Pi application
-    Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
-    """
+Name=Solar Pi Welcome
+Type=Application
+Comment=Launch the main Solar Pi application
+Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
+"""
                 elif item == "battery":
                     data = """[Desktop Entry]
-    Name=Battery Meter
-    Type=Application
-    Comment=Display the battery meter in the bottom left of the display
-    Exec="/usr/local/bin/Solar Pi/Solar Pi Power/Battery Meter exec"
-    """
+Name=Battery Meter
+Type=Application
+Comment=Display the battery meter in the bottom left of the display
+Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Battery Meter.sh"
+"""
 
                 file2.write(data)
             chmod(file, 0o775)
