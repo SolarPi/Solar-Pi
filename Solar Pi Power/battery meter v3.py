@@ -89,9 +89,12 @@ def meter():
             meter_change(percent)  # If RPi is battery powered
     
     elif mode == "C":
-        charge = True
-        t1 = Thread(target=charging)  # If RPi is charging, start animation
-        t1.start()
+        if charge == True:
+            pass
+        else:
+            charge = True
+            t1 = Thread(target=charging)  # If RPi is charging, start animation
+            t1.start()
 
 
 def meter_change(percent):
