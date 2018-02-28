@@ -42,14 +42,17 @@ if solar_theme == True:
     # Custom Notebook
     app.ttkStyle.configure("TNotebook", background="white", bordercolor="#687396")
     app.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
-                foreground=[("selected", "white")])
-    app.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black", bordercolor="#687396")  # Unselected tab
-
+                foreground=[("selected", "white")], padding=[("selected", "0.125cm")])
+    app.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black", bordercolor="#687396", padding="0.095cm")  # Unselected tab
+                # "#dbdce2"
     # Custom buttons
 
     # Highlighted button
     app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
     app.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+    app.ttkStyle.configure("Back.TButtton", background="#687396", bordercolor="#687396")
+    app.ttkStyle.map("Back.TButton", background=[("pressed", "#687396"), ("active", "#687396"), ("!pressed", "#687396"), ("!active", "#687396")])
 
     app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
@@ -60,8 +63,10 @@ if solar_theme == True:
 
     app.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
-title_font = ("ubuntu", 14, "normal")
+title_font = ("piboto", 14, "normal")
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
+app.ttkStyle.configure("Padding.TLabel", padding=[10, 10])
+
 app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
 # Event Handler for buttons
@@ -339,6 +344,7 @@ with app.notebook("MainTabs", colspan=2):
             app.setButtonStyle("Get Started", "H.TButton")
 
     with app.note("Get Started"):
+        
         def guide(btn):
             if btn.lower() == "back":
                 app.getFrameWidget("options").lift()
@@ -349,15 +355,19 @@ with app.notebook("MainTabs", colspan=2):
 
             app.addLabel("starter_options_title", "Solar Pi Starter Guide")
             app.getLabelWidget("starter_options_title").config(font=title_font)
-            app.setLabelStyle("starter_options_title", "H.TLabel")
+            app.setLabelStyle("starter_options_title", "Padding.TLabel")
             with app.frame("frame25"):
-                app.setPadding(10, 10)
-                app.addLabel("starter_options_info", "Click to read a quick overview on how to use your Solar Pi", 0, 0)
-                app.addNamedButton("Starter Guide", "Starter Guide1", guide, 0, 1)
+                app.setPadding(5, 5)
+                app.addIcon("starter_icon", "info", 0, 0, rowspan=2)
+                app.addLabel("starter_options_info", "Click to read a quick overview on how to use your Solar Pi", 0, 1)
+                app.addNamedButton("Starter Guide", "starter guide", guide, 1, 1)
+                app.setButtonSticky("starter guide", "w")
 
+            app.addHorizontalSeparator()
+            
             app.addLabel("charging_options_title", "Charging")
             app.getLabelWidget("charging_options_title").config(font=title_font)
-            app.setLabelStyle("charging_options_title", "H.TLabel")
+            app.setLabelStyle("charging_options_title", "Padding.TLabel")
             with app.frame("frame26"):
                 app.setPadding(10, 10)
                 app.addLabel("charging_options_info", "Click to read how to charge your Solar Pi", 0, 0)
@@ -371,12 +381,15 @@ with app.notebook("MainTabs", colspan=2):
             #     app.addLabel("docs_options_info", "Unsure of anything? Want to read more? Go to the docs to learn more about your Solar Pi", 0, 0)
             #     app.addButton("Docs", Docs, 0, 1)
 
-        with app.frame("Starter Guide1", 0, 0, sticky="new"):
-            app.addLabel("basics_title", "                              The Basics", 0, 0)
+        with app.frame("starter guide", 0, 0, sticky="new"):
+            app.addLabel("basics_title", "          The Basics", 0, 0)  # 2 tabs + 2 spaces or 10 spaces
             app.getLabelWidget("basics_title").config(font=title_font)
             app.setLabelStyle("basics_title", "H.TLabel")
 
-            app.addNamedButton("<", "back", guide, 0, 0)
+            ##687396
+
+            app.addImageButton("back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
+            app.setButtonStyle("back", "Back.TButton")
             app.setButtonSticky("back", "nw")
 
             with app.frame("frame19"):
@@ -396,9 +409,13 @@ with app.notebook("MainTabs", colspan=2):
 
 
         with app.frame("Charging", 0, 0, sticky="new"):
-            app.addLabel("charging_title", "Charging your Solar Pi", colspan=3)
+            app.addLabel("charging_title", "          Charging your Solar Pi", 0, 0)
             app.setLabelStyle("charging_title", "H.TLabel")
             app.getLabelWidget("charging_title").config(font=title_font)
+
+            app.addImageButton("Back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
+            app.setButtonStyle("Back", "Back.TButton")
+            app.setButtonSticky("Back", "nw")
 
             with app.frame("frame20"):
                 app.setPadding(10, 10)
@@ -416,17 +433,18 @@ Once your Solar Pi is charged, the battery meter should show 100%."""
                 app.setMessageSticky("charge_info", "nsw")
 
 
-                with app.frame("frame21", 0, 1):
+                #with app.frame("frame21", 0, 1):
                     #app.addLabel("back2", "Back", 0, 0)
                     #app.setLabelAnchor("back2", "e")
-                    app.addButton("Back", guide, 0, 1)
-                    app.setButtonSticky("Back", "")
+                 #   app.addButton("Back", guide, 0, 1)
+                 #   app.setButtonSticky("Back", "")
 
         app.getFrameWidget("options").lift()
 
         if solar_theme == True:
-            app.setButtonStyle("Back", "H.TButton")
-            app.setButtonStyle("back", "H.TButton")
+            pass
+            #app.setButtonStyle("Back", "H.TButton")
+            #app.setButtonStyle("back", "H.TButton")
 
     """
 
