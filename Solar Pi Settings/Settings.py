@@ -229,7 +229,7 @@ with gui("Settings", useTtk=True) as app:
 
     with app.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
         lb = app.listBox("list", pages, change=change,
-                         activestyle="none", selectbackground="#687396", font=13,
+                         activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
 
