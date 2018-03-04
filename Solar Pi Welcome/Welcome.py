@@ -67,7 +67,7 @@ title_font = ("piboto", 14, "normal")
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 app.ttkStyle.configure("Padding.TLabel", padding=[10, 10])
 
-app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 5], borderwidth=1)
+app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 6], borderwidth=1)
 #app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
 
 app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
@@ -766,6 +766,7 @@ if solar_theme == False:
     app.setLabelFrameStyle("Python", "TFrame")
     app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
     app.setLabelFrameStyle("Programming Glossary", "TFrame")
+    app.setLabelFrameStyle("Java Guide", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
     app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
