@@ -156,11 +156,10 @@ def Settings(press):
     Popen("../Resources/Launchers/Settings Launcher.sh")
 
 def Libreoffice(press):
-    press = press.lower()
-    if press == "libreoffice":
+    if press == "Libreoffice":
         app.showSubWindow("Libreoffice")
     else:
-        Popen("../Resources/Launchers/" + press + "launcher.sh")  # TODO: Create launchers
+        Popen("../Resources/Launchers/" + press + " launcher.sh")
 
 def Docs(press):
     webbrowser.get("chromium-browser").open("http://localhost/")  # Launch guides here
