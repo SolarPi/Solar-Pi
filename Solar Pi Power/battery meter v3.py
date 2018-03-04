@@ -180,10 +180,16 @@ def charging():
     while charge == True:
         canvas.itemconfig(image, state="normal")  # Shows image
         for i in range(9):
-            canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
-            sleep(1.5)
+            if charge == True:
+                canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
+                sleep(1.5)
+            else:
+                break
         for i in range(9):
-            canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
+            if charge == True:
+                canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
+            else:
+                break
         sleep(1.5)
     
 
@@ -222,4 +228,3 @@ with gui(size="60x35") as app:
     t2.start()  # Start the battery watcher in a new thread
 
     meter()
-    

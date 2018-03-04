@@ -280,6 +280,7 @@ with gui("Settings", useTtk=True) as app:
                 app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
                 app.addButton("Update", update2)
 
+
         with app.frame(pages[2], 0, 1, sticky="new"):  # Code for third page
                 app.setPadding(5, 5)
                 app.addLabel("other_title", "Other Settings")
@@ -316,6 +317,7 @@ with gui("Settings", useTtk=True) as app:
             app.setMeterFill("update_meter", ["green", "white"])
             app.setMeterSticky("update_meter", "ew")
             app.addLabel("update_info2", "Please wait while we check the USB...")
+
 
     # Configure themes
     if custom == True:

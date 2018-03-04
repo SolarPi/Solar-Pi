@@ -67,6 +67,9 @@ title_font = ("piboto", 14, "normal")
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 app.ttkStyle.configure("Padding.TLabel", padding=[10, 10])
 
+app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 5], borderwidth=1)
+#app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
+
 app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
 # Event Handler for buttons
@@ -186,7 +189,8 @@ with app.subWindow("About Solar Pi", modal=True):
         with app.labelFrame("About"):
             #app.setBg("white")
             app.setPadding(10, 10)
-            app.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
+            #app.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
+            app.addMessage("about", "Solar Pi is a charity project, aimed at getting solar powered computers to those who need it most.\n\nEnjoy!")
             app.setMessageBg("about", msgBg)
             app.setMessageFg("about", msgFg)
         app.addButton("Close", ButtonHandler)
@@ -358,7 +362,9 @@ with app.notebook("MainTabs", colspan=2):
             app.setLabelStyle("starter_options_title", "Padding.TLabel")
             with app.frame("frame25"):
                 app.setPadding(5, 5)
-                app.addIcon("starter_icon", "info", 0, 0, rowspan=2)
+                #app.addIcon("starter_icon", "info", 0, 0, rowspan=2)
+                app.addImage("starter_icon", "../Resources/Images/Logo_NEW_2 small.gif", 0, 0, rowspan=2)
+                app.zoomImage("starter_icon", -8)
                 app.addLabel("starter_options_info", "Click to read a quick overview on how to use your Solar Pi", 0, 1)
                 app.addNamedButton("Starter Guide", "starter guide", guide, 1, 1)
                 app.setButtonSticky("starter guide", "w")
@@ -369,9 +375,12 @@ with app.notebook("MainTabs", colspan=2):
             app.getLabelWidget("charging_options_title").config(font=title_font)
             app.setLabelStyle("charging_options_title", "Padding.TLabel")
             with app.frame("frame26"):
-                app.setPadding(10, 10)
-                app.addLabel("charging_options_info", "Click to read how to charge your Solar Pi", 0, 0)
-                app.addButton("Charging", guide, 0, 1)
+                app.setPadding(30, 10)
+                app.addImage("charge_icon", "../Resources/Images/battery-charging.gif", 0, 0, rowspan=2)
+                app.addLabel("charging_options_info", "Click to read how to charge your Solar Pi", 0, 1)
+                app.addButton("Charging", guide, 1, 1)
+                app.setButtonSticky("Charging", "w")
+            app.setFrameSticky("frame26", "w")
 
             # app.addLabel("docs_options_title", "Docs")
             # app.getLabelWidget("docs_options_title").config(font=title_font)
@@ -388,9 +397,10 @@ with app.notebook("MainTabs", colspan=2):
 
             ##687396
 
-            app.addImageButton("back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
-            app.setButtonStyle("back", "Back.TButton")
-            app.setButtonSticky("back", "nw")
+            app.addImage("back", "../Resources/Images/white back arrow.gif", 0, 0)
+            app.setImageStyle("back", "back.TLabel")
+            app.setImageSticky("back", "nw")
+            app.setImageSubmitFunction("back", guide)
 
             with app.frame("frame19"):
                 app.setPadding(10, 10)
@@ -413,9 +423,14 @@ with app.notebook("MainTabs", colspan=2):
             app.setLabelStyle("charging_title", "H.TLabel")
             app.getLabelWidget("charging_title").config(font=title_font)
 
-            app.addImageButton("Back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
-            app.setButtonStyle("Back", "Back.TButton")
-            app.setButtonSticky("Back", "nw")
+            #app.addImageButton("Back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
+            #app.setButtonStyle("Back", "Back.TButton")
+            #app.setButtonSticky("Back", "nw")
+
+            app.addImage("Back", "../Resources/Images/white back arrow.gif", 0, 0)
+            app.setImageStyle("Back", "back.TLabel")
+            app.setImageSticky("Back", "nw")
+            app.setImageSubmitFunction("Back", guide)
 
             with app.frame("frame20"):
                 app.setPadding(10, 10)

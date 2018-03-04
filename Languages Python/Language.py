@@ -6,6 +6,7 @@ from SettingsRW import *
 
 
 theme = getSetting("theme")
+language = getSetting("language")
 
 def LanguageHandler(press):
     if press == "English":
@@ -58,16 +59,28 @@ with gui("Languages", useTtk=True) as app:
     with app.labelFrame("Languages"):
         app.setPadding(5, 5)
         app.setSticky("nesw")
-        
-        with app.labelFrame("English", 0, 0):
-            app.setPadding(5, 5)
-            app.addImage("uk_flag", "../Resources/Images/uk_flag.gif")
-            app.addButton("English", LanguageHandler, 0, 1)
-            
-        with app.labelFrame("Español", 0, 1):
-            app.setPadding(5, 5)
-            app.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
-            app.addButton("Español", LanguageHandler, 0, 1)
+
+        with app.frame("language info"):
+            app.ttkStyle.configure("H.TLabel", font=("piboto", 12, "bold"))
+            app.addLabel("language_info", "The current language is:")
+
+            app.addLabel("language", language[0].upper() + language[1:], 0, 1)
+            app.setLabelSticky("language", "w")
+            app.setLabelStyle("language", "H.TLabel")
+
+        app.addLabel("info_english", "Click or tap on the button to change the language.\nPlease only change it if the current language is not suitable for you.")
+        app.addLabel("info_spanish", "Haz clic o toca el botón para cambiar el idioma.\nCambie solo si el idioma actual no es adecuado para usted.")
+
+        with app.frame("langauges"):
+            with app.labelFrame("English", 0, 0):
+                app.setPadding(5, 5)
+                app.addImage("uk_flag", "../Resources/Images/uk_flag.gif")
+                app.addButton("English", LanguageHandler, 0, 1)
+
+            with app.labelFrame("Español", 0, 1):
+                app.setPadding(5, 5)
+                app.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
+                app.addButton("Español", LanguageHandler, 0, 1)
 
     if custom == False:
         app.setLabelFrameStyle("Languages", "TFrame")
