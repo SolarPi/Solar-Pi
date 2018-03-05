@@ -1,6 +1,8 @@
 # Solar Pi
 All custom software for the Solar Pi STEM project.
 
+![welcome](welcome.png)
+
 Includes software to:
 * Get the user more familiar with using a computer
 * Teach them how to code
