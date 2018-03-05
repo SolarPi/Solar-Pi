@@ -35,19 +35,6 @@ def ButtonHandler(press):
         elif option == "Java (Hard)":
             app.infoBox("Java", "Java is a high level OOP (Object Oriented Programming) language. You can write web apps as well as regular applications with this.")
 
-def MenuHandler(press):
-    if press == "Solar Pi Home":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Welcome Launcher.sh")
-    elif press == "Leafpad":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Leafpad Launcher.sh")
-    elif press == "Scratch":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Scratch Launcher.sh")
-    elif press == "Python IDLE":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/IDLE Launcher.sh")
-    elif press == "Thonny Python":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Thonny Launcher.sh")
-    elif press == "Java":
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/blueJ Launcher.sh")
 
 def ToolbarHandler(press):
     if press == "Help":
