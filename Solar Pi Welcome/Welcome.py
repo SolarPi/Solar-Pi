@@ -179,18 +179,13 @@ def Java(press):  # Google's Python Tutorial
 # About Popup
 with app.subWindow("About Solar Pi", modal=True):
     app.setResizable(canResize=False)
-    #app.setBg("white")
     with app.frame("frame7"):  # Rename to frame6 to remove right hand button column on Welcome tab
         app.setPadding(10, 10)
-        #app.setBg("white")
         app.addImage("solar_pi_logo", "../Resources/Images/Solar Pi logo.gif")
         app.zoomImage("solar_pi_logo", -3)
         with app.labelFrame("About"):
-            #app.setBg("white")
             app.setPadding(10, 10)
             app.addLabel("about", "Solar Pi is a charity project, aimed at getting solar\npowered computers to those who need it most.\n\nEnjoy!")
-            #app.setMessageBg("about", msgBg)
-            #app.setMessageFg("about", msgFg)
         app.addButton("Close", ButtonHandler)
         app.setButtonSticky("Close", "")
         if solar_theme == True:
@@ -229,22 +224,17 @@ with app.subWindow("Libreoffice", modal=True):
 
 
 # Menu bar
-app.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
-app.addMenuList("Applications", ["Leafpad", "Start Programming", "Performance to Battery Life"], MenuHandler)
-app.addMenuList("Guides", ["Python Guides"], MenuHandler)
-app.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
-
-
-tools = ["Off", "Settings", "Files", "About", "Help"]
-app.addToolbar(tools, ToolbarHandler, findIcon=True)
-#if theme1 == "Solar Pi":
-#    var = app.widgetManager.group(app.Widgets.Toolbar)
-#    var["Off"].config(fg="#dbdce2")
-#app.setToolbarFg("white")
-
+#app.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
+#app.addMenuList("Applications", ["Leafpad", "Start Programming", "Performance to Battery Life"], MenuHandler)
+#app.addMenuList("Guides", ["Python Guides"], MenuHandler)
+#app.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
 
 # Main Window
 app.setPadding(3, 3)
+
+tools = ["Off", "Settings", "Files", "About", "Help"]
+app.addToolbar(tools, ToolbarHandler, findIcon=True)
+
 
 with app.notebook("MainTabs", colspan=2):
     with app.note("Welcome!"):
@@ -695,7 +685,7 @@ def Startup(param):
     Autorun("welcome", value, "/home/pi/.config/autostart/Welcome Launcher.desktop")
 
 app.setPadding(5, 5)
-app.addCheckBox("Launch at startup", 1, 0)
+app.addCheckBox("Launch at startup")
 app.setCheckBox("Launch at startup", ticked=getSetting("welcome"))
 app.setCheckBoxChangeFunction("Launch at startup", Startup)
 
