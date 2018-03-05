@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+##############################
+#  Needs to be run as root!  #
+##############################
+
 from appJar import gui
 import sys
 import fileinput
