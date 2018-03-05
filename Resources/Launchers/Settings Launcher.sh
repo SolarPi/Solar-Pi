@@ -1,3 +1,3 @@
 #!/bin/bash
-cd "/usr/local/bin/Solar Pi/Solar Pi Settings"
+cd "/usr/local/bin/Solar Pi/Settings"
 sudo python3 "Settings.py"

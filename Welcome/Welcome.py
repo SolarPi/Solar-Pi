@@ -583,7 +583,7 @@ with app.notebook("MainTabs", colspan=2):
     with app.note("System Info"):
         # Retrieve System infomation
         try:
-            call("/usr/local/bin/Solar Pi/Solar Pi Welcome/info.sh")
+            call("/usr/local/bin/Solar Pi/Welcome/info.sh")
         except OSError:
             print("Running under Windows! ...or something has gone horribly wrong :(")
 

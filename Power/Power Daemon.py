@@ -50,7 +50,7 @@ while True:  # Repeat infinitely
         shown = True
         with gui("Notification", useTtk=True) as app:  # GUI for low battery warning
             app.setResizable(False)
-            with open("../Solar Pi Settings/Settings.ini", "r") as file:
+            with open("../Settings/Settings.ini", "r") as file:
                 theme = file.readlines()[0].split(",")[3]  # Get theme from Settings file
             if theme == "Solar Pi":
                 # Configures and sets custom theme

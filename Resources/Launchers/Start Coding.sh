@@ -1,3 +1,3 @@
 #!/bin/bash
-cd "/usr/local/bin/Solar Pi/Start Coding"
+cd "/usr/local/bin/Solar Pi/Coding"
 python3 "Start Coding.py"
