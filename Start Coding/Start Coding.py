@@ -54,7 +54,7 @@ def ToolbarHandler(press):
         webbrowser.get("chromium-browser").open("http://localhost/solar-pi-apps/index.html#start-programming")  # Launch guides here
 
 # GUI Parameters
-with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
+with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setResizable(False)
 
     if custom == True:
@@ -80,8 +80,8 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
             app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
 
     # Menu
-    app.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
-    app.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
+    #app.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
+    #app.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
 
     # Widgets
 
@@ -92,6 +92,10 @@ with gui("Coding", useTtk=True) as app:  # 400x320 # "420x290"
     with app.labelFrame("Choose a Programming Language:"):
         app.setSticky("ew")
         app.setPadding(10, 5)
+        app.addLabel("info", "Click 'More Info' to see a short explanation, and click 'Go' to\nlaunch the IDE and see some resources that might help you.")
+
+        app.addHorizontalSeparator()
+
         app.addRadioButton("language", "Scratch (Easy)")
         app.addRadioButton("language", "Python (Intermedium/Hard)")
         app.addRadioButton("language", "Java (Hard)")
