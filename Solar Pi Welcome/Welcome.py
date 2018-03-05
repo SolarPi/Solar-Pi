@@ -188,10 +188,9 @@ with app.subWindow("About Solar Pi", modal=True):
         with app.labelFrame("About"):
             #app.setBg("white")
             app.setPadding(10, 10)
-            #app.addMessage("about", "The Solar Pi is charity oriented project, aiming to deliver low cost Raspberry Pi based solar powered computers to developing countries. Our aim is to teach people how to code, so that they can become employed and move on financially and socially.\n\nWe hope that you enjoy your Solar Pi!")
-            app.addMessage("about", "Solar Pi is a charity project, aimed at getting solar powered computers to those who need it most.\n\nEnjoy!")
-            app.setMessageBg("about", msgBg)
-            app.setMessageFg("about", msgFg)
+            app.addLabel("about", "Solar Pi is a charity project, aimed at getting solar\npowered computers to those who need it most.\n\nEnjoy!")
+            #app.setMessageBg("about", msgBg)
+            #app.setMessageFg("about", msgFg)
         app.addButton("Close", ButtonHandler)
         app.setButtonSticky("Close", "")
         if solar_theme == True:
@@ -403,18 +402,24 @@ with app.notebook("MainTabs", colspan=2):
 
             with app.frame("frame19"):
                 app.setPadding(10, 10)
-                app.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
-                app.zoomImage("desktop", -7)
 
                 starter_info = """Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
 
 •  The image on the right is of the Solar Pi desktop.
 •  There is a bar at the top, showing you what windows are open.
 •  At the top left, there is a button to open a menu. From here, you can see and run all of the applications that are installed on your Solar Pi."""
-                app.addMessage("basics_info", starter_info, 0, 0)
+                app.addMessage("basics_info", starter_info, 0, 0, rowspan=2)
                 app.setMessageBg("basics_info", msgBg)
                 app.setMessageFg("basics_info", msgFg)
                 app.setMessageSticky("basics_info", "nesw")
+
+                app.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
+                app.zoomImage("desktop", -7)
+
+                app.addButton("Read More", Docs, 1, 1)
+
+                if solar_theme == True:
+                    app.setButtonStyle("Read More", "H.TButton")
 
 
         with app.frame("Charging", 0, 0, sticky="new"):
@@ -434,95 +439,32 @@ with app.notebook("MainTabs", colspan=2):
             with app.frame("frame20"):
                 app.setPadding(10, 10)
                 app.setStretch("columns")
-                charge_info = """The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
-When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
-Once your Solar Pi is charged, the battery meter should show 100%."""
-                # app.addLabel("info5", text)
-                # app.setLabelAlign("info5", "center")
-                # app.getLabelWidget("info5").config(font=("Piboto", "13"))
+
+                charge_info = """There is a battery meter at the bottom left corner of the display. This tell you how much power is left in the batteries.
+
+•  When the battery gets low, you need to charge your Solar Pi. To do this, fold out the solar panels and face them to the sun.
+•  You will know if the batteries are charging, as the meter will show the charging animation.
+•  The batteries are fully charged when the bar is completely green."""
 
                 app.addMessage("charge_info", charge_info)
                 app.setMessageBg("charge_info", msgBg)
                 app.setMessageFg("charge_info", msgFg)
                 app.setMessageSticky("charge_info", "nsw")
 
+                with app.frame("images", 0, 1):
+                    app.addImage("low charge", "../Resources/Images/low battery.gif", 0, 0)
+                    app.zoomImage("low charge", -2)
+                    app.addLabel("low charge", "Low Charge", 0, 1)
 
-                #with app.frame("frame21", 0, 1):
-                    #app.addLabel("back2", "Back", 0, 0)
-                    #app.setLabelAnchor("back2", "e")
-                 #   app.addButton("Back", guide, 0, 1)
-                 #   app.setButtonSticky("Back", "")
+                    app.addImage("charging", "../Resources/Images/charging.gif", 1, 0)
+                    app.zoomImage("charging", -2)
+                    app.addLabel("charging", "Charging - you will\nsee this with an animation", 1, 1)
+
+                    app.addImage("full charge", "../Resources/Images/full battery.gif", 2, 0)
+                    app.zoomImage("full charge", -2)
+                    app.addLabel("full charge", "Full Charge", 2, 1)
 
         app.getFrameWidget("options").lift()
-
-        if solar_theme == True:
-            pass
-            #app.setButtonStyle("Back", "H.TButton")
-            #app.setButtonStyle("back", "H.TButton")
-
-    """
-
-    with app.note("Starter Guide"):
-        with app.scrollPane("scroll1"):
-            app.addLabel("starter_title", "Solar Pi Starter Guide", colspan=2)
-            app.getLabelWidget("starter_title").config(font=title_font)
-            app.setLabelStyle("starter_title", "H.TLabel")
-
-            with app.frame("frame19"):
-                app.setPadding(10, 10)
-                app.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
-                app.zoomImage("desktop", -7)
-
-                starter_info = \"""Your Solar Pi has a touchscreen. This means that you can use your finger to touch the screen and control the computer.
-        
-•  The image on the right is of the Solar Pi desktop.
-•  There is a bar at the top, showing you what windows are open.
-•  At the top left, there is a button to open a menu. From here, you can see and run all of the applications that are installed on your Solar Pi.\"""
-                app.addMessage("starter_info", starter_info, 0, 0)
-                app.setMessageBg("starter_info", msgBg)
-                app.setMessageFg("starter_info", msgFg)
-                app.setMessageSticky("starter_info", "nesw")
-
-                with app.frame("frame"):
-                    app.addLabel("info4", "Read more:  ", 0, 0)
-                    app.setLabelAlign("info4", "right")
-                    app.addNamedButton("Docs", "docs", ButtonHandler, 0, 1)
-
-
-            app.addLabel("charging_title", "Charging your Solar Pi", colspan=3)
-            app.setLabelStyle("charging_title", "H.TLabel")
-            app.getLabelWidget("charging_title").config(font=title_font)
-            #app.setLabelSticky("title5", "ew")
-            #app.setLabelAlign("title5", "center")
-            app.addHorizontalSeparator()
-
-            with app.frame("frame20"):
-                app.setPadding(10, 10)
-                app.setStretch("columns")
-                charge_info = \"""The battery meter below this page and in the bottom left of the display shows how much power is left in the batteries of your Solar Pi. A full bar (100%) means most power, and an empty bar (0%) means no power left.
-When the battery meter gets close to 0% and your Solar Pi shuts down, you need to charge it. To do this, fold out the solar panels, and make sure that the Solar Pi is facing the sun. You will then need to wait for a few hours until it is charged up.
-Once your Solar Pi is charged, the battery meter should show 100%.\"""
-                # app.addLabel("info5", text)
-                # app.setLabelAlign("info5", "center")
-                # app.getLabelWidget("info5").config(font=("Piboto", "13"))
-
-                app.addMessage("charge_info", charge_info)
-                app.setMessageBg("charge_info", msgBg)
-                app.setMessageFg("charge_info", msgFg)
-                app.setMessageSticky("charge_info", "nsw")
-
-
-                with app.frame("frame21"):
-                    app.addLabel("read", "Read more:", 0, 0)
-                    app.setLabelAnchor("read", "e")
-                    app.addButton("Starter Guide", Docs, 0, 1)
-                    app.setButtonSticky("Starter Guide", "")
-
-            if solar_theme == True:
-                app.setButtonStyle("docs", "H.TButton")
-                app.setButtonStyle("Starter Guide", "H.TButton")
-
-    """
 
     with app.note("Applications"):
 
@@ -767,6 +709,7 @@ if solar_theme == False:
     app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
     app.setLabelFrameStyle("Programming Glossary", "TFrame")
     app.setLabelFrameStyle("Java Guide", "TFrame")
+    app.setLabelFrameStyle("Libreoffice", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
     app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
