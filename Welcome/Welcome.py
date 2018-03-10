@@ -185,7 +185,7 @@ with app.subWindow("About Solar Pi", modal=True):
         app.zoomImage("solar_pi_logo", -3)
         with app.labelFrame("About"):
             app.setPadding(10, 10)
-            app.addLabel("about", "Solar Pi is a charity project, aimed at getting solar\npowered computers to those who need it most.\n\nEnjoy!")
+            app.addLabel("about", "Solar Pi is a charity project, aimed at getting\nRaspberry Pi based, solar powered computers\nto those who need it most.\n\nEnjoy!")
         app.addButton("Close", ButtonHandler)
         app.setButtonSticky("Close", "")
         if solar_theme == True:
