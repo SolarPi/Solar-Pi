@@ -39,7 +39,6 @@ def SolarPiTheme():
     # Sets Solar Pi theme for application
     app.setTtkTheme("plastik")
     app.setTtkTheme("clam")
-    #app.ttkStyle.configure(".", font="10")
 
     # Highlighted button
     app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
@@ -51,8 +50,6 @@ def SolarPiTheme():
     # Fix CheckButton background
     app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
-    #app.setButtonStyle("More Info", "H.TButton")
-    #app.setButtonStyle("Update System", "H.TButton")
     app.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to apply button
 
     app.ttkStyle.configure("Horizontal.TScale", troughcolor="light grey", sliderthickness="1", borderwidth="0", sliderrelief="flat")
@@ -221,10 +218,6 @@ with gui("Settings", useTtk=True) as app:
         app.ttkStyle.configure(".", background="white", foreground="black")
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
         app.setBg("white")
-    #app.ttkStyle.configure("TLabelframe.Label", background="white")
-    #app.ttkStyle.configure("TScale", background="white")
-    #app.ttkStyle.configure("TFrame", background="white")
-    #app.ttkStyle.configure("TCheckbutton", background="white")
 
     pages = [" Performance & Power", " Updates", " Other Settings"]  # Sets settings pages
 
@@ -246,7 +239,6 @@ with gui("Settings", useTtk=True) as app:
             app.addHorizontalSeparator(colspan=2)
 
             app.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
-            #app.getLabelWidget("title").config(font=("ubuntu", 12, "normal"))
             app.setLabelSticky("title", "ew")
 
             # Entry to display and enter clock speed
@@ -262,7 +254,6 @@ with gui("Settings", useTtk=True) as app:
             app.setScaleChangeFunction("slider", ScaleChange)
             app.setScaleSticky("slider", "ew")
             app.setScaleRange("slider", 600, 1200, curr=None)  # Changes scale range
-            # app.setScaleIncrement("slider", 100)
             app.addButton("More Info", ButtonHandler, 4, 1)
             # Label
             app.addLabel("Info", "◄ Greater Battery Life       Performance ►", colspan=2)
@@ -284,14 +275,13 @@ with gui("Settings", useTtk=True) as app:
                 app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
                 app.addButton("Update", update2)
 
-
         with app.frame(pages[2], 0, 1, sticky="new"):  # Code for third page
                 app.setPadding(5, 5)
                 app.addLabel("other_title", "Other Settings")
                 app.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
                 app.addHorizontalSeparator(colspan=2)
                 app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
-                app.addLabel("themes", "Themes for Solar Pi programs:", 3, 0)
+                app.addLabel("themes", "Themes for Solar Pi apps:", 3, 0)
                 themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
                 app.addOptionBox("Themes", themes, 3, 1)
                 app.addButton("Change Advanced Settings", ButtonHandler, 4, 0)
@@ -308,7 +298,6 @@ with gui("Settings", useTtk=True) as app:
         app.setPadding(10, 5)
         app.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
         app.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
-        #app.setButtonSticky(" Restore Defaults ", "e")
         app.addImageButton("Exit ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
 
     # Second window for updates

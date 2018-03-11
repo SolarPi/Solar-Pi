@@ -5,7 +5,6 @@ from PIL import ImageTk
 from time import sleep
 from threading import Thread
 
-# TODO: Test everything!!
 
 #############################################################
 #  Change rectangle colour:                                 #

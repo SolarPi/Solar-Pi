@@ -74,7 +74,6 @@ app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
 # Event Handler for buttons
 def ButtonHandler(press):
-    #tab_selected = app.getTabbedFrameSelectedTab("MainTabs")  # Fetches the current tab
     press = press.lower()
 
     if press == "Exit" or press == "Exit3" or press == "Exit2" or press == "Exit4":  # Exits program
@@ -83,10 +82,6 @@ def ButtonHandler(press):
     elif press == "close": app.hideSubWindow("About Solar Pi")  # Closes the About subwindow
     elif press == "libreoffice_close": app.hideSubWindow("Libreoffice")
 
-    #elif press == "scratch": Popen("../Resources/Launchers/Scratch Launcher.sh")  # Launches Scratch
-    #elif press == "python":  # Launches a Python IDE
-        #Popen("../Resources/Launchers/Thonny Launcher.sh")  # Launches Thonny
-    #elif press == "java": Popen("../Resources/Launchers/BlueJ Launcher.sh")  # Launches BlueJ
     elif press == "change advanced settings": Popen("/usr/bin/rc_gui")  # Launches RPi settings window
     elif press == "  languages": Popen("../Resources/Launchers/language_launcher.sh")  # Launches settings for display language
 
@@ -95,37 +90,6 @@ def ButtonHandler(press):
     else:
         Popen("../Resources/Launchers/" + press + " launcher.sh")
 
-
-# Menu event handler
-def MenuHandler(press):
-    if press == "Shutdown":
-        if app.yesNoBox("Shutdown", "Are you sure that you want to shutdown your Solar Pi now?") == True:
-            Popen("../Resources/Launchers/Shutdown.sh")  # Shuts down RPi
-    elif press == "Reboot":
-        if app.yesNoBox("Reboot", "Are you sure that you want to reboot your Solar Pi now?") == True:
-            Popen("../Resources/Launchers/Reboot.sh")  # Reboots RPi
-    #elif press == "Leafpad":
-     #   Popen("../Resources/Launchers/Leafpad Launcher.sh")  # Launches Leafpad
-    elif press == "Start Programming":
-        Programming(None)
-    elif press == "Python Guides":
-        PythonGuides(None)
-    elif press == "Performance to Battery Life":
-        PerfBattery(None)
-    elif press == "All Files":
-        Popen("../Resources/Launchers/pcmanfm Launcher.sh")  # Launches file manager
-    else:
-        Popen("../Resources/Launchers/" + press + " Launcher.sh")
-    # elif press == "Desktop":
-    #     Popen("../Resources/Launchers/Desktop Launcher.sh")
-    # elif press == "Documents":
-    #     Popen("../Resources/Launchers/Documents Launcher.sh")
-    # elif press == "Music":
-    #     Popen("../Resources/Launchers/Music Launcher.sh")
-    # elif press == "Pictures":
-    #     Popen("../Resources/Launchers/Pictures Launcher.sh")
-    # elif press == "Videos":
-    #     Popen("../Resources/Launchers/Videos Launcher.sh")
 
 def ToolbarHandler(press):
     if press == "Off":
@@ -145,13 +109,7 @@ def Programming(press):
     Popen("../Resources/Launchers/Start Coding.sh")
 def PythonGuides(press):
     Popen("../Resources/Launchers/Python Guide Launcher.sh")
-# def Update(press):
-#     box1 = app.getCheckBox("Update Operating System & Installed Programs")
-#     box2 = app.getCheckBox("Update appJar")
-#     if box1 == True:
-#         call("../Resources/Launchers/System Update.sh")
-#     if box2 == True:
-#         call("../Resources/Launchers/appJar Update.sh")
+
 def Settings(press):
     Popen("../Resources/Launchers/Settings Launcher.sh")
 
@@ -223,12 +181,6 @@ with app.subWindow("Libreoffice", modal=True):
             app.setButtonStyle("libreoffice_close", "H.TButton")
 
 
-# Menu bar
-#app.addMenuList("Power", ["Shutdown", "Reboot"], MenuHandler)
-#app.addMenuList("Applications", ["Leafpad", "Start Programming", "Performance to Battery Life"], MenuHandler)
-#app.addMenuList("Guides", ["Python Guides"], MenuHandler)
-#app.addMenuList("Files", ["All Files", "Desktop", "Documents", "Music", "Pictures", "Videos"], MenuHandler)
-
 # Main Window
 app.setPadding(3, 3)
 
@@ -263,8 +215,6 @@ with app.notebook("MainTabs", colspan=2):
         ###########################
         #     Animation Stuff     #
         ###########################
-
-        # TODO: Test on RPI - performance & memory leaks
 
         canvas = app.addCanvas("c", 1, 1, rowspan=3)  # Create canvas
 
@@ -370,13 +320,6 @@ with app.notebook("MainTabs", colspan=2):
                 app.setButtonSticky("Charging", "w")
             app.setFrameSticky("frame26", "w")
 
-            # app.addLabel("docs_options_title", "Docs")
-            # app.getLabelWidget("docs_options_title").config(font=title_font)
-            # app.setLabelStyle("docs_options_title", "H.TLabel")
-            # with app.frame("frame27"):
-            #     app.setPadding(10, 10)
-            #     app.addLabel("docs_options_info", "Unsure of anything? Want to read more? Go to the docs to learn more about your Solar Pi", 0, 0)
-            #     app.addButton("Docs", Docs, 0, 1)
 
         with app.frame("starter guide", 0, 0, sticky="new"):
             app.addLabel("basics_title", "          The Basics", 0, 0)  # 2 tabs + 2 spaces or 10 spaces
