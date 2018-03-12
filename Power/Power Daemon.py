@@ -51,9 +51,6 @@ while True:  # Repeat infinitely
         with gui("Notification", useTtk=True) as app:  # GUI for low battery warning
             app.setResizable(False)
 
-            app.setFont(family="piboto")
-            app.ttkStyle.configure(".", font=("piboto"))
-
             with open("../Settings/Settings.ini", "r") as file:
                 theme = file.readlines()[0].split(",")[3]  # Get theme from Settings file
             if theme == "Solar Pi":
@@ -64,6 +61,9 @@ while True:  # Repeat infinitely
                 app.ttkStyle.map("TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
             else:
                 app.setTtkTheme(theme)  # Sets ttk theme
+
+            app.setFont(family="piboto")
+            app.ttkStyle.configure(".", font=("piboto"))
 
             # app.hideTitleBar()
             app.setPadding(10, 10)

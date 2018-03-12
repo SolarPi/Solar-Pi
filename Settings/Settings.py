@@ -204,9 +204,6 @@ RESTORE = "\u21BA"
 with gui("Settings", useTtk=True) as app:
     app.setResizable(False)
 
-    app.setFont(family="piboto")
-    app.ttkStyle.configure(".", font=("piboto"))
-
     # Configures themes
     if theme == "Solar Pi":
         custom = True
@@ -320,6 +317,9 @@ with gui("Settings", useTtk=True) as app:
         SolarPiTheme()  # Sets theme to Solar Pi theme
     else:
         app.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
+
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
 
     if theme == "black":
         app.setListBoxBg("list", "#424242")

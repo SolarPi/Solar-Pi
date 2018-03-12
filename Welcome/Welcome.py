@@ -17,9 +17,6 @@ theme1 = getSetting("theme")
 app = gui("Solar Pi Welcome", useTtk=True)
 app.setResizable(False)
 
-app.setFont(family="piboto")
-app.ttkStyle.configure(".", font=("piboto"))
-
 #app.setLocation("CENTER")
 
 if theme1 == "Solar Pi":
@@ -68,6 +65,9 @@ if solar_theme == True:
     app.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
 title_font = ("piboto", 14, "normal")
+
+app.setFont(family="piboto")
+app.ttkStyle.configure(".", font=("piboto"))
 
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 app.ttkStyle.configure("Padding.TLabel", padding=[10, 10])

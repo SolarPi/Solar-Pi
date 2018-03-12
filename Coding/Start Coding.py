@@ -44,9 +44,6 @@ def ToolbarHandler(press):
 with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setResizable(False)
 
-    app.setFont(family="piboto")
-    app.ttkStyle.configure(".", font=("piboto"))
-
     if custom == True:
         app.setTtkTheme("plastik")
         app.setTtkTheme("clam")
@@ -68,6 +65,9 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
         if theme != "black":
             app.ttkStyle.configure(".", background="white", foreground="black")
             app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
+
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
 
     # Menu
     #app.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
