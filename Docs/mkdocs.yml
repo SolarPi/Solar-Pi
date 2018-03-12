@@ -22,6 +22,7 @@ pages:
     - Solar Pi Apps: solar-pi-apps.md    
     - Hardware: hardware.md
     - Advanced Things:
+        - Terminal: Advanced-Things/terminal.md
         - Linux Commands: Advanced-Things/commands.md
         - Python: Advanced-Things/python.md
         - Programming Glossary: Advanced-Things/programming-glossary.md

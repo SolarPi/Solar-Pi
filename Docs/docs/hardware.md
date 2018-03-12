@@ -19,7 +19,7 @@ This is the Solar Pi's display that also acts as an input device. This allows yo
 ## 4 x 2250mAh (9000mAh total) Canwelum Batteries
 ![batteries](/img/batteries.png)
 
-These store power for your Solar Pi, and allow it to run indoors and where there isn't very much sunlight.
+These store power for your Solar Pi, and allow it to run indoors and other areas where there is little or no sunlight.
 
 ## Pico UPS HAT
 ![hat](/img/hat.png)

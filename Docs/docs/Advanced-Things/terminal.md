@@ -7,13 +7,13 @@ Raspbian is the operating system installed on your Solar Pi. This page is here t
 !!! info
 	This was taken from official [Raspberry Pi documentation](https://www.raspberrypi.org/documentation/usage/terminal/README.md).
 
-The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](../../linux/usage/scripting.md)) that can potentially complete tasks more efficiently than much larger traditional software packages.
+The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](http://localhost:83/linux/usage/scripting/)) that can potentially complete tasks more efficiently than much larger traditional software packages.
 
 ### Opening a Terminal window
 
 On the Raspberry Pi (running Raspbian), the default terminal application is `LXTerminal`. This is known as a 'terminal emulator', this means that it emulates the old style video terminals (from before graphical user interfaces were developed) in a graphical environment. The application can be found on the Raspberry Pi desktop and when started will look something like this:
 
-![Terminal screenshot](img/terminal.png)
+![Terminal screenshot](/img/terminal.png)
 
 You should be able to see the following prompt:
 
@@ -29,7 +29,7 @@ Now, let's try running a command. Type `pwd` (present working directory) followe
 
 One of the key aspects of using a terminal is being able to navigate your file system. Firstly, run the following command: `ls -la`. You should see something similar to:
 
-![ls result](img/lsresult.png)
+![ls result](/img/lsresult.png)
 
 The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag'. Flags modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a `.`, known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them.
 
@@ -43,13 +43,13 @@ Rather than type every command, the terminal allows you to scroll through previo
 
 Some commands that make permanent changes to the state of your system require you to have root privileges to run. The command `sudo` temporarily gives your account (if you're not already logged in as root) the ability to run these commands, provided your user name is in a list of users ('sudoers'). When you append `sudo` to the start of a command and press `enter` you will be asked for your password, if that is entered correctly then the command you want to run will be run using root privileges. Be careful though, some commands that require `sudo` to run can irreparably damage your system so be careful!
 
-Further information on `sudo` and the root user can be found on the [linux root page](../../linux/usage/root.md).
+Further information on `sudo` and the root user can be found on the [linux root page](http://localhost:83/linux/usage/root/).
 
 ### Installing software through apt-get
 
 Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <package-name>` removes or uninstalls a package from your system.
 
-More information about this can be found in the [linux usage section on apt](../../linux/software/apt.md).
+More information about this can be found in the [linux usage section on apt](http://localhost:83/linux/software/apt/).
 
 ### Other useful commands
 
@@ -61,7 +61,7 @@ There are a few other commands that you may find useful, these are listed below:
 - `mkdir`: This makes a new directory, e.g. `mkdir new_dir` would create the directory `new_dir` in the present working directory.
 - `cat` lists the contents of files, e.g. `cat some_file` will display the contents of `some_file`.
 
-Other commands you may find useful can be found in the [commands page](Advanced-Things/commands.md).
+Other commands you may find useful can be found in the [commands page](/Advanced-Things/commands.md).
 
 ### Finding out about a command
 

@@ -1,5 +1,8 @@
 # Solar Pi Apps, Guides & Tutorials
 
+!!! info
+    All of the Solar Pi apps were created with [appJar](http://appjar.info), a simple tkinter GUI wrapper for Python.
+
 Your Solar Pi comes with a few custom apps that we have written to help you use your Solar Pi, along with some offline guides and tutorials that you can access. Here, we'll explain what each one is for, and how to use them.
 
 !!! warning
@@ -21,7 +24,7 @@ Also, there is a second section that explains the important process of charging 
 
 ### Applications
 
-The applications tab shows you apps that you might find useful. On the top row, you can access the [Solar Pi Settings](solar-pi-apps.md#solar-pi-settings) app, and an app that will help explain the main programming languages supported on the Solar Pi, and the IDEs (**I**ntegrated **D**evelopment **E**nvironment) that go with them.
+The applications tab shows you apps that you might find useful. On the top row, you can access the [Solar Pi Settings](solar-pi-apps.md#solar-pi-settings) app, the [Start Coding](solar-pi-apps.md#start-coding) app, and links to the Libreoffice office suite.
 
 On the second row, you'll find launchers for IDEs for each main programming language. You can also hover over the icons to get a brief overview of what each application does.
 
@@ -33,25 +36,12 @@ Here, you'll find the guides and tutorials for programming. Click on the buttons
 
 In this tab, it displays the system information of your Solar Pi. It will tell you information about the Raspberry Pi and Operating System.
 
-## Start Programming
-This app helps you decide where to start programming. It explains the 3 main programming languages supported on the Solar Pi: Scratch, [Python](/Advanced-Things/python.md) and Java.
+## Start Coding
+This app helps you decide where to start coding. It explains the 3 main programming languages supported on the Solar Pi: Scratch, [Python](/Advanced-Things/python.md) and Java.
 
 ![programming screenshot](/img/startcoding.png)
 
 To do this, select a language, and click `More Info`. A popup box should then appear giving you a brief overview of the language. Once you have decided, click `Go`, and the relevant IDE should launch.
-
-## Solar Pi Docs
-Not really an app, but still important. This is all the documentation for your Solar Pi. It opens in the Chromium web browser, to allow for easy navigation with a touchscreen. You can navigate different pages via clicking on the icon in the top left, and you can skip through different sections of a page through the menu on the right. You can search through the docs using the search bar in the top right. Links are highlighted in [green](solar-pi-apps.md#solar-pi-docs), and these will take you to different places in the docs.
-
-## A Byte of Python
-This isn't created by us! It's created by [Swaroop C H](https://www.gitbook.com/@swaroopch), and you can view the original [here](https://python.swaroopch.com/). This is to demonstrate that the Solar Pi can display E-Books, so that users can learn about computing and programming.
-
-This is a fantastic Python guide that teaches beginners how to start programming in Python. This opens in the Chromium browser, so that it is easy for you to use when using the touchscreen.
-
-## Java Guide
-Again, this wasn't created by us! It's created by [Tutorials Point](https://www.tutorialspoint.com/index.htm) and you can view the original [here](https://www.tutorialspoint.com/java/). This is to demonstrate how the Solar Pi can display offline webpages that allow users to still learn about computing and programming even though they might not be connected to the internet.
-
-This offline website will teach you how to program in Java; a language that is available on the Solar Pi. Designed for beginners, you should be coding in no time! This also opens in the Chromium browser.
 
 ## Solar Pi Settings
 The Solar Pi Settings app allows you to change settings for your Solar Pi. These are settings that can't be changed from the default Raspbian installation, and are specific to the Solar Pi. When you have finished changing the settings, ensure that you click `Apply` and reboot.
@@ -75,12 +65,26 @@ You can update your Solar Pi from here. Insert the Solar Pi update USB stick, an
 
 The checkbox that's labelled `Launch the Solar Pi welcome application at startup` controls if you see the Solar Pi Welcome app when you log in. This is on by default, but once you get used to using your Solar Pi, you can turn it off.
 
-The next option is labelled `Theme for Solar Pi apps:`. This controls how Solar Pi apps look. The default is `'plastik'`, but you can always change it by clicking on the box, and selecting from the drop down menu.
+The next option is labelled `Theme for Solar Pi apps:`. This controls how Solar Pi apps look. The default is `'Solar Pi'`, but you can always change it by clicking on the box, and selecting a theme from the drop down menu.
 
 Finally, at the bottom of the section, there are buttons which say `Change Advanced Settings` and `Languages`. The `Change Advanced Settings` takes you to the Raspberry Pi Configuration app, and will allow you to tweak things further. The `Languages` button takes you to the [Languages app](solar-pi-apps.md#languages), and will allow you to change the display language of your Solar Pi.
 
 !!! warning
 	Only go into the Advanced Settings if you know what you are doing!
+
+
+## Solar Pi Docs
+Not really an app, but still important. This is all the documentation for your Solar Pi. It opens in the Chromium web browser, to allow for easy navigation with a touchscreen. You can navigate different pages via clicking on the icon in the top left, and you can skip through different sections of a page through the menu on the right. You can search through the docs using the search bar in the top right. Links are highlighted in [green](solar-pi-apps.md#solar-pi-docs), and these will take you to different places in the docs.
+
+## A Byte of Python
+This isn't created by us! It's created by [Swaroop C H](https://www.gitbook.com/@swaroopch), and you can view the original [here](https://python.swaroopch.com/). This is to demonstrate that the Solar Pi can display E-Books, so that users can learn about computing and programming.
+
+This is a fantastic Python guide that teaches beginners how to start programming in Python. This opens in the Chromium browser, so that it is easy for you to use when using the touchscreen.
+
+## Java Guide
+Again, this wasn't created by us! It's created by [Tutorials Point](https://www.tutorialspoint.com/index.htm) and you can view the original [here](https://www.tutorialspoint.com/java/). This is to demonstrate how the Solar Pi can display offline webpages that allow users to still learn about computing and programming even though they might not be connected to the internet.
+
+This offline website will teach you how to program in Java; a language that is available on the Solar Pi. Designed for beginners, you should be coding in no time! This also opens in the Chromium browser.
 
 ## Languages
 ![languages](/img/languages.png)
