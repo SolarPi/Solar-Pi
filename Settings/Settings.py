@@ -86,6 +86,9 @@ def ApplySettings(press):
         app.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
+
     app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
     setSetting("clock", str(clock_speed))
@@ -124,6 +127,8 @@ def Defaults(press):  # Procedure to reset to default
     setSetting("theme", "Solar Pi")
 
     SolarPiTheme()  # Sets Solar Pi theme for application
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
 
     SetItems(1200, True, True, "Solar Pi")  # Sets controls to default
 
