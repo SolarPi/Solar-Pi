@@ -487,16 +487,18 @@ with app.notebook("MainTabs", colspan=2):
                     app.zoomImage("python2", -4)
                     app.setImageTooltip("python2", "An introduction to Python, written by the Raspberry Pi Foundation")
                     with app.frame("buttonframe1", 0, 1):
-                        app.setSticky("")
-                        app.addButton("Introduction to Python", PythonIntro, 0, 1)
+                        app.setSticky("nesw")
+                        app.setPadding(10, 10)
+                        app.addButton("Introduction to Python", PythonIntro)
                 with app.frame("byte of python", 0, 1):
                     app.setPadding(5, 5)
                     app.addImage("python3", "../Resources/Images/Python icon.gif", 0, 0)
                     app.zoomImage("python3", -4)
                     app.setImageTooltip("python3", "A popular Ebook that teaches you Python")
                     with app.frame("buttonframe2", 0, 1):
-                        app.setSticky("")
-                        app.addButton("A Byte of Python", ByteofPython, 0, 1)
+                        app.setSticky("nesw")
+                        app.setPadding(10, 10)
+                        app.addButton("A Byte of Python", ByteofPython)
 
             # Programming Glossary
             with app.labelFrame("Programming Glossary", 2, 0):
@@ -505,7 +507,11 @@ with app.notebook("MainTabs", colspan=2):
                 app.zoomImage("programming_icon2", -10)
                 app.setImageTooltip("programming_icon2",
                                     "Gives you definitions of words that you might not have heard before")
-                app.addButton("Glossary", Glossary, 0, 1)
+                with app.frame("frame32", 0, 1):
+                    app.setPadding(10, 10)
+                    app.setSticky("nesw")
+                    app.addButton("Glossary", Glossary)
+                app.setFrameSticky("frame32", "nesw")
 
             # Google Python Tutorial
             with app.labelFrame("Java Guide", 2, 1):
@@ -513,7 +519,11 @@ with app.notebook("MainTabs", colspan=2):
                 app.addImage("java_logo2", "../Resources/Images/java logo.gif", 0, 0)
                 app.zoomImage("java_logo2", -5)
                 app.setImageTooltip("java_logo2", "A guide on Java to help you get to know the basics of Java 8")
-                app.addButton("Java Guide", Java, 0, 1)
+                with app.frame("frame33", 0, 1):
+                    app.setPadding(10, 10)
+                    app.setSticky("nesw")
+                    app.addButton("Java Guide", Java)
+                app.setFrameSticky("frame33", "nesw")
 
         if solar_theme == True:
             app.setButtonStyle("Introduction to Python", "H.TButton")
