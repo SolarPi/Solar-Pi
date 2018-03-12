@@ -199,7 +199,7 @@ with app.notebook("MainTabs", colspan=2):
         with app.frame("frame4", 0, 0, colspan=3):
             app.addLabel("text4", "Welcome to your  ", 0, 0)
             app.setLabelAlign("text4", "right")
-            app.getLabelWidget("text4").config(font=("ubuntu", "20"))
+            app.getLabelWidget("text4").config(font=("piboto", "20"))
             app.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
             app.zoomImage("logo text1", -2)
             app.setImageSticky("logo text1", "nsw")
