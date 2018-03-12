@@ -234,7 +234,7 @@ with gui("Settings", useTtk=True) as app:
             app.setPadding(4, 4)
 
             app.addLabel("perf_title", "Performance & Power")
-            app.getLabelWidget("perf_title").config(font=("ubuntu", 14, "normal"))
+            app.getLabelWidget("perf_title").config(font=("piboto", 14, "normal"))
 
             app.addHorizontalSeparator(colspan=2)
 
@@ -266,7 +266,7 @@ with gui("Settings", useTtk=True) as app:
         with app.frame(pages[1], 0, 1, sticky="new"):  # Code for second page
                 app.setPadding(5, 5)
                 app.addLabel("updates_title", "Updates")
-                app.getLabelWidget("updates_title").config(font=("ubuntu", 14, "normal"))
+                app.getLabelWidget("updates_title").config(font=("piboto", 14, "normal"))
                 app.addHorizontalSeparator()
                 #app.addLabel("update_info", "Note: This will only work with an internet connection.")
                 #app.addCheckBox("Update Operating System & Installed Programs")
@@ -278,7 +278,7 @@ with gui("Settings", useTtk=True) as app:
         with app.frame(pages[2], 0, 1, sticky="new"):  # Code for third page
                 app.setPadding(5, 5)
                 app.addLabel("other_title", "Other Settings")
-                app.getLabelWidget("other_title").config(font=("ubuntu", 14, "normal"))
+                app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
                 app.addHorizontalSeparator(colspan=2)
                 app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
                 app.addLabel("themes", "Themes for Solar Pi apps:", 3, 0)
