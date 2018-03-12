@@ -44,6 +44,9 @@ def ToolbarHandler(press):
 with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setResizable(False)
 
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
+
     if custom == True:
         app.setTtkTheme("plastik")
         app.setTtkTheme("clam")

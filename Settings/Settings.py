@@ -204,6 +204,9 @@ RESTORE = "\u21BA"
 with gui("Settings", useTtk=True) as app:
     app.setResizable(False)
 
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
+
     # Configures themes
     if theme == "Solar Pi":
         custom = True

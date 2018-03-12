@@ -32,6 +32,9 @@ def LanguageHandler(press):
 with gui("Languages", useTtk=True) as app:
     app.setResizable(False)
 
+    app.setFont(family="piboto")
+    app.ttkStyle.configure(".", font=("piboto"))
+
     if theme == "Solar Pi":
         custom = True
         app.setTtkTheme("plastik")
