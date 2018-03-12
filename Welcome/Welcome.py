@@ -378,7 +378,7 @@ with app.notebook("MainTabs", colspan=2):
                 app.setPadding(10, 10)
                 app.setStretch("columns")
 
-                charge_info = """There is a battery meter at the bottom left corner of the display. This tell you how much power is left in the batteries.
+                charge_info = """There is a battery meter at the bottom left corner of the display. This tells you how much power is left in the batteries.
 
 •  When the battery gets low, you need to charge your Solar Pi. To do this, fold out the solar panels and face them to the sun.
 •  You will know if the batteries are charging, as the meter will show the charging animation.
