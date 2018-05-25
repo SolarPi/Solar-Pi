@@ -588,7 +588,42 @@ with app.notebook("MainTabs", colspan=2):
     ##################################
 
     with app.note("Guides & Tutorials"):
+        pages2 = [" Python Intro", " A Byte of Python", " Programming Glossary", " Java Guide"]  # Sets settings pages
 
+        def change2(listName):
+            app.getFrameWidget(app.listBox("list2")[0]).lift()
+
+        with app.labelFrame("Guides & Tutorials", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
+            lb2 = app.listBox("list2", pages2, change=change2,
+                             activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
+                             selectmode=app.SINGLE,
+                             relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
+            app.configure(sticky="news", stretch="both")
+
+            with app.frame(pages2[0], 0, 1, sticky="new"):  # Create frame for each page
+                with app.frame("intro_title", colspan=2):
+                    app.addLabel("intro_title", "Python Introduction")
+                    app.getLabelWidget("intro_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("intro_icon", "../Resources/Images/Python icon.gif", 0, 1)
+                    app.zoomImage("intro_icon", -4)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("intro_image", "../Resources/Images/python hello world.gif", 1, 0)
+                #app.zoomImage("intro_image", -2)
+
+                with app.frame("intro_content", 2, 0):
+                    app.setPadding(5, 5)
+                    app.addMessage("intro_sum", "An introduction to Python written by the Raspberry Pi Foundation.", 0, 0)
+                    app.setMessageWidth("intro_sum", 500)
+                    app.setMessageFg("intro_sum", msgFg)
+                    app.setMessageBg("intro_sum", msgBg)
+                    app.addLabel("spacer4", "")
+                    app.addButton("Go!", PythonIntro, 1, 0)
+                    app.setButtonSticky("Go!", "")
+
+            app.selectListItemAtPos("list2", 0, callFunction=True)
+
+        """
         with app.labelFrame("Guides & Tutorials"):
             app.setSticky("nesw")
             app.setPadding(10, 10)
@@ -646,14 +681,14 @@ with app.notebook("MainTabs", colspan=2):
 
         if solar_theme == True:
             app.setButtonStyle("Introduction to Python", "H.TButton")
-
+        """
 
     #########################
     #  Tab for System Info  #
     #########################
 
     with app.note("System Info"):
-        # Retrieve System infomation
+        # Retrieve System information
         try:
             call("/usr/local/bin/Solar Pi/Welcome/info.sh")
         except OSError:
@@ -782,12 +817,5 @@ if theme1 != "black":
 
 t = Thread(target=fade)
 t.start()
-
-stop = False
-def animationStop():
-    stop = True
-    return True
-
-app.setStopFunction(animationStop)
 
 app.go(language=getSetting("language"))
