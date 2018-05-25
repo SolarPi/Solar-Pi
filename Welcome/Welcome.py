@@ -31,6 +31,7 @@ else:
     if theme1 != "black":
         app.ttkStyle.configure(".", foreground="black", background="white")
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+        app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
         app.setBg("white")
         msgFg = "black"
         msgBg = "white"
@@ -66,8 +67,8 @@ if solar_theme == True:
 
 title_font = ("piboto", 14, "normal")
 
-app.setFont(family="piboto")
-app.ttkStyle.configure(".", font=("piboto"))
+#app.setFont(family="piboto")
+#app.ttkStyle.configure(".", font=("piboto"))
 
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 app.ttkStyle.configure("Padding.TLabel", padding=[10, 10])
@@ -89,6 +90,7 @@ def ButtonHandler(press):
 
     elif press == "change advanced settings": Popen("/usr/bin/rc_gui")  # Launches RPi settings window
     elif press == "  languages": Popen("../Resources/Launchers/language_launcher.sh")  # Launches settings for display language
+    elif press == "file manager": Popen("../Resources/Launchers/pcmanfm Launcher.sh")
 
     elif press == "get started": app.getNotebookWidget("MainTabs").select([1])  # Sets selected note/tab to Get Started
     elif press == "charging": app.getNotebookWidget("MainTabs").select([2])  # Set selected note/tab to Charging
@@ -153,37 +155,37 @@ with app.subWindow("About Solar Pi", modal=True):
         app.setButtonSticky("Close", "")
         if solar_theme == True:
             app.setButtonStyle("Close", "H.TButton")
-
-with app.subWindow("Libreoffice", modal=True):
-    app.setResizable(False)
-    with app.frame("frame23"):
-        app.setPadding(10, 10)
-        with app.labelFrame("Libreoffice"):
-            app.setPadding(10, 10)
-            with app.frame("writer", 0, 0):
-                app.setPadding(10, 10)
-                app.addImage("writer", "../Resources/Images/writer.gif", 0, 0)
-                app.setImageTooltip("writer", "A simple, easy to use word processor.")
-                app.addButton("Writer", Libreoffice, 0, 1)
-            with app.frame("calc", 0, 1):
-                app.setPadding(10, 10)
-                app.addImage("calc", "../Resources/Images/calc.gif", 0, 0)
-                app.setImageTooltip("calc", "Quickly make speadsheets and crunch numbers.")
-                app.addButton("Calc", Libreoffice, 0, 1)
-            with app.frame("impress", 1, 0):
-                app.setPadding(10, 10)
-                app.addImage("impress", "../Resources/Images/impress.gif", 0, 0)
-                app.setImageTooltip("impress", "Create presentations!")
-                app.addButton("Impress", Libreoffice, 0, 1)
-            with app.frame("Draw", 1, 1):
-                app.setPadding(10, 10)
-                app.addImage("draw", "../Resources/Images/draw.gif", 0, 0)
-                app.setImageTooltip("draw", "Show off your art skills!")
-                app.addButton("Draw", Libreoffice, 0, 1)
-        app.addNamedButton("Close", "libreoffice_close", ButtonHandler)
-        app.setButtonSticky("libreoffice_close", "")
-        if solar_theme == True:
-            app.setButtonStyle("libreoffice_close", "H.TButton")
+#
+# with app.subWindow("Libreoffice", modal=True):
+#     app.setResizable(False)
+#     with app.frame("frame23"):
+#         app.setPadding(10, 10)
+#         with app.labelFrame("Libreoffice"):
+#             app.setPadding(10, 10)
+#             with app.frame("writer", 0, 0):
+#                 app.setPadding(10, 10)
+#                 app.addImage("writer", "../Resources/Images/writer.gif", 0, 0)
+#                 app.setImageTooltip("writer", "A simple, easy to use word processor.")
+#                 app.addButton("Writer", Libreoffice, 0, 1)
+#             with app.frame("calc", 0, 1):
+#                 app.setPadding(10, 10)
+#                 app.addImage("calc", "../Resources/Images/calc.gif", 0, 0)
+#                 app.setImageTooltip("calc", "Quickly make speadsheets and crunch numbers.")
+#                 app.addButton("Calc", Libreoffice, 0, 1)
+#             with app.frame("impress", 1, 0):
+#                 app.setPadding(10, 10)
+#                 app.addImage("impress", "../Resources/Images/impress.gif", 0, 0)
+#                 app.setImageTooltip("impress", "Create presentations!")
+#                 app.addButton("Impress", Libreoffice, 0, 1)
+#             with app.frame("Draw", 1, 1):
+#                 app.setPadding(10, 10)
+#                 app.addImage("draw", "../Resources/Images/draw.gif", 0, 0)
+#                 app.setImageTooltip("draw", "Show off your art skills!")
+#                 app.addButton("Draw", Libreoffice, 0, 1)
+#         app.addNamedButton("Close", "libreoffice_close", ButtonHandler)
+#         app.setButtonSticky("libreoffice_close", "")
+#         if solar_theme == True:
+#             app.setButtonStyle("libreoffice_close", "H.TButton")
 
 
 # Main Window
@@ -244,33 +246,32 @@ with app.notebook("MainTabs", colspan=2):
         img.putalpha(0)  # Make first image transparent
         images.append(app.addCanvasImage("c", pos, pos, ImageTk.PhotoImage(img)))  # Add to cache
 
-
         def fade():
-            global images, img, canvas
-            image_cache = []  # Frames of animation
+            global images, img, canvas, stop
+            image_cache = []
             for i in range(0, 256, 8):  # Generate all 32 frames
-                img.putalpha(i)
-                image_cache.append(ImageTk.PhotoImage(img))
+                img.putalpha(i)  # Adjust alpha of each frame
+                image_cache.append(ImageTk.PhotoImage(img))  # Add each frame to list
             sleep(0.75)  # Pause so animation starts just after application launch
 
             while True:
-                images.append(app.addCanvasImage("c", pos, pos, image_cache[0]))
+                images.append(app.addCanvasImage("c", pos, pos, image_cache[0]))  # Put each frame on canvas, then append to cache
 
-                for image in image_cache:
+                for image in image_cache:  # Iterate over canvas images
+                    images.append(app.addCanvasImage("c", pos, pos, image))  # Display image, then add to temporary list
+                    canvas.delete(images.pop(0))  # Delete image behind (1st image in list)
+                    sleep(0.045)  # Pause
+
+                sleep(15)  # Show logo in full
+
+                for image in reversed(image_cache):  # Iterate over canvas images again but in reverse to fade out
                     images.append(app.addCanvasImage("c", pos, pos, image))
                     canvas.delete(images.pop(0))
                     sleep(0.045)
 
-                sleep(15)
+                images = []  # Clean temporary list
 
-                for image in reversed(image_cache):
-                    images.append(app.addCanvasImage("c", pos, pos, image))
-                    canvas.delete(images.pop(0))
-                    sleep(0.045)
-
-                images = []
-
-                sleep(0.25)
+                sleep(0.25)  # Pause before fading back in
 
         #app.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
         #app.zoomImage("logo5", -4)
@@ -406,6 +407,119 @@ with app.notebook("MainTabs", colspan=2):
 
     with app.note("Applications"):
 
+        pages = [" Start Coding", " File Manager", " Solar Pi Settings", " Libreoffice"]  # Sets settings pages
+
+        def change(listName):
+            app.getFrameWidget(app.listBox("list")[0]).lift()
+
+        with app.labelFrame("Applications", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
+            lb = app.listBox("list", pages, change=change,
+                             activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
+                             selectmode=app.SINGLE,
+                             relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
+            app.configure(sticky="news", stretch="both")
+
+            with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("coding_title", colspan=2):
+                    app.addLabel("coding_title", "Start Coding")
+                    app.getLabelWidget("coding_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("coding_icon", "../Resources/Images/Programming icon cropped.gif", 0, 1)
+                    app.zoomImage("coding_icon", -13)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("coding_image", "../Resources/Images/startcoding.gif", 1, 0, rowspan=2)
+                app.zoomImage("coding_image", -4)
+
+                with app.frame("coding_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("coding_sum", "This allows you to see and try the different options for coding.")
+                    app.setMessageWidth("coding_sum", 175)
+                    app.setMessageFg("coding_sum", msgFg)
+                    app.setMessageBg("coding_sum", msgBg)
+                    app.addLabel("spacer1", "")
+                    app.addButton("Start Coding", Programming)
+
+            with app.frame(pages[1], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("file_title", colspan=2):
+                    app.addLabel("file_title", "File Manager")
+                    app.getLabelWidget("file_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("file_title", "../Resources/Images/file manager.gif", 0, 1)
+                    #app.zoomImage("file_title", -50)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("file_image", "../Resources/Images/pcmanfm.gif", 1, 0, rowspan=2)
+                app.zoomImage("file_image", -3)
+
+                with app.frame("file_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("file_sum", "Also known as PCmanFM, this allows you to view and manage your files.")
+                    app.setMessageWidth("file_sum", 175)
+                    app.setMessageFg("file_sum", msgFg)
+                    app.setMessageBg("file_sum", msgBg)
+                    app.addLabel("spacer3", "")
+                    app.addButton("File Manager", ButtonHandler)
+
+            with app.frame(pages[2], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("settings_title", colspan=2):
+                    app.addLabel("settings_title", "Solar Pi Settings")
+                    app.getLabelWidget("settings_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 1)
+                    app.zoomImage("settings_icon", -5)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("settings_image", "../Resources/Images/perfpower.gif", 1, 0, rowspan=2)
+                app.zoomImage("settings_image", -5)
+
+                with app.frame("settings_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("settings_sum", "This allows you to change the settings for your Solar Pi.")
+                    app.setMessageWidth("settings_sum", 175)
+                    app.setMessageFg("settings_sum", msgFg)
+                    app.setMessageBg("settings_sum", msgBg)
+                    app.addLabel("spacer2", "")
+                    app.addButton("Settings", Settings)
+
+            with app.frame(pages[3], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("libreoffice_title", colspan=2):
+                    app.addLabel("libreoffice_title", "Libreoffice")
+                    app.getLabelWidget("libreoffice_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("libreoffice_icon", "../Resources/Images/libreoffice.gif", 0, 1)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addMessage("libreoffice_sum", "Hover over the icons to see more information.")
+                app.setMessageWidth("libreoffice_sum", 525)
+                app.setMessageFg("libreoffice_sum", msgFg)
+                app.setMessageBg("libreoffice_sum", msgBg)
+                with app.frame("libreoffice"):
+                    app.setPadding(10, 10)
+                    with app.frame("writer", 0, 0):
+                        app.setPadding(10, 10)
+                        app.addImage("writer", "../Resources/Images/writer.gif", 0, 0)
+                        app.setImageTooltip("writer", "A simple, easy to use word processor.")
+                        app.addButton("Writer", Libreoffice, 0, 1)
+                    with app.frame("calc", 0, 1):
+                        app.setPadding(10, 10)
+                        app.addImage("calc", "../Resources/Images/calc.gif", 0, 0)
+                        app.setImageTooltip("calc", "Quickly make speadsheets and crunch numbers.")
+                        app.addButton("Calc", Libreoffice, 0, 1)
+                    with app.frame("impress", 1, 0):
+                        app.setPadding(10, 10)
+                        app.addImage("impress", "../Resources/Images/impress.gif", 0, 0)
+                        app.setImageTooltip("impress", "Create presentations!")
+                        app.addButton("Impress", Libreoffice, 0, 1)
+                    with app.frame("Draw", 1, 1):
+                        app.setPadding(10, 10)
+                        app.addImage("draw", "../Resources/Images/draw.gif", 0, 0)
+                        app.setImageTooltip("draw", "Show off your art skills!")
+                        app.addButton("Draw", Libreoffice, 0, 1)
+
+        app.selectListItemAtPos("list", 0, callFunction=True)
+
+        """
         with app.labelFrame("Applications"):
             app.setSticky("ew")
             app.setPadding(10, 10)
@@ -466,7 +580,7 @@ with app.notebook("MainTabs", colspan=2):
 
         if solar_theme == True:
             app.setButtonStyle("Start Coding", "H.TButton")
-
+        """
 
 
     ##################################
@@ -668,5 +782,12 @@ if theme1 != "black":
 
 t = Thread(target=fade)
 t.start()
+
+stop = False
+def animationStop():
+    stop = True
+    return True
+
+app.setStopFunction(animationStop)
 
 app.go(language=getSetting("language"))

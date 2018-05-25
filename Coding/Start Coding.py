@@ -29,11 +29,11 @@ def ButtonHandler(press):
         
     elif press == " More Info  ":
         if option == "Scratch (Easy)":
-            app.infoBox("Scratch", "Scratch teaches you the logic of programming in an easy to understand way. This will set a firm foundation for beginners.")
+            app.infoBox("Scratch", "Scratch teaches you the logic of programming in an easy to understand way. Great if you're a beginner!.")
         elif option == "Python (Intermedium/Hard)":
-            app.infoBox("Python", "Python is one of the most commonly used programming languages. It was actually used to code this program! The syntax of Python is very simple, and you can start off by making simple command line programs and move on to learn OOP (Object Oriented Programming) in this too.")
+            app.infoBox("Python", "Python is one of the most commonly used programming languages. It was actually used to code this program! Python is beginner friendly, so it's a good one to start out with.")
         elif option == "Java (Hard)":
-            app.infoBox("Java", "Java is a high level OOP (Object Oriented Programming) language. You can write web apps as well as regular applications with this.")
+            app.infoBox("Java", "Java is a bit more complicated than Python, so it's a good challenge if you want to take your skills further.")
 
 
 def ToolbarHandler(press):
