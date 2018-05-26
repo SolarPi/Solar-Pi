@@ -407,7 +407,7 @@ with app.notebook("MainTabs", colspan=2):
 
     with app.note("Applications"):
 
-        pages = [" Start Coding", " File Manager", " Solar Pi Settings", " Libreoffice"]  # Sets settings pages
+        pages = [" Start Coding", " File Manager", " Solar Pi Settings", " LibreOffice"]  # Sets settings pages
 
         def change(listName):
             app.getFrameWidget(app.listBox("list")[0]).lift()
@@ -485,7 +485,7 @@ with app.notebook("MainTabs", colspan=2):
             with app.frame(pages[3], 0, 1, sticky="new"):  # Create frame for each page
 
                 with app.frame("libreoffice_title", colspan=2):
-                    app.addLabel("libreoffice_title", "Libreoffice")
+                    app.addLabel("libreoffice_title", "LibreOffice")
                     app.getLabelWidget("libreoffice_title").config(font=("piboto", 14, "normal"))
                     app.addImage("libreoffice_icon", "../Resources/Images/libreoffice.gif", 0, 1)
                     app.addHorizontalSeparator(colspan=2)
@@ -517,78 +517,13 @@ with app.notebook("MainTabs", colspan=2):
                         app.setImageTooltip("draw", "Show off your art skills!")
                         app.addButton("Draw", Libreoffice, 0, 1)
 
-        app.selectListItemAtPos("list", 0, callFunction=True)
-
-        """
-        with app.labelFrame("Applications"):
-            app.setSticky("ew")
-            app.setPadding(10, 10)
-            app.addLabel("applications_info", "Hover over the icons to see more information about each app.", colspan=2)
-
-            with app.labelFrame("Solar Pi Apps"):
-                # Start Programming
-                app.setPadding(5, 5)
-                app.setSticky("nesw")
-                with app.frame("Start Programming", 1, 0):
-                    app.setPadding(10, 10)
-                    app.addImage("programming_icon", "../Resources/Images/Programming icon cropped.gif", 0, 0)
-                    app.zoomImage("programming_icon", -13)
-                    app.setImageTooltip("programming_icon", "This allows you to see and try the different options for coding.")
-                    app.addButton("Start Coding", Programming, 0, 1)
-                app.setFrameSticky("Start Programming", "nesw")
-
-                # Performance to Battery Life
-                with app.frame("Solar Pi Settings", 1, 1):
-                    app.setPadding(10, 10)
-                    app.addImage("settings", "../Resources/Images/settings icon.gif", 0, 0)
-                    app.zoomImage("settings", -5)
-                    app.setImageTooltip("settings", "This allows you to change the settings for your Solar Pi.")
-                    app.addButton("Solar Pi Settings", Settings, 0, 1)
-
-                with app.frame("libreoffice", 1, 2):
-                    app.setPadding(10, 10)
-                    app.addImage("libreoffice", "../Resources/Images/writer.gif", 0, 0)
-                    app.setImageTooltip("libreoffice", "A free office suite - create documents, presentations and spreadsheets.")
-                    app.addButton("Libreoffice", Libreoffice, 0, 1)
-
-            # IDEs
-            with app.labelFrame("IDEs", 2, 0, colspan=2):
-                app.setPadding(5, 5)
-                app.setSticky("nesw")
-
-                with app.frame("Scratch", 1, 0):
-                    app.setPadding(10, 10)
-                    app.addImage("scratch_logo2", "../Resources/Images/scratch logo.gif", 0, 0)
-                    app.zoomImage("scratch_logo2", -50)
-                    app.setImageTooltip("scratch_logo2", "The Scratch 2 IDE. Create Scratch programs and games with this.")
-                    app.addButton("Scratch", ButtonHandler, 0, 1)
-
-                with app.frame("Python", 1, 1):
-                    app.setPadding(10, 10)
-                    app.addImage("python_logo2", "../Resources/Images/Python icon.gif", 0, 0)
-                    app.zoomImage("python_logo2", -4)
-                    app.setImageTooltip("python_logo2", "The Python IDE. Write and run Python applications.")
-                    app.addNamedButton("Python", "thonny", ButtonHandler, 0, 1)
-
-                with app.frame("Java", 1, 2):
-                    app.setPadding(10, 10)
-                    app.addImage("java_logo", "../Resources/Images/java logo.gif", 0, 0)
-                    app.zoomImage("java_logo", -5)
-                    app.setImageTooltip("java_logo", "The BlueJ Java IDE. Create Java applications.")
-                    app.addNamedButton("Java", "bluej", ButtonHandler, 0, 1)
-
-
-        if solar_theme == True:
-            app.setButtonStyle("Start Coding", "H.TButton")
-        """
-
 
     ##################################
     #  Tab for Guides and Tutorials  #
     ##################################
 
     with app.note("Guides & Tutorials"):
-        pages2 = [" Python Intro", " A Byte of Python", " Programming Glossary", " Java Guide"]  # Sets settings pages
+        pages2 = [" Python Introduction", " A Byte of Python", " Programming Glossary", " Java Guide"]  # Sets settings pages
 
         def change2(listName):
             app.getFrameWidget(app.listBox("list2")[0]).lift()
@@ -609,7 +544,6 @@ with app.notebook("MainTabs", colspan=2):
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("intro_image", "../Resources/Images/python hello world.gif", 1, 0)
-                #app.zoomImage("intro_image", -2)
 
                 with app.frame("intro_content", 2, 0):
                     app.setPadding(5, 5)
@@ -618,10 +552,71 @@ with app.notebook("MainTabs", colspan=2):
                     app.setMessageFg("intro_sum", msgFg)
                     app.setMessageBg("intro_sum", msgBg)
                     app.addLabel("spacer4", "")
+
+
                     app.addButton("Go!", PythonIntro, 1, 0)
                     app.setButtonSticky("Go!", "")
 
-            app.selectListItemAtPos("list2", 0, callFunction=True)
+            with app.frame(pages2[1], 0, 1, sticky="new"):  # Create frame for each page
+                with app.frame("byte_title", colspan=2):
+                    app.addLabel("byte_title", "A Byte of Python")
+                    app.getLabelWidget("byte_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("byte_icon", "../Resources/Images/Python icon.gif", 0, 1)
+                    app.zoomImage("byte_icon", -4)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("byte_image", "../Resources/Images/Python icon.gif", 1, 0)
+
+                with app.frame("byte_content", 2, 0):
+                    app.setPadding(5, 5)
+                    app.addMessage("byte_content", "A popular Ebook that will help you with coding in Python.", 0, 0)
+                    app.setMessageWidth("byte_content", 500)
+                    app.setMessageFg("byte_content", msgFg)
+                    app.setMessageBg("byte_content", msgBg)
+                    app.addLabel("spacer5", "")
+
+                    app.addButton("More Python!", ByteofPython, 1, 0)
+                    app.setButtonSticky("More Python!", "")
+
+            with app.frame(pages2[2], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("glossary_title", colspan=2):
+                    app.addLabel("glossary_title", "Programming Glossary")
+                    app.getLabelWidget("glossary_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("glossary_icon", "../Resources/Images/docs icon.gif", 0, 1)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("glossary_image", "../Resources/Images/glossary.gif", 1, 0, rowspan=2)
+
+                with app.frame("glossary_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("glossary_sum", "Gives you definitions of words that you might not have heard before.")
+                    app.setMessageWidth("glossary_sum", 175)
+                    app.setMessageFg("glossary_sum", msgFg)
+                    app.setMessageBg("glossary_sum", msgBg)
+                    app.addLabel("spacer6", "")
+                    app.addButton("Glossary", Glossary)
+
+            with app.frame(pages2[3], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("java_title", colspan=2):
+                    app.addLabel("java_title", "Java Guide")
+                    app.getLabelWidget("java_title").config(font=("piboto", 14, "normal"))
+                    app.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 1)
+                    app.zoomImage("java_icon", -5)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("java_image", "../Resources/Images/java guide.gif", 1, 0, rowspan=2)
+
+                with app.frame("java_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("java_sum", "A guide to help you get to know the basics of coding in Java.")
+                    app.setMessageWidth("java_sum", 175)
+                    app.setMessageFg("java_sum", msgFg)
+                    app.setMessageBg("java_sum", msgBg)
+                    app.addLabel("spacer7", "")
+                    app.addButton("Java Guide", Java)
+
 
         """
         with app.labelFrame("Guides & Tutorials"):
@@ -796,17 +791,23 @@ app.addCheckBox("Launch at startup")
 app.setCheckBox("Launch at startup", ticked=getSetting("welcome"))
 app.setCheckBoxChangeFunction("Launch at startup", Startup)
 
+app.setListBoxGroup("list", True)
+app.setListBoxGroup("list2", True)
+app.selectListItemAtPos("list", 0, callFunction=True)
+app.selectListItemAtPos("list2", 0, callFunction=True)
+
+
 if solar_theme == False:
     ##app.ttkStyle.configure("TLabelframe", background="white")
 
     app.setLabelFrameStyle("Applications", "TFrame")
-    app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
-    app.setLabelFrameStyle("IDEs", "TFrame")
-    app.setLabelFrameStyle("Python", "TFrame")
-    app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-    app.setLabelFrameStyle("Programming Glossary", "TFrame")
-    app.setLabelFrameStyle("Java Guide", "TFrame")
-    app.setLabelFrameStyle("Libreoffice", "TFrame")
+    #app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
+    #app.setLabelFrameStyle("IDEs", "TFrame")
+    #app.setLabelFrameStyle("Python", "TFrame")
+    #app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
+    #app.setLabelFrameStyle("Programming Glossary", "TFrame")
+    ##app.setLabelFrameStyle("Java Guide", "TFrame")
+    #app.setLabelFrameStyle("Libreoffice", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
     app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
