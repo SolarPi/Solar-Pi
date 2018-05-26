@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=SPI
+Type=Application
+Comment=Launcher SPI
+Exec=/usr/lib/at-spi2-core/at-spi2-registryd

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Battery Meter
+Type=Application
+Comment=Display the battery meter in the bottom left of the display
+Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Battery Meter.sh"

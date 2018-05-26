@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Power set up
+Type=Application
+Comment=Manage the power for the Solar Pi
+Exec="/usr/local/bin/Solar Pi/Power/power set up.sh"

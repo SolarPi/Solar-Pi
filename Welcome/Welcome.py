@@ -197,18 +197,18 @@ with app.notebook("MainTabs", colspan=2):
             app.setCanvasBg("c", "#424242")
             img = Image.open("../Resources/Images/blackLogo.png")
             canvas.config(bd=0, highlightthickness=0, width=130, height=130)
-            pos = 90
+            pos = 103  # 90
         elif solar_theme == True:  # Configure options for Solar Pi theme
             app.setCanvasBg("c", "white")
             img = Image.open("../Resources/Images/whiteLogo2.png")
             canvas.config(bd=0, highlightthickness=0, width=150, height=150)
-            pos = 100
+            pos = 110  # 100
 
         else:
             app.setCanvasBg("c", "white")  # Configure options for all other themes
             img = Image.open("../Resources/Images/whiteLogo.png")
             canvas.config(bd=0, highlightthickness=0, width=130, height=130)
-            pos = 90
+            pos = 103  # 90
 
         images = []  # Create image cache
         img.putalpha(0)  # Make first image transparent
@@ -339,33 +339,6 @@ with app.notebook("MainTabs", colspan=2):
                     app.setMessageSticky("coding_sum2", "ew")
                     app.setMessageFg("coding_sum2", msgFg)
                     app.setMessageBg("coding_sum2", msgBg)
-
-            """
-            app.addLabel("starter_options_title", "Solar Pi Starter Guide")
-            app.getLabelWidget("starter_options_title").config(font=title_font)
-            app.setLabelStyle("starter_options_title", "Padding.TLabel")
-            with app.frame("frame25"):
-                app.setPadding(5, 5)
-                #app.addIcon("starter_icon", "info", 0, 0, rowspan=2)
-                app.addImage("starter_icon", "../Resources/Images/Logo_NEW_2 small.gif", 0, 0, rowspan=2)
-                app.zoomImage("starter_icon", -8)
-                app.addLabel("starter_options_info", "Click to read a quick overview on how to use your Solar Pi", 0, 1)
-                app.addNamedButton("Starter Guide", "starter guide", guide, 1, 1)
-                app.setButtonSticky("starter guide", "w")
-
-            app.addHorizontalSeparator()
-            
-            app.addLabel("charging_options_title", "Charging")
-            app.getLabelWidget("charging_options_title").config(font=title_font)
-            app.setLabelStyle("charging_options_title", "Padding.TLabel")
-            with app.frame("frame26"):
-                app.setPadding(30, 10)
-                app.addImage("charge_icon", "../Resources/Images/battery-charging.gif", 0, 0, rowspan=2)
-                app.addLabel("charging_options_info", "Click to read how to charge your Solar Pi", 0, 1)
-                app.addButton("Charging", guide, 1, 1)
-                app.setButtonSticky("Charging", "w")
-            app.setFrameSticky("frame26", "w")
-            """
 
 
         with app.frame("starter guide", 0, 0, sticky="new"):
@@ -686,7 +659,7 @@ Happy coding!"""
                     app.addLabel("java_title", "Java Guide")
                     app.getLabelWidget("java_title").config(font=title_font)
                     app.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 1)
-                    app.zoomImage("java_icon", -5)
+                    app.zoomImage("java_icon", -6)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("java_image", "../Resources/Images/java guide.gif", 1, 0, rowspan=2)
@@ -827,7 +800,7 @@ if solar_theme == False:
     #app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
     #app.setLabelFrameStyle("IDEs", "TFrame")
     #app.setLabelFrameStyle("Python", "TFrame")
-    #app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
+    app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
     #app.setLabelFrameStyle("Programming Glossary", "TFrame")
     ##app.setLabelFrameStyle("Java Guide", "TFrame")
     #app.setLabelFrameStyle("Libreoffice", "TFrame")

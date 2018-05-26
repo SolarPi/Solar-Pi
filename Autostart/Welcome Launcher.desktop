@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Solar Pi Welcome
+Type=Application
+Comment=Launch the main Solar Pi application
+Exec="/usr/local/bin/Solar Pi/Resources/Launchers/Python Welcome Launcher.sh"
