@@ -48,11 +48,13 @@ while True:  # Repeat infinitely
 
     if percentage < 15 and shown == False:  # Triggered if battery level is low
         shown = True
-        with gui("Notification", useTtk=True) as app:  # GUI for low battery warning
+        with gui("Low battery", useTtk=True) as app:  # GUI for low battery warning
             app.setResizable(False)
 
             with open("../Settings/Settings.ini", "r") as file:
-                theme = file.readlines()[0].split(",")[3]  # Get theme from Settings file
+                data = file.readlines()[0].split(",")
+                theme = data[3]  # Get theme from Settings file
+                lang = data[4]  # Get language
             if theme == "Solar Pi":
                 # Configures and sets custom theme
                 app.setTtkTheme("plastik")
@@ -77,5 +79,7 @@ while True:  # Repeat infinitely
                 app.setBg("white")  # Configures options for themes
                 app.ttkStyle.configure(".", background="white", foreground="black")
 
+            app.changeLanguage(lang)
 
-    sleep(30)  # Wait 30 secs before polling battery again
+
+    sleep(4)  # Wait 4 secs before polling battery again
