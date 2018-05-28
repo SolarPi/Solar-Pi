@@ -66,9 +66,10 @@ if solar_theme == True:
     app.ttkStyle.configure("TLabelframe", bordercolor="#687396")
 
 title_font = ("piboto", 14, "normal")
+bold_font = ("piboto", 12, "bold")
 
-#app.setFont(family="piboto")
-#app.ttkStyle.configure(".", font=("piboto"))
+app.setFont(family="piboto")
+app.ttkStyle.configure(".", font=("piboto"))
 
 app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
 app.ttkStyle.configure("Padding.TLabel", padding=[10, 7])
@@ -132,7 +133,7 @@ def Docs(press):
 def PythonIntro(press):  # RPi Python Introduction
     webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")
 def Glossary(press):  # Programming Glossary
-    webbrowser.get("chromium-browser").open("http://localhost/Glossaries/programming-glossary/index.html")
+    webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/programming-glossary/index.html")
 def ByteofPython(press):  # Byte of Python
     webbrowser.get("chromium-browser").open("http://localhost:81/")
 def Java(press):  # Google's Python Tutorial
@@ -228,14 +229,14 @@ with app.notebook("MainTabs", colspan=2):
                 for image in image_cache:  # Iterate over canvas images
                     images.append(app.addCanvasImage("c", pos, pos, image))  # Display image, then add to temporary list
                     canvas.delete(images.pop(0))  # Delete image behind (1st image in list)
-                    sleep(0.045)  # Pause
+                    sleep(0.03333)  # Pause 0.45
 
                 sleep(15)  # Show logo in full
 
                 for image in reversed(image_cache):  # Iterate over canvas images again but in reverse to fade out
                     images.append(app.addCanvasImage("c", pos, pos, image))
                     canvas.delete(images.pop(0))
-                    sleep(0.045)
+                    sleep(0.03333)  # 0.45
 
                 images = []  # Clean temporary list
 
@@ -470,10 +471,11 @@ Happy coding!"""
 
         with app.labelFrame("Applications", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
             lb = app.listBox("list", pages, change=change,
-                             activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
+                             activestyle="none", selectbackground="#687396", selectforeground="white",
                              selectmode=app.SINGLE,
                              relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
             app.configure(sticky="news", stretch="both")
+            app.getListBoxWidget("list").config(font=title_font)
 
             with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
 
@@ -586,10 +588,11 @@ Happy coding!"""
 
         with app.labelFrame("Guides & Tutorials", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
             lb2 = app.listBox("list2", pages2, change=change2,
-                             activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
+                             activestyle="none", selectbackground="#687396", selectforeground="white",
                              selectmode=app.SINGLE,
                              relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
             app.configure(sticky="news", stretch="both")
+            app.getListBoxWidget("list2").config(font=title_font)
 
             with app.frame(pages2[0], 0, 1, sticky="new"):  # Create frame for each page
                 with app.frame("intro_title", colspan=2):
@@ -716,8 +719,6 @@ Happy coding!"""
                 display = line.split("=")[1].rstrip("\n")  # Fetch display info
             elif line.startswith("Battery="):
                 battery = line.split("=")[1].rstrip("\n")  # Fetch battery info
-
-        bold_font = ("ubuntu", 12, "bold")
 
         with app.labelFrame("Solar Pi Info"):
             app.setPadding(10, 5)

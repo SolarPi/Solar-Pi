@@ -231,9 +231,10 @@ with gui("Settings", useTtk=True) as app:
 
     with app.labelFrame("Settings", sticky="nws", stretch="none", padding=[10, 10]):  # Create LabelFrame
         lb = app.listBox("list", pages, change=change,
-                         activestyle="none", selectbackground="#687396", selectforeground="white", font=13,
+                         activestyle="none", selectbackground="#687396", selectforeground="white",
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
+        app.getListBoxWidget("list").config(font=("piboto", 14, "normal"))
 
         with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
             app.setPadding(4, 4)
