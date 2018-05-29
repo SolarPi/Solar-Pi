@@ -333,3 +333,5 @@ with gui("Settings", useTtk=True) as app:
 
 
     SetItems(clock_speed, battery_meter, launch_welcome, theme)  # Sets controls to currently selected settings
+
+    app.changeLanguage(getSetting("language"))

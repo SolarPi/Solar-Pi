@@ -76,8 +76,7 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     # Widgets
 
     app.setPadding(10, 10)
-    app.addImage("solar_pi", "../Resources/Images/Solar Pi text.gif")
-    app.zoomImage("solar_pi", -35)
+    app.addImage("solar_pi", "../Resources/Images/Solar Pi text small.gif")
 
     with app.labelFrame("Choose a Programming Language:"):
         app.setSticky("ew")

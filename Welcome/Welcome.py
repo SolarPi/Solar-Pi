@@ -172,7 +172,6 @@ with app.notebook("MainTabs", colspan=2):
             app.setLabelAlign("text4", "right")
             app.getLabelWidget("text4").config(font=("piboto", "20"))
             app.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
-            app.zoomImage("logo text1", -2)
             app.setImageSticky("logo text1", "nsw")
 
         with app.frame("frame5", 1, 0):
@@ -242,9 +241,6 @@ with app.notebook("MainTabs", colspan=2):
 
                 sleep(0.25)  # Pause before fading back in
 
-        #app.addImage("logo5", "../Resources/Images/Logo_NEW_2 small.gif", 1, 1, rowspan=3)
-        #app.zoomImage("logo5", -4)
-
         with app.frame("frame6", 1, 2):
             app.setPadding(10, 10)
             app.addImageButton("  Coding", Programming, "../Resources/Images/Programming icon small.gif",
@@ -281,13 +277,13 @@ with app.notebook("MainTabs", colspan=2):
 
                 with app.frame("starter3"):
                     app.setPadding(2, 10)
-                    app.addImage("starter_icon", "../Resources/Images/Logo_NEW_2 small.gif")
-                    app.zoomImage("starter_icon", -8)
+                    app.addImage("starter_icon", "../Resources/Images/Solar Pi logo icon.gif")
 
                 with app.frame("starter4"):
                     app.setPadding(5, 10)
-                    app.addNamedButton("Starter Guide", "starter guide", guide)
-                    app.setButtonSticky("starter guide", "")
+                    app.addButton("Starter Guide", guide)
+                    app.setButtonSticky("Starter Guide", "")
+                    app.setButtonStyle("Starter Guide", "H.TButton")
                     app.addMessage("starter_sum", "Click or tap to read a quick overview on how to use your Solar Pi.")
                     app.setMessageWidth("starter_sum", 225)
                     app.setMessageSticky("starter_sum", "ew")
@@ -328,8 +324,7 @@ with app.notebook("MainTabs", colspan=2):
 
                 with app.frame("coding3"):
                     app.setPadding(2, 28)
-                    app.addImage("coding_icon2", "../Resources/Images/coding icon.gif")
-                    app.zoomImage("coding_icon2", -6)
+                    app.addImage("coding_icon2", "../Resources/Images/coding icon small.gif")
 
                 with app.frame("coding4"):
                     app.setPadding(5, 10)
@@ -342,7 +337,7 @@ with app.notebook("MainTabs", colspan=2):
                     app.setMessageBg("coding_sum2", msgBg)
 
 
-        with app.frame("starter guide", 0, 0, sticky="new"):
+        with app.frame("Starter Guide", 0, 0, sticky="new"):
             app.addLabel("basics_title", "          The Basics", 0, 0)  # 2 tabs + 2 spaces or 10 spaces
             app.getLabelWidget("basics_title").config(font=title_font)
             app.setLabelStyle("basics_title", "H.TLabel")
@@ -368,8 +363,7 @@ with app.notebook("MainTabs", colspan=2):
                 app.setMessageFg("basics_info", msgFg)
                 app.setMessageSticky("basics_info", "nesw")
 
-                app.addImage("desktop", "../Resources/Images/Desktop.gif", 0, 1)
-                app.zoomImage("desktop", -7)
+                app.addImage("desktop", "../Resources/Images/Desktop small.gif", 0, 1)
 
                 app.addButton("Read More", Docs, 1, 1)
                 app.setButtonSticky("Read More", "n")
@@ -409,16 +403,13 @@ with app.notebook("MainTabs", colspan=2):
                 app.setMessageSticky("charge_info", "nsw")
 
                 with app.frame("images", 0, 1):
-                    app.addImage("low charge", "../Resources/Images/low battery.gif", 0, 0)
-                    app.zoomImage("low charge", -2)
+                    app.addImage("low charge", "../Resources/Images/low battery small.gif", 0, 0)
                     app.addLabel("low charge", "Low Charge", 0, 1)
 
-                    app.addImage("charging", "../Resources/Images/charging.gif", 1, 0)
-                    app.zoomImage("charging", -2)
+                    app.addImage("charging", "../Resources/Images/charging small.gif", 1, 0)
                     app.addLabel("charging", "Charging - you will\nsee this with an animation", 1, 1)
 
-                    app.addImage("full charge", "../Resources/Images/full battery.gif", 2, 0)
-                    app.zoomImage("full charge", -2)
+                    app.addImage("full charge", "../Resources/Images/full battery small.gif", 2, 0)
                     app.addLabel("full charge", "Full Charge", 2, 1)
 
         with app.frame("Coding", 0, 0, sticky="new"):
@@ -482,12 +473,11 @@ Happy coding!"""
                 with app.frame("coding_title", colspan=2):
                     app.addLabel("coding_title", "Start Coding")
                     app.getLabelWidget("coding_title").config(font=title_font)
-                    app.addImage("coding_icon", "../Resources/Images/coding icon.gif", 0, 1)
-                    app.zoomImage("coding_icon", -13)
+                    app.addImage("coding_icon", "../Resources/Images/coding icon small.gif", 0, 1)
+                    app.zoomImage("coding_icon", -2)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("coding_image", "../Resources/Images/startcoding.gif", 1, 0, rowspan=2)
-                app.zoomImage("coding_image", -4)
 
                 with app.frame("coding_content", 1, 1):
                     app.setPadding(7, 7)
@@ -504,11 +494,9 @@ Happy coding!"""
                     app.addLabel("file_title", "File Manager")
                     app.getLabelWidget("file_title").config(font=title_font)
                     app.addImage("file_title", "../Resources/Images/file manager.gif", 0, 1)
-                    #app.zoomImage("file_title", -50)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("file_image", "../Resources/Images/pcmanfm.gif", 1, 0, rowspan=2)
-                #app.zoomImage("file_image", -3)
 
                 with app.frame("file_content", 1, 1):
                     app.setPadding(7, 7)
@@ -524,12 +512,10 @@ Happy coding!"""
                 with app.frame("settings_title", colspan=2):
                     app.addLabel("settings_title", "Solar Pi Settings")
                     app.getLabelWidget("settings_title").config(font=title_font)
-                    app.addImage("settings_icon", "../Resources/Images/settings icon.gif", 0, 1)
-                    app.zoomImage("settings_icon", -5)
+                    app.addImage("settings_icon", "../Resources/Images/settings icon small 2.gif", 0, 1)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("settings_image", "../Resources/Images/perfpower.gif", 1, 0, rowspan=2)
-                app.zoomImage("settings_image", -5)
 
                 with app.frame("settings_content", 1, 1):
                     app.setPadding(7, 7)
@@ -598,8 +584,7 @@ Happy coding!"""
                 with app.frame("intro_title", colspan=2):
                     app.addLabel("intro_title", "Python Introduction")
                     app.getLabelWidget("intro_title").config(font=title_font)
-                    app.addImage("intro_icon", "../Resources/Images/Python icon.gif", 0, 1)
-                    app.zoomImage("intro_icon", -4)
+                    app.addImage("intro_icon", "../Resources/Images/Python icon small.gif", 0, 1)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("intro_image", "../Resources/Images/python hello world.gif", 1, 0)
@@ -620,8 +605,7 @@ Happy coding!"""
                 with app.frame("byte_title", colspan=2):
                     app.addLabel("byte_title", "A Byte of Python")
                     app.getLabelWidget("byte_title").config(font=title_font)
-                    app.addImage("byte_icon", "../Resources/Images/Python icon.gif", 0, 1)
-                    app.zoomImage("byte_icon", -4)
+                    app.addImage("byte_icon", "../Resources/Images/Python icon small.gif", 0, 1)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("byte_image", "../Resources/Images/Python icon.gif", 1, 0)
@@ -661,8 +645,7 @@ Happy coding!"""
                 with app.frame("java_title", colspan=2):
                     app.addLabel("java_title", "Java Guide")
                     app.getLabelWidget("java_title").config(font=title_font)
-                    app.addImage("java_icon", "../Resources/Images/java logo.gif", 0, 1)
-                    app.zoomImage("java_icon", -6)
+                    app.addImage("java_icon", "../Resources/Images/java logo small.gif", 0, 1)
                     app.addHorizontalSeparator(colspan=2)
 
                 app.addImage("java_image", "../Resources/Images/java guide.gif", 1, 0, rowspan=2)
