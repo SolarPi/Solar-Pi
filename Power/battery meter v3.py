@@ -202,6 +202,8 @@ charge = False
 #  GUI of battery meter  #
 ##########################
 
+sleep(2)
+
 with gui(size="60x35") as app:
     # Set GUI options
     app.setGuiPadding(0, 0)
