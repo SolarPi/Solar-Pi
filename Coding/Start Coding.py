@@ -24,7 +24,7 @@ def ButtonHandler(press):
             webbrowser.get("chromium-browser").open("http://localhost:81")  # Launch A Byte of Python
             Popen("/usr/local/bin/Solar Pi/Resources/Launchers/thonny launcher.sh")
         elif option == "Java (Hard)":
-            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/bluej Launcher.sh")
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/bluej launcher.sh")
             webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")  # Launch Java Guide
         
     elif press == " More Info  ":
