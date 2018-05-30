@@ -5,6 +5,7 @@ from PIL import ImageTk
 from time import sleep
 from threading import Thread
 
+sleep(4)
 
 #############################################################
 #  Change rectangle colour:                                 #
@@ -201,8 +202,6 @@ charge = False
 ##########################
 #  GUI of battery meter  #
 ##########################
-
-sleep(2)
 
 with gui(size="60x35") as app:
     # Set GUI options

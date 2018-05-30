@@ -234,6 +234,7 @@ with gui("Settings", useTtk=True) as app:
                          activestyle="none", selectbackground="#687396", selectforeground="white",
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
+        app.setListBoxGroup("list", group=True)
         app.getListBoxWidget("list").config(font=("piboto", 14, "normal"))
 
         with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
