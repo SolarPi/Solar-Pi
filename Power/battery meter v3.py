@@ -5,8 +5,6 @@ from PIL import ImageTk
 from time import sleep
 from threading import Thread
 
-sleep(4)
-
 #############################################################
 #  Change rectangle colour:                                 #
 #  canvas.itemconfig(l[index of rectangle], fill="colour")  #

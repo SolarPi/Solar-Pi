@@ -3,6 +3,7 @@
 from time import sleep
 import smbus
 from appJar import gui
+from SettingsRW import *
 
 i2c = smbus.SMBus(1)
 cache = [None, None]
@@ -51,10 +52,9 @@ while True:  # Repeat infinitely
         with gui("Low battery", useTtk=True) as app:  # GUI for low battery warning
             app.setResizable(False)
 
-            with open("../Settings/Settings.ini", "r") as file:
-                data = file.readlines()[0].split(",")
-                theme = data[3]  # Get theme from Settings file
-                lang = data[4]  # Get language
+            theme = getSetting("theme")
+            lang = getSetting("language")
+
             if theme == "Solar Pi":
                 # Configures and sets custom theme
                 app.setTtkTheme("plastik")

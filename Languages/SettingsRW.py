@@ -1,50 +1,19 @@
-##############################
-#   Index:                   #
-#   0 = clock                #
-#   1 = battery meter        #
-#   2 = welcome              #
-#   3 = theme                #
-#   4 = language             #
-##############################
+import fileinput
+import sys
 
 def getSetting(setting):
     with open("../Settings/Settings.ini", "r") as file:
-        data = file.readlines()[0].split(",")
-    if setting == "clock":
-        return int(data[0])
-    elif setting == "battery":
-        return data[1] == "True"
-    elif setting == "welcome":
-        return data[2] == "True"
-    elif setting == "theme":
-        return data[3]
-    elif setting == "language":
-        return data[4]
+        for line in file.readlines():
+            if line.split("=")[0] == setting.upper():
+                value = line.split("=")[1].rstrip("\n")
+                if value == "True" or value == "False": value = value == "True"
+                return value
 
 def setSetting(setting, value):
-    with open("../Settings/Settings.ini", "r") as file:
-        data = file.readlines()[0].split(",")
-    
-    clock = data[0]
-    battery = data[1]
-    welcome = data[2]
-    theme = data[3]
-    language = data[4]
-    
-    if setting == "clock":
-        clock = value
-    elif setting == "battery":
-        battery = value
-    elif setting == "welcome":
-        welcome = value
-    elif setting == "theme":
-        theme = value
-    elif setting == "language":
-        language = value
-
-    data = clock + "," + battery + "," + welcome + "," + theme + "," + language
-    with open("../Settings/Settings.ini", "w") as file:
-        file.write(data)
+    for line in fileinput.input(["../Settings/Settings.ini"], inplace=True):
+        if line.strip().startswith(setting.upper() + "="):  # Searches for setting
+            line = setting.upper() + "=" + str(value) + "\n"  # Replaces line with value
+        sys.stdout.write(line)  # Writes back to file
 
 if __name__ == "__main__":
     print("This is a module!")

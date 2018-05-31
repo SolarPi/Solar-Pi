@@ -17,8 +17,9 @@ from SettingsRW import *
 
 # Fetch settings in Settings.ini
 clock_speed = getSetting("clock")
-battery_meter = getSetting("battery")
+battery_meter = getSetting("battery_meter")
 launch_welcome = getSetting("welcome")
+cow = getSetting("cow")
 theme = getSetting("theme")
 
 
@@ -66,11 +67,28 @@ def ClockChange(clock):
             line = "arm_freq=" + str(clock) + "\n"  # Replaces line with clock speed selected
         sys.stdout.write(line)  # Writes back to file
 
+def Cowsay(show_cow):
+    if show_cow == False:
+        with open("/home/pi/.bashrc", "r") as f:
+            d = f.readlines()
+        with open("/home/pi/.bashrc", "w") as f:
+            for line in d:
+                if line.rstrip("\n") == "\"/usr/local/bin/Solar Pi/cowscript.sh\"" or line.rstrip("\n") == "# Cowsay!!":
+                    pass
+                else:
+                    f.write(line)
+
+    elif show_cow == True and getSetting("cow") == False:
+        with open("/home/pi/.bashrc", "a") as f:
+            cow_command = "# Cowsay!!\n\"/usr/local/bin/Solar Pi/cowscript.sh\""
+            f.write(cow_command)
+
 def ApplySettings(press):
     # Fetches data from widgets
     clock_speed = int(app.getEntry("Max Clock Speed: "))
     battery_meter = app.getCheckBox("Show battery meter")
     launch_welcome = app.getCheckBox("Launch the Solar Pi Welcome application at startup")
+    cow = app.getCheckBox("Show cowsay at terminal launch")
     theme = app.getOptionBox("Themes")
     if theme == "Solar Pi":
         SolarPiTheme()
@@ -92,8 +110,11 @@ def ApplySettings(press):
     app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
     setSetting("clock", str(clock_speed))
-    setSetting("battery", str(battery_meter))
+    setSetting("battery_meter", str(battery_meter))
     setSetting("welcome", str(launch_welcome))
+    Cowsay(cow)
+    setSetting("cow", str(cow))
+    
     if theme == "Solar Pi":
         setSetting("theme", "Solar Pi")
     else:
@@ -110,10 +131,11 @@ def ApplySettings(press):
         Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
 
 
-def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to set controls
+def SetItems(clock_speed, battery_meter, launch_welcome, cow, theme):  # Procedure to set controls
     app.setScale("slider", clock_speed)
     app.setCheckBox("Show battery meter", battery_meter)
     app.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
+    app.setCheckBox("Show cowsay at terminal launch", cow)
     if theme == "Solar Pi":
         app.setOptionBox("Themes", theme)
     else:
@@ -122,15 +144,17 @@ def SetItems(clock_speed, battery_meter, launch_welcome, theme):  # Procedure to
 
 def Defaults(press):  # Procedure to reset to default
     setSetting("clock", "1200")
-    setSetting("battery", "True")
-    setSetting("welcome", "True")
+    setSetting("battery_meter", "True")
+    setSetting("welcome", "True")  # Seting MUST come before Cowsay()
+    Cowsay(True)
+    setSetting("cow", "True")
     setSetting("theme", "Solar Pi")
 
     SolarPiTheme()  # Sets Solar Pi theme for application
     app.setFont(family="piboto")
     app.ttkStyle.configure(".", font=("piboto"))
 
-    SetItems(1200, True, True, "Solar Pi")  # Sets controls to default
+    SetItems(clock_speed=1200, battery_meter=True, launch_welcome=True, cow=True, theme="Solar Pi")  # Sets controls to default
 
     Autorun("welcome", True, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Creates .desktop file for welcome
 
@@ -234,8 +258,8 @@ with gui("Settings", useTtk=True) as app:
                          activestyle="none", selectbackground="#687396", selectforeground="white",
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
-        app.setListBoxGroup("list", group=True)
         app.getListBoxWidget("list").config(font=("piboto", 14, "normal"))
+        app.setListBoxGroup("list", group=True)
 
         with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
             app.setPadding(4, 4)
@@ -288,11 +312,12 @@ with gui("Settings", useTtk=True) as app:
                 app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
                 app.addHorizontalSeparator(colspan=2)
                 app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
-                app.addLabel("themes", "Themes for Solar Pi apps:", 3, 0)
+                app.addCheckBox("Show cowsay at terminal launch", colspan=2)  # TODO: Translate
+                app.addLabel("themes", "Themes for Solar Pi apps:", 4, 0)
                 themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
-                app.addOptionBox("Themes", themes, 3, 1)
-                app.addButton("Change Advanced Settings", ButtonHandler, 4, 0)
-                app.addButton("Languages", ButtonHandler, 4, 1)
+                app.addOptionBox("Themes", themes, 4, 1)
+                app.addButton("Change Advanced Settings", ButtonHandler, 5, 0)
+                app.addButton("Languages", ButtonHandler, 5, 1)
                 app.setButtonSticky("Languages", "ew")
                 app.setButtonSticky("Change Advanced Settings", "ew")
 
@@ -333,6 +358,6 @@ with gui("Settings", useTtk=True) as app:
         app.setListBoxFg("list", "white")
 
 
-    SetItems(clock_speed, battery_meter, launch_welcome, theme)  # Sets controls to currently selected settings
+    SetItems(clock_speed, battery_meter, launch_welcome, cow, theme)  # Sets controls to currently selected settings
 
     app.changeLanguage(getSetting("language"))
