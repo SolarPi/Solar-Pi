@@ -127,6 +127,9 @@ def Libreoffice(press):
     else:
         Popen("../Resources/Launchers/" + press + " launcher.sh")
 
+def Terminal(press): # Terminal
+    Popen("../Resources/Launchers/terminal.sh")
+
 def Docs(press):
     webbrowser.get("chromium-browser").open("http://localhost/")  # Launch guides here
 
@@ -138,7 +141,6 @@ def ByteofPython(press):  # Byte of Python
     webbrowser.get("chromium-browser").open("http://localhost:81/")
 def Java(press):  # Google's Python Tutorial
     webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
-
 
 #app.setFont(11, font="Dejavu Sans")
 
@@ -455,7 +457,7 @@ Happy coding!"""
 
     with app.note("Applications"):
 
-        pages = [" Start Coding", " File Manager", " Solar Pi Settings", " LibreOffice"]  # Sets settings pages
+        pages = [" Start Coding", " File Manager", " Solar Pi Settings", " LibreOffice", " Terminal"]  # Sets settings pages
 
         def change(listName):
             app.getFrameWidget(app.listBox("list")[0]).lift()
@@ -560,6 +562,26 @@ Happy coding!"""
                         app.addImage("draw", "../Resources/Images/draw.gif", 0, 0)
                         app.setImageTooltip("draw", "Show off your art skills!")
                         app.addButton("Draw", Libreoffice, 0, 1)
+
+            with app.frame(pages[4], 0, 1, sticky="new"):  # Create frame for each page
+
+                with app.frame("term_title", colspan=2):
+                    app.addLabel("term_title", "Terminal")
+                    app.getLabelWidget("term_title").config(font=title_font)
+                    app.addImage("term_icon", "../Resources/Images/coding icon small.gif", 0, 1)
+                    app.zoomImage("term_icon", -2)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("term_image", "../Resources/Images/terminal.gif", 1, 0, rowspan=2)
+
+                with app.frame("term_content", 1, 1):
+                    app.setPadding(7, 7)
+                    app.addMessage("term_sum", "The Terminal is a powerful tool that can be used to do most things on your Solar Pi.")
+                    app.setMessageWidth("term_sum", 175)
+                    app.setMessageFg("term_sum", msgFg)
+                    app.setMessageBg("term_sum", msgBg)
+                    app.addLabel("Spacer3", "")
+                    app.addButton("Terminal", Terminal)
 
 
     ##################################
@@ -781,13 +803,7 @@ if solar_theme == False:
     ##app.ttkStyle.configure("TLabelframe", background="white")
 
     app.setLabelFrameStyle("Applications", "TFrame")
-    #app.setLabelFrameStyle("Solar Pi Apps", "TFrame")
-    #app.setLabelFrameStyle("IDEs", "TFrame")
-    #app.setLabelFrameStyle("Python", "TFrame")
     app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-    #app.setLabelFrameStyle("Programming Glossary", "TFrame")
-    ##app.setLabelFrameStyle("Java Guide", "TFrame")
-    #app.setLabelFrameStyle("Libreoffice", "TFrame")
     app.setLabelFrameStyle("About", "TFrame")
     app.setLabelFrameStyle("Solar Pi Info", "TFrame")
     app.setLabelFrameStyle("OS Info", "TFrame")
