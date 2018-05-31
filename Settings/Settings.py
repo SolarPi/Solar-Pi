@@ -90,6 +90,8 @@ def ApplySettings(press):
     launch_welcome = app.getCheckBox("Launch the Solar Pi Welcome application at startup")
     cow = app.getCheckBox("Show cowsay at terminal launch")
     theme = app.getOptionBox("Themes")
+
+    # Configures theme
     if theme == "Solar Pi":
         SolarPiTheme()
 
@@ -104,15 +106,18 @@ def ApplySettings(press):
         app.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
+    # Sets font
     app.setFont(family="piboto")
     app.ttkStyle.configure(".", font=("piboto"))
 
+    # Sets slider value
     app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
+    # Writes settings to Settings.ini file
     setSetting("clock", str(clock_speed))
     setSetting("battery_meter", str(battery_meter))
     setSetting("welcome", str(launch_welcome))
-    Cowsay(cow)
+    Cowsay(cow)  # Configures cowsay
     setSetting("cow", str(cow))
     
     if theme == "Solar Pi":
@@ -120,6 +125,7 @@ def ApplySettings(press):
     else:
         setSetting("theme", theme.lower())
 
+    # Configures apps that run at startup
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
 
     Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
@@ -143,28 +149,8 @@ def SetItems(clock_speed, battery_meter, launch_welcome, cow, theme):  # Procedu
 
 
 def Defaults(press):  # Procedure to reset to default
-    setSetting("clock", "1200")
-    setSetting("battery_meter", "True")
-    setSetting("welcome", "True")  # Seting MUST come before Cowsay()
-    Cowsay(True)
-    setSetting("cow", "True")
-    setSetting("theme", "Solar Pi")
-
-    SolarPiTheme()  # Sets Solar Pi theme for application
-    app.setFont(family="piboto")
-    app.ttkStyle.configure(".", font=("piboto"))
-
     SetItems(clock_speed=1200, battery_meter=True, launch_welcome=True, cow=True, theme="Solar Pi")  # Sets controls to default
-
-    Autorun("welcome", True, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Creates .desktop file for welcome
-
-    Autorun("battery", True, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Creates .desktop file for battery meter
-
-    ClockChange(1200)  # Changes max clock speed to 1200 MHz
-
-    # Prompts user to restart to apply changes
-    if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?"):
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
+    ApplySettings("Bananas")
 
 # Runs update scripts
 def Update(press):
@@ -299,10 +285,6 @@ with gui("Settings", useTtk=True) as app:
                 app.addLabel("updates_title", "Updates")
                 app.getLabelWidget("updates_title").config(font=("piboto", 14, "normal"))
                 app.addHorizontalSeparator()
-                #app.addLabel("update_info", "Note: This will only work with an internet connection.")
-                #app.addCheckBox("Update Operating System & Installed Programs")
-                #app.addCheckBox("Update appJar")
-                #app.addButton("Update System", Update
                 app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
                 app.addButton("Update", update2)
 
