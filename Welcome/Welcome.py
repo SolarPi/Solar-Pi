@@ -11,73 +11,165 @@ from PIL import Image, ImageTk
 from time import sleep
 from threading import Thread
 
-
 theme1 = getSetting("theme")
+startup1 = getSetting("welcome")
+
+try:
+    from watchdog.observers import Observer
+    from watchdog.events import FileSystemEventHandler
+
+    class Watcher:
+        DIRECTORY_TO_WATCH = "/usr/local/bin/Solar Pi/Settings"  # Looks at settings
+
+        def __init__(self):
+            self.observer = Observer()
+
+        def run(self):
+            event_handler = Handler()
+            self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+            self.observer.start()
+            try:
+                while True:
+                    sleep(5)
+            except:
+                self.observer.stop()
+                print("Error")
+
+            self.observer.join()
+
+
+    class Handler(FileSystemEventHandler):
+
+        @staticmethod
+        def on_any_event(event):
+            if event.is_directory:
+                return None
+
+            elif event.event_type == 'created':
+                # Take any action here when a file is first created.
+                print("Received created event")  # Triggered when a file is created
+
+            elif event.event_type == 'modified':
+                # Taken any action here when a file is modified.
+                print("Received modified event")
+                settings()  # Calls meter() when file is modified
+
+except:
+    pass
+
+def settings(first=False):
+    global theme1, startup1, msgBg, msgFg, title_font, bold_font, solar_theme
+    theme2 = getSetting("theme")
+    startup2 = getSetting("welcome")
+
+    if theme1 != theme2 or first == True:
+        if theme2 == "Solar Pi":
+            msgFg = "black"
+            msgBg = "white"
+            solar_theme = True
+        else:
+            solar_theme = False
+            app.setTtkTheme(theme2)
+            msgFg = "white"
+            msgBg = "#424242"
+            if theme2 != "black":
+                app.ttkStyle.configure(".", foreground="black", background="white")
+                app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+                app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
+                app.setBg("white")
+                msgFg = "black"
+                msgBg = "white"
+
+        if solar_theme == True:
+            app.setTtkTheme("plastik")
+            app.setTtkTheme("clam")
+            # app.ttkStyle.configure(".", font="10")
+
+            # Custom Notebook
+            app.ttkStyle.configure("TNotebook", background="white", bordercolor="#687396")
+            app.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
+                             foreground=[("selected", "white")], padding=[("selected", "0.125cm")])
+            app.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black", bordercolor="#687396",
+                                   padding="0.095cm")  # Unselected tab
+            # "#dbdce2"
+            # Custom buttons
+
+            # Highlighted button
+            app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
+            app.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
+
+            app.ttkStyle.configure("Back.TButtton", background="#687396", bordercolor="#687396")
+            app.ttkStyle.map("Back.TButton",
+                             background=[("pressed", "#687396"), ("active", "#687396"), ("!pressed", "#687396"),
+                                         ("!active", "#687396")])
+
+            app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+
+            # Regular button
+            app.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
+
+            app.ttkStyle.map("TLabelFrame", border=[("active", "black")])
+
+            app.ttkStyle.configure("TLabelframe", bordercolor="#687396")
+
+
+            # Buttons
+            app.setButtonStyle("coding2", "H.TButton")
+            app.setButtonStyle("Close", "H.TButton")
+            app.setButtonStyle("Get Started", "H.TButton")
+            app.setButtonStyle("Read More", "H.TButton")
+
+        else:
+            app.setLabelFrameStyle("Applications", "TFrame")
+            app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
+            app.setLabelFrameStyle("About", "TFrame")
+            app.setLabelFrameStyle("Solar Pi Info", "TFrame")
+            app.setLabelFrameStyle("OS Info", "TFrame")
+            app.setLabelFrameStyle("Disk Info", "TFrame")
+
+        if theme2 == "Solar Pi" or theme2 == "black" or first == True:
+            app.showButton("Get Started")
+            app.hideButton("get started")
+        else:
+            app.showButton("get started")
+            app.hideButton("Get Started")
+
+        if theme2 != "black":
+            app.setBg("white")
+
+        app.setFont(family="piboto")
+        app.ttkStyle.configure(".", font=("piboto"))
+
+        title_font = ("piboto", 14, "normal")
+        bold_font = ("piboto", 12, "bold")
+
+        app.setFont(family="piboto")
+        app.ttkStyle.configure(".", font=("piboto"))
+
+        app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white",
+                               padding=[10, 10])  # #dbdce2, #687396
+        app.ttkStyle.configure("Padding.TLabel", padding=[10, 7])
+
+        app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 6], borderwidth=1)
+        # app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
+
+        app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
+
+    if startup1 != startup2:
+        app.setCheckBox("Launch at startup", ticked=startup2, callFunction=False)
+
+    theme1 = theme2
+    startup1 = startup2
+
 
 app = gui("Solar Pi Welcome", useTtk=True)
 app.setResizable(False)
 
-#app.setLocation("CENTER")
-
-if theme1 == "Solar Pi":
-    msgFg = "black"
-    msgBg = "white"
-    solar_theme = True
-else:
-    solar_theme = False
-    app.setTtkTheme(theme1)
-    msgFg = "white"
-    msgBg = "#424242"
-    if theme1 != "black":
-        app.ttkStyle.configure(".", foreground="black", background="white")
-        app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
-        app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
-        app.setBg("white")
-        msgFg = "black"
-        msgBg = "white"
-
-if solar_theme == True:
-    app.setTtkTheme("plastik")
-    app.setTtkTheme("clam")
-    #app.ttkStyle.configure(".", font="10")
-
-    # Custom Notebook
-    app.ttkStyle.configure("TNotebook", background="white", bordercolor="#687396")
-    app.ttkStyle.map("TNotebook.Tab", background=[("selected", "#76a928")],  # Selected tab
-                foreground=[("selected", "white")], padding=[("selected", "0.125cm")])
-    app.ttkStyle.configure("TNotebook.Tab", background="#dbdce2", foreground="black", bordercolor="#687396", padding="0.095cm")  # Unselected tab
-                # "#dbdce2"
-    # Custom buttons
-
-    # Highlighted button
-    app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
-    app.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
-
-    app.ttkStyle.configure("Back.TButtton", background="#687396", bordercolor="#687396")
-    app.ttkStyle.map("Back.TButton", background=[("pressed", "#687396"), ("active", "#687396"), ("!pressed", "#687396"), ("!active", "#687396")])
-
-    app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
-
-    # Regular button
-    app.ttkStyle.configure("TButton", background="#dbdce2", bordercolor="#687396")
-
-    app.ttkStyle.map("TLabelFrame", border=[("active", "black")])
-
-    app.ttkStyle.configure("TLabelframe", bordercolor="#687396")
+msgFg = "black"
+msgBg = "white"
 
 title_font = ("piboto", 14, "normal")
 bold_font = ("piboto", 12, "bold")
-
-app.setFont(family="piboto")
-app.ttkStyle.configure(".", font=("piboto"))
-
-app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white", padding=[10, 10]) # #dbdce2, #687396
-app.ttkStyle.configure("Padding.TLabel", padding=[10, 7])
-
-app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 6], borderwidth=1)
-#app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
-
-app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
 # Event Handler for buttons
 def ButtonHandler(press):
@@ -156,8 +248,6 @@ with app.subWindow("About Solar Pi", modal=True):
             app.addLabel("about", "Solar Pi is a charity project, aimed at getting\nRaspberry Pi based, solar powered computers\nto those who need it most.\n\nEnjoy!")
         app.addButton("Close", ButtonHandler)
         app.setButtonSticky("Close", "")
-        if solar_theme == True:
-            app.setButtonStyle("Close", "H.TButton")
 
 # Main Window
 app.setPadding(3, 3)
@@ -178,11 +268,20 @@ with app.notebook("MainTabs", colspan=2):
 
         with app.frame("frame5", 1, 0):
             app.setPadding(10, 10)
-            if solar_theme == True or theme1 == "black":
-                app.addImageButton("Get Started", ButtonHandler, "../Resources/Images/md-play.gif", align="left", row=1, column=0)
-            else:
-                app.addIconButton("Get Started", ButtonHandler, "md-play", align="left", row=1, colspan=0)
+
+            app.addNamedButton("Get Started", "Get Started", ButtonHandler, 1, 0)
+            app.setButtonImage("Get Started", "../Resources/Images/md-play.gif", align="left")
             app.setButtonSticky("Get Started", "nesw")
+
+            app.addNamedButton("Get Started", "get started", ButtonHandler, 1, 0)
+            app.setButtonImage("get started", "../Resources/Images/md-play black.gif", align="left")
+            app.setButtonSticky("get started", "nesw")
+
+            if theme1 == "Solar Pi" or theme1 == "black":
+                app.hideButton("get started")
+            else:
+                app.hideButton("Get Started")
+
             app.addImageButton(" Docs", Docs, "../Resources/Images/docs icon.gif", align="left", row=2, column=0)
             app.setButtonSticky(" Docs", "nesw")
             app.addIconButton(" About", ButtonHandler, "about", align="left", row=3, column=0)
@@ -200,7 +299,7 @@ with app.notebook("MainTabs", colspan=2):
             img = Image.open("../Resources/Images/blackLogo.png")
             canvas.config(bd=0, highlightthickness=0, width=130, height=130)
             pos = 103  # 90
-        elif solar_theme == True:  # Configure options for Solar Pi theme
+        elif getSetting("theme") == "Solar Pi":  # Configure options for Solar Pi theme
             app.setCanvasBg("c", "white")
             img = Image.open("../Resources/Images/whiteLogo2.png")
             canvas.config(bd=0, highlightthickness=0, width=150, height=150)
@@ -254,9 +353,6 @@ with app.notebook("MainTabs", colspan=2):
                                    align="left", row=3, column=2)
             app.setButtonSticky("  Languages", "nesw")
 
-
-        if solar_theme == True:
-            app.setButtonStyle("Get Started", "H.TButton")
 
     with app.note("Get Started"):
         
@@ -370,9 +466,6 @@ with app.notebook("MainTabs", colspan=2):
                 app.addButton("Read More", Docs, 1, 1)
                 app.setButtonSticky("Read More", "n")
 
-                if solar_theme == True:
-                    app.setButtonStyle("Read More", "H.TButton")
-
 
         with app.frame("Charging", 0, 0, sticky="new"):
             app.addLabel("charging_title", "          Charging Your Solar Pi", 0, 0)
@@ -445,9 +538,6 @@ Happy coding!"""
                     app.setImageSticky("code", "w")
                     app.addNamedButton("Start Coding", "coding2", Programming, 1, 1)
                     app.setButtonSticky("coding2", "n")
-
-                if solar_theme == True:
-                    app.setButtonStyle("coding2", "H.TButton")
 
         app.getFrameWidget("options").lift()
 
@@ -798,21 +888,16 @@ app.setListBoxGroup("list2", True)
 app.selectListItemAtPos("list", 0, callFunction=True)
 app.selectListItemAtPos("list2", 0, callFunction=True)
 
-
-if solar_theme == False:
-    ##app.ttkStyle.configure("TLabelframe", background="white")
-
-    app.setLabelFrameStyle("Applications", "TFrame")
-    app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
-    app.setLabelFrameStyle("About", "TFrame")
-    app.setLabelFrameStyle("Solar Pi Info", "TFrame")
-    app.setLabelFrameStyle("OS Info", "TFrame")
-    app.setLabelFrameStyle("Disk Info", "TFrame")
-
-if theme1 != "black":
-    app.setBg("white")
-
 t = Thread(target=fade)
 t.start()
+
+try:
+    w = Watcher()
+    t2 = Thread(target=w.run)
+    t2.start()
+except:
+    pass
+
+settings(True)
 
 app.go(language=getSetting("language"))

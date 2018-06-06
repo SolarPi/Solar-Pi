@@ -16,16 +16,18 @@ def pwr_mode():  # Function for powering mode
     elif data == 2:
         return "B"
 
-
 def bat_level():  # Function for battery voltage
     data = i2c.read_word_data(0x69, 0x08)
     data = format(data, "02x")
-    return float(data) / 100
+    if pwr_mode() == "C":
+        return (float(data) / 100) - 0.25
+    elif pwr_mode() == "B":
+        return (float(data) / 100) + 0.05
 
-def bat_percent():  # Function for battery percentage
-    volts = bat_level()
-    percent = ((volts - 3.4) / 0.8) * 100
-    return percent
+def bat_percent():
+   volts = bat_level()
+   percentage = ((volts-3.4)/0.75)*100
+   return percentage
 
 # Set variables
 ignore = False

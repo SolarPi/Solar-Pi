@@ -18,6 +18,7 @@ from SettingsRW import *
 # Fetch settings in Settings.ini
 clock_speed = getSetting("clock")
 battery_meter = getSetting("battery_meter")
+animation = getSetting("battery_animation")
 launch_welcome = getSetting("welcome")
 cow = getSetting("cow")
 theme = getSetting("theme")
@@ -87,6 +88,7 @@ def ApplySettings(press):
     # Fetches data from widgets
     clock_speed = int(app.getEntry("Max Clock Speed: "))
     battery_meter = app.getCheckBox("Show battery meter")
+    animation = app.getCheckBox("Show charging animation")
     launch_welcome = app.getCheckBox("Launch the Solar Pi Welcome application at startup")
     cow = app.getCheckBox("Show cowsay at terminal launch")
     theme = app.getOptionBox("Themes")
@@ -113,9 +115,13 @@ def ApplySettings(press):
     # Sets slider value
     app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
+    # Fetches previous setting
+    clock_old = getSetting("clock")
+
     # Writes settings to Settings.ini file
     setSetting("clock", str(clock_speed))
     setSetting("battery_meter", str(battery_meter))
+    setSetting("battery_animation", str(animation))
     setSetting("welcome", str(launch_welcome))
     Cowsay(cow)  # Configures cowsay
     setSetting("cow", str(cow))
@@ -128,18 +134,20 @@ def ApplySettings(press):
     # Configures apps that run at startup
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
 
-    Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
+    #Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
 
     ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
     # After settings have been changed
-    if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
-        Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
+    if clock_old != str(clock_speed):  # Only ask if clock speed has changed
+        if app.yesNoBox("Restart", "Your Solar Pi needs to be restarted in order for these changes to take effect.\nWould you like to restart now?") == True:  # Message to user to restart RPi
+            Popen("/usr/local/bin/Solar Pi/Resources/Launchers/Reboot.sh")
 
 
-def SetItems(clock_speed, battery_meter, launch_welcome, cow, theme):  # Procedure to set controls
+def SetItems(clock_speed, battery_meter, animation, launch_welcome, cow, theme):  # Procedure to set controls
     app.setScale("slider", clock_speed)
     app.setCheckBox("Show battery meter", battery_meter)
+    app.setCheckBox("Show charging animation", animation)
     app.setCheckBox("Launch the Solar Pi Welcome application at startup", launch_welcome)
     app.setCheckBox("Show cowsay at terminal launch", cow)
     if theme == "Solar Pi":
@@ -149,7 +157,7 @@ def SetItems(clock_speed, battery_meter, launch_welcome, cow, theme):  # Procedu
 
 
 def Defaults(press):  # Procedure to reset to default
-    SetItems(clock_speed=1200, battery_meter=True, launch_welcome=True, cow=True, theme="Solar Pi")  # Sets controls to default
+    SetItems(clock_speed=1200, battery_meter=True, animation=True, launch_welcome=True, cow=True, theme="Solar Pi")  # Sets controls to default
     ApplySettings("Bananas")
 
 # Runs update scripts
@@ -277,7 +285,9 @@ with gui("Settings", useTtk=True) as app:
 
             # Buttons
             app.addHorizontalSeparator(colspan=2)
-            app.addCheckBox("Show battery meter", colspan=2)
+            with app.frame("power", colspan=2):
+                app.addCheckBox("Show battery meter", 0, 0)
+                app.addCheckBox("Show charging animation", 0, 1)  # TODO: Translate!
             # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
         with app.frame(pages[1], 0, 1, sticky="new"):  # Code for second page
@@ -340,6 +350,6 @@ with gui("Settings", useTtk=True) as app:
         app.setListBoxFg("list", "white")
 
 
-    SetItems(clock_speed, battery_meter, launch_welcome, cow, theme)  # Sets controls to currently selected settings
+    SetItems(clock_speed, battery_meter, animation, launch_welcome, cow, theme)  # Sets controls to currently selected settings
 
     app.changeLanguage(getSetting("language"))

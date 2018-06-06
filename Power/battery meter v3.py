@@ -4,6 +4,12 @@ from appJar import gui
 from PIL import ImageTk
 from time import sleep
 from threading import Thread
+from SettingsRW import *
+
+meter_show1 = getSetting("battery_meter")
+animation1 = getSetting("battery_animation")
+
+animate = animation1
 
 #############################################################
 #  Change rectangle colour:                                 #
@@ -23,6 +29,10 @@ def batt_watcher():
     # Create instance of Watcher class
     w = Watcher()
     w.run()
+
+def setting_watcher():
+    settings_watcher = Watcher2()
+    settings_watcher.run()
 
 class Watcher:
     DIRECTORY_TO_WATCH = "/usr/local/bin/Solar Pi/ramdisk"  # Looks at ramdisk
@@ -57,28 +67,117 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'modified':
             # Taken any action here when a file is modified.
-            print("Received modified event")
+            print("Power - modified event")
             meter()  # Calls meter() when file is modified
 
 
-def meter():
-    global canvas, image, rec_list, charge
-    try:
-        with open("../ramdisk/power", "r") as file:  # Attempts to open power file
-            data = file.readlines()
-            
-    except IOError:  # If file opening fails, try again - ramdisk may not be created yet or Power Daemon isn't running
-        sleep(1)
-        meter()
+class Watcher2:
+    DIRECTORY_TO_WATCH = "/usr/local/bin/Solar Pi/Settings"  # Looks at ramdisk
 
-    data = data[0]
-    data = data.split(",")
+    def __init__(self):
+        self.observer = Observer()
+
+    def run(self):
+        event_handler = Handler2()
+        self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+        self.observer.start()
+        try:
+            while True:
+                sleep(5)
+        except:
+            self.observer.stop()
+            print("Error")
+
+        self.observer.join()
+
+
+class Handler2(FileSystemEventHandler):
+
+    @staticmethod
+    def on_any_event(event):
+        if event.is_directory:
+            return None
+
+        elif event.event_type == 'created':
+            # Take any action here when a file is first created.
+            print("Received created event")  # Triggered when a file is created
+
+        elif event.event_type == 'modified':
+            # Taken any action here when a file is modified.
+            print("Settings - Received modified event")
+            settings()  # Calls meter() when file is modified
+
+
+########################################################################################################################
+
+
+def settings():
+    global meter_show1, animation1, animate, app, mode
+    meter_show2 = getSetting("battery_meter")  # When triggered, fetch settings
+    animation2 = getSetting("battery_animation")
+    animate = animation2
+
+    if meter_show1 != meter_show2:  # Checks if original setting has changed
+        if meter_show2 == True:  # Shows meter if hidden
+            app.show()
+        elif meter_show2 == False:  # Hides meter if shown
+            app.hide()
+        print("Do something with showing the meter")
+        meter_show1 = meter_show2  # Updates original setting with current setting
+
+    if animation1 != animation2 and mode == "C":  # Checks if original setting has changed and if we're charging
+        if animation2 == True:  # If the animation is enabled...
+            t5 = Thread(target=animation)
+            t5.start()  # Start the animation
+            print("setting")
+        elif animation2 == False:  # If the animation is disabled...
+             meter()
+        print("Do something with the animation")
+        animation1 = animation2
+
+def animation():
+    global animate, rec_list
+    for i in range(9):
+        canvas.itemconfig(rec_list[i], fill="black")
+    while animate == True:
+        for i in range(9):
+            if animate == True:
+                canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
+                sleep(1.5)
+            else:
+                break
+        for i in range(9):
+            if animate == True:
+                canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
+            else:
+                break
+        sleep(1.5)
+
+    meter()  # After finished, allow meter() to set back to non-animation mode
+
+
+def meter():
+    global canvas, image, rec_list, charge, mode, animate
+    access = False
+    while access == False:
+        try:
+            with open("../ramdisk/power", "r") as file:  # Attempts to open power file
+                data = file.readlines()
+
+            data = data[0]
+            data = data.split(",")
+            access = True
+
+        except IOError:  # If file opening fails, try again - ramdisk may not be created yet or Power Daemon isn't running
+            sleep(1)
+
     percent = float(data[0])  # Takes percentage
     mode = data[1]  # Gets power mode
 
     if mode == "B":  # If battery powered
         if charge == True:  # If battery powered and was charging
             charge = False
+            animate = False
             canvas.itemconfig(image, state="hidden")  # Hide image
             for i in range(10):  # If battery was charging, attempt to update meter once animation has stopped
                 meter_change(percent)
@@ -88,15 +187,22 @@ def meter():
     
     elif mode == "C":
         if charge == True:
-            pass
+            meter_change(percent)
         else:
             charge = True
-            t1 = Thread(target=charging)  # If RPi is charging, start animation
-            t1.start()
+            meter_change(percent)
+            canvas.itemconfig(image, state="normal")  # Shows image
+            settings()
 
+def meter_fill(num, colour="black"):
+    for i in range(num):
+        canvas.itemconfig(rec_list[i], fill="green")
+        bar_list.remove(i)
+    for i in bar_list:
+        canvas.itemconfig(rec_list[i], fill=colour)
 
 def meter_change(percent):
-    global change, canvas, image, rec_list
+    global change, canvas, image, rec_list, bar_list
     bar_list = []  # Create list for bars in meter
     for i in range(9):
         bar_list.append(i)  # Construct list with numbers from 0 to 8
@@ -111,85 +217,38 @@ def meter_change(percent):
         for i in range(9):
             canvas.itemconfig(rec_list[i], fill="green")
 
-    elif percent > 80 and percent < 90:  # 87.5
-        for i in range(8):
-            canvas.itemconfig(rec_list[i], fill="green")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 80 and percent < 90:  # 86.6
+        meter_fill(8)
 
-    elif percent > 70 and percent < 80:  # 75
-        for i in range(7):
-            canvas.itemconfig(rec_list[i], fill="green")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 70 and percent < 80:  # 73.3
+        meter_fill(7)
 
-    elif percent > 55 and percent < 70:  # 62
-        for i in range(6):
-            canvas.itemconfig(rec_list[i], fill="green")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 55 and percent < 70:  # 60
+        meter_fill(6)
 
-    elif percent > 45 and percent < 55:  # 50
-        for i in range(5):
-            canvas.itemconfig(rec_list[i], fill="green")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 45 and percent < 55:  # 46.6
+        meter_fill(5)
 
-    elif percent > 25 and percent < 45:  # 37
-        for i in range(4):
-            canvas.itemconfig(rec_list[i], fill="#a5dd24")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 25 and percent < 45:  # 33.3
+        meter_fill(4, "#a5dd24")
 
-    elif percent > 20 and percent < 30:  # 25
-        for i in range(3):
-            canvas.itemconfig(rec_list[i], fill="#ddc724")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 15 and percent < 30:  # 20
+        meter_fill(3, "#ddc724")
 
-    elif percent > 7 and percent < 17:  # 12.5
-        for i in range(2):
-            canvas.itemconfig(rec_list[i], fill="#dd6524")
-            bar_list.remove(i)
-        for i in bar_list:
-            canvas.itemconfig(rec_list[i], fill="black")
+    elif percent > 4 and percent < 7:  # 6.6
+        meter_fill(2, "#dd6524")
 
-    elif percent > 4 and percent < 7:  # 5.5
+    elif percent < 4:  # -6.6
         canvas.itemconfig(rec_list[0], fill="#dd4125")
         bar_list.remove(0)
         for i in bar_list:
             canvas.itemconfig(rec_list[i], fill="black")
 
-    elif percent < 4:  # Basically empty
-        for i in range(9):
-            canvas.itemconfig(rec_list[i], fill="black")
-
-
-def charging():
-    global charge, rec_list
-    for i in range(9):
-        canvas.itemconfig(rec_list[i], fill="black")
-    while charge == True:
-        canvas.itemconfig(image, state="normal")  # Shows image
-        for i in range(9):
-            if charge == True:
-                canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
-                sleep(1.5)
-            else:
-                break
-        for i in range(9):
-            if charge == True:
-                canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
-            else:
-                break
-        sleep(1.5)
-    
+def hider():
+    global meter_show1
+    sleep(1)
+    if meter_show1 == False:
+        app.hide()
 
 def show():
     sleep(1)
@@ -225,4 +284,11 @@ with gui(size="60x35") as app:
     t2 = Thread(target=batt_watcher)
     t2.start()  # Start the battery watcher in a new thread
 
+    t3 = Thread(target=setting_watcher)
+    t3.start()
+
+    t4 = Thread(target=hider)
+    t4.start()
+
     meter()
+    settings()
