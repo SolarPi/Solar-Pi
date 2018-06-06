@@ -58,7 +58,7 @@ except:
     pass
 
 def settings(first=False):
-    global theme1, startup1, msgBg, msgFg, title_font, bold_font, solar_theme
+    global theme1, startup1, msgBg, msgFg, title_font, bold_font
     theme2 = getSetting("theme")
     startup2 = getSetting("welcome")
 
@@ -66,21 +66,7 @@ def settings(first=False):
         if theme2 == "Solar Pi":
             msgFg = "black"
             msgBg = "white"
-            solar_theme = True
-        else:
-            solar_theme = False
-            app.setTtkTheme(theme2)
-            msgFg = "white"
-            msgBg = "#424242"
-            if theme2 != "black":
-                app.ttkStyle.configure(".", foreground="black", background="white")
-                app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
-                app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
-                app.setBg("white")
-                msgFg = "black"
-                msgBg = "white"
 
-        if solar_theme == True:
             app.setTtkTheme("plastik")
             app.setTtkTheme("clam")
             # app.ttkStyle.configure(".", font="10")
@@ -118,8 +104,19 @@ def settings(first=False):
             app.setButtonStyle("Close", "H.TButton")
             app.setButtonStyle("Get Started", "H.TButton")
             app.setButtonStyle("Read More", "H.TButton")
-
+            
         else:
+            app.setTtkTheme(theme2)
+            msgFg = "white"
+            msgBg = "#424242"
+            if theme2 != "black":
+                app.ttkStyle.configure(".", foreground="black", background="white")
+                app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
+                app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
+                app.setBg("white")
+                msgFg = "black"
+                msgBg = "white"
+
             app.setLabelFrameStyle("Applications", "TFrame")
             app.setLabelFrameStyle("Guides & Tutorials", "TFrame")
             app.setLabelFrameStyle("About", "TFrame")
@@ -127,7 +124,7 @@ def settings(first=False):
             app.setLabelFrameStyle("OS Info", "TFrame")
             app.setLabelFrameStyle("Disk Info", "TFrame")
 
-        if theme2 == "Solar Pi" or theme2 == "black" or first == True:
+        if theme2 == "Solar Pi" or theme2 == "black":
             app.showButton("Get Started")
             app.hideButton("get started")
         else:
@@ -318,11 +315,17 @@ with app.notebook("MainTabs", colspan=2):
         def fade():
             global images, img, canvas, stop
             image_cache = []
-            for i in range(0, 256, 8):  # Generate all 32 frames
-                img.putalpha(i)  # Adjust alpha of each frame
-                image_cache.append(ImageTk.PhotoImage(img))  # Add each frame to list
-            sleep(0.75)  # Pause so animation starts just after application launch
-
+            failed = True
+            while failed == True:  # Sometimes, Python will decide throw errors (eg. in IDLE on Pi)... so this fixes it :)
+                try:
+                    for i in range(0, 256, 8):  # Generate all 32 frames
+                        img.putalpha(i)  # Adjust alpha of each frame
+                        image_cache.append(ImageTk.PhotoImage(img))  # Add each frame to list
+                    sleep(0.75)  # Pause so animation starts just after application launch
+                    failed = False
+                except Exception:
+                    print("Animation failed :(")
+            
             while True:
                 images.append(app.addCanvasImage("c", pos, pos, image_cache[0]))  # Put each frame on canvas, then append to cache
 
