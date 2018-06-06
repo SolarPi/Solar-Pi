@@ -321,7 +321,7 @@ with app.notebook("MainTabs", colspan=2):
                     for i in range(0, 256, 8):  # Generate all 32 frames
                         img.putalpha(i)  # Adjust alpha of each frame
                         image_cache.append(ImageTk.PhotoImage(img))  # Add each frame to list
-                    sleep(0.75)  # Pause so animation starts just after application launch
+                    sleep(0.5)  # Pause so animation starts just after application launch
                     failed = False
                 except Exception:
                     print("Animation failed :(")
