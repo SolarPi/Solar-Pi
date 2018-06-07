@@ -903,4 +903,4 @@ except:
 
 settings(True)
 
-app.go(language=getSetting("language"))
+app.go()
