@@ -222,6 +222,9 @@ def Terminal(press): # Terminal
 def Docs(press):
     webbrowser.get("chromium-browser").open("http://localhost/")  # Launch guides here
 
+def RPiDocs(press):
+    webbrowser.get("chromium-browser").open("http://localhost:83/")
+
 def PythonIntro(press):  # RPi Python Introduction
     webbrowser.get("chromium-browser").open("http://localhost/Advanced-Things/python/index.html")
 def Glossary(press):  # Programming Glossary
@@ -505,7 +508,7 @@ with app.notebook("MainTabs", colspan=2):
                     app.addLabel("low charge", "Low Charge", 0, 1)
 
                     app.addImage("charging", "../Resources/Images/charging small.gif", 1, 0)
-                    app.addLabel("charging", "Charging - you will\nsee this with an animation", 1, 1)
+                    app.addLabel("charging", "Charging", 1, 1)
 
                     app.addImage("full charge", "../Resources/Images/full battery small.gif", 2, 0)
                     app.addLabel("full charge", "Full Charge", 2, 1)
@@ -682,7 +685,7 @@ Happy coding!"""
     ##################################
 
     with app.note("Guides & Tutorials"):
-        pages2 = [" Python Introduction", " A Byte of Python", " Programming Glossary", " Java Guide"]  # Sets settings pages
+        pages2 = [" Solar Pi Docs", " Python Introduction", " A Byte of Python", " Programming Glossary", " Java Guide", " Raspberry Pi Docs"]  # Sets settings pages
 
         def change2(listName):
             app.getFrameWidget(app.listBox("list2")[0]).lift()
@@ -695,7 +698,26 @@ Happy coding!"""
             app.configure(sticky="news", stretch="both")
             app.getListBoxWidget("list2").config(font=title_font)
 
-            with app.frame(pages2[0], 0, 1, sticky="new"):  # Create frame for each page
+            with app.frame(pages2[0], 0, 1, sticky="new"):
+                with app.frame("docs_title", colspan=2):
+                    app.addLabel("docs_title", "Solar Pi Docs")
+                    app.getLabelWidget("docs_title").config(font=title_font)
+                    app.addImage("docs_icon", "../Resources/Images/docs icon.gif", 0, 1)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("docs_image", "../Resources/Images/solar pi docs.gif", 1, 0)
+
+                with app.frame("docs_content", 1, 1):
+                    app.setPadding(5, 5)
+                    app.addMessage("docs_sum", "Almost everything you need to know about your Solar Pi.", 0, 0)
+                    app.setMessageWidth("docs_sum", 175)
+                    app.setMessageFg("docs_sum", msgFg)
+                    app.setMessageBg("docs_sum", msgBg)
+                    app.addLabel("spacer8", "")
+
+                    app.addButton("Solar Pi Docs", Docs, 2, 0)
+
+            with app.frame(pages2[1], 0, 1, sticky="new"):  # Create frame for each page
                 with app.frame("intro_title", colspan=2):
                     app.addLabel("intro_title", "Python Introduction")
                     app.getLabelWidget("intro_title").config(font=title_font)
@@ -716,7 +738,7 @@ Happy coding!"""
                     app.addButton("Go!", PythonIntro, 1, 0)
                     app.setButtonSticky("Go!", "")
 
-            with app.frame(pages2[1], 0, 1, sticky="new"):  # Create frame for each page
+            with app.frame(pages2[2], 0, 1, sticky="new"):  # Create frame for each page
                 with app.frame("byte_title", colspan=2):
                     app.addLabel("byte_title", "A Byte of Python")
                     app.getLabelWidget("byte_title").config(font=title_font)
@@ -736,7 +758,7 @@ Happy coding!"""
                     app.addButton("More Python!", ByteofPython, 1, 0)
                     app.setButtonSticky("More Python!", "")
 
-            with app.frame(pages2[2], 0, 1, sticky="new"):  # Create frame for each page
+            with app.frame(pages2[3], 0, 1, sticky="new"):  # Create frame for each page
 
                 with app.frame("glossary_title", colspan=2):
                     app.addLabel("glossary_title", "Programming Glossary")
@@ -755,7 +777,7 @@ Happy coding!"""
                     app.addLabel("spacer6", "")
                     app.addButton("Glossary", Glossary)
 
-            with app.frame(pages2[3], 0, 1, sticky="new"):  # Create frame for each page
+            with app.frame(pages2[4], 0, 1, sticky="new"):  # Create frame for each page
 
                 with app.frame("java_title", colspan=2):
                     app.addLabel("java_title", "Java Guide")
@@ -773,6 +795,25 @@ Happy coding!"""
                     app.setMessageBg("java_sum", msgBg)
                     app.addLabel("spacer7", "")
                     app.addButton("Java Guide", Java)
+
+            with app.frame(pages2[5], 0, 1, sticky="new"):
+                with app.frame("rpi_title", colspan=2):
+                    app.addLabel("rpi_title", "Raspberry Pi Docs")
+                    app.getLabelWidget("rpi_title").config(font=title_font)
+                    app.addImage("rpi_icon", "../Resources/Images/docs icon.gif", 0, 1)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("rpi_image", "../Resources/Images/rpi docs.gif", 1, 0)
+
+                with app.frame("rpi_content", 1, 1):
+                    app.setPadding(5, 5)
+                    app.addMessage("rpi_sum", "Click to learn more about the Raspberry Pi and Raspbian.", 0, 0)
+                    app.setMessageWidth("rpi_sum", 175)
+                    app.setMessageFg("rpi_sum", msgFg)
+                    app.setMessageBg("rpi_sum", msgBg)
+                    app.addLabel("spacer9", "")
+
+                    app.addButton("Read", RPiDocs, 2, 0)
 
 
     #########################

@@ -150,7 +150,7 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     with app.labelFrame("Choose a Programming Language:"):
         app.setSticky("ew")
         app.setPadding(10, 5)
-        app.addLabel("info", "Click 'More Info' to see a short explanation, and click 'Go' to\nlaunch the IDE and see some resources that might help you.")
+        app.addLabel("info", "Click 'More Info' to see a short explanation, and click 'Go' to launch\nthe coding program and view some resources that might help you.")
 
         app.addHorizontalSeparator()
 

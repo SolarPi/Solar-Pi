@@ -14,27 +14,25 @@ This is the main Solar Pi app that you see when you first log on to your Solar P
 ### Welcome!
 ![welcome](/img/welcome.png)
 
-This tab introduces you to your Solar Pi. There are popups to show you what the Solar Pi project is about and also links you to the [languages](solar-pi-apps.md#languages) app, to allow you to change the display language of your Solar Pi.
+This tab introduces you to your Solar Pi. There are links to various, useful apps here, such as the [languages](solar-pi-apps.md#languages) app to allow you to change the display language of your Solar Pi.
 
 ### Starter Guide
 
 In this tab, it explains the basics of using your Solar Pi. It also provides a link to this page in the docs.
 
-Also, there is a second section that explains the important process of charging your Solar Pi. In summary, the levels on the meters found on the Solar Pi Welcome application and in the bottom left of the screen show how much charge is left in the batteries. When the battery level becomes low, you will need to shut your Solar Pi down, fold out the solar panels and put it in a sunny location.
+Click on the button to read about that topic.
 
 ### Applications
 
-The applications tab shows you apps that you might find useful. On the top row, you can access the [Solar Pi Settings](solar-pi-apps.md#solar-pi-settings) app, the [Start Coding](solar-pi-apps.md#start-coding) app, and links to the Libreoffice office suite.
-
-On the second row, you'll find launchers for IDEs for each main programming language. You can also hover over the icons to get a brief overview of what each application does.
+The applications tab shows you apps that you might find useful. Click on a line in the box on the left to select it, then to launch it, click on the button.
 
 ### Guides & Tutorials
 
-Here, you'll find the guides and tutorials for programming. Click on the buttons to open the guide/tutorial, and hover over the icons to get a brief overview on what the guides and tutorials help you with.
+Here, you'll find the guides and tutorials for programming. Like the Applications tab, click on a line in the box on the left and to launch it, click on the button.
 
 ### System Info
 
-In this tab, it displays the system information of your Solar Pi. It will tell you information about the Raspberry Pi and Operating System.
+In this tab, it displays the system information of your Solar Pi. It will give you information about your Solar Pi's hardware, software and disk usage.
 
 ## Start Coding
 This app helps you decide where to start coding. It explains the 3 main programming languages supported on the Solar Pi: Scratch, [Python](/Advanced-Things/python.md) and Java.
@@ -46,7 +44,7 @@ To do this, select a language, and click `More Info`. A popup box should then ap
 ## Solar Pi Settings
 The Solar Pi Settings app allows you to change settings for your Solar Pi. These are settings that can't be changed from the default Raspbian installation, and are specific to the Solar Pi. When you have finished changing the settings, ensure that you click `Apply` and reboot.
 
-If you want to revert to default settings, click `Restore Defaults` and reboot.
+If you want to revert to default settings, click `Restore Defaults` and reboot if asked.
 
 ### Performance & Power
 ![perf-power](/img/perfpower.png)
@@ -55,15 +53,15 @@ These settings are related to the performance and power of your Solar Pi. The sl
 
 The checkbox that's labelled `Show battery meter` controls whether you see the battery meter that is on the bottom left of your screen. If this gets in the way, you can remove it.
 
-### Updates
-![updates](/img/updates.png)
+There is another checkbox that's labelled `Show charging animation` - uncheck it if you want to see the actual battery level while charging.
 
-You can update your Solar Pi from here. Insert the Solar Pi update USB stick, and press `Update`. To update your Solar Pi, you will need at least 30% battery. Please don't shut the Solar Pi down during this process, and be patient - the process may take a while.
 
 ### Other Settings
 ![other-settings](/img/othersettings.png)
 
 The checkbox that's labelled `Launch the Solar Pi welcome application at startup` controls if you see the Solar Pi Welcome app when you log in. This is on by default, but once you get used to using your Solar Pi, you can turn it off.
+
+There's another checkbox that's labelled `Show Cowsay at terminal launch` - uncheck this if you don't want to see the rainbow cow/penguin when you open the terminal.
 
 The next option is labelled `Theme for Solar Pi apps:`. This controls how Solar Pi apps look. The default is `'Solar Pi'`, but you can always change it by clicking on the box, and selecting a theme from the drop down menu.
 
@@ -71,6 +69,12 @@ Finally, at the bottom of the section, there are buttons which say `Change Advan
 
 !!! warning
 	Only go into the Advanced Settings if you know what you are doing!
+
+### Updates
+![updates](/img/updates.png)
+
+You can update your Solar Pi from here. Insert the Solar Pi update USB stick, and press `Update`. To update your Solar Pi, you will need at least 30% battery. Please don't shut the Solar Pi down during this process, and be patient - the process may take a while.
+
 
 
 ## Solar Pi Docs
@@ -94,4 +98,4 @@ This allows you to change the display language of your Solar Pi. If the language
 ## Battery Meter
 ![battery](/img/charging.gif)
 
-At the bottom left corner of the display, you will find a battery meter. This displays how much charge you have left in the batteries. You can hide this by going into `Solar Pi Settings > Performance & Power > Show battery meter`
+At the bottom left corner of the display, you will find a battery meter. This displays how much charge you have left in the batteries. You can change the settings for this by going to `Solar Pi Settings > Performance & Power`

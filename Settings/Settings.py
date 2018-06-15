@@ -242,7 +242,7 @@ with gui("Settings", useTtk=True) as app:
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
         app.setBg("white")
 
-    pages = [" Performance & Power", " Updates", " Other Settings"]  # Sets settings pages
+    pages = [" Performance & Power", " Other Settings", " Updates"]  # Sets settings pages
 
     def change(listName):
         app.getFrameWidget(app.listBox("list")[0]).lift()
@@ -290,28 +290,28 @@ with gui("Settings", useTtk=True) as app:
                 app.addCheckBox("Show charging animation", 0, 1)  # TODO: Translate!
             # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
-        with app.frame(pages[1], 0, 1, sticky="new"):  # Code for second page
-                app.setPadding(5, 5)
-                app.addLabel("updates_title", "Updates")
-                app.getLabelWidget("updates_title").config(font=("piboto", 14, "normal"))
-                app.addHorizontalSeparator()
-                app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
-                app.addButton("Update", update2)
+        with app.frame(pages[1], 0, 1, sticky="new"):  # Code for third page
+            app.setPadding(5, 5)
+            app.addLabel("other_title", "Other Settings")
+            app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
+            app.addHorizontalSeparator(colspan=2)
+            app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
+            app.addCheckBox("Show cowsay at terminal launch", colspan=2)  # TODO: Translate
+            app.addLabel("themes", "Themes for Solar Pi apps:", 4, 0)
+            themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
+            app.addOptionBox("Themes", themes, 4, 1)
+            app.addButton("Change Advanced Settings", ButtonHandler, 5, 0)
+            app.addButton("Languages", ButtonHandler, 5, 1)
+            app.setButtonSticky("Languages", "ew")
+            app.setButtonSticky("Change Advanced Settings", "ew")
 
-        with app.frame(pages[2], 0, 1, sticky="new"):  # Code for third page
-                app.setPadding(5, 5)
-                app.addLabel("other_title", "Other Settings")
-                app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
-                app.addHorizontalSeparator(colspan=2)
-                app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
-                app.addCheckBox("Show cowsay at terminal launch", colspan=2)  # TODO: Translate
-                app.addLabel("themes", "Themes for Solar Pi apps:", 4, 0)
-                themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
-                app.addOptionBox("Themes", themes, 4, 1)
-                app.addButton("Change Advanced Settings", ButtonHandler, 5, 0)
-                app.addButton("Languages", ButtonHandler, 5, 1)
-                app.setButtonSticky("Languages", "ew")
-                app.setButtonSticky("Change Advanced Settings", "ew")
+        with app.frame(pages[2], 0, 1, sticky="new"):  # Code for second page
+            app.setPadding(5, 5)
+            app.addLabel("updates_title", "Updates")
+            app.getLabelWidget("updates_title").config(font=("piboto", 14, "normal"))
+            app.addHorizontalSeparator()
+            app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
+            app.addButton("Update", update2)
 
         app.configure(sticky="se", stretch="column")
         app.selectListItemAtPos("list", 0, callFunction=True)
@@ -322,7 +322,7 @@ with gui("Settings", useTtk=True) as app:
         app.setPadding(10, 5)
         app.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
         app.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
-        app.addImageButton("Exit ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
+        app.addImageButton("Cancel ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
 
     # Second window for updates
     with app.subWindow("Updating your Solar Pi", modal=True):

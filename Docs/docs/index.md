@@ -12,7 +12,7 @@ Welcome to the home of Solar Pi documentation. Here you'll find (almost) everyth
 
 ## Useful Places
 
-Here are some places that you might find useful when starting out:
+Here are some places that we recommend you take a look at:
 ### [Getting Started](getting-started.md)
 This will show you the basics on how to use your Solar Pi.
 

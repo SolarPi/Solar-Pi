@@ -84,4 +84,4 @@ while True:  # Repeat infinitely
             app.changeLanguage(lang)
 
 
-    sleep(4)  # Wait 4 secs before polling battery again
+    sleep(3)  # Wait 3 secs before polling battery again

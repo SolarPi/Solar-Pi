@@ -10,6 +10,7 @@ meter_show1 = getSetting("battery_meter")
 animation1 = getSetting("battery_animation")
 
 animate = animation1
+percent = 50
 
 #############################################################
 #  Change rectangle colour:                                 #
@@ -111,13 +112,13 @@ class Handler2(FileSystemEventHandler):
 ########################################################################################################################
 
 
-def settings():
-    global meter_show1, animation1, animate, app, mode
+def settings(first=False, animation3=False):
+    global meter_show1, animation1, animate, app, mode, percent
     meter_show2 = getSetting("battery_meter")  # When triggered, fetch settings
     animation2 = getSetting("battery_animation")
     animate = animation2
 
-    if meter_show1 != meter_show2:  # Checks if original setting has changed
+    if meter_show1 != meter_show2 or first == True:  # Checks if original setting has changed
         if meter_show2 == True:  # Shows meter if hidden
             app.show()
         elif meter_show2 == False:  # Hides meter if shown
@@ -125,13 +126,13 @@ def settings():
         print("Do something with showing the meter")
         meter_show1 = meter_show2  # Updates original setting with current setting
 
-    if animation1 != animation2 and mode == "C":  # Checks if original setting has changed and if we're charging
-        if animation2 == True:  # If the animation is enabled...
+    if (animation1 != animation2 and charge == True) or first == True or animation3 == True:  # Checks if original setting has changed and if we're charging
+        if animation2 == True and percent < 100:  # If the animation is enabled...
             t5 = Thread(target=animation)
             t5.start()  # Start the animation
             print("setting")
         elif animation2 == False:  # If the animation is disabled...
-             meter()
+            meter()
         print("Do something with the animation")
         animation1 = animation2
 
@@ -145,19 +146,17 @@ def animation():
                 canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
                 sleep(1.5)
             else:
-                break
+                return
         for i in range(9):
             if animate == True:
                 canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
             else:
-                break
+                return
         sleep(1.5)
-
-    meter()  # After finished, allow meter() to set back to non-animation mode
-
+    return
 
 def meter():
-    global canvas, image, rec_list, charge, mode, animate
+    global canvas, image, rec_list, charge, mode, animate, percent
     access = False
     while access == False:
         try:
@@ -187,12 +186,19 @@ def meter():
     
     elif mode == "C":
         if charge == True:
-            meter_change(percent)
+            meter_change(percent, charge)
         else:
             charge = True
-            meter_change(percent)
+            meter_change(percent, charge)
             canvas.itemconfig(image, state="normal")  # Shows image
-            settings()
+            settings(animation3=True)
+
+        if percent >= 100 and animate == True:
+            animate = False
+            sleep(1)
+            meter_change(percent, charge)
+        elif percent < 100 and animate == True:
+            settings(animation3=True)
 
 def meter_fill(num, colour="black"):
     for i in range(num):
@@ -201,7 +207,7 @@ def meter_fill(num, colour="black"):
     for i in bar_list:
         canvas.itemconfig(rec_list[i], fill=colour)
 
-def meter_change(percent):
+def meter_change(percent, charge=False):
     global change, canvas, image, rec_list, bar_list
     bar_list = []  # Create list for bars in meter
     for i in range(9):
@@ -230,16 +236,29 @@ def meter_change(percent):
         meter_fill(5)
 
     elif percent > 25 and percent < 45:  # 33.3
-        meter_fill(4, "#a5dd24")
+        if charge == True:
+            meter_fill(4)
+        else:
+            meter_fill(4, "#a5dd24")
 
     elif percent > 15 and percent < 30:  # 20
-        meter_fill(3, "#ddc724")
+        if charge == True:
+            meter_fill(3)
+        else:
+            meter_fill(3, "#ddc724")
 
     elif percent > 4 and percent < 7:  # 6.6
-        meter_fill(2, "#dd6524")
+        if charge == True:
+            meter_fill(2)
+        else:
+            meter_fill(2, "#dd6524")
 
     elif percent < 4:  # -6.6
-        canvas.itemconfig(rec_list[0], fill="#dd4125")
+        if charge == True:
+            colour = "green"
+        else:
+            colour = "#dd4125"
+        canvas.itemconfig(rec_list[0], fill=colour)
         bar_list.remove(0)
         for i in bar_list:
             canvas.itemconfig(rec_list[i], fill="black")
@@ -290,5 +309,5 @@ with gui(size="60x35") as app:
     t4 = Thread(target=hider)
     t4.start()
 
+    settings(first=True)
     meter()
-    settings()

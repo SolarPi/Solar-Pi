@@ -1,6 +1,6 @@
 # Getting Started
 
-Your Solar Pi is a Raspberry Pi based computer. It can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, so that you have an advantage over others when you get employed.
+Your Solar Pi is a Raspberry Pi based computer. It is capable of performing many tasks a lot faster than a human and it can do almost anything you want, if you know how to program it. We aim to teach you how to use a computer and how to code, as it'll give you many more skills.
 
 Good luck, and we hope that you enjoy using your Solar Pi!
 
@@ -42,4 +42,4 @@ All the files will branch out, each with its own unique path. For example, your 
 ![terminal](/img/terminal.png)
 
 The Terminal, (also known as the Command Line) is a very powerful and useful tool. You enter commands to do certain tasks, and it will do them for you. As a beginner, you don't have to use this - but as get more experience in using a computer, then you might want to give it a go. You can access it by clicking on the icon which has a black box with '>_' inside.
-You can see a list of Terminal commands [here](Advanced-Things/commands.md).
+You can see a list of Terminal commands [here](Advanced-Things/commands.md) and you can learn more about the Terminal [here](Advanced-Things/terminal.md).

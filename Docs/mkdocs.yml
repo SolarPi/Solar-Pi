@@ -26,3 +26,4 @@ pages:
         - Linux Commands: Advanced-Things/commands.md
         - Python: Advanced-Things/python.md
         - Programming Glossary: Advanced-Things/programming-glossary.md
+    - About: about.md
