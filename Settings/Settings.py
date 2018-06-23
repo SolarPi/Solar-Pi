@@ -52,7 +52,10 @@ def SolarPiTheme():
     # Fix CheckButton background
     app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
-    app.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to apply button
+    if getSetting("language") == "spanish":
+        app.setButtonStyle("Aplicar ", "H.TButton")
+    else:
+        app.setButtonStyle("Apply ", "H.TButton")  # Set highlight button style to apply button
 
     app.ttkStyle.configure("Horizontal.TScale", troughcolor="light grey", sliderthickness="1", borderwidth="0", sliderrelief="flat")
 
@@ -85,8 +88,12 @@ def Cowsay(show_cow):
             f.write(cow_command)
 
 def ApplySettings(press):
+    # Sets slider and entry value
+    EntryScaleChange()
+    ScaleChange()
+
     # Fetches data from widgets
-    clock_speed = int(app.getEntry("Max Clock Speed: "))
+    clock_speed = int(app.getScale("slider"))
     battery_meter = app.getCheckBox("Show battery meter")
     animation = app.getCheckBox("Show charging animation")
     launch_welcome = app.getCheckBox("Launch the Solar Pi Welcome application at startup")
@@ -111,9 +118,6 @@ def ApplySettings(press):
     # Sets font
     app.setFont(family="piboto")
     app.ttkStyle.configure(".", font=("piboto"))
-
-    # Sets slider value
-    app.setScale("slider", clock_speed)  # Sets slider to value in entry
 
     # Fetches previous setting
     clock_old = getSetting("clock")
@@ -200,12 +204,12 @@ def stop():
     app.hideSubWindow("Updating your Solar Pi")
 
 # Sets entry based on scale changes
-def ScaleChange(value):
+def ScaleChange(value=None):
     value = str(int(app.getScale("slider")))
     app.setEntry("Max Clock Speed: ", value)
 
 # Sets scale based on entry
-def EntryScaleChange(value):
+def EntryScaleChange(value=None):
     value = int(app.getEntry("Max Clock Speed: "))
     if value > 1200:  # Ensure that values are between 1200 and 600
         value = 1200
@@ -243,6 +247,8 @@ with gui("Settings", useTtk=True) as app:
         app.setBg("white")
 
     pages = [" Performance & Power", " Other Settings", " Updates"]  # Sets settings pages
+    if getSetting("language") == "spanish":
+        pages = [" Rendimiento y potencia", " Otros ajustes", " Actualizaciones"]
 
     def change(listName):
         app.getFrameWidget(app.listBox("list")[0]).lift()
@@ -287,7 +293,7 @@ with gui("Settings", useTtk=True) as app:
             app.addHorizontalSeparator(colspan=2)
             with app.frame("power", colspan=2):
                 app.addCheckBox("Show battery meter", 0, 0)
-                app.addCheckBox("Show charging animation", 0, 1)  # TODO: Translate!
+                app.addCheckBox("Show charging animation", 0, 1)
             # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
         with app.frame(pages[1], 0, 1, sticky="new"):  # Code for third page
@@ -296,9 +302,9 @@ with gui("Settings", useTtk=True) as app:
             app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
             app.addHorizontalSeparator(colspan=2)
             app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
-            app.addCheckBox("Show cowsay at terminal launch", colspan=2)  # TODO: Translate
+            app.addCheckBox("Show cowsay at terminal launch", colspan=2)
             app.addLabel("themes", "Themes for Solar Pi apps:", 4, 0)
-            themes = ["Solar Pi", "Plastik", "Arc", "Black", "Winxpblue"]
+            themes = ["Solar Pi", "Plastik", "Arc", "Winxpblue"]  # Black
             app.addOptionBox("Themes", themes, 4, 1)
             app.addButton("Change Advanced Settings", ButtonHandler, 5, 0)
             app.addButton("Languages", ButtonHandler, 5, 1)
@@ -320,9 +326,15 @@ with gui("Settings", useTtk=True) as app:
     # Buttons to apply, restore defaults and exit
     with app.frame("frame3"):
         app.setPadding(10, 5)
-        app.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
-        app.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
-        app.addImageButton("Cancel ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
+        if getSetting("language") == "spanish":
+            app.addImageButton("Aplicar ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
+            app.addImageButton(" Defecto ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
+            app.addImageButton("Salida ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
+
+        else:
+            app.addImageButton("Apply ", ApplySettings, "../Resources/Images/tick.gif", 0, 0, align="right")
+            app.addImageButton(" Restore Defaults ", Defaults, "../Resources/Images/restore.gif", 0, 1, align="right")
+            app.addImageButton("Exit ", quit, "../Resources/Images/cross.gif", 0, 2, align="right")
 
     # Second window for updates
     with app.subWindow("Updating your Solar Pi", modal=True):

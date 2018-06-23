@@ -54,8 +54,8 @@ try:
                 print("Received modified event")
                 settings()  # Calls meter() when file is modified
 
-except:
-    pass
+except Exception:
+    print("Watchdog module not found or settings file is missing")
 
 def settings(first=False):
     global theme1, startup1, msgBg, msgFg, title_font, bold_font
@@ -84,7 +84,7 @@ def settings(first=False):
             app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
             app.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
 
-            app.ttkStyle.configure("Back.TButtton", background="#687396", bordercolor="#687396")
+            app.ttkStyle.configure("Back.TButton", background="#687396", bordercolor="#687396")
             app.ttkStyle.map("Back.TButton",
                              background=[("pressed", "#687396"), ("active", "#687396"), ("!pressed", "#687396"),
                                          ("!active", "#687396")])
@@ -140,12 +140,9 @@ def settings(first=False):
         title_font = ("piboto", 14, "normal")
         bold_font = ("piboto", 12, "bold")
 
-        app.setFont(family="piboto")
-        app.ttkStyle.configure(".", font=("piboto"))
-
         app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white",
                                padding=[10, 10])  # #dbdce2, #687396
-        app.ttkStyle.configure("Padding.TLabel", padding=[10, 7])
+        app.ttkStyle.configure("Padding.TLabel", padding=[10, 5])
 
         app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 6], borderwidth=1)
         # app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
@@ -233,6 +230,8 @@ def ByteofPython(press):  # Byte of Python
     webbrowser.get("chromium-browser").open("http://localhost:81/")
 def Java(press):  # Google's Python Tutorial
     webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
+def Moodle(press):
+    webbrowser.get("chromium-browser").open("http://localhost:84/")  # TODO: Find correct page
 
 #app.setFont(11, font="Dejavu Sans")
 
@@ -262,7 +261,7 @@ with app.notebook("MainTabs", colspan=2):
         with app.frame("frame4", 0, 0, colspan=3):
             app.addLabel("text4", "Welcome to your  ", 0, 0)
             app.setLabelAlign("text4", "right")
-            app.getLabelWidget("text4").config(font=("piboto", "20"))
+            app.getLabelWidget("text4").config(font=("dosis", "25"))
             app.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
             app.setImageSticky("logo text1", "nsw")
 
@@ -368,75 +367,46 @@ with app.notebook("MainTabs", colspan=2):
             else:
                 app.getFrameWidget(btn).lift()
 
-        with app.frame("options", 0, 0, sticky="new"):
+        with app.frame("options", 0, 0, sticky="ew"):
 
-            with app.frame("starter", 0, 0):
-                app.setSticky("nwe")
-                with app.frame("starter2"):
-                    app.setPadding(5, 2)
-                    app.addLabel("starter_options_title", "Solar Pi Starter Guide")
-                    app.getLabelWidget("starter_options_title").config(font=title_font)
-                    app.setLabelStyle("starter_options_title", "Padding.TLabel")
-                    app.addHorizontalSeparator()
+            app.addLabel("options_title", " Select a topic by clicking or tapping on a button", colspan=3)
+            app.getLabelWidget("options_title").config(font=title_font)
+            app.setLabelStyle("options_title", "H.TLabel")
+            app.setLabelSticky("options_title", "new")
 
-                with app.frame("starter3"):
-                    app.setPadding(2, 10)
-                    app.addImage("starter_icon", "../Resources/Images/Solar Pi logo icon.gif")
+            #app.addLabel("options_inst", "Select a topic by clicking or tapping on a button", colspan=3)
 
-                with app.frame("starter4"):
+            with app.frame("starter", 2, 0):
+                app.setSticky("ew")
+
+                with app.frame("options2"):
                     app.setPadding(5, 10)
-                    app.addButton("Starter Guide", guide)
+                    app.setSticky("ew")
+
+                    app.addImage("starter_icon", "../Resources/Images/Solar Pi logo icon.gif", 0, 0)
+                    app.addImage("charge_icon", "../Resources/Images/charging 2.gif", 0, 1)
+                    app.addImage("coding_icon2", "../Resources/Images/coding icon small.gif", 0, 2)
+
+                    app.addButton("Starter Guide", guide, 1, 0)
                     app.setButtonSticky("Starter Guide", "")
                     app.setButtonStyle("Starter Guide", "H.TButton")
-                    app.addMessage("starter_sum", "Click or tap to read a quick overview on how to use your Solar Pi.")
+                    app.addButton("Charging", guide, 1, 1)
+                    app.setButtonSticky("Charging", "")
+                    app.addButton("Coding", guide, 1, 2)
+                    app.setButtonSticky("Coding", "")
+
+                    app.addMessage("starter_sum", "Click or tap to read a quick overview on how to use your Solar Pi.", 2, 0)
                     app.setMessageWidth("starter_sum", 225)
-                    app.setMessageSticky("starter_sum", "ew")
                     app.setMessageFg("starter_sum", msgFg)
                     app.setMessageBg("starter_sum", msgBg)
 
-            with app.frame("charging", 0, 1):
-                app.setSticky("nwe")
-                with app.frame("charging2"):
-                    app.setPadding(5, 2)
-                    app.addLabel("charging_title2", "Charging")
-                    app.getLabelWidget("charging_title2").config(font=title_font)
-                    app.setLabelStyle("charging_title2", "Padding.TLabel")
-                    app.addHorizontalSeparator()
-
-                with app.frame("charging3"):
-                    app.setPadding(2, 23)
-                    app.addImage("charge_icon", "../Resources/Images/battery-charging.gif")
-
-                with app.frame("charging4"):
-                    app.setPadding(5, 10)
-                    app.addButton("Charging", guide)
-                    app.setButtonSticky("Charging", "")
-                    app.addMessage("charging_sum", "Click or tap to read how to charge your Solar Pi.")
+                    app.addMessage("charging_sum", "Click or tap to read how to charge your Solar Pi.", 2, 1)
                     app.setMessageWidth("charging_sum", 225)
-                    app.setMessageSticky("charging_sum", "ew")
                     app.setMessageFg("charging_sum", msgFg)
                     app.setMessageBg("charging_sum", msgBg)
 
-            with app.frame("coding", 0, 2):
-                app.setSticky("nwe")
-                with app.frame("coding2"):
-                    app.setPadding(5, 2)
-                    app.addLabel("coding_title2", "Coding")
-                    app.getLabelWidget("coding_title2").config(font=title_font)
-                    app.setLabelStyle("coding_title2", "Padding.TLabel")
-                    app.addHorizontalSeparator()
-
-                with app.frame("coding3"):
-                    app.setPadding(2, 28)
-                    app.addImage("coding_icon2", "../Resources/Images/coding icon small.gif")
-
-                with app.frame("coding4"):
-                    app.setPadding(5, 10)
-                    app.addButton("Coding", guide)
-                    app.setButtonSticky("Coding", "")
-                    app.addMessage("coding_sum2", "Click or tap to learn more about coding on your Solar Pi.")
+                    app.addMessage("coding_sum2", "Click or tap to learn more about coding on your Solar Pi.", 2, 2)
                     app.setMessageWidth("coding_sum2", 225)
-                    app.setMessageSticky("coding_sum2", "ew")
                     app.setMessageFg("coding_sum2", msgFg)
                     app.setMessageBg("coding_sum2", msgBg)
 
@@ -494,7 +464,7 @@ with app.notebook("MainTabs", colspan=2):
                 charge_info = """There is a battery meter at the bottom left corner of the display. This tells you how much power is left in the batteries.
 
 •  When the battery gets low, you need to charge your Solar Pi. To do this, fold out the solar panels and face them to the sun.
-•  You will know if the batteries are charging, as the meter will show the charging animation.
+•  You will know if the batteries are charging, as the meter will show the charging icon (yellow lightning bolt).
 •  The batteries are fully charged when the bar is completely green."""
 
                 app.addMessage("charge_info", charge_info)
@@ -685,7 +655,7 @@ Happy coding!"""
     ##################################
 
     with app.note("Guides & Tutorials"):
-        pages2 = [" Solar Pi Docs", " Python Introduction", " A Byte of Python", " Programming Glossary", " Java Guide", " Raspberry Pi Docs"]  # Sets settings pages
+        pages2 = [" Solar Pi Docs", " Python Introduction", " A Byte of Python", " Programming Glossary", " Java Guide", " Raspberry Pi Docs", " Moodle"]  # Sets settings pages
 
         def change2(listName):
             app.getFrameWidget(app.listBox("list2")[0]).lift()
@@ -813,7 +783,26 @@ Happy coding!"""
                     app.setMessageBg("rpi_sum", msgBg)
                     app.addLabel("spacer9", "")
 
-                    app.addButton("Read", RPiDocs, 2, 0)
+                    app.addButton("Take a look!", RPiDocs, 2, 0)
+
+            with app.frame(pages2[6], 0, 1, sticky="new"):
+                with app.frame("moodle_title", colspan=2):
+                    app.addLabel("moodle_title", "Moodle")
+                    app.getLabelWidget("moodle_title").config(font=title_font)
+                    app.addImage("moodle_icon", "../Resources/Images/moodle.gif", 0, 1)
+                    app.addHorizontalSeparator(colspan=2)
+
+                app.addImage("moodle_image", "../Resources/Images/moodle screenshot.gif", 1, 0)
+
+                with app.frame("moodle_content", 1, 1):
+                    app.setPadding(5, 5)
+                    app.addMessage("moodle_sum", "An E-Learning platform that can teach you a variety of subjects.", 0, 0)
+                    app.setMessageWidth("moodle_sum", 175)
+                    app.setMessageFg("moodle_sum", msgFg)
+                    app.setMessageBg("moodle_sum", msgBg)
+                    app.addLabel("spacer10", "")
+
+                    app.addButton("Give it a go!", Moodle, 2, 0)
 
 
     #########################

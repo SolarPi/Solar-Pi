@@ -10,6 +10,7 @@ meter_show1 = getSetting("battery_meter")
 animation1 = getSetting("battery_animation")
 
 animate = animation1
+animate_1 = False
 percent = 50
 
 #############################################################
@@ -112,13 +113,15 @@ class Handler2(FileSystemEventHandler):
 ########################################################################################################################
 
 
-def settings(first=False, animation3=False):
-    global meter_show1, animation1, animate, app, mode, percent
+def settings(check=False):
+    global meter_show1, animation1, animate, app, mode, percent, animate_1
     meter_show2 = getSetting("battery_meter")  # When triggered, fetch settings
     animation2 = getSetting("battery_animation")
     animate = animation2
+    if animate == False:
+        animate_1 = False
 
-    if meter_show1 != meter_show2 or first == True:  # Checks if original setting has changed
+    if meter_show1 != meter_show2 or check == True:  # Checks if original setting has changed
         if meter_show2 == True:  # Shows meter if hidden
             app.show()
         elif meter_show2 == False:  # Hides meter if shown
@@ -126,13 +129,16 @@ def settings(first=False, animation3=False):
         print("Do something with showing the meter")
         meter_show1 = meter_show2  # Updates original setting with current setting
 
-    if (animation1 != animation2 and charge == True) or first == True or animation3 == True:  # Checks if original setting has changed and if we're charging
-        if animation2 == True and percent < 100:  # If the animation is enabled...
+    if animation1 != animation2 or check == True:  # Checks if original setting has changed and if we're charging
+        meter(no_loop=True)
+        """
+        if animation2 == True and percent < 100 and charge == True:  # If the animation is enabled...
             t5 = Thread(target=animation)
             t5.start()  # Start the animation
             print("setting")
         elif animation2 == False:  # If the animation is disabled...
-            meter()
+            meter(no_loop=True)
+        """
         print("Do something with the animation")
         animation1 = animation2
 
@@ -155,8 +161,8 @@ def animation():
         sleep(1.5)
     return
 
-def meter():
-    global canvas, image, rec_list, charge, mode, animate, percent
+def meter(no_loop=False):
+    global canvas, image, rec_list, charge, mode, animate, percent, animate_1
     access = False
     while access == False:
         try:
@@ -178,27 +184,34 @@ def meter():
             charge = False
             animate = False
             canvas.itemconfig(image, state="hidden")  # Hide image
-            for i in range(10):  # If battery was charging, attempt to update meter once animation has stopped
+            for i in range(5):  # If battery was charging, attempt to update meter once animation has stopped
                 meter_change(percent)
-                sleep(1.5)
+                sleep(0.5)
         else:
             meter_change(percent)  # If RPi is battery powered
     
     elif mode == "C":
-        if charge == True:
-            meter_change(percent, charge)
-        else:
-            charge = True
-            meter_change(percent, charge)
-            canvas.itemconfig(image, state="normal")  # Shows image
-            settings(animation3=True)
+        charge = True
+        canvas.itemconfig(image, state="normal")  # Shows image
 
         if percent >= 100 and animate == True:
             animate = False
+            animate_1 = False
             sleep(1)
             meter_change(percent, charge)
-        elif percent < 100 and animate == True:
-            settings(animation3=True)
+
+        else:
+            if animate == True and animate_1 == False:
+                t6 = Thread(target=animation)
+                t6.start()
+                animate_1 = True
+            elif animate_1 == True:
+                pass
+            else:
+                meter_change(percent, True)
+
+        if no_loop == False:
+            settings(check=True)
 
 def meter_fill(num, colour="black"):
     for i in range(num):
@@ -309,5 +322,5 @@ with gui(size="60x35") as app:
     t4 = Thread(target=hider)
     t4.start()
 
-    settings(first=True)
+    settings(check=True)
     meter()
