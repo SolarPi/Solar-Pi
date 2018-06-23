@@ -75,7 +75,15 @@ Finally, at the bottom of the section, there are buttons which say `Change Advan
 
 You can update your Solar Pi from here. Insert the Solar Pi update USB stick, and press `Update`. To update your Solar Pi, you will need at least 30% battery. Please don't shut the Solar Pi down during this process, and be patient - the process may take a while.
 
+## Languages
+![languages](/img/languages.png)
 
+This allows you to change the display language of your Solar Pi. If the language that is currently used is not suitable, you can change it by clicking on the button for your language. After that, you'll need to reboot your Solar Pi.
+
+## Battery Meter
+![battery](/img/charging.gif)
+
+At the bottom left corner of the display, you will find a battery meter. This displays how much charge you have left in the batteries. You can change the settings for this by going to `Solar Pi Settings > Performance & Power`
 
 ## Solar Pi Docs
 Not really an app, but still important. This is all the documentation for your Solar Pi. It opens in the Chromium web browser, to allow for easy navigation with a touchscreen. You can navigate different pages via clicking on the icon in the top left, and you can skip through different sections of a page through the menu on the right. You can search through the docs using the search bar in the top right. Links are highlighted in [green](solar-pi-apps.md#solar-pi-docs), and these will take you to different places in the docs.
@@ -90,12 +98,9 @@ Again, this wasn't created by us! It's created by [Tutorials Point](https://www.
 
 This offline website will teach you how to program in Java; a language that is available on the Solar Pi. Designed for beginners, you should be coding in no time! This also opens in the Chromium browser.
 
-## Languages
-![languages](/img/languages.png)
+## Moodle
+An e-learning platform that allows you to learn about various topics. Log in with the following credentials:
 
-This allows you to change the display language of your Solar Pi. If the language that is currently used is not suitable, you can change it by clicking on the button for your language. After that, you'll need to reboot your Solar Pi.
+* **Username:** `solarpi`
 
-## Battery Meter
-![battery](/img/charging.gif)
-
-At the bottom left corner of the display, you will find a battery meter. This displays how much charge you have left in the batteries. You can change the settings for this by going to `Solar Pi Settings > Performance & Power`
+* **Password:** `solarpi`

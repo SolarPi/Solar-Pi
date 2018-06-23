@@ -231,7 +231,7 @@ def ByteofPython(press):  # Byte of Python
 def Java(press):  # Google's Python Tutorial
     webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
 def Moodle(press):
-    webbrowser.get("chromium-browser").open("http://localhost:84/")  # TODO: Find correct page
+    webbrowser.get("chromium-browser").open("http://localhost:84/my")  # TODO: Find correct page
 
 #app.setFont(11, font="Dejavu Sans")
 
