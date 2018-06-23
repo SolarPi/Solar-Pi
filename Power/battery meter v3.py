@@ -10,7 +10,7 @@ meter_show1 = getSetting("battery_meter")
 animation1 = getSetting("battery_animation")
 
 animate = animation1
-animate_1 = False
+animate1 = False
 percent = 50
 
 #############################################################
@@ -114,12 +114,12 @@ class Handler2(FileSystemEventHandler):
 
 
 def settings(check=False):
-    global meter_show1, animation1, animate, app, mode, percent, animate_1
+    global meter_show1, animation1, animate, app, mode, percent, animate1
     meter_show2 = getSetting("battery_meter")  # When triggered, fetch settings
     animation2 = getSetting("battery_animation")
     animate = animation2
     if animate == False:
-        animate_1 = False
+        animate1 = False
 
     if meter_show1 != meter_show2 or check == True:  # Checks if original setting has changed
         if meter_show2 == True:  # Shows meter if hidden
@@ -152,17 +152,20 @@ def animation():
                 canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
                 sleep(1.5)
             else:
+                canvas.itemconfig(image, state="hidden")  # Hide image
                 return
         for i in range(9):
             if animate == True:
                 canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
             else:
+                canvas.itemconfig(image, state="hidden")  # Hide image
                 return
         sleep(1.5)
+    canvas.itemconfig(image, state="hidden")  # Hide image
     return
 
 def meter(no_loop=False):
-    global canvas, image, rec_list, charge, mode, animate, percent, animate_1
+    global canvas, image, rec_list, charge, mode, animate, percent, animate1
     access = False
     while access == False:
         try:
@@ -183,7 +186,7 @@ def meter(no_loop=False):
         if charge == True:  # If battery powered and was charging
             charge = False
             animate = False
-            canvas.itemconfig(image, state="hidden")  # Hide image
+            animate1 = False
             for i in range(5):  # If battery was charging, attempt to update meter once animation has stopped
                 meter_change(percent)
                 sleep(0.5)
@@ -196,16 +199,16 @@ def meter(no_loop=False):
 
         if percent >= 100 and animate == True:
             animate = False
-            animate_1 = False
+            animate1 = False
             sleep(1)
             meter_change(percent, charge)
 
         else:
-            if animate == True and animate_1 == False:
+            if animate == True and animate1 == False:
                 t6 = Thread(target=animation)
                 t6.start()
-                animate_1 = True
-            elif animate_1 == True:
+                animate1 = True
+            elif animate1 == True:
                 pass
             else:
                 meter_change(percent, True)

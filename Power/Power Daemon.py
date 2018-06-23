@@ -74,7 +74,7 @@ def main():
         print(calc_level, level)
 
         if cache[0] != percentage or cache[1] != mode or ignore == True:  # If battery data has changed or previous reading was incorrect
-            if percentage > 101 and mode == "B" or level_incorrect == True:
+            if percentage > 101 and mode == "B" or level_incorrect == True or percentage < 0:
                 ignore = True  # Triggers if reading is incorrect
                 ignore_count += 1
                 sleep_sec = 0
@@ -87,6 +87,9 @@ def main():
                 sleep_sec = 3
 
             cache = [percentage, mode]  # Add battery data to cache
+
+        else:
+            sleep_sec = 3
 
         if ignore_count >= 5:
             return
