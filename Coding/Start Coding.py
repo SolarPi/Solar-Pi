@@ -92,6 +92,7 @@ def settings(first=False):
             app.setTtkTheme(theme2)
             app.ttkStyle.map("TRadiobutton", background=[("active", "white")])
             app.ttkStyle.configure(".", background="white", foreground="black")
+            app.setLabelFrameStyle("Choose a Programming Language:", "TFrame")
 
             app.showButton("go")
             app.hideButton("Go")
@@ -99,8 +100,11 @@ def settings(first=False):
             app.setBg("white")
             app.setFg("black")
 
-        app.setFont(family="piboto")
-        app.ttkStyle.configure(".", font=("piboto"))
+        app.setFont(family="pibotolt")
+        app.ttkStyle.configure(".", font="pibotolt")
+        app.ttkStyle.configure("TButton", font=("open sans", 12, "normal"))
+        app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
+        app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
 
         theme1 = theme2
 
@@ -158,6 +162,10 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
         app.addRadioButton("language", "Python (Intermedium/Hard)")
         app.addRadioButton("language", "Java (Hard)")
 
+    programming = app.addLabel("programming", "Choose a Programming Language:")
+    app.setLabelStyle("programming", "Frame.TLabel")
+    app.getLabelFrameWidget("Choose a Programming Language:").config(labelwidget=programming)
+
     with app.frame("frame"):
         app.setPadding(10, 10)
 
@@ -179,7 +187,6 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
 
         #app.addImageButton("Go  ", ButtonHandler, "../Resources/Images/go black.gif", 0, 0, align="right")
 
-        app.setLabelFrameStyle("Choose a Programming Language:", "TFrame")
         app.addImageButton(" More Info  ", ButtonHandler, "../Resources/Images/more info.gif", 0, 1, align="right")
         app.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
 

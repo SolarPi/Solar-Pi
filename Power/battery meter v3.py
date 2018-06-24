@@ -152,16 +152,13 @@ def animation():
                 canvas.itemconfig(rec_list[i], fill="green")  # Fills each bar green every 1.5 secs
                 sleep(1.5)
             else:
-                canvas.itemconfig(image, state="hidden")  # Hide image
                 return
         for i in range(9):
             if animate == True:
                 canvas.itemconfig(rec_list[i], fill="black")  # After all bars are green, they are filled with black
             else:
-                canvas.itemconfig(image, state="hidden")  # Hide image
                 return
         sleep(1.5)
-    canvas.itemconfig(image, state="hidden")  # Hide image
     return
 
 def meter(no_loop=False):
@@ -187,6 +184,7 @@ def meter(no_loop=False):
             charge = False
             animate = False
             animate1 = False
+            canvas.itemconfig(image, state="hidden")  # Hide image
             for i in range(5):  # If battery was charging, attempt to update meter once animation has stopped
                 meter_change(percent)
                 sleep(0.5)

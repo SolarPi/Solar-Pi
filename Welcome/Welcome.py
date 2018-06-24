@@ -134,11 +134,21 @@ def settings(first=False):
         if theme2 != "black":
             app.setBg("white")
 
-        app.setFont(family="piboto")
-        app.ttkStyle.configure(".", font=("piboto"))
+        app.setFont(family="pibotolt")
+        app.ttkStyle.configure(".", font=("pibotolt"))
 
-        title_font = ("piboto", 14, "normal")
-        bold_font = ("piboto", 12, "bold")
+        app.getListBoxWidget("list").config(font=("open sans", 14, "normal"))
+        app.getListBoxWidget("list2").config(font=("open sans", 14, "normal"))
+        
+        app.ttkStyle.configure("TButton", font=("open sans", 13, "normal"))  # Uncomment to restore old font
+        app.ttkStyle.configure("TNotebook.Tab", font=("open sans", 12, "normal"))
+
+        #title_font = ("piboto", 14, "normal")
+        #bold_font = ("piboto", 12, "normal")
+
+        app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
+
+        app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
 
         app.ttkStyle.configure("H.TLabel", background="#687396", foreground="white",
                                padding=[10, 10])  # #dbdce2, #687396
@@ -162,8 +172,8 @@ app.setResizable(False)
 msgFg = "black"
 msgBg = "white"
 
-title_font = ("piboto", 14, "normal")
-bold_font = ("piboto", 12, "bold")
+title_font = ("open sans", 14, "normal")
+bold_font = ("piboto", 12, "normal")
 
 # Event Handler for buttons
 def ButtonHandler(press):
@@ -245,6 +255,9 @@ with app.subWindow("About Solar Pi", modal=True):
         with app.labelFrame("About"):
             app.setPadding(10, 10)
             app.addLabel("about", "Solar Pi is a charity project, aimed at getting\nRaspberry Pi based, solar powered computers\nto those who need it most.\n\nEnjoy!")
+        about = app.addLabel("about2", "About")
+        app.setLabelStyle("about2", "Frame.TLabel")
+        app.getLabelFrameWidget("About").config(labelwidget=about)
         app.addButton("Close", ButtonHandler)
         app.setButtonSticky("Close", "")
 
@@ -261,7 +274,7 @@ with app.notebook("MainTabs", colspan=2):
         with app.frame("frame4", 0, 0, colspan=3):
             app.addLabel("text4", "Welcome to your  ", 0, 0)
             app.setLabelAlign("text4", "right")
-            app.getLabelWidget("text4").config(font=("dosis", "25"))
+            app.getLabelWidget("text4").config(font=("pibotolt", "21"))
             app.addImage("logo text1", "../Resources/Images/Solar Pi text small.gif", 0, 1)
             app.setImageSticky("logo text1", "nsw")
 
@@ -302,13 +315,13 @@ with app.notebook("MainTabs", colspan=2):
             app.setCanvasBg("c", "white")
             img = Image.open("../Resources/Images/whiteLogo2.png")
             canvas.config(bd=0, highlightthickness=0, width=150, height=150)
-            pos = 110  # 100
+            pos = 106  # 100
 
         else:
             app.setCanvasBg("c", "white")  # Configure options for all other themes
             img = Image.open("../Resources/Images/whiteLogo.png")
             canvas.config(bd=0, highlightthickness=0, width=130, height=130)
-            pos = 103  # 90
+            pos = 99  # 90
 
         images = []  # Create image cache
         img.putalpha(0)  # Make first image transparent
@@ -649,6 +662,10 @@ Happy coding!"""
                     app.addLabel("Spacer3", "")
                     app.addButton("Terminal", Terminal)
 
+        applications = app.addLabel("applications", "Applications")
+        app.setLabelStyle("applications", "Frame.TLabel")
+        app.getLabelFrameWidget("Applications").config(labelwidget=applications)
+
 
     ##################################
     #  Tab for Guides and Tutorials  #
@@ -804,6 +821,10 @@ Happy coding!"""
 
                     app.addButton("Give it a go!", Moodle, 2, 0)
 
+        guides = app.addLabel("guides", "Guides")
+        app.setLabelStyle("guides", "Frame.TLabel")
+        app.getLabelFrameWidget("Guides & Tutorials").config(labelwidget=guides)
+
 
     #########################
     #  Tab for System Info  #
@@ -866,6 +887,10 @@ Happy coding!"""
             app.getLabelWidget("battery").config(font=bold_font)
             app.addLabel("battery_value", battery, 1, 3)
 
+        info = app.addLabel("info", "Solar Pi Info")
+        app.setLabelStyle("info", "Frame.TLabel")
+        app.getLabelFrameWidget("Solar Pi Info").config(labelwidget=info)
+
 
         with app.labelFrame("OS Info"):
             app.setPadding(10, 5)
@@ -876,6 +901,10 @@ Happy coding!"""
             app.addLabel("kernel_version", "Kernel Version:", 0, 2)
             app.getLabelWidget("kernel_version").config(font=bold_font)
             app.addLabel("kernel_version_value", kernel_v, 0, 3)
+
+        os = app.addLabel("os", "OS Info")
+        app.setLabelStyle("os", "Frame.TLabel")
+        app.getLabelFrameWidget("OS Info").config(labelwidget=os)
 
 
         with app.labelFrame("Disk Info"):
@@ -904,6 +933,10 @@ Happy coding!"""
                 app.setMeterTooltip("disk_usage", "Used: " + used_disk + "\nFree: " + avail_disk)
                 app.addLabel("disk_label", avail_disk + " free of " + total_disk, 1, 0)
             app.setFrameSticky("frame22", "ew")
+
+        disk = app.addLabel("disk", "Disk Info")
+        app.setLabelStyle("disk", "Frame.TLabel")
+        app.getLabelFrameWidget("Disk Info").config(labelwidget=disk)
 
 
 def Startup(param):

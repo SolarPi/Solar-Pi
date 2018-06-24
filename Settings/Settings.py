@@ -115,10 +115,6 @@ def ApplySettings(press):
         app.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
         app.ttkStyle.map("TCheckbutton", background=[("active", "white")])
 
-    # Sets font
-    app.setFont(family="piboto")
-    app.ttkStyle.configure(".", font=("piboto"))
-
     # Fetches previous setting
     clock_old = getSetting("clock")
 
@@ -134,6 +130,14 @@ def ApplySettings(press):
         setSetting("theme", "Solar Pi")
     else:
         setSetting("theme", theme.lower())
+
+    # Sets font
+    app.setFont(family="pibotolt")
+    app.ttkStyle.configure(".", font=("pibotolt"))
+    app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
+    app.getListBoxWidget("list").config(font=("open sans", 14, "normal"))
+    app.ttkStyle.configure("TButton", font=("open sans", 12, "normal"))
+    app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
 
     # Configures apps that run at startup
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
@@ -176,18 +180,18 @@ def MeterUpdate():
     global kill
     i = 0
     while True:
-        print(kill)
+        ##print(kill)
         if kill == True:
             app.queueFunction(app.setMeter, "update_meter", 0)
-            break
+            return
         for i in range(1, 51):
-            print(kill)
+            #print(kill)
             i = i * 2
             app.queueFunction(app.setMeter, "update_meter", i)
             sleep(0.05)
             if kill == True:
                 app.queueFunction(app.setMeter, "update_meter", 0)
-                break
+                return
 
 
 def update2(press):  # TODO: Fix threading issues
@@ -258,16 +262,17 @@ with gui("Settings", useTtk=True) as app:
                          activestyle="none", selectbackground="#687396", selectforeground="white",
                          selectmode=app.SINGLE, relief=app.FLAT)  # Create ListBox # selectborderwidth=5, relief=app.FLAT, selectrelief=app.FLAT
         app.configure(sticky="news", stretch="both")
-        app.getListBoxWidget("list").config(font=("piboto", 14, "normal"))
+        app.getListBoxWidget("list").config(font=("pibotolt", 14, "normal"))
         app.setListBoxGroup("list", group=True)
 
         with app.frame(pages[0], 0, 1, sticky="new"):  # Create frame for each page
             app.setPadding(4, 4)
-
-            app.addLabel("perf_title", "Performance & Power")
-            app.getLabelWidget("perf_title").config(font=("piboto", 14, "normal"))
-
-            app.addHorizontalSeparator(colspan=2)
+            with app.frame("perf2", colspan=2):
+                app.setPadding(0, 4)
+                app.addLabel("perf_title", "Performance & Power")
+                app.getLabelWidget("perf_title").config(font=("open sans", 14, "normal"))
+                app.addHorizontalSeparator()
+            app.setFrameSticky("perf2", "new")
 
             app.addLabel("title", "Change the CPU Clock Speed:", 2, 0, colspan=2)
             app.setLabelSticky("title", "ew")
@@ -297,25 +302,32 @@ with gui("Settings", useTtk=True) as app:
             # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
         with app.frame(pages[1], 0, 1, sticky="new"):  # Code for third page
-            app.setPadding(5, 5)
-            app.addLabel("other_title", "Other Settings")
-            app.getLabelWidget("other_title").config(font=("piboto", 14, "normal"))
-            app.addHorizontalSeparator(colspan=2)
+            app.setPadding(4, 4)
+            with app.frame("other2", colspan=2):
+                app.setPadding(0, 4)
+                app.addLabel("other_title", "Other Settings")
+                app.getLabelWidget("other_title").config(font=("open sans", 14, "normal"))
+                app.addHorizontalSeparator()
+            app.setFrameSticky("other2", "new")
             app.addCheckBox("Launch the Solar Pi Welcome application at startup", colspan=2)
             app.addCheckBox("Show cowsay at terminal launch", colspan=2)
             app.addLabel("themes", "Themes for Solar Pi apps:", 4, 0)
             themes = ["Solar Pi", "Plastik", "Arc", "Winxpblue"]  # Black
             app.addOptionBox("Themes", themes, 4, 1)
+            app.getOptionBoxWidget("Themes").config(font=("open sans", 12, "normal"))
             app.addButton("Change Advanced Settings", ButtonHandler, 5, 0)
             app.addButton("Languages", ButtonHandler, 5, 1)
             app.setButtonSticky("Languages", "ew")
             app.setButtonSticky("Change Advanced Settings", "ew")
 
         with app.frame(pages[2], 0, 1, sticky="new"):  # Code for second page
-            app.setPadding(5, 5)
-            app.addLabel("updates_title", "Updates")
-            app.getLabelWidget("updates_title").config(font=("piboto", 14, "normal"))
-            app.addHorizontalSeparator()
+            app.setPadding(4, 4)
+            with app.frame("updates2"):
+                app.setPadding(0, 4)
+                app.addLabel("updates_title", "Updates")
+                app.getLabelWidget("updates_title").config(font=("open sans", 14, "normal"))
+                app.addHorizontalSeparator()
+            app.setFrameSticky("updates2", "new")
             app.addLabel("update_info", "Please insert the update USB stick into the Solar Pi.\nPress 'Update' once you have done this.")
             app.addButton("Update", update2)
 
@@ -340,12 +352,18 @@ with gui("Settings", useTtk=True) as app:
     with app.subWindow("Updating your Solar Pi", modal=True):
         app.setResizable(False)
         app.setStopFunction(stop)
+        app.setPadding(0, 0)
         with app.frame("frame23"):
             app.setPadding(10, 10)
             app.addSplitMeter("update_meter")
             app.setMeterFill("update_meter", ["green", "white"])
             app.setMeterSticky("update_meter", "ew")
             app.addLabel("update_info2", "Please wait while we check the USB...")
+        app.setFrameSticky("frame23", "nesw")
+
+    l = app.addLabel("l", "Settings")
+    app.setLabelStyle("l", "Frame.TLabel")
+    app.getLabelFrameWidget("Settings").config(labelwidget=l)
 
 
     # Configure themes
@@ -354,8 +372,13 @@ with gui("Settings", useTtk=True) as app:
     else:
         app.setLabelFrameStyle("Settings", "TFrame")  # Ensures that LabelFrame background is white
 
-    app.setFont(family="piboto")
-    app.ttkStyle.configure(".", font=("piboto"))
+    app.setFont(family="pibotolt")
+    app.ttkStyle.configure(".", font=("pibotolt"))
+    app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
+    app.getListBoxWidget("list").config(font=("open sans", 14, "normal"))
+    app.ttkStyle.configure("TButton", font=("open sans", 12, "normal"))
+    app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
+    #app.setLabelFrameStyle("Settings", "TLabelFrame")
 
     if theme == "black":
         app.setListBoxBg("list", "#424242")

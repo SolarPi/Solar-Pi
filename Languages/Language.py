@@ -87,9 +87,12 @@ def settings(first=False):
                 app.ttkStyle.configure(".", background="white", foreground="black")
                 app.setBg("white")
 
-        app.setFont(family="piboto")
-        app.ttkStyle.configure(".", font=("piboto"))
-        app.ttkStyle.configure("H.TLabel", font=("piboto", 12, "bold"))
+        app.setFont(family="pibotolt")
+        app.ttkStyle.configure(".", font=("pibotolt"))
+        app.ttkStyle.configure("H.TLabel", font=("piboto", 12, "normal"))
+        app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
+        app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
+        app.ttkStyle.configure("TButton", font=("open sans", 12, "normal"))
 
         theme1 = theme2
 
@@ -141,10 +144,22 @@ with gui("Languages", useTtk=True) as app:
                 app.addImage("uk_flag", "../Resources/Images/uk_flag.gif")
                 app.addButton("English", LanguageHandler, 0, 1)
 
+            english = app.addLabel("english", "English")
+            app.setLabelStyle("english", "Frame.TLabel")
+            app.getLabelFrameWidget("English").config(labelwidget=english)
+
             with app.labelFrame("Español", 0, 1):
                 app.setPadding(5, 5)
                 app.addImage("spain_flag", "../Resources/Images/spain_flag.gif")
                 app.addButton("Español", LanguageHandler, 0, 1)
+
+            espanol = app.addLabel("espanol", "Español")
+            app.setLabelStyle("espanol", "Frame.TLabel")
+            app.getLabelFrameWidget("Español").config(labelwidget=espanol)
+
+    languages = app.addLabel("languages", "Languages")
+    app.setLabelStyle("languages", "Frame.TLabel")
+    app.getLabelFrameWidget("Languages").config(labelwidget=languages)
 
     app.changeLanguage(language)
 
