@@ -142,8 +142,6 @@ def ApplySettings(press):
     # Configures apps that run at startup
     Autorun("welcome", launch_welcome, "/home/pi/.config/autostart/Welcome Launcher.desktop")  # Takes programropriate action for running Welcome at startup
 
-    #Autorun("battery", battery_meter, "/home/pi/.config/autostart/Battery Meter Launcher.desktop")  # Takes programropriate action for running Battery meter at startup
-
     ClockChange(clock_speed)  # Modifies /boot/config.txt to change max clock
 
     # After settings have been changed
@@ -180,12 +178,10 @@ def MeterUpdate():
     global kill
     i = 0
     while True:
-        ##print(kill)
         if kill == True:
             app.queueFunction(app.setMeter, "update_meter", 0)
             return
         for i in range(1, 51):
-            #print(kill)
             i = i * 2
             app.queueFunction(app.setMeter, "update_meter", i)
             sleep(0.05)
@@ -299,7 +295,6 @@ with gui("Settings", useTtk=True) as app:
             with app.frame("power", colspan=2):
                 app.addCheckBox("Show battery meter", 0, 0)
                 app.addCheckBox("Show charging animation", 0, 1)
-            # app.setCheckBoxStyle("Show standalone battery meter", "TCheckbox")
 
         with app.frame(pages[1], 0, 1, sticky="new"):  # Code for third page
             app.setPadding(4, 4)
@@ -378,7 +373,6 @@ with gui("Settings", useTtk=True) as app:
     app.getListBoxWidget("list").config(font=("open sans", 14, "normal"))
     app.ttkStyle.configure("TButton", font=("open sans", 12, "normal"))
     app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
-    #app.setLabelFrameStyle("Settings", "TLabelFrame")
 
     if theme == "black":
         app.setListBoxBg("list", "#424242")

@@ -121,7 +121,7 @@ def settings(check=False):
     if animate == False:
         animate1 = False
 
-    if meter_show1 != meter_show2 or check == True:  # Checks if original setting has changed
+    if meter_show1 != meter_show2:  # Checks if original setting has changed
         if meter_show2 == True:  # Shows meter if hidden
             app.show()
         elif meter_show2 == False:  # Hides meter if shown
@@ -131,14 +131,6 @@ def settings(check=False):
 
     if animation1 != animation2 or check == True:  # Checks if original setting has changed and if we're charging
         meter(no_loop=True)
-        """
-        if animation2 == True and percent < 100 and charge == True:  # If the animation is enabled...
-            t5 = Thread(target=animation)
-            t5.start()  # Start the animation
-            print("setting")
-        elif animation2 == False:  # If the animation is disabled...
-            meter(no_loop=True)
-        """
         print("Do something with the animation")
         animation1 = animation2
 
@@ -226,8 +218,6 @@ def meter_change(percent, charge=False):
     bar_list = []  # Create list for bars in meter
     for i in range(9):
         bar_list.append(i)  # Construct list with numbers from 0 to 8
-
-    # TODO: Test algorithm with bar_list
 
     #########################################
     #  Fills meter with appropriate colour  #

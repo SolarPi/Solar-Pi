@@ -5,7 +5,7 @@ import smbus
 from appJar import gui
 from SettingsRW import *
 
-log = True
+log = False
 
 i2c = smbus.SMBus(1)
 cache = [None, None]

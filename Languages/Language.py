@@ -64,7 +64,6 @@ def settings(first=False):
         if theme2 == "Solar Pi":
             app.setTtkTheme("plastik")
             app.setTtkTheme("clam")
-            # app.ttkStyle.configure(".", font="10", background="white")
 
             # Highlighted button
             app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")

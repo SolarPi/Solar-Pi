@@ -143,9 +143,6 @@ def settings(first=False):
         app.ttkStyle.configure("TButton", font=("open sans", 13, "normal"))  # Uncomment to restore old font
         app.ttkStyle.configure("TNotebook.Tab", font=("open sans", 12, "normal"))
 
-        #title_font = ("piboto", 14, "normal")
-        #bold_font = ("piboto", 12, "normal")
-
         app.ttkStyle.configure("Frame.TLabel", font=("open sans", 12, "normal"))
 
         app.ttkStyle.configure("TLabelframe.Label", font=("open sans", 12, "normal"))
@@ -155,7 +152,6 @@ def settings(first=False):
         app.ttkStyle.configure("Padding.TLabel", padding=[10, 5])
 
         app.ttkStyle.configure("back.TLabel", background="#687396", padding=[7, 6], borderwidth=1)
-        # app.ttkStyle.map("back.TLabel", relief=[("!active", "raised")]) #bordercolor=[("active", "white")],
 
         app.ttkStyle.configure("Info.TLabel", padding=[10, 10])
 
@@ -241,7 +237,7 @@ def ByteofPython(press):  # Byte of Python
 def Java(press):  # Google's Python Tutorial
     webbrowser.get("chromium-browser").open("http://localhost:82/java/index.htm")
 def Moodle(press):
-    webbrowser.get("chromium-browser").open("http://localhost:84/my")  # TODO: Find correct page
+    webbrowser.get("chromium-browser").open("http://localhost:84/my")
 
 #app.setFont(11, font="Dejavu Sans")
 
@@ -387,8 +383,6 @@ with app.notebook("MainTabs", colspan=2):
             app.setLabelStyle("options_title", "H.TLabel")
             app.setLabelSticky("options_title", "new")
 
-            #app.addLabel("options_inst", "Select a topic by clicking or tapping on a button", colspan=3)
-
             with app.frame("starter", 2, 0):
                 app.setSticky("ew")
 
@@ -460,10 +454,6 @@ with app.notebook("MainTabs", colspan=2):
             app.addLabel("charging_title", "          Charging Your Solar Pi", 0, 0)
             app.setLabelStyle("charging_title", "H.TLabel")
             app.getLabelWidget("charging_title").config(font=title_font)
-
-            #app.addImageButton("Back", guide,"../Resources/Images/white back arrow.gif", 0, 0, align="none")
-            #app.setButtonStyle("Back", "Back.TButton")
-            #app.setButtonSticky("Back", "nw")
 
             app.addImage("Back", "../Resources/Images/white back arrow.gif", 0, 0)
             app.setImageStyle("Back", "back.TLabel")

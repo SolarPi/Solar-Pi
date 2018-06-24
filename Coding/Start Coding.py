@@ -63,7 +63,7 @@ def settings(first=False):
         if theme2 == "Solar Pi":
             app.setTtkTheme("plastik")
             app.setTtkTheme("clam")
-            # app.ttkStyle.configure(".", font="10")
+
             # Highlighted button
             app.ttkStyle.configure("H.TButton", background="#324581", foreground="white", bordercolor="#687396")
             app.ttkStyle.map("H.TButton", background=[("pressed", "#172141"), ("active", "#4059a9")])
@@ -142,10 +142,6 @@ def ToolbarHandler(press):
 with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
     app.setResizable(False)
 
-    # Menu
-    #app.addMenuList("Applications", ["Solar Pi Home", "Leafpad"], MenuHandler)
-    #app.addMenuList("IDEs", ["Scratch", "Python IDLE", "Thonny Python", "Java"], MenuHandler)
-
     # Widgets
 
     app.setPadding(10, 10)
@@ -181,11 +177,6 @@ with gui("Start Coding", useTtk=True) as app:  # 400x320 # "420x290"
             app.hideButton("go")
         else:
             app.hideButton("Go")
-
-        #app.addImageButton("Go  ", ButtonHandler, "../Resources/Images/go white.gif", 0, 0, align="right")
-        #app.setButtonStyle("Go  ", "H.TButton")
-
-        #app.addImageButton("Go  ", ButtonHandler, "../Resources/Images/go black.gif", 0, 0, align="right")
 
         app.addImageButton(" More Info  ", ButtonHandler, "../Resources/Images/more info.gif", 0, 1, align="right")
         app.addImageButton("Exit ", ButtonHandler, "../Resources/Images/cross.gif", 0, 2, align="right")
